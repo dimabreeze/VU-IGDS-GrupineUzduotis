@@ -1,0 +1,9 @@
+.DS_Store
+Thumbs.db
+
+# Word lock files
+~$*
+
+# draw.io backups
+*.bkp
+.$*
