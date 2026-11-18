@@ -12,7 +12,7 @@ Medžiaga ataskaitos skyriui 1.1.3 „Vartotojai“. Vartotojų uždaviniai atit
 - **Patirtis dalykinėje srityje:** nuo naujoko iki patyrusio.
 - **Patirtis informacinėse technologijose:** nuo naujoko iki patyrusio.
 - **Papildomos charakteristikos:**
-    - turi galiojantį tinkamos kategorijos vairuotojo pažymėjimą;
+    - turi tinkamos kategorijos vairuotojo pažymėjimą, galiojantį visą nuomos laikotarpį;
     - dažniausiai rezervuoja išmaniuoju telefonu;
     - dalis klientų yra užsienio turistai, todėl reikalinga sąsaja lietuvių ir anglų kalbomis;
     - dalis klientų planuoja keliauti motociklu į užsienį.
@@ -21,7 +21,7 @@ Medžiaga ataskaitos skyriui 1.1.3 „Vartotojai“. Vartotojų uždaviniai atit
 
 - **Sprendžiami uždaviniai:**
     - įformina motociklo išdavimą ir grąžinimą, įskaitant grąžinimą į kitą filialą;
-    - užfiksuoja motociklo ridą ir būklę išdavimo ir grąžinimo metu;
+    - išdavimo ir grąžinimo metu užfiksuoja motociklo ridą ir trumpai aprašo jo būklę;
     - patikrina kliento vairuotojo pažymėjimą;
     - registruoja rezervacijas klientams, kurie skambina arba atvyksta į filialą;
     - mato savo filialo išdavimų ir grąžinimų tvarkaraštį;
@@ -31,7 +31,7 @@ Medžiaga ataskaitos skyriui 1.1.3 „Vartotojai“. Vartotojų uždaviniai atit
 - **Patirtis informacinėse technologijose:** patyręs (bazinis kompiuterinis raštingumas).
 - **Papildomos charakteristikos:**
     - dirba prie aptarnavimo stalo, dažnai priimamas tik sezonui;
-    - todėl sistemą turi išmokti per trumpą laiką (apie trys valandas), o kasdienes operacijas atlikti nedideliu veiksmų skaičiumi.
+    - todėl sistemą turi išmokti per trumpą laiką (per maždaug tris valandas), o kasdienes operacijas atlikti nedideliu veiksmų skaičiumi.
 
 ## Administratorius (vadovas)
 

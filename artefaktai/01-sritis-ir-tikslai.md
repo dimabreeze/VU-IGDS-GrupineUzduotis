@@ -30,9 +30,9 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 - klientui internetu rasti laisvą motociklą pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį;
 - klientui (arba darbuotojui kliento vardu) rezervuoti motociklą su momentiniu patvirtinimu, iš karto matant nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
 - automatiškai neleisti rezervuoti motociklo, jei pasirinktos datos sutampa su kita nuoma arba suplanuota technine priežiūra;
-- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis ir patikrinti jo kategoriją bei galiojimą;
+- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis, patikrinti jo kategoriją ir tai, ar jis galios visą nuomos laikotarpį;
 - klientui asmeninėje paskyroje peržiūrėti, keisti ir atšaukti savo rezervacijas;
-- filialo darbuotojui įforminti motociklo išdavimą ir grąžinimą (įskaitant grąžinimą į kitą filialą), matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir planuoti motociklų techninės priežiūros laikotarpius;
+- filialo darbuotojui įforminti motociklo išdavimą ir grąžinimą (įskaitant grąžinimą į kitą filialą), užfiksuojant motociklo ridą ir būklę, matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir planuoti motociklų techninės priežiūros laikotarpius;
 - automatiškai apskaičiuoti nuomos kainą ir baudą už pavėluotą grąžinimą;
 - administratoriui tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras, matyti esamą ir istorinį parko užimtumą bei formuoti statistines ataskaitas.
 
@@ -54,5 +54,5 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 - finansinė nuoma (lizingas);
 - nuoma organizacijoms (juridiniams asmenims);
 - integracija su buhalterinės apskaitos sistema;
-- motociklo pažeidimų registravimas;
+- išsamus motociklo pažeidimų registravimas (šioje versijoje darbuotojas išdavimo ir grąžinimo metu tik užfiksuoja ridą ir trumpai aprašo būklę);
 - mobilioji programėlė.

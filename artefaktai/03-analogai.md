@@ -10,7 +10,7 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 - **Kaina:** produktas neparduodamas. Nuomos kaina nuo 65 € (Ducati) iki 89 € (BMW R1250 GS) per parą.
 - **Funkcijos:**
     - paieška pagal paėmimo ir grąžinimo vietą, datą ir laiką; jei pasirinktam laikotarpiui laisvų motociklų nėra, rodomas pranešimas;
-    - motociklų sąrašas: klasė, pavarų dėžė, dienos kilometrų limitas (350 km), papildomo kilometro kaina, kaina;
+    - motociklų sąrašas: klasė, pavarų dėžė, kaina;
     - asmeninė paskyra („Prisijungti“, „Mano rezervacijos“);
     - sąsaja lietuvių ir anglų kalbomis;
     - aiškios nuomos taisyklės: užstatas blokuojamas kreditinėje kortelėje; vėluojant daugiau nei 1 val. skaičiuojama papildoma para; grąžinant ne darbo valandomis taikomas 25 € arba 40 € mokestis; leidžiama važiuoti į Baltijos šalis ir Lenkiją, į kitas ES šalis – tik suderinus.
@@ -35,7 +35,7 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 - **Gamintojas:** RideRent (Vilnius); svetainė yra įmonės nuosava sistema.
 - **Kaina:** produktas neparduodamas. Nuomos kaina nuo 35–50 € (Yamaha MT-07 A2) iki 55–70 € per parą.
 - **Funkcijos:**
-    - visi modeliai viename puslapyje: kuras, klasė, metai, degalų sąnaudos, galia, dienos ridos limitas (400 km), kaina, ypatybės;
+    - visi modeliai viename puslapyje: kuras, klasė, metai, degalų sąnaudos, galia, kaina, ypatybės;
     - motociklo puslapis su išsamiomis specifikacijomis (darbinis tūris, vairuotojo kategorija A2/A, sėdynės aukštis, svoris, ABS, traukos kontrolė);
     - užimtumo žyma „Šiuo metu laisvas“;
     - rezervacijos forma su paėmimo ir grąžinimo data ir laiku, aprangos ir priedų pasirinkimu; rezervuojant galima sumokėti 10 € avansą arba visą sumą; atsiimant reikia 100 € užstato;
@@ -75,6 +75,6 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 1. **Momentinis ir garantuotas patvirtinimas.** Rezervacija patvirtinama iš karto, tikrinant užimtumą vienoje duomenų bazėje; KuBa Motors rezervaciją tvirtina darbuotojas.
 2. **Visa paieška vienoje vietoje.** Paieška pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį; nagrinėtose Lietuvos svetainėse yra tik dalis šių kriterijų.
 3. **Grąžinimas į kitą filialą.** Nė viena nagrinėta Lietuvos įmonė neturi kelių filialų su grąžinimu į kitą filialą: Bikerent grąžinimą kitoje vietoje tiesiogiai draudžia, o KuBa Motors grąžinimo vietą Vilniuje derina individualiai.
-4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.** Sistema tikrina kategoriją ir galiojimą prieš patvirtindama rezervaciją.
+4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.** Sistema prieš patvirtindama rezervaciją tikrina kategoriją ir tai, ar pažymėjimas galios visą nuomos laikotarpį.
 5. **Techninė priežiūra, susieta su paieška.** Priežiūros laikotarpiai planuojami su datomis ir automatiškai pašalina motociklą iš paieškos tiems laikotarpiams.
-6. **Pritaikyta motociklų nuomai.** Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, ridos limitai, kelionės į užsienį).
+6. **Pritaikyta motociklų nuomai.** Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, kelionės į užsienį).
