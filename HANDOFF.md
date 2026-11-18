@@ -15,10 +15,10 @@
 
 ## 2. Где лежит и как работать с файлами
 
-- Репозиторий: `~/src/VU/IGDS/Kursinis darbas` на Mac Dmitrij (git, ветка `main`). В новой сессии подключить эту папку (`device_request_folder_access`) и **сразу запросить разрешение на удаление** (`device_request_delete_permission`): git удаляет свои lock-файлы, без разрешения репозиторий ломается после первого коммита.
-- В shell на устройстве папка доступна как `$HOME/mnt/Kursinis darbas`.
-- **Файлы писать и править прямо на устройстве** через `device_bash` (heredoc для новых файлов, python read-modify-write для правок). `device_commit_files` из `/mnt/user-data/outputs` однажды записал устаревшую версию файла; если используешь его, проверь размер или содержимое после записи.
-- Слайды лекций: `saltiniai/paskaitu_skaidres/` (pdftotext есть на устройстве). Требования — лекция 10; варианты использования — 3; ER и нормализация — 5; DFD и жизненный цикл — 2; структурная схема — 2 (конец) и 9; Гант — 9; тестирование — 11.
+- Репозиторий: `~/src/VU/IGDS/Kursinis darbas` на Mac Dmitrij (git, ветка `main`, remote `origin` на GitHub). Работаем в Claude Code.
+- Если сессия запущена в git worktree, коммитим в ветку worktree, а после одобрения Dmitrij вливаем в `main` (fast-forward в основной папке) и пушим.
+- Обычный `git push` из Claude Code не может спросить логин; работает `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin main` (`gh` уже залогинен).
+- Слайды лекций: `saltiniai/paskaitu_skaidres/`. `pdftotext` на Mac нет; текст PDF достаётся скриптом на Swift через PDFKit (`PDFDocument(url:)`, `page(at:).string`). Требования — лекция 10; варианты использования — 3; ER и нормализация — 5; DFD и жизненный цикл — 2; структурная схема — 2 (конец) и 9; Гант — 9; тестирование — 11.
 
 ## 3. Правила работы (обязательные, их задал Dmitrij)
 
