@@ -2,9 +2,9 @@
 
 Medžiaga ataskaitos skyriui 1.5.2 „ER loginio lygmens diagrama“.
 
-**Būsena:** baigta 2026-11-18.
+**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis).
 
-Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir saugumas.
+Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
 Šaltinis: `diagramos/08-loginis-er.drawio`, paveikslas: `diagramos/08-loginis-er.png`.
 
@@ -19,7 +19,7 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 | Esybė | Atributai (raktas pabrauktas) | Paskirtis | Reikalavimai |
 |---|---|---|---|
 | Filialas | <u>Kodas</u>, Miestas, Adresas, Telefonas | Įmonės filialas (Vilnius, Kaunas, Klaipėda) | 1.2.1, 1.2.3, 1.2.5 |
-| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Lygis | Vairuotojo pažymėjimo kategorija; lygis rodo, kurios kategorijos apima kitas (A1 < A2 < A) | 1.2.1, 1.2.2 |
+| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Aprašymas | Vairuotojo pažymėjimo kategorija; aprašymas paaiškina kategoriją klientui (pvz., „A2 – vidutinės galios motociklai“) | 1.2.1, 1.2.2 |
 | Motociklo modelis | <u>Kodas</u>, Gamintojas, Pavadinimas, Tipas, Variklio tūris, Galia, Degalų sąnaudos, Nuotrauka | Charakteristikos paieškai ir motociklo kortelei | 1.2.1, 1.2.5, 1.3.1.3 |
 | Motociklas | <u>Kodas</u>, Valstybinis numeris, VIN, Pagaminimo metai, Rida, Leidžiama išvažiuoti į užsienį, Naudojamas | Konkretus parko motociklas | 1.2.1, 1.2.3, 1.2.5 |
 | Tarifas | <u>Kodas</u>, Paros kaina, Užstatas, Galioja nuo, Galioja iki | Modelio kaina ir užstatas tam tikru laikotarpiu | 1.2.2, 1.2.3, 1.2.5 |
@@ -31,8 +31,7 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 | Išdavimas (silpna) | Laikas, Rida, Būklė | Motociklo išdavimo klientui faktas | 1.2.3 |
 | Grąžinimas (silpna) | Laikas, Rida, Būklė, Galutinė kaina, Bauda | Motociklo grąžinimo faktas ir galutinis atsiskaitymas | 1.2.3 |
 | Darbuotojas | <u>Kodas</u>, Vardas, Pavardė, El. paštas, Telefonas | Filialo darbuotojas arba administratorius | 1.2.3, 1.2.4, 1.2.5 |
-| Paskyra | <u>Prisijungimo vardas</u>, Slaptažodžio maiša, Vaidmuo, Užblokuota iki, Nesėkmingų bandymų skaičius | Prisijungimo duomenys ir vaidmuo | 1.3.5.1, 1.3.5.2 |
-| Prisijungimo bandymas | <u>Kodas</u>, Laikas, Įvestas prisijungimo vardas, IP adresas | Saugumo žurnalo įrašas apie nesėkmingą prisijungimą | 1.3.5.2 |
+| Paskyra | <u>Prisijungimo vardas</u>, Slaptažodžio maiša, Vaidmuo | Prisijungimo duomenys ir vaidmuo | 1.3.5.1, 1.3.5.2 |
 
 ## Ryšiai
 
@@ -57,7 +56,6 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 | organizuoja | Darbuotojas 1 : N Perkėlimas | Administratorius, suplanavęs perkėlimą |
 | dirba | Filialas 1 : N Darbuotojas | Darbuotojo filialas (administratorius gali būti nepriskirtas filialui) |
 | naudoja | Klientas 1 : 1 Paskyra, Darbuotojas 1 : 1 Paskyra | Prisijungimo paskyra |
-| susijęs | Paskyra 1 : N Prisijungimo bandymas | Nesėkmingi bandymai prisijungti prie paskyros |
 
 ## Modelio sprendimai
 
@@ -65,11 +63,11 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 - **Kaina fiksuojama rezervuojant.** Nuomoje saugoma paros kaina ir užstatas, galioję rezervacijos metu, todėl vėlesnis tarifo pakeitimas nekeičia ankstesnių nuomų. Galutinė kaina ir bauda apskaičiuojamos grąžinant ir saugomos Grąžinime (1.2.3).
 - **Išdavimas ir Grąžinimas – silpnos esybės.** Jos neturi savo rakto ir identifikuojamos per nuomą (kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą). Taip nuomoje nėra tuščių laukų, kol motociklas neišduotas, ir matyti, kas išdavė ir kas priėmė motociklą.
 - **Baudos pakopa – silpna esybė.** Pakopa identifikuojama tarifu ir daliniu raktu „Vėlavimas nuo (val.)“. Pavyzdys: vėluojant iki 1 val. – 0 Eur, nuo 1 iki 3 val. – 20 Eur, daugiau nei 3 val. – 60 Eur (sumos – tik pavyzdys). Didesniems motociklams baudos gali būti didesnės.
-- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra kategorija, kurios lygis ne žemesnis nei modelio reikalaujamos kategorijos, ir ji galioja visą nuomos laikotarpį (1.2.2). Pavyzdžiui, A kategorija leidžia vairuoti ir A2 modelį.
+- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra būtent ta kategorija, kurios reikalauja modelis, ir ji galioja visą nuomos laikotarpį (1.2.2). Kurios kategorijos apima kitas, sistema nesaugo: tai verslo proceso dalis. Registruojant pažymėjimą (klientas rezervuodamas arba darbuotojas kliento vardu) pažymimos visos kategorijos, kurias suteikia pažymėjimas; pavyzdžiui, turinčiam A kategoriją pažymimos ir A1, A2. Taip sistemoje nereikia saugoti kategorijų apimties taisyklių, kurios skirtingose šalyse gali skirtis, o naujas kategorijas galima pridėti kaip įrašus.
 - **Techninė priežiūra ir perkėlimas – laikotarpiai, o ne motociklo būsena.** Motociklas taip pat turi požymį „Naudojamas“: nurašytas motociklas netrinamas, nes reikalingas istorijai, bet nerodomas paieškoje.
 - **Nuotrauka ir charakteristikos priskirtos modeliui**, nes paieškos kortelėje rodomas modelis (1.3.1.3). **Pagaminimo metai ir leidimas išvažiuoti į užsienį priskirti motociklui**, nes leidimas priklauso nuo konkretaus motociklo draudimo.
 - **Klientas be paskyros.** Kliento kodas nepriklauso nuo paskyros. Skambinančiam klientui darbuotojas sukuria kliento įrašą (vardas, telefonas, pažymėjimo duomenys) ir jam registruoja rezervaciją. Jei klientas vėliau užsiregistruoja svetainėje tuo pačiu el. paštu, paskyra susiejama su esamu kliento įrašu. Todėl klientas gali neturėti paskyros, o darbuotojas paskyrą turi visada.
-- **Saugumo žurnalas.** Kiekvienas nesėkmingas prisijungimas įrašomas į Prisijungimo bandymą; jei įvestas vardas neatitinka jokios paskyros, įrašas su paskyra nesusiejamas. Paskyroje skaičiuojami nesėkmingi bandymai iš eilės („Nesėkmingų bandymų skaičius“; po sėkmingo prisijungimo skaitiklis nunulinamas). Po 5 bandymų iš eilės paskyra užblokuojama 15 minučių: tam įrašomas laikas „Užblokuota iki“ (1.3.5.2).
+- **Paskyra.** Prisijungimas laikomas bazine funkcija ir į darbą neįtraukiamas, todėl nesėkmingų prisijungimų žurnalo ir paskyros blokavimo modelyje nėra. Paskyroje saugomas prisijungimo vardas, slaptažodžio maiša (1.3.5.2) ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (1.3.5.1).
 
 ## Motociklo buvimo vietos taisyklė
 
@@ -85,9 +83,9 @@ Taisyklę įgyvendins prieinamumo tikrinimo funkcija (žr. 12 žingsnį), ji ati
 
 ## Palyginimas su laboratoriniu darbu
 
-Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Motociklas, Nuoma, Klientas). Šioje diagramoje jų 15:
+Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Motociklas, Nuoma, Klientas). Šioje diagramoje jų 14:
 
-- pridėtos esybės Kategorija, Tarifas, Baudos pakopa, Techninė priežiūra, Perkėlimas, Išdavimas, Grąžinimas, Darbuotojas, Paskyra ir Prisijungimo bandymas;
+- pridėtos esybės Kategorija, Tarifas, Baudos pakopa, Techninė priežiūra, Perkėlimas, Išdavimas, Grąžinimas, Darbuotojas ir Paskyra;
 - naudojamos silpnos esybės, silpni ryšiai, M:N ryšiai ir ryšio atributas;
 - paros kaina perkelta iš modelio į Tarifą, o nuomoje fiksuojama rezervavimo metu;
 - motociklo atributas „Būsena“ pakeistas laikotarpiais (Techninė priežiūra, Perkėlimas, Nuomos būsena) ir požymiu „Naudojamas“;
@@ -105,6 +103,6 @@ Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Moto
 | 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka) |
 | 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas |
 | 1.3.5.1 Prieiga pagal vaidmenis | Paskyra (Vaidmuo) |
-| 1.3.5.2 Prisijungimas ir duomenų apsauga | Paskyra, Prisijungimo bandymas |
+| 1.3.5.2 Duomenų apsauga | Paskyra (Slaptažodžio maiša) |
 
 Kiekviena esybė susijusi bent su vienu reikalavimu, o kiekvienas funkcinis reikalavimas turi bent vieną esybę. Perspektyvinių reikalavimų 1.6.1–1.6.3 duomenys (mokėjimai, pažeidimai, perdavimas į apskaitą) į modelį sąmoningai neįtraukti.

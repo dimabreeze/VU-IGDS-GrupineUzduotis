@@ -1,0 +1,225 @@
+<mxfile host="Electron">
+  <diagram name="Страница-1" id="4EuucTlpieKJ09SOZeSX">
+    <mxGraphModel dx="1414" dy="1032" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6rGQJMClY9yfyk3b1pXM-10" parent="1" style="text;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=0;fillStyle=hatch;strokeColor=default;strokeWidth=2;" value="Project Pulse: Būsenos stebėjimo sistema&#xa;Duomenų srautų diagrama (DSD) - 0 lygis" vertex="1">
+          <mxGeometry height="80" width="439.5" x="40.5" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="6rGQJMClY9yfyk3b1pXM-40" parent="1" style="text;align=center;verticalAlign=middle;rounded=0;fillStyle=hatch;strokeColor=default;strokeWidth=2;" value="VU / MIF / ISI / 2026 - I kursas&#xa;2 gr., Dmitrij Kosmakov&#xa;2026.09.16" vertex="1">
+          <mxGeometry height="80" width="200" x="600" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-18" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-7" value="Registracijos&#xa;duomenys">
+          <mxGeometry relative="1" x="0.6701" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="160" y="240.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-83" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="L40w1Okp0j2jzEL_pVSA-9" value="Laiko&#xa;limito&#xa;reikšmė">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="380" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-6" parent="1" style="dashed=0;whiteSpace=wrap;fillColor=#60a917;strokeColor=#2D7600;gradientColor=none;" value="E1. Naudotojas" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-7" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P1. Registruoti naudotoją" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-25" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-10" value="Gyvumo signalo įvykis">
+          <mxGeometry relative="1" x="0.3873" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-8" parent="1" style="dashed=0;whiteSpace=wrap;fillColor=#60a917;strokeColor=#2D7600;gradientColor=none;" value="E2. Stebima paslauga" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-9" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P2. Registruoti stebimas paslaugas" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-90" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;labelPosition=right;verticalLabelPosition=middle;align=left;verticalAlign=middle;" target="L40w1Okp0j2jzEL_pVSA-88" value="Nustatyta paslaugos būsena">
+          <mxGeometry relative="1" x="-0.4984" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="280" y="820" />
+              <mxPoint x="280" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-10" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P3. Apdoroti gyvumo signalą" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-49" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;align=center;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-6" value="Pranešimas">
+          <mxGeometry relative="1" x="-0.2756" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="160" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-12" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P6. Informuoti naudotoją" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-31" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;entryX=0;entryY=0.75;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;jumpStyle=arc;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="L40w1Okp0j2jzEL_pVSA-12" value="Naudotojo pranešimų nuostatos">
+          <mxGeometry relative="1" x="0.7803" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="639.52" y="180" />
+              <mxPoint x="60.05" y="180" />
+              <mxPoint x="60.05" y="500" />
+            </Array>
+            <mxPoint x="240" y="480" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-15" parent="1" style="shape=cylinder3;whiteSpace=wrap;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" value="DS1. Naudotojų duomenys" vertex="1">
+          <mxGeometry height="80" width="160" x="559.5" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-30" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.145;exitY=1;exitDx=0;exitDy=-4.35;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;jumpStyle=arc;" target="L40w1Okp0j2jzEL_pVSA-12" value="Paslaugos&#xa;informacija">
+          <mxGeometry relative="1" x="0.5659" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="582.69" y="480.03" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-92" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.855;exitY=1;exitDx=0;exitDy=-4.35;exitPerimeter=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;jumpStyle=none;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="L40w1Okp0j2jzEL_pVSA-88" value="Esama&#xa;paslaugos būsena">
+          <mxGeometry relative="1" x="0.635" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="696.29" y="620.03" />
+            </Array>
+            <mxPoint x="719" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-97" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0;exitDx=0;exitDy=52.5;exitPerimeter=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-84" value="Laiko limito reikšmė">
+          <mxGeometry relative="1" x="0.5905" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="730" y="372.52" />
+              <mxPoint x="730" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-16" parent="1" style="shape=cylinder3;whiteSpace=wrap;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#a0522d;strokeColor=#6D1F00;points=[[0,0,0,0,15],[0,0,0,0,27.5],[0,0,0,0,52.5],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,-15],[0.145,0,0,0,4.35],[0.145,1,0,0,-4.35],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.855,0,0,0,4.35],[0.855,1,0,0,-4.35],[1,0,0,0,15],[1,0,0,0,27.5],[1,0,0,0,52.5],[1,0.5,0,0,0],[1,1,0,0,-15]];fontColor=#ffffff;shadow=0;" value="DS2. Stebimų paslaugų registras" vertex="1">
+          <mxGeometry height="80" width="160" x="559.5" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-21" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;entryPerimeter=0;" target="L40w1Okp0j2jzEL_pVSA-15" value="Naudotojo&#xa;įrašas">
+          <mxGeometry relative="1" x="0.0125" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="542.5" y="240" />
+              <mxPoint x="542.5" y="240" />
+            </Array>
+            <mxPoint x="580.5" y="200" as="sourcePoint" />
+            <mxPoint x="502.5" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-22" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-9" value="Stebimos&#xa;paslaugos&#xa;duomenys">
+          <mxGeometry relative="1" x="-0.0062" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="200" y="300" />
+              <mxPoint x="359.52" y="300" />
+            </Array>
+            <mxPoint x="492.5" y="110" as="sourcePoint" />
+            <mxPoint x="650.5" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-23" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-16" value="Paslaugos&#xa;įrašas">
+          <mxGeometry relative="1" x="0.0125" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-24" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.25;exitY=1;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" target="L40w1Okp0j2jzEL_pVSA-6" value="Prieigos&#xa;taško&#xa;URL">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="359.52" y="410" />
+              <mxPoint x="200" y="410" />
+            </Array>
+            <mxPoint x="370.5" y="170" as="sourcePoint" />
+            <mxPoint x="189" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-70" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0;exitDx=0;exitDy=27.5;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;jumpStyle=none;" target="L40w1Okp0j2jzEL_pVSA-84" value="Esama paskutinio signalo laiko žyma">
+          <mxGeometry relative="1" x="0.6354" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="740" y="347.5" />
+              <mxPoint x="740" y="740.01" />
+            </Array>
+            <mxPoint x="519.5" y="660" as="sourcePoint" />
+            <mxPoint x="569" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-82" parent="1" style="rounded=0;whiteSpace=wrap;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;dashed=1;dashPattern=1 4;" value="Legenda" vertex="1">
+          <mxGeometry height="240" width="400" x="360" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-77" parent="1" style="rounded=1;fillColor=#1ba1e2;strokeColor=#006EAF;align=center;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;" value="Procesas" vertex="1">
+          <mxGeometry height="50" width="80" x="380.5" y="929.6599999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-78" parent="1" style="dashed=0;fillColor=#60a917;strokeColor=#2D7600;gradientColor=none;align=center;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;" value="Išorinė esybė" vertex="1">
+          <mxGeometry height="50" width="80" x="380.5" y="989.6599999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-79" parent="1" style="shape=cylinder3;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#a0522d;strokeColor=#6D1F00;points=[[0,0,0,0,15],[0,0,0,0,27.5],[0,0,0,0,52.5],[0,0.25,0,0,0],[0,0.5,0,0,0],[0,0.75,0,0,0],[0,1,0,0,-15],[0.145,0,0,0,4.35],[0.145,1,0,0,-4.35],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.855,0,0,0,4.35],[0.855,1,0,0,-4.35],[1,0,0,0,15],[1,0,0,0,27.5],[1,0,0,0,52.5],[1,0.5,0,0,0],[1,1,0,0,-15]];align=center;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;fontColor=#ffffff;" value="Duomenų&#xa;saugykla" vertex="1">
+          <mxGeometry height="60.34" width="80" x="380.5" y="1049.66" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-81" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" value="Duomenų srautas">
+          <mxGeometry relative="1" x="-0.0125" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="380.5" y="1140" as="sourcePoint" />
+            <mxPoint x="460.5" y="1140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-89" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;align=left;" target="L40w1Okp0j2jzEL_pVSA-88" value="Nustatyta paslaugos būsena">
+          <mxGeometry relative="1" x="0.1428" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="290" y="720" />
+              <mxPoint x="290" y="620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-84" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P4. Nustatyti neaktyvias paslaugas" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-91" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;align=left;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;" target="L40w1Okp0j2jzEL_pVSA-12" value="Paslaugos būsenos pasikeitimas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-88" parent="1" style="rounded=1;whiteSpace=wrap;fillColor=#1ba1e2;strokeColor=#006EAF;" value="P5. Atnaujinti paslaugos būseną" vertex="1">
+          <mxGeometry height="80" width="160" x="319.5" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-95" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="L40w1Okp0j2jzEL_pVSA-16" value="Nauja paskutinio signalo laiko žyma">
+          <mxGeometry relative="1" x="-0.7492" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="760.04" y="840" />
+              <mxPoint x="760.04" y="300" />
+              <mxPoint x="639.52" y="300" />
+            </Array>
+            <mxPoint x="749" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-96" edge="1" parent="1" source="L40w1Okp0j2jzEL_pVSA-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;" target="L40w1Okp0j2jzEL_pVSA-16" value="Nauja&#xa;paslaugos būsena">
+          <mxGeometry relative="1" x="-0.5265" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-176" parent="1" style="text;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Apdoroja gaunamus duomenis" vertex="1">
+          <mxGeometry height="30" width="240" x="479.5" y="939.66" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-177" parent="1" style="text;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Yra už sistemos ribų" vertex="1">
+          <mxGeometry height="30" width="240" x="479.5" y="999.66" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-178" parent="1" style="text;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Sistemoje saugomi duomenys" vertex="1">
+          <mxGeometry height="30" width="240" x="479.5" y="1064.8300000000002" as="geometry" />
+        </mxCell>
+        <mxCell id="L40w1Okp0j2jzEL_pVSA-179" parent="1" style="text;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Įvardinti judantys duomenys" vertex="1">
+          <mxGeometry height="30" width="240" x="479.5" y="1120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
-**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5 ir 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas.
+**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5 ir 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas. Rengiant duomenų srautų diagramą (9 žingsnis, 2026-11-18) iš 1.3.5.2 išbraukti nesėkmingų prisijungimų žurnalas ir paskyros blokavimas, nes prisijungimas į darbą neįtraukiamas.
 
 ## 1.2. Funkciniai reikalavimai
 
@@ -148,11 +148,11 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 |---|---|
 | ***Aprašymas:*** | Vartotojas gali atlikti tik savo vaidmeniui (klientas, filialo darbuotojas, administratorius) leistus veiksmus: klientas mato tik savo rezervacijas ir asmens duomenis, o tarifus ir darbuotojų paskyras keisti gali tik administratorius. |
 
-#### 1.3.5.2. Prisijungimas ir duomenų apsauga
+#### 1.3.5.2. Duomenų apsauga
 
 | ***Nr. 1.3.5.2*** | ***Reikalavimo tipas: nefunkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Duomenys tarp naršyklės ir serverio perduodami tik šifruotu ryšiu (HTTPS), o slaptažodžiai saugomi tik kaip maišos reikšmės. Kiekvienas nesėkmingas prisijungimo bandymas įrašomas į saugumo žurnalą, o po 5 nesėkmingų bandymų iš eilės paskyra užblokuojama 15 minučių. |
+| ***Aprašymas:*** | Duomenys tarp naršyklės ir serverio perduodami tik šifruotu ryšiu (HTTPS), o slaptažodžiai saugomi tik kaip maišos reikšmės. |
 
 ## 1.6. Perspektyviniai reikalavimai
 

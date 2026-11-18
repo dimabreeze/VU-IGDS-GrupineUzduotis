@@ -11,6 +11,6 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 |---|---|
 | `artefaktai/` | Tekstinės dalys pagal plano žingsnius |
 | `diagramos/` | Diagramų šaltiniai (`.drawio`) ir paveikslai (`.png`) |
-| `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, paskaitų skaidrės |
+| `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos, paskaitų skaidrės |
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos ir kt. |
 | `ataskaita/` | Galutinė ataskaita (`.docx`) |
