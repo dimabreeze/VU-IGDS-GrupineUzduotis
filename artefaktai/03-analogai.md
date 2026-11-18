@@ -75,6 +75,6 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 1. **Momentinis ir garantuotas patvirtinimas.** Rezervacija patvirtinama iš karto, tikrinant užimtumą vienoje duomenų bazėje; KuBa Motors rezervaciją tvirtina darbuotojas.
 2. **Visa paieška vienoje vietoje.** Paieška pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį; nagrinėtose Lietuvos svetainėse yra tik dalis šių kriterijų.
 3. **Grąžinimas į kitą filialą.** Nė viena nagrinėta Lietuvos įmonė neturi kelių filialų su grąžinimu į kitą filialą: Bikerent grąžinimą kitoje vietoje tiesiogiai draudžia, o KuBa Motors grąžinimo vietą Vilniuje derina individualiai.
-4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.** Sistema prieš patvirtindama rezervaciją tikrina kategoriją ir tai, ar pažymėjimas galios visą nuomos laikotarpį.
+4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.** Sistema prieš patvirtindama rezervaciją tikrina, ar pažymėjime yra tinkama kategorija ir ar ji galios visą nuomos laikotarpį.
 5. **Techninė priežiūra, susieta su paieška.** Priežiūros laikotarpiai planuojami su datomis ir automatiškai pašalina motociklą iš paieškos tiems laikotarpiams.
 6. **Pritaikyta motociklų nuomai.** Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, kelionės į užsienį).

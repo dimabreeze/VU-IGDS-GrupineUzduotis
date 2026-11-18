@@ -2,9 +2,9 @@
 
 Medžiaga ataskaitos skyriui 1.4 „Panaudos atvejų diagrama“.
 
-**Būsena:** baigta 2026-11-18.
+**Būsena:** baigta 2026-11-18. Papildyta 2026-11-18 rengiant loginę ER diagramą (8 žingsnis): pridėtas PA22 „Planuoti motociklų perkėlimą“ (1.2.5).
 
-Diagramoje pavaizduoti visi trys vartotojai iš `02-vartotojai.md` (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. `04-reikalavimai.md`), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (1.2.1, 1.2.2, 1.2.4), todėl numeris ovale nenurodytas.
+Diagramoje pavaizduoti visi trys vartotojai iš `02-vartotojai.md` (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. `04-reikalavimai.md`), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (1.2.1, 1.2.2, 1.2.4, 1.2.5), todėl numeris ovale nenurodytas.
 
 Šaltinis: `diagramos/07-panaudos-atvejai.drawio`, paveikslas: `diagramos/07-panaudos-atvejai.png`.
 
@@ -29,7 +29,7 @@ Pagalbinė lentelė darbui (į ataskaitą perkeliama, jei reikės paaiškinti di
 | PA3 | Peržiūrėti savo rezervacijas | K | 1.2.2 | – |
 | PA4 | Keisti rezervaciją | K, D | 1.2.2 | «include» PA6, PA7 |
 | PA5 | Atšaukti rezervaciją | K, D | 1.2.2 | – |
-| PA6 | Tikrinti motociklo užimtumą | – | 1.2.1, 1.2.2, 1.2.4 | įtraukiamas į PA1, PA2, PA4, PA11 |
+| PA6 | Tikrinti motociklo užimtumą | – | 1.2.1, 1.2.2, 1.2.4, 1.2.5 | įtraukiamas į PA1, PA2, PA4, PA11, PA22 |
 | PA7 | Tikrinti vairuotojo pažymėjimą | – | 1.2.2 | įtraukiamas į PA2, PA4 |
 | PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | D | 1.2.3 | – |
 | PA9 | Įforminti išdavimą | D | 1.2.3 | «include» PA12 |
@@ -45,16 +45,18 @@ Pagalbinė lentelė darbui (į ataskaitą perkeliama, jei reikės paaiškinti di
 | PA19 | Tvarkyti darbuotojų paskyras | A | 1.2.5 | – |
 | PA20 | Peržiūrėti parko užimtumą | A | 1.2.5 | – |
 | PA21 | Formuoti statistines ataskaitas | A | 1.2.5 | – |
+| PA22 | Planuoti motociklų perkėlimą | A | 1.2.5 | «include» PA6 |
 
 PA numeriai naudojami tik darbe (pvz., atsekamumo matricai) ir diagramoje nerodomi.
 
 ## Paaiškinimai
 
-- **PA6 Tikrinti motociklo užimtumą** tikrina, ar pasirinktomis datomis motociklas nėra rezervuotas, išnuomotas ar techninėje priežiūroje. Todėl paieška nerodo užimtų motociklų (1.2.1), rezervacijos ir jos pakeitimo negalima atlikti užimtomis datomis (1.2.2), o techninės priežiūros negalima suplanuoti ant rezervacijos (1.2.4).
-- **PA7 Tikrinti vairuotojo pažymėjimą** tikrina, ar pažymėjimo kategorija tinka motociklui ir ar pažymėjimas galioja visą nuomos laikotarpį (1.2.2).
+- **PA6 Tikrinti motociklo užimtumą** tikrina, ar pasirinktomis datomis motociklas nėra rezervuotas, išnuomotas, techninėje priežiūroje ar perkeliamas. Todėl paieška nerodo užimtų motociklų (1.2.1), rezervacijos ir jos pakeitimo negalima atlikti užimtomis datomis (1.2.2), o techninės priežiūros ir perkėlimo negalima suplanuoti ant rezervacijos (1.2.4, 1.2.5). Be to, PA6 tikrina motociklo buvimo vietą: nuomos ar perkėlimo pradžioje motociklas turi būti tame filiale, iš kurio jis išduodamas ar perkeliamas, o pabaigoje – tame filiale, kuriame prasideda kitas jo užimtumo laikotarpis. Todėl, pavyzdžiui, neleidžiama grąžinti motociklo į kitą filialą, jei kitą dieną jis rezervuotas pradiniame filiale (1.2.2). Plačiau – `08-loginis-er.md`.
+- **PA7 Tikrinti vairuotojo pažymėjimą** tikrina, ar kliento pažymėjime yra motociklui tinkama kategorija ir ar ji galioja visą nuomos laikotarpį (1.2.2). Kiekvienos kategorijos galiojimo data saugoma atskirai.
 - **Rezervacija kliento vardu:** filialo darbuotojas susietas su PA1, PA2, PA4 ir PA5, nes registruoja rezervacijas skambinantiems ar į filialą atvykusiems klientams (1.2.2).
 - **Neplanuota techninė priežiūra** atskiru panaudos atveju nevaizduojama: darbuotojas perkelia rezervaciją į kitą motociklą (PA4) arba ją atšaukia (PA5), o tada suplanuoja priežiūrą (PA11), kurią leidžia PA6 patikrinimas (1.2.4).
 - **Patvirtinimas su kaina, užstatu ir baudų tarifais** yra PA2 rezultatas ir atskiru panaudos atveju nevaizduojamas.
+- **PA22 Planuoti motociklų perkėlimą:** administratorius vienu perkėlimu gali perkelti vieną ar kelis motociklus (jie vežami kartu) į kitą filialą. Perkėlimo laikotarpiu motociklai užimti taip pat, kaip nuomos ar techninės priežiūros metu (1.2.5).
 
 ## Aprėpties patikrinimas
 

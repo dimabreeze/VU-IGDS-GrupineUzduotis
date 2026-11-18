@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
-**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18.
+**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5 ir 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas.
 
 ## 1.2. Funkciniai reikalavimai
 
@@ -12,13 +12,13 @@ Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos
 
 | ***Nr. 1.2.1*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Klientas turi galėti rasti laisvus motociklus pagal nuomos datas, filialą, charakteristikas (pvz., tipą, variklio tūrį, galią), reikiamą vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį. Paieškos rezultatuose nerodomi motociklai, kurie pasirinktomis datomis yra rezervuoti, išnuomoti arba techninėje priežiūroje. |
+| ***Aprašymas:*** | Klientas turi galėti rasti laisvus motociklus pagal nuomos datas, filialą, charakteristikas (pvz., tipą, variklio tūrį, galią), reikiamą vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį. Paieškos rezultatuose nerodomi motociklai, kurie pasirinktomis datomis yra rezervuoti, išnuomoti, techninėje priežiūroje ar perkeliami, taip pat motociklai, kurie nuomos pradžioje bus kitame filiale. |
 
 ### 1.2.2. Rezervacija ir jos valdymas
 
 | ***Nr. 1.2.2*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Klientas (arba filialo darbuotojas kliento vardu) turi galėti rezervuoti laisvą motociklą, pateikęs vairuotojo pažymėjimo duomenis, ir iš karto gauti patvirtinimą, kuriame nurodyta nuomos kaina, užstatas ir baudų už pavėluotą grąžinimą tarifai. Sistema rezervacijos ar jos pakeitimo neleidžia, jei pasirinktos datos sutampa su kita rezervacija ar technine priežiūra, pažymėjimo kategorija netinka pasirinktam motociklui arba pažymėjimo galiojimas baigiasi anksčiau nei nuoma. Klientas turi galėti peržiūrėti, keisti ir atšaukti savo rezervacijas asmeninėje paskyroje. |
+| ***Aprašymas:*** | Klientas (arba filialo darbuotojas kliento vardu) turi galėti rezervuoti laisvą motociklą, pateikęs vairuotojo pažymėjimo duomenis, ir iš karto gauti patvirtinimą, kuriame nurodyta nuomos kaina, užstatas ir baudų už pavėluotą grąžinimą tarifai. Sistema rezervacijos ar jos pakeitimo neleidžia, jei pasirinktos datos sutampa su kita rezervacija, technine priežiūra ar perkėlimu, jei nuomos pradžioje motociklas bus ne išdavimo filiale arba po grąžinimo nebus tame filiale, kuriame prasideda kita jo rezervacija ar perkėlimas, taip pat jei kliento pažymėjime nėra motociklui tinkamos kategorijos, galiojančios visą nuomos laikotarpį. Klientas turi galėti peržiūrėti, keisti ir atšaukti savo rezervacijas asmeninėje paskyroje. |
 
 ### 1.2.3. Išdavimas ir grąžinimas
 
@@ -30,13 +30,13 @@ Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos
 
 | ***Nr. 1.2.4*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Filialo darbuotojas turi galėti iš anksto suplanuoti motociklo techninės priežiūros laikotarpį; tuo laikotarpiu motociklas nerodomas paieškoje ir jo negalima rezervuoti. Sistema neleidžia suplanuoti priežiūros, jei jos laikotarpis sutampa su rezervacija. Neplanuotos priežiūros atveju darbuotojas pirmiausia susisiekia su klientu, pasiūlo kitą motociklą ir perkelia rezervaciją arba ją atšaukia, o tik tada suplanuoja priežiūrą. |
+| ***Aprašymas:*** | Filialo darbuotojas turi galėti iš anksto suplanuoti motociklo techninės priežiūros laikotarpį; tuo laikotarpiu motociklas nerodomas paieškoje ir jo negalima rezervuoti. Sistema neleidžia suplanuoti priežiūros, jei jos laikotarpis sutampa su rezervacija ar perkėlimu. Neplanuotos priežiūros atveju darbuotojas pirmiausia susisiekia su klientu, pasiūlo kitą motociklą ir perkelia rezervaciją arba ją atšaukia, o tik tada suplanuoja priežiūrą. |
 
 ### 1.2.5. Parko administravimas ir ataskaitos
 
 | ***Nr. 1.2.5*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Administratorius turi galėti tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras. Jis taip pat turi matyti esamą ir istorinį parko užimtumą ir formuoti statistines ataskaitas. |
+| ***Aprašymas:*** | Administratorius turi galėti tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras, matyti esamą ir istorinį parko užimtumą ir formuoti statistines ataskaitas. Jis taip pat turi galėti suplanuoti vieno ar kelių motociklų perkėlimą į kitą filialą, jei perkėlimo laikotarpis nesutampa su šių motociklų rezervacijomis ir technine priežiūra. Perkėlimo laikotarpiu šie motociklai nerodomi paieškoje ir jų negalima rezervuoti. |
 
 ### Reikalavimų ryšys su vartotojais ir IS tikslais
 
@@ -48,7 +48,7 @@ Pagalbinė lentelė darbui (į ataskaitą neperkeliama); tikslų numeriai pagal 
 | 1.2.2 Rezervacija ir jos valdymas | klientas, filialo darbuotojas | 1, 2, 3, 4, 5 |
 | 1.2.3 Išdavimas ir grąžinimas | filialo darbuotojas | 3, 4 |
 | 1.2.4 Techninė priežiūra | filialo darbuotojas | 1 |
-| 1.2.5 Parko administravimas ir ataskaitos | administratorius | 6 |
+| 1.2.5 Parko administravimas ir ataskaitos | administratorius | 4, 6 |
 
 ## 1.3. Nefunkciniai reikalavimai
 
@@ -98,7 +98,7 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 
 | ***Nr. 1.3.2.4*** | ***Reikalavimo tipas: nefunkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Jei rezervacija ar jos pakeitimas neleidžiami, sistema turi nurodyti konkrečią priežastį: datos užimtos, netinka pažymėjimo kategorija arba pažymėjimas baigia galioti anksčiau nei nuoma. |
+| ***Aprašymas:*** | Jei rezervacija ar jos pakeitimas neleidžiami, sistema turi nurodyti konkrečią priežastį: datos užimtos, motociklas nuomos pradžioje bus kitame filiale, motociklo negalima grąžinti į pasirinktą filialą, nes kita jo rezervacija ar perkėlimas prasideda kitame filiale, netinka pažymėjimo kategorija arba jos galiojimas baigiasi anksčiau nei nuoma. |
 
 ### 1.3.3. Reikalavimai veikimo charakteristikoms
 
