@@ -10,7 +10,7 @@ UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniu
 
 Klientai motociklus rezervuoja telefonu, el. paštu arba „Facebook“ žinutėmis. Filialo darbuotojas laisvus motociklus tikrina bendroje „Excel“ lentelėje, kurią pildo visi trys filialai. Išduodant motociklą pildoma popierinė nuomos sutartis, o nuomos kaina ir bauda už pavėluotą grąžinimą skaičiuojamos rankiniu būdu. Taikomas tik grąžinimas į tą patį filialą: motociklą reikia grąžinti ten, kur jis buvo paimtas.
 
-Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos motociklų nuomos įmonių svetaines, dauguma jų rezervacijas priima telefonu arba per formą, kurią vėliau rankiniu būdu patvirtina darbuotojas, todėl klientas neturi garantijos, kad motociklas bus laisvas. Paieška pagal datas yra tik keliose svetainėse, o paieškos pagal motociklo charakteristikas nėra nė vienoje.
+Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos motociklų nuomos įmonių svetaines, dauguma jų rezervacijas priima telefonu arba per formą, kurią vėliau rankiniu būdu patvirtina darbuotojas, todėl klientas neturi garantijos, kad motociklas bus laisvas. Paieška pagal datas yra tik keliose svetainėse, filtrus pagal motociklo tipą ir vairuotojo pažymėjimo kategoriją turi tik viena, o paieškos pagal kitas charakteristikas (variklio tūrį, galią ir pan.) nėra nė vienoje. Išsami analogų apžvalga pateikta `03-analogai.md`.
 
 ## Problemos
 
