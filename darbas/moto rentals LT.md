@@ -103,7 +103,7 @@ Kiekvienai įmonei išvardyti pagrindiniai subjektyvūs pastebėjimai. Tai, kas 
 
 # Apsvarstyti su agentu
 
-Aptarta 2026-11-18: visi punktai perkelti į 1.6 skyriaus „Perspektyviniai reikalavimai“ kandidatus (žr. `sprendimai.md`).
+Aptarta 2026-11-18: visi punktai perkelti į 1.6 skyriaus „Perspektyviniai reikalavimai“ kandidatus (žr. `sprendimai.md`). Atrankos rezultatas: integracija su mokėjimų sistema ir integracija su buhalterinės apskaitos sistema tapo reikalavimais 1.6.1 ir 1.6.3; nuoma organizacijoms ir mokėjimas dalimis liko „Sistemos ribose“; lizingas atmestas, nes tai pirkimo finansavimas, nesusijęs su nuomos IS.
 
 - finansinė nuoma (lizingas)
 - nuoma organizacijoms

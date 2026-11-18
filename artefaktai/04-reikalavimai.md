@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
-**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. Perspektyviniai reikalavimai (1.6) bus suformuluoti 6 žingsnyje.
+**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18.
 
 ## 1.2. Funkciniai reikalavimai
 
@@ -154,6 +154,24 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 |---|---|
 | ***Aprašymas:*** | Duomenys tarp naršyklės ir serverio perduodami tik šifruotu ryšiu (HTTPS), o slaptažodžiai saugomi tik kaip maišos reikšmės. Kiekvienas nesėkmingas prisijungimo bandymas įrašomas į saugumo žurnalą, o po 5 nesėkmingų bandymų iš eilės paskyra užblokuojama 15 minučių. |
 
-## Perspektyviniai reikalavimai (kandidatai)
+## 1.6. Perspektyviniai reikalavimai
 
-Kandidatų sąrašas pateiktas `01-sritis-ir-tikslai.md` skyriuje „Sistemos ribos“; atranka bus atlikta 6 žingsnyje.
+Šie reikalavimai neįeina į pirmąją sistemos versiją, tačiau galėtų būti įgyvendinti naujoje versijoje. Jie atrinkti iš `01-sritis-ir-tikslai.md` skyriuje „Sistemos ribos“ išvardytų galimybių.
+
+### 1.6.1. Mokėjimas internetu
+
+| ***Nr. 1.6.1*** | ***Reikalavimo tipas: funkcinis*** |
+|---|---|
+| ***Aprašymas:*** | Klientas rezervuodamas turi galėti internetu sumokėti avansą arba visą nuomos kainą per integruotą mokėjimų sistemą. Išdavimo metu filialo darbuotojas mato, kokia suma jau sumokėta ir kiek liko sumokėti. |
+
+### 1.6.2. Išsamus pažeidimų registravimas
+
+| ***Nr. 1.6.2*** | ***Reikalavimo tipas: funkcinis*** |
+|---|---|
+| ***Aprašymas:*** | Išdavimo ir grąžinimo metu filialo darbuotojas turi galėti pažymėti motociklo pažeidimus jo schemoje ir pridėti nuotraukų. Grąžinant sistema parodo naujus pažeidimus, kurių nebuvo išdavimo metu, ir susieja juos su ta nuoma. Visa motociklo pažeidimų istorija saugoma ir matoma kitiems darbuotojams. |
+
+### 1.6.3. Integracija su buhalterinės apskaitos sistema
+
+| ***Nr. 1.6.3*** | ***Reikalavimo tipas: funkcinis*** |
+|---|---|
+| ***Aprašymas:*** | Užbaigus nuomą, sistema turi automatiškai perduoti jos mokėjimų duomenis (sumą, PVM, mokėjimo datą ir būdą) į įmonės naudojamą buhalterinės apskaitos sistemą. Administratorius turi matyti, kurių nuomų duomenys perduoti, o kurių perdavimas nepavyko. |
