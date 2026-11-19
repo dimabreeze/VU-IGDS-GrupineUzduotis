@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.1.5 „Sistemos kūrimo terminai“.
 
-**Būsena:** juodraštis 2026-11-20, laukia peržiūros.
+**Būsena:** baigta 2026-11-20.
 
 Šaltinis: `artefaktai/15-ganto-diagrama.xlsx`, paveikslas: `artefaktai/15-ganto-diagrama.png`.
 

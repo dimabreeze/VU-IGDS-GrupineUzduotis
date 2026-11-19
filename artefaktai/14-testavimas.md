@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** juodraštis 2026-11-19, laukia peržiūros.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie 1.2.1 pridėtas TA2 1 žingsnis.
 
 Testavimas planuojamas sistemos lygiu (11 paskaita, 16 skaidrė). Testavimo atvejai (TA) sudaryti pagal panaudos atvejus (39–40 skaidrės): kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio (44 skaidrė). Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje (33 skaidrė). Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas (28 skaidrė). Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais (39 skaidrė), ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis (37 skaidrė).
 
@@ -24,7 +24,7 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
 |---|---|---|
-| Motociklų paieška | 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA4 (2 žingsnis) |
+| Motociklų paieška | 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
 | Rezervacija ir jos valdymas | 1.2.2 | TA1, TA2, TA4 |
 | Išdavimas ir grąžinimas | 1.2.3 | TA3 |
 | Techninė priežiūra | 1.2.4 | TA1 (7–8 žingsniai) |

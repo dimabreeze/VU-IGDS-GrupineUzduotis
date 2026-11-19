@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 2.3.1 „Panašių sistemų apžvalga ir pasirinkti dizaino sprendimai“ ir 2.3.2 „Kuriamos sistemos dizainas“.
 
-**Būsena:** juodraštis 2026-11-19, laukia peržiūros.
+**Būsena:** baigta 2026-11-19. E4 ekrano panaudos atvejų sąrašas papildytas PA9 per 2 kontrolinį tašką (2026-11-20).
 
 Maketai sukurti kaip prototipas, kurį 3 paskaita (14–15 skaidrės) siūlo naudoti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir nufotografuoti naršykle 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu. Šaltiniai ir paveikslai – `artefaktai/13-dizainas/`, eksportas – `make dizainas`.
 
@@ -126,7 +126,7 @@ Viena šriftų šeima **Inter** (Google Fonts, nemokama, palaiko lietuviškas ra
 | E1 | Motociklų paieška | Klientas | PA1 | 1.2.1, 1.3.1.1, 1.3.1.3 | 360 ir 1280 px |
 | E2 | Rezervacijos duomenys | Klientas | PA2, PA7 | 1.2.2, 1.3.2.3, 1.3.2.4 | 360 px |
 | E3 | Rezervacija patvirtinta | Klientas | PA2 | 1.2.2, 1.3.2.3 | 360 px |
-| E4 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA8, PA10, PA12–PA14 | 1.2.3 | 1280 px |
+| E4 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA8–PA10, PA12–PA14 | 1.2.3 | 1280 px |
 | E5 | Parko užimtumas | Administratorius | PA20 | 1.2.5 | 1280 px |
 
 Rezervacijos kelias: klientas pasirenka motociklą paieškos rezultatuose (E1), įveda pažymėjimo duomenis ir mato kainą (E2), gauna patvirtinimą (E3) – 3 ekranai (1.3.2.3). Visi maketuose rodomi duomenys paimti iš bandomosios duomenų bazės (`darbas/duomenys.sql`); nuotraukos vietoje rodomas schematinis motociklas.
