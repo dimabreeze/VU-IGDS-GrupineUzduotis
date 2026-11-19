@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.4 „Panaudos atvejų diagrama“.
 
-**Būsena:** baigta 2026-11-18. Papildyta 2026-11-18 rengiant loginę ER diagramą (8 žingsnis): pridėtas PA22 „Planuoti motociklų perkėlimą“ (1.2.5).
+**Būsena:** baigta 2026-11-18. Papildyta 2026-11-18 rengiant loginę ER diagramą (8 žingsnis): pridėtas PA22 „Planuoti motociklų perkėlimą“ (1.2.5). Po 1 kontrolinio taško (2026-11-19) paaiškinta, kada pasirenkamas grąžinimo filialas (PA15).
 
 Diagramoje pavaizduoti visi trys vartotojai iš `02-vartotojai.md` (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. `04-reikalavimai.md`), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (1.2.1, 1.2.2, 1.2.4, 1.2.5), todėl numeris ovale nenurodytas.
 
@@ -55,6 +55,7 @@ PA numeriai naudojami tik darbe (pvz., atsekamumo matricai) ir diagramoje nerodo
 - **PA7 Tikrinti vairuotojo pažymėjimą** tikrina, ar kliento pažymėjime yra motociklui tinkama kategorija ir ar ji galioja visą nuomos laikotarpį (1.2.2). Kiekvienos kategorijos galiojimo data saugoma atskirai.
 - **Rezervacija kliento vardu:** filialo darbuotojas susietas su PA1, PA2, PA4 ir PA5, nes registruoja rezervacijas skambinantiems ar į filialą atvykusiems klientams (1.2.2).
 - **Neplanuota techninė priežiūra** atskiru panaudos atveju nevaizduojama: darbuotojas perkelia rezervaciją į kitą motociklą (PA4) arba ją atšaukia (PA5), o tada suplanuoja priežiūrą (PA11), kurią leidžia PA6 patikrinimas (1.2.4).
+- **Grąžinimo filialas pasirenkamas rezervuojant** (PA2) kartu su išdavimo filialu, todėl jis matomas filialo tvarkaraštyje (PA8) ir PA6 gali patikrinti motociklo buvimo vietą. PA15 taikomas, kai rezervacijoje nurodytas grąžinimo filialas skiriasi nuo išdavimo filialo. Jei klientas nori grąžinti motociklą kitur, rezervacija keičiama (PA4), o PA6 patikrina, ar tai leidžiama (1.2.2).
 - **Patvirtinimas su kaina, užstatu ir baudų tarifais** yra PA2 rezultatas ir atskiru panaudos atveju nevaizduojamas.
 - **PA22 Planuoti motociklų perkėlimą:** administratorius vienu perkėlimu gali perkelti vieną ar kelis motociklus (jie vežami kartu) į kitą filialą. Perkėlimo laikotarpiu motociklai užimti taip pat, kaip nuomos ar techninės priežiūros metu (1.2.5).
 

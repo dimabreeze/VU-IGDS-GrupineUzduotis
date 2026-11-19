@@ -2,9 +2,9 @@
 
 Medžiaga ataskaitos skyriui 1.5.2 „ER loginio lygmens diagrama“.
 
-**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis).
+**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis). Po 1 kontrolinio taško (2026-11-19): pridėtas ryšys „įkainojama“ (Tarifas 1 : N Nuoma), o Nuomos atributai „Paros kaina“ ir „Užstatas“ pašalinti; Kategorija aprašyta kaip klasifikatorius; papildyta aprėpties lentelė. Aptarus diagramą (2026-11-19): Galutinė kaina ir Bauda pažymėtos kaip išvestiniai atributai, iš Baudos pakopos pašalintas atributas „Vėlavimas iki (val.)“.
 
-Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
+Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [GeeksforGeeks, „Introduction of ER Model“](https://www.geeksforgeeks.org/dbms/introduction-of-er-model/)). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
 Šaltinis: `diagramos/08-loginis-er.drawio`, paveikslas: `diagramos/08-loginis-er.png`.
 
@@ -19,17 +19,17 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 | Esybė | Atributai (raktas pabrauktas) | Paskirtis | Reikalavimai |
 |---|---|---|---|
 | Filialas | <u>Kodas</u>, Miestas, Adresas, Telefonas | Įmonės filialas (Vilnius, Kaunas, Klaipėda) | 1.2.1, 1.2.3, 1.2.5 |
-| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Aprašymas | Vairuotojo pažymėjimo kategorija; aprašymas paaiškina kategoriją klientui (pvz., „A2 – vidutinės galios motociklai“) | 1.2.1, 1.2.2 |
+| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Aprašymas | Vairuotojo pažymėjimo kategorija (klasifikatorius); aprašymas paaiškina kategoriją klientui (pvz., „A2 – vidutinės galios motociklai“) | 1.2.1, 1.2.2 |
 | Motociklo modelis | <u>Kodas</u>, Gamintojas, Pavadinimas, Tipas, Variklio tūris, Galia, Degalų sąnaudos, Nuotrauka | Charakteristikos paieškai ir motociklo kortelei | 1.2.1, 1.2.5, 1.3.1.3 |
 | Motociklas | <u>Kodas</u>, Valstybinis numeris, VIN, Pagaminimo metai, Rida, Leidžiama išvažiuoti į užsienį, Naudojamas | Konkretus parko motociklas | 1.2.1, 1.2.3, 1.2.5 |
-| Tarifas | <u>Kodas</u>, Paros kaina, Užstatas, Galioja nuo, Galioja iki | Modelio kaina ir užstatas tam tikru laikotarpiu | 1.2.2, 1.2.3, 1.2.5 |
-| Baudos pakopa (silpna) | <span style="text-decoration: underline dashed">Vėlavimas nuo (val.)</span>, Vėlavimas iki (val.), Bauda | Baudų už pavėluotą grąžinimą tarifų lentelės eilutė | 1.2.2, 1.2.3 |
+| Tarifas | <u>Kodas</u>, Paros kaina, Užstatas, Galioja nuo, Galioja iki | Modelio paros kaina, užstatas ir baudų pakopos rezervacijoms, sudarytoms tam tikru laikotarpiu | 1.2.2, 1.2.3, 1.2.5 |
+| Baudos pakopa (silpna) | <span style="text-decoration: underline dashed">Vėlavimas nuo (val.)</span>, Bauda | Baudų už pavėluotą grąžinimą tarifų lentelės eilutė | 1.2.2, 1.2.3 |
 | Techninė priežiūra | <u>Kodas</u>, Pradžios data, Pabaigos data, Priežastis | Laikotarpis, kai motociklas prižiūrimas ir neprieinamas | 1.2.4 |
 | Perkėlimas | <u>Kodas</u>, Pradžios data, Pabaigos data | Vieno ar kelių motociklų pervežimas į kitą filialą | 1.2.5 |
 | Klientas | <u>Kodas</u>, Vardas, Pavardė, Gimimo data, El. paštas, Telefonas, Pažymėjimo numeris | Nuomininkas ir jo vairuotojo pažymėjimo duomenys | 1.2.2 |
-| Nuoma | <u>Kodas</u>, Sukūrimo laikas, Planuojama pradžia, Planuojama pabaiga, Būsena, Paros kaina, Užstatas | Rezervacija, kuri vėliau tampa nuoma | 1.2.2, 1.2.3, 1.3.4.2 |
+| Nuoma | <u>Kodas</u>, Sukūrimo laikas, Planuojama pradžia, Planuojama pabaiga, Būsena | Rezervacija, kuri vėliau tampa nuoma | 1.2.2, 1.2.3, 1.3.4.2 |
 | Išdavimas (silpna) | Laikas, Rida, Būklė | Motociklo išdavimo klientui faktas | 1.2.3 |
-| Grąžinimas (silpna) | Laikas, Rida, Būklė, Galutinė kaina, Bauda | Motociklo grąžinimo faktas ir galutinis atsiskaitymas | 1.2.3 |
+| Grąžinimas (silpna) | Laikas, Rida, Būklė, Galutinė kaina (išvestinis), Bauda (išvestinis) | Motociklo grąžinimo faktas ir galutinis atsiskaitymas | 1.2.3 |
 | Darbuotojas | <u>Kodas</u>, Vardas, Pavardė, El. paštas, Telefonas | Filialo darbuotojas arba administratorius | 1.2.3, 1.2.4, 1.2.5 |
 | Paskyra | <u>Prisijungimo vardas</u>, Slaptažodžio maiša, Vaidmuo | Prisijungimo duomenys ir vaidmuo | 1.3.5.1, 1.3.5.2 |
 
@@ -42,6 +42,7 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 | apibūdina | Motociklo modelis 1 : N Motociklas | Kiekvienas motociklas priklauso vienam modeliui |
 | taikomas | Motociklo modelis 1 : N Tarifas | Modelio tarifai skirtingais laikotarpiais |
 | apima (silpnas) | Tarifas 1 : N Baudos pakopa | Baudų tarifų lentelė priklauso tarifui |
+| įkainojama | Tarifas 1 : N Nuoma | Tarifas, galiojęs rezervavimo dieną; pagal jį apskaičiuojama nuomos kaina, užstatas ir bauda |
 | yra | Filialas 1 : N Motociklas | Filialas, kuriame motociklas yra dabar |
 | nuomojamas | Motociklas 1 : N Nuoma | Kuris motociklas nuomojamas |
 | užsako | Klientas 1 : N Nuoma | Kieno rezervacija |
@@ -60,10 +61,11 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 ## Modelio sprendimai
 
 - **Rezervacija ir nuoma – viena esybė Nuoma.** Jos būsena: rezervuota, aktyvi, užbaigta arba atšaukta. Užbaigtos nuomos netrinamos (1.3.4.2), todėl iš jų formuojamos statistinės ataskaitos ir parko užimtumas (1.2.5); atskiros ataskaitų esybės nereikia.
-- **Kaina fiksuojama rezervuojant.** Nuomoje saugoma paros kaina ir užstatas, galioję rezervacijos metu, todėl vėlesnis tarifo pakeitimas nekeičia ankstesnių nuomų. Galutinė kaina ir bauda apskaičiuojamos grąžinant ir saugomos Grąžinime (1.2.3).
+- **Tarifas parenkamas rezervuojant.** Nuoma susieta su motociklo modelio tarifu, galiojusiu rezervavimo dieną (ryšys „įkainojama“). Iš jo imama paros kaina ir užstatas, o grąžinant – baudų pakopos, todėl baudą galima apskaičiuoti pagal tuos pačius tarifus, kuriuos klientas matė patvirtinime (1.2.2). Tarifas, pagal kurį jau yra rezervacijų, nekeičiamas: jo galiojimas baigiamas data „Galioja iki“ ir sukuriamas naujas tarifas. Vienam modeliui tą pačią dieną galioja tik vienas tarifas. Todėl Nuomoje paros kainos ir užstato kopijuoti nereikia. Galutinė kaina ir bauda apskaičiuojamos grąžinant ir saugomos Grąžinime (1.2.3).
 - **Išdavimas ir Grąžinimas – silpnos esybės.** Jos neturi savo rakto ir identifikuojamos per nuomą (kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą). Taip nuomoje nėra tuščių laukų, kol motociklas neišduotas, ir matyti, kas išdavė ir kas priėmė motociklą.
-- **Baudos pakopa – silpna esybė.** Pakopa identifikuojama tarifu ir daliniu raktu „Vėlavimas nuo (val.)“. Pavyzdys: vėluojant iki 1 val. – 0 Eur, nuo 1 iki 3 val. – 20 Eur, daugiau nei 3 val. – 60 Eur (sumos – tik pavyzdys). Didesniems motociklams baudos gali būti didesnės.
-- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra būtent ta kategorija, kurios reikalauja modelis, ir ji galioja visą nuomos laikotarpį (1.2.2). Kurios kategorijos apima kitas, sistema nesaugo: tai verslo proceso dalis. Registruojant pažymėjimą (klientas rezervuodamas arba darbuotojas kliento vardu) pažymimos visos kategorijos, kurias suteikia pažymėjimas; pavyzdžiui, turinčiam A kategoriją pažymimos ir A1, A2. Taip sistemoje nereikia saugoti kategorijų apimties taisyklių, kurios skirtingose šalyse gali skirtis, o naujas kategorijas galima pridėti kaip įrašus.
+- **Baudos pakopa – silpna esybė.** Pakopa neturi savo kodo: ji identifikuojama tarifu ir daliniu raktu „Vėlavimas nuo (val.)“, o kitos esybės į ją nenurodo (Grąžinime saugoma baudos suma). Pakopa turi tik apatinę ribą: ji galioja nuo savo „Vėlavimas nuo“ iki kitos pakopos pradžios, o paskutinė pakopa – be viršutinės ribos. Taikoma pakopa su didžiausia „Vėlavimas nuo“ reikšme, kuri neviršija vėlavimo (vėlavimas ≥ „Vėlavimas nuo“). Bauda nesumuojama: imama tik tos pakopos suma. Jei pakopos su „Vėlavimas nuo“ = 0 nėra, iki pirmosios pakopos bauda lygi 0; jei tarifas pakopų neturi, baudos nėra. Pavyzdys: pakopos „nuo 1 val. – 20 Eur“ ir „nuo 3 val. – 60 Eur“ reiškia, kad vėluojant iki 1 val. bauda – 0 Eur, 2 val. – 20 Eur, 50 val. – 60 Eur (sumos – tik pavyzdys). Didesniems motociklams baudos gali būti didesnės. Viršutinė riba nesaugoma, todėl pakopos negali persidengti ir tarp jų negali likti tarpų.
+- **Išvestiniai atributai.** Grąžinimo „Galutinė kaina“ ir „Bauda“ apskaičiuojamos iš tarifo, nuomos datų, grąžinimo laiko ir baudų pakopų, todėl diagramoje pažymėtos punktyrine elipse. Jos vis tiek saugomos kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės (pvz., kaip skaičiuojamos paros) gali keistis, o perskaičiavus senas nuomas sumos nebesutaptų su sumokėtomis. Fizinėje ER diagramoje (10 žingsnis) tai bus sąmoningas nukrypimas nuo normalizacijos. Kiti atributai išvestiniais nelaikomi: Nuomos „Būsena“ neišvedama, nes būsenos „atšaukta“ negalima nustatyti iš kitų duomenų; Motociklo „Rida“ turi pradinę reikšmę iki pirmosios nuomos; Tarifo „Galioja iki“ reikalinga, nes tarifas gali būti uždarytas be įpėdinio, o tarp tarifų gali būti tarpų.
+- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra būtent ta kategorija, kurios reikalauja modelis, ir ji galioja visą nuomos laikotarpį (1.2.2). Kurios kategorijos apima kitas, sistema nesaugo: tai verslo proceso dalis. Registruojant pažymėjimą (klientas rezervuodamas arba darbuotojas kliento vardu) pažymimos visos kategorijos, kurias suteikia pažymėjimas; pavyzdžiui, turinčiam A kategoriją pažymimos ir A1, A2. Taip sistemoje nereikia saugoti kategorijų apimties taisyklių, kurios skirtingose šalyse gali skirtis, o naujas kategorijas galima pridėti kaip įrašus. Kategorija yra klasifikatorius: jo įrašai (AM, A1, A2, A) įvedami diegiant sistemą, todėl atskiro reikalavimo ir panaudos atvejo jiems tvarkyti nėra.
 - **Techninė priežiūra ir perkėlimas – laikotarpiai, o ne motociklo būsena.** Motociklas taip pat turi požymį „Naudojamas“: nurašytas motociklas netrinamas, nes reikalingas istorijai, bet nerodomas paieškoje.
 - **Nuotrauka ir charakteristikos priskirtos modeliui**, nes paieškos kortelėje rodomas modelis (1.3.1.3). **Pagaminimo metai ir leidimas išvažiuoti į užsienį priskirti motociklui**, nes leidimas priklauso nuo konkretaus motociklo draudimo.
 - **Klientas be paskyros.** Kliento kodas nepriklauso nuo paskyros. Skambinančiam klientui darbuotojas sukuria kliento įrašą (vardas, telefonas, pažymėjimo duomenys) ir jam registruoja rezervaciją. Jei klientas vėliau užsiregistruoja svetainėje tuo pačiu el. paštu, paskyra susiejama su esamu kliento įrašu. Todėl klientas gali neturėti paskyros, o darbuotojas paskyrą turi visada.
@@ -79,7 +81,7 @@ Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, 
 
 Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (1.3.2.4).
 
-Taisyklę įgyvendins prieinamumo tikrinimo funkcija (žr. 12 žingsnį), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
+Taisyklę įgyvendins užimtumo tikrinimo funkcija (žr. 12 žingsnį), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
 
 ## Palyginimas su laboratoriniu darbu
 
@@ -87,7 +89,7 @@ Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Moto
 
 - pridėtos esybės Kategorija, Tarifas, Baudos pakopa, Techninė priežiūra, Perkėlimas, Išdavimas, Grąžinimas, Darbuotojas ir Paskyra;
 - naudojamos silpnos esybės, silpni ryšiai, M:N ryšiai ir ryšio atributas;
-- paros kaina perkelta iš modelio į Tarifą, o nuomoje fiksuojama rezervavimo metu;
+- paros kaina perkelta iš modelio į Tarifą, o nuoma susieta su rezervavimo dieną galiojusiu tarifu;
 - motociklo atributas „Būsena“ pakeistas laikotarpiais (Techninė priežiūra, Perkėlimas, Nuomos būsena) ir požymiu „Naudojamas“;
 - vietoj „Pilna nuomos kaina“ / „Galutinė kaina“ visur vartojamas vienas terminas „Galutinė kaina“ (kaip 1.2.3).
 
@@ -96,11 +98,11 @@ Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Moto
 | Reikalavimas | Esybės |
 |---|---|
 | 1.2.1 Motociklų paieška | Motociklas, Motociklo modelis, Kategorija, Filialas, Nuoma, Techninė priežiūra, Perkėlimas |
-| 1.2.2 Rezervacija ir jos valdymas | Klientas, Kategorija (ryšys „turi teisę“), Nuoma, Tarifas, Baudos pakopa, Darbuotojas |
-| 1.2.3 Išdavimas ir grąžinimas | Nuoma, Išdavimas, Grąžinimas, Darbuotojas, Filialas, Tarifas, Baudos pakopa |
-| 1.2.4 Techninė priežiūra | Techninė priežiūra, Motociklas, Darbuotojas |
-| 1.2.5 Parko administravimas ir ataskaitos | Filialas, Motociklo modelis, Motociklas, Tarifas, Darbuotojas, Paskyra, Perkėlimas, Nuoma (ataskaitoms) |
-| 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka) |
+| 1.2.2 Rezervacija ir jos valdymas | Klientas, Kategorija (ryšys „turi teisę“), Nuoma, Motociklas, Filialas, Tarifas, Baudos pakopa, Techninė priežiūra, Perkėlimas, Darbuotojas |
+| 1.2.3 Išdavimas ir grąžinimas | Nuoma, Išdavimas, Grąžinimas, Motociklas, Klientas, Darbuotojas, Filialas, Tarifas, Baudos pakopa |
+| 1.2.4 Techninė priežiūra | Techninė priežiūra, Motociklas, Nuoma, Perkėlimas, Darbuotojas |
+| 1.2.5 Parko administravimas ir ataskaitos | Filialas, Motociklo modelis, Motociklas, Tarifas, Darbuotojas, Paskyra, Perkėlimas, Nuoma, Techninė priežiūra (ataskaitoms ir perkėlimo patikrinimui) |
+| 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka), Kategorija, Tarifas (Paros kaina) |
 | 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas |
 | 1.3.5.1 Prieiga pagal vaidmenis | Paskyra (Vaidmuo) |
 | 1.3.5.2 Duomenų apsauga | Paskyra (Slaptažodžio maiša) |

@@ -28,7 +28,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 Šioms problemoms spręsti kuriama internetinė motociklų nuomos informacinė sistema. Ji leis:
 
 - klientui internetu rasti laisvą motociklą pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį;
-- klientui (arba darbuotojui kliento vardu) rezervuoti motociklą su momentiniu patvirtinimu, iš karto matant nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
+- klientui (arba darbuotojui kliento vardu) rezervuoti motociklą, pasirinkus išdavimo ir grąžinimo filialus, su momentiniu patvirtinimu, iš karto matant nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
 - automatiškai neleisti rezervuoti motociklo, jei pasirinktos datos sutampa su kita nuoma, suplanuota technine priežiūra ar perkėlimu į kitą filialą arba jei motociklas tuo metu bus kitame filiale;
 - rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis, patikrinti, ar jame yra motociklui tinkama kategorija ir ar ji galios visą nuomos laikotarpį;
 - klientui asmeninėje paskyroje peržiūrėti, keisti ir atšaukti savo rezervacijas;

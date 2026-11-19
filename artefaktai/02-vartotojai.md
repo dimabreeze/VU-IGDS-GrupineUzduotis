@@ -6,7 +6,7 @@ Medžiaga ataskaitos skyriui 1.1.3 „Vartotojai“. Vartotojų uždaviniai atit
 
 - **Sprendžiami uždaviniai:**
     - ieško laisvo motociklo pagal nuomos datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį;
-    - rezervuoja motociklą ir iš karto mato nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
+    - rezervuoja motociklą, pasirinkdamas išdavimo ir grąžinimo filialus, ir iš karto mato nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
     - pateikia vairuotojo pažymėjimo duomenis;
     - asmeninėje paskyroje peržiūri, keičia ir atšaukia savo rezervacijas.
 - **Patirtis dalykinėje srityje:** nuo naujoko iki patyrusio.
