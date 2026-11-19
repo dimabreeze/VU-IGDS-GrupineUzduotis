@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.5.1 „Duomenų srautų diagrama“.
 
-**Būsena:** baigta 2026-11-19. Po 1 kontrolinio taško (2026-11-19) pridėti srautai DS2 → P3 ir DS4 → P3 (srautų – 49), patikslinta, kada P6 įrašo naują motociklo filialą.
+**Būsena:** baigta 2026-11-19. Po 1 kontrolinio taško (2026-11-19) pridėti srautai DS2 → P3 ir DS4 → P3 (srautų – 49), patikslinta, kada P6 įrašo naują motociklo filialą. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19) į DS2 įtrauktos naujos esybės Gamintojas ir Motociklo tipas; diagrama nekeičiama.
 
 Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytojo anksčiau priimtame pavyzdyje (`saltiniai/lab-DSD-diagrama.png`): atskiros konteksto diagramos ir gilesnių lygių nėra. Žymėjimas – kaip 2 paskaitos 22 skaidrėje: išorinė esybė – stačiakampis, procesas – suapvalintas stačiakampis, duomenų saugykla – cilindras, duomenų srautas – rodyklė su pavadinimu. Elementai numeruojami E (išorinės esybės), P (procesai) ir DS (saugyklos); diagramoje yra legenda. Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
 
@@ -34,12 +34,12 @@ Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytoj
 
 ## Duomenų saugyklos
 
-Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su savo pagrindine esybe sujungtos silpnos esybės ir ją aprašančios esybės. Kategorija yra klasifikatorius, kurio įrašai įvedami diegiant sistemą, todėl jos joks procesas nerašo.
+Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su savo pagrindine esybe sujungtos silpnos esybės ir ją aprašančios esybės. Kategorija yra klasifikatorius, kurio įrašai įvedami diegiant sistemą, todėl jos joks procesas nerašo. Klasifikatorius Gamintojas ir Motociklo tipas tvarko administratorius kartu su modeliais, todėl juos rašo P5 kartu su srautu „Modelių ir motociklų duomenys“ į DS2.
 
 | Nr. | Saugykla | ER esybės | Rašo | Skaito |
 |---|---|---|---|---|
 | DS1 | Filialai | Filialas | P5 | P1 |
-| DS2 | Motociklai | Motociklas, Motociklo modelis, Kategorija | P3, P5, P6 | P1, P3 |
+| DS2 | Motociklai | Motociklas, Motociklo modelis, Gamintojas, Motociklo tipas, Kategorija | P3, P5, P6 | P1, P3 |
 | DS3 | Tarifai | Tarifas, Baudos pakopa | P5 | P1, P3 |
 | DS4 | Klientai | Klientas (su ryšiu „turi teisę“ ir jo atributu „Galioja iki“) | P2 | P2, P3 |
 | DS5 | Nuomos | Nuoma, Išdavimas, Grąžinimas | P2, P3 | P1, P2, P3 |
@@ -73,5 +73,5 @@ Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su s
 ## Aprėpties patikrinimas
 
 - Kiekvienas funkcinis reikalavimas 1.2.1–1.2.5 turi bent vieną procesą, o kiekvienas panaudos atvejis PA1–PA22 – procesą (žr. lentelę „Procesai“).
-- Kiekviena loginės ER diagramos esybė (14) priklauso vienai saugyklai, o kiekviena saugykla turi bent vieną rašantį ir bent vieną skaitantį procesą.
+- Kiekviena loginės ER diagramos esybė (16) priklauso vienai saugyklai, o kiekviena saugykla turi bent vieną rašantį ir bent vieną skaitantį procesą.
 - Kiekviena išorinė esybė atitinka vartotoją iš `02-vartotojai.md` ir aktorių panaudos atvejų diagramoje; procesai, su kuriais ji susijusi, atitinka jos panaudos atvejus (E1 – P1, P2; E2 – P1, P2, P3, P4; E3 – P5, P6, P7).
