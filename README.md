@@ -9,8 +9,8 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 
 | Aplankas | Turinys |
 |---|---|
-| `artefaktai/` | Tekstinės dalys pagal plano žingsnius, prie jų – diagramų šaltiniai (`.drawio`) ir paveikslai (`.png`) tuo pačiu numeriu; `13-dizainas/` – sąsajos maketai (HTML, CSS ir jų paveikslai) |
-| `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos, paskaitų skaidrės |
+| `artefaktai/` | Tekstinės dalys pagal plano žingsnius, prie jų – diagramų šaltiniai (`.drawio`, Ganto diagramos – `.xlsx`) ir paveikslai (`.png`) tuo pačiu numeriu; `13-dizainas/` – sąsajos maketai (HTML, CSS ir jų paveikslai) |
+| `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos bei Ganto diagrama (`lab-GANTT-diagrama.xlsx`), paskaitų skaidrės |
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos, bandomoji duomenų bazė (žr. žemiau) ir kt. |
 | `ataskaita/` | Galutinė ataskaita (`.docx`) |
 
