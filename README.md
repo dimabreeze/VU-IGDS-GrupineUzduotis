@@ -15,6 +15,8 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos, bandomoji duomenų bazė (žr. žemiau) ir kt. |
 | `ataskaita/` | Galutinė ataskaita (`.docx`) |
 
+Dažniausi veiksmai (duomenų bazės paleidimas, patikros, diagramų eksportas) surinkti `Makefile`; sąrašas – komanda `make` šakniniame aplanke (žr. „Greitas paleidimas su make“ žemiau).
+
 ## Bandomoji duomenų bazė
 
 Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (ataskaitoje nepateikiama). Failai aplanke `darbas/`:
@@ -29,6 +31,21 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `funkciju_testai.sql` | Funkcijų pavyzdžiai su tikėtinu ir gautu rezultatu; stulpelyje „Sutampa“ visur turi būti `t` |
 | `lygiagreti_rezervacija.sh` | Dviejų vienu metu pateiktų rezervacijų pavyzdys (1.3.3.3): su užraktu įrašoma tik viena |
 | `docker-compose.yml` | Duomenų bazės paleidimas Docker konteineryje |
+
+**Greitas paleidimas su make** (iš šakninio aplanko):
+
+| Komanda | Ką daro |
+|---|---|
+| `make db-tikrinti` | Paleidžia Docker duomenų bazę ir atlieka visas patikras: taisyklių patikrą, funkcijų pavyzdžius ir lygiagrečias rezervacijas |
+| `make db-up` / `make db-down` | Paleidžia (ir palaukia, kol įkelti duomenys) / sustabdo Docker duomenų bazę |
+| `make db-reset` | Sukuria Docker duomenų bazę iš naujo (pakeitus `schema.sql`, `duomenys.sql` ar `funkcijos.sql`) |
+| `make db-patikra`, `make db-testai`, `make db-lygiagreti` | Atskiros patikros Docker duomenų bazėje |
+| `make db-psql` | Interaktyvus `psql` Docker duomenų bazėje |
+| `make local-tikrinti` | Visos patikros be Docker: laikina PostgreSQL 18 duomenų bazė sukuriama ir po patikrų ištrinama |
+| `make duomenys` | Iš naujo sugeneruoja `duomenys.sql` |
+| `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, kitos – 2) |
+
+Patikros baigiasi eilute „Gerai: …“, o radus pažeidimą – „KLAIDA: …“ ir klaidos kodu. `db-lygiagreti` ir `local-tikrinti` reikia PostgreSQL 18 iš Homebrew (`brew install postgresql@18`), `diagramos` – draw.io.
 
 **Su Docker** (reikia Docker Desktop arba OrbStack):
 
