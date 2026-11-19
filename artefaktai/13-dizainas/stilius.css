@@ -1,0 +1,184 @@
+/* Motociklų nuomos IS – bendras stilius (2.3.2 skyrius, NFR 1.3.1.2).
+   Visi maketai naudoja tik šį failą: spalvos, šriftai, tarpai ir mygtukų išdėstymas apibrėžti vienoje vietoje. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Spalvos */
+  --pagrindine: #0F766E;        /* veiksmo mygtukai, nuorodos, pasirinkti elementai */
+  --pagrindine-tamsi: #115E59;
+  --pagrindine-sviesi: #CCFBF1;
+  --grafitas: #1E293B;          /* viršutinė juosta */
+  --fonas: #F8FAFC;
+  --pavirsius: #FFFFFF;         /* kortelės, formos */
+  --tekstas: #0F172A;
+  --tekstas-antrinis: #475569;
+  --kontūras: #E2E8F0;
+  --zalia: #15803D;     --zalia-fonas: #DCFCE7;      /* laisvas, patvirtinta */
+  --gintarine: #B45309; --gintarine-fonas: #FEF3C7;  /* vėluoja, įspėjimas, techninė priežiūra */
+  --raudona: #B91C1C;   --raudona-fonas: #FEE2E2;    /* atsisakymas, klaida */
+  --nuoma: #2563EB;                                   /* užimtumo juostose */
+  --perkelimas: #7C3AED;
+
+  /* Šriftas ir dydžiai */
+  --sriftas: 'Inter', system-ui, sans-serif;
+  --s-mazas: 14px;
+  --s-tekstas: 16px;
+  --s-antraste: 20px;
+  --s-puslapio: 28px;
+
+  /* Tarpai – 8 px žingsnis */
+  --t1: 8px; --t2: 16px; --t3: 24px; --t4: 32px;
+  --spindulys: 8px;
+  --plotis: 1200px;   /* turinio plotis plačiame ekrane (NFR 1.3.1.1) */
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--sriftas);
+  font-size: var(--s-tekstas);
+  line-height: 1.5;
+  color: var(--tekstas);
+  background: var(--fonas);
+  font-variant-numeric: tabular-nums;   /* kainos ir datos lygiuojasi stulpeliuose */
+}
+h1, h2, h3 { margin: 0; line-height: 1.25; }
+h1 { font-size: var(--s-puslapio); font-weight: 700; }
+h2 { font-size: var(--s-antraste); font-weight: 600; }
+h3 { font-size: var(--s-tekstas); font-weight: 600; }
+p { margin: 0; }
+a { color: var(--pagrindine); text-decoration: none; font-weight: 500; }
+.antrinis { color: var(--tekstas-antrinis); }
+.mazas { font-size: var(--s-mazas); }
+
+/* ---------------------------------------------------------------- viršutinė juosta */
+.virsus { background: var(--grafitas); color: #fff; }
+.virsus .vidus {
+  max-width: var(--plotis); margin: 0 auto; padding: 0 var(--t2);
+  height: 56px; display: flex; align-items: center; gap: var(--t3);
+}
+.logotipas { font-weight: 700; font-size: 18px; letter-spacing: .2px; white-space: nowrap; }
+.logotipas span { color: #5EEAD4; }
+.meniu { display: flex; gap: var(--t3); font-size: var(--s-mazas); align-self: stretch; }
+.meniu a { color: #CBD5E1; font-weight: 500; display: flex; align-items: center; white-space: nowrap; }
+.meniu a.aktyvus { color: #fff; box-shadow: inset 0 -3px 0 #5EEAD4; }
+.desine { margin-left: auto; display: flex; align-items: center; gap: var(--t2); font-size: var(--s-mazas); }
+.vartotojas { color: #CBD5E1; white-space: nowrap; }
+/* Kalbos perjungiklis – kiekviename puslapyje viršuje dešinėje (NFR 1.3.2.1) */
+.kalba { display: inline-flex; border: 1px solid #475569; border-radius: 6px; overflow: hidden; }
+.kalba b, .kalba a { padding: 2px 8px; font-size: 13px; font-weight: 600; }
+.kalba b { background: #fff; color: var(--grafitas); }
+.kalba a { color: #CBD5E1; }
+
+/* ---------------------------------------------------------------- puslapio turinys */
+.turinys { max-width: var(--plotis); margin: 0 auto; padding: var(--t3) var(--t2) var(--t4); }
+.puslapio-antraste { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--t2); margin-bottom: var(--t2); flex-wrap: wrap; }
+.blokas { background: var(--pavirsius); border: 1px solid var(--kontūras); border-radius: var(--spindulys); padding: var(--t2); }
+.blokas + .blokas { margin-top: var(--t2); }
+.blokas h2 { margin-bottom: var(--t2); }
+.blokas h3 { margin-bottom: var(--t1); }
+
+/* ---------------------------------------------------------------- formos laukai */
+.laukas { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.laukas label, .etikete { font-size: 13px; font-weight: 600; color: var(--tekstas-antrinis); }
+.ivestis {
+  height: 44px; padding: 0 12px; border: 1px solid #CBD5E1; border-radius: 6px; background: #fff;
+  display: flex; align-items: center; gap: 8px; font-size: 15px; white-space: nowrap; overflow: hidden;
+}
+.ivestis.su-rodykle::after { content: ''; margin-left: auto; border: 5px solid transparent; border-top-color: var(--tekstas-antrinis); margin-top: 5px; }
+.ivestis.klaidinga { border-color: var(--raudona); background: var(--raudona-fonas); }
+.ivestis.tekstas { height: auto; min-height: 64px; align-items: flex-start; padding-top: 10px; white-space: normal; }
+.zymimasis { display: flex; align-items: center; gap: 8px; font-size: 15px; padding: 3px 0; }
+.zymimasis::before { content: ''; width: 18px; height: 18px; border: 1.5px solid #94A3B8; border-radius: 4px; flex: none; background: #fff; }
+.zymimasis.pazymeta::before {
+  background: var(--pagrindine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center/14px no-repeat;
+  border-color: var(--pagrindine);
+}
+
+/* ---------------------------------------------------------------- mygtukai
+   Išdėstymas: pagrindinis veiksmas – dešinėje (siaurame ekrane – per visą plotį apačioje),
+   antrinis – kairėje nuo jo; negrįžtamas veiksmas – atskirai, raudonu kontūru. */
+.mygtukas {
+  height: 44px; padding: 0 20px; border-radius: 6px; border: 1.5px solid var(--pagrindine);
+  background: var(--pagrindine); color: #fff; font: 600 15px var(--sriftas);
+  display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;
+}
+.mygtukas.antrinis { background: #fff; color: var(--tekstas); border-color: #CBD5E1; }
+.mygtukas.pavojingas { background: #fff; color: var(--raudona); border-color: var(--raudona); }
+.mygtukas.neaktyvus { background: #CBD5E1; border-color: #CBD5E1; color: #fff; }
+.mygtukas.mazas { height: 36px; padding: 0 14px; font-size: 14px; }
+.veiksmai { display: flex; justify-content: flex-end; gap: 12px; margin-top: var(--t3); }
+.veiksmai .kaire { margin-right: auto; }
+
+/* ---------------------------------------------------------------- žymos ir pranešimai */
+.zyma { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.zyma.zalia { background: var(--zalia-fonas); color: var(--zalia); }
+.zyma.gintarine { background: var(--gintarine-fonas); color: var(--gintarine); }
+.zyma.raudona { background: var(--raudona-fonas); color: var(--raudona); }
+.zyma.pilka { background: #F1F5F9; color: var(--tekstas-antrinis); }
+.pranesimas { display: flex; gap: 12px; padding: 12px var(--t2); border-radius: var(--spindulys); border: 1px solid; font-size: 15px; }
+.pranesimas .ikona { flex: none; width: 22px; height: 22px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; margin-top: 1px; }
+.pranesimas.klaida { background: var(--raudona-fonas); border-color: #FCA5A5; color: #7F1D1D; }
+.pranesimas.klaida .ikona { background: var(--raudona); }
+.pranesimas.sekme { background: var(--zalia-fonas); border-color: #86EFAC; color: #14532D; }
+.pranesimas.sekme .ikona { background: var(--zalia); }
+.pranesimas.ispejimas { background: var(--gintarine-fonas); border-color: #FCD34D; color: #78350F; }
+.pranesimas.ispejimas .ikona { background: var(--gintarine); }
+
+/* ---------------------------------------------------------------- rezervacijos žingsniai (NFR 1.3.2.3) */
+.zingsniai { display: flex; gap: 6px; margin-bottom: var(--t2); }
+.zingsniai div { flex: 1; font-size: 12px; font-weight: 600; color: var(--tekstas-antrinis); border-top: 4px solid var(--kontūras); padding-top: 6px; }
+.zingsniai .atliktas { border-color: var(--pagrindine); }
+.zingsniai .dabartinis { border-color: var(--pagrindine); color: var(--tekstas); }
+
+/* ---------------------------------------------------------------- motociklo kortelė (NFR 1.3.1.3) */
+.korteles { display: grid; grid-template-columns: 1fr; gap: var(--t2); }
+.kortele { background: var(--pavirsius); border: 1px solid var(--kontūras); border-radius: var(--spindulys); overflow: hidden; display: flex; flex-direction: column; }
+.nuotrauka { background: #EEF2F6; aspect-ratio: 16 / 9; display: grid; place-items: center; position: relative; }
+.nuotrauka img { width: 46%; opacity: .9; }
+.nuotrauka .zyma { position: absolute; top: 10px; left: 10px; }
+.kortele .tekstas { padding: 12px var(--t2) var(--t2); display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.kortele .gamintojas { font-size: 13px; font-weight: 600; color: var(--tekstas-antrinis); text-transform: uppercase; letter-spacing: .4px; }
+.kortele h3 { font-size: 18px; margin: 0; }
+.savybes { display: flex; flex-wrap: wrap; gap: 6px; }
+.savybe { font-size: 13px; padding: 2px 8px; border-radius: 4px; background: #F1F5F9; color: var(--tekstas); }
+.savybe.kategorija { background: var(--pagrindine-sviesi); color: var(--pagrindine-tamsi); font-weight: 600; }
+.kaina { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--kontūras); }
+.kaina .para { font-size: 20px; font-weight: 700; }
+.kaina .para small { font-size: 13px; font-weight: 500; color: var(--tekstas-antrinis); }
+
+/* ---------------------------------------------------------------- lentelės */
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { text-align: left; font-size: 13px; font-weight: 600; color: var(--tekstas-antrinis); padding: 8px 10px; border-bottom: 1px solid var(--kontūras); white-space: nowrap; }
+td { padding: 10px; border-bottom: 1px solid var(--kontūras); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.skaicius, th.skaicius { text-align: right; white-space: nowrap; }
+.suma td { font-weight: 700; border-top: 1px solid var(--tekstas); }
+.eilute { display: flex; justify-content: space-between; gap: var(--t2); padding: 6px 0; }
+.eilute + .eilute { border-top: 1px solid var(--kontūras); }
+.eilute .reiksme { text-align: right; font-weight: 500; white-space: nowrap; }
+.eilute.suma { font-weight: 700; font-size: 18px; border-top: 1.5px solid var(--tekstas); }
+
+/* ---------------------------------------------------------------- tinklelis */
+.du-stulpeliai { display: grid; grid-template-columns: 1fr; gap: var(--t2); }
+
+/* Siauras ekranas (360–767 px): pagrindinis mygtukas – per visą plotį apačioje */
+@media (max-width: 767px) {
+  .meniu { display: none; }
+  .vartotojas { display: none; }
+  h1 { font-size: 24px; }
+  .veiksmai { flex-direction: column-reverse; }
+  .veiksmai .mygtukas { width: 100%; }
+  .veiksmai .kaire { margin-right: 0; }
+  .prilipe { position: sticky; bottom: 0; background: var(--pavirsius); border-top: 1px solid var(--kontūras); padding: 12px var(--t2); margin: var(--t3) calc(-1 * var(--t2)) calc(-1 * var(--t4)); }
+  .prilipe .veiksmai { margin-top: 0; }
+}
+@media (min-width: 768px) {
+  .korteles { grid-template-columns: repeat(2, 1fr); }
+  .turinys { padding: var(--t4) var(--t3); }
+  .virsus .vidus { padding: 0 var(--t3); }
+}
+@media (min-width: 1200px) {
+  .korteles { grid-template-columns: repeat(3, 1fr); }
+}

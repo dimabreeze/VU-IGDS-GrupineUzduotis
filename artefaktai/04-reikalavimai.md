@@ -72,7 +72,7 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 
 | ***Nr. 1.3.1.3*** | ***Reikalavimo tipas: nefunkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Paieškos rezultatuose kiekvienas motociklas rodomas kortele su nuotrauka, modelio pavadinimu, pagrindinėmis charakteristikomis (tipas, variklio tūris, galia, reikiama pažymėjimo kategorija) ir paros kaina, kad motociklus būtų galima palyginti neatidarant atskiro puslapio. |
+| ***Aprašymas:*** | Paieškos rezultatuose kiekvienas motociklo modelis, kurio bent vienas motociklas atitinka paieškos sąlygas, rodomas kortele su nuotrauka, modelio pavadinimu, pagrindinėmis charakteristikomis (tipas, variklio tūris, galia, reikiama pažymėjimo kategorija) ir paros kaina, kad modelius būtų galima palyginti neatidarant atskiro puslapio. |
 
 ### 1.3.2. Reikalavimai naudojimo paprastumui
 

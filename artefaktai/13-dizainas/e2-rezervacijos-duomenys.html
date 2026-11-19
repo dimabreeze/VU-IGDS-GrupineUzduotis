@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E2 Rezervacijos duomenys</title>
+<link rel="stylesheet" href="stilius.css">
+<style>
+  .modelis { display: flex; gap: 12px; align-items: center; }
+  .modelis .nuotrauka { width: 112px; flex: none; border-radius: 6px; }
+  .modelis .nuotrauka img { width: 70%; }
+  .kategorijos { display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; align-items: center; }
+  .kategorijos .ivestis { height: 38px; font-size: 14px; }
+  .uzuomina { font-size: 13px; color: var(--tekstas-antrinis); margin-top: 10px; }
+  .vieta { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; }
+  .vieta .etikete { padding-top: 2px; }
+  /* Du būsenos variantai tame pačiame faile: įprastas ir atsisakymas (…?atsisakymas) */
+  .atsisakymas .tik-iprastas, html:not(.atsisakymas) .tik-atsisakymas { display: none; }
+</style>
+<script>if (location.search.includes('atsisakymas')) document.documentElement.classList.add('atsisakymas');</script>
+</head>
+<body>
+<header class="virsus"><div class="vidus">
+  <div class="logotipas">Moto<span>Nuoma</span></div>
+  <nav class="meniu"><a class="aktyvus">Paieška</a><a>Mano rezervacijos</a><a>Paskyra</a></nav>
+  <div class="desine">
+    <span class="vartotojas tik-iprastas">Klientas 1</span><span class="vartotojas tik-atsisakymas">Klientas 26</span>
+    <span class="kalba"><b>LT</b><a>EN</a></span>
+  </div>
+</div></header>
+
+<main class="turinys" style="max-width: 720px">
+  <div class="zingsniai"><div class="atliktas">1. Motociklas</div><div class="dabartinis">2. Duomenys</div><div>3. Patvirtinimas</div></div>
+  <h1 style="margin-bottom: var(--t2)">Rezervacijos duomenys</h1>
+
+  <!-- Atsisakymo priežastis (NFR 1.3.2.4): tekstas iš funkcijos tikrintiKlientoTeise (12 žingsnis) -->
+  <div class="pranesimas klaida tik-atsisakymas" style="margin-bottom: var(--t2)">
+    <span class="ikona">!</span>
+    <div><b>Rezervuoti negalima.</b> A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12.
+      <div class="mazas" style="margin-top: 4px">Pakeiskite nuomos laikotarpį arba atnaujinkite pažymėjimo duomenis.</div></div>
+  </div>
+
+  <section class="blokas">
+    <div class="modelis">
+      <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+      <div>
+        <div class="mazas antrinis">BMW · Gatvės</div>
+        <h2>F 900 R</h2>
+        <div class="savybes" style="margin-top: 4px"><span class="savybe">895 cm³</span><span class="savybe">77 kW</span><span class="savybe kategorija">A</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blokas">
+    <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin-bottom: 12px">Nuomos laikotarpis</h2><a class="mazas">Keisti</a></div>
+    <div class="vieta">
+      <span class="etikete">Išdavimas</span><span><b>2027-05-09 10:00</b><br><span class="mazas antrinis">Vilnius, Žalgirio g. 135</span></span>
+      <span class="etikete" style="margin-top: 10px">Grąžinimas</span><span style="margin-top: 10px"><b>2027-05-12 10:00</b><br><span class="mazas antrinis">Vilnius, Žalgirio g. 135</span></span>
+    </div>
+  </section>
+
+  <!-- Vairuotojo pažymėjimas: tikrinama reikiama kategorija ir jos galiojimas visą nuomos laikotarpį (PA7) -->
+  <section class="blokas">
+    <h2 style="margin-bottom: 12px">Vairuotojo pažymėjimas</h2>
+    <div class="laukas" style="margin-bottom: 12px"><label>Pažymėjimo numeris</label>
+      <div class="ivestis"><span class="tik-iprastas">72561166</span><span class="tik-atsisakymas">52672583</span></div></div>
+    <div class="etikete" style="margin-bottom: 6px">Kategorijos ir jų galiojimas</div>
+    <div class="kategorijos">
+      <span class="zymimasis pazymeta">A1</span><div class="ivestis"><span class="tik-iprastas">iki 2031-04-22</span><span class="tik-atsisakymas">iki 2027-05-10</span></div>
+      <span class="zymimasis pazymeta">A2</span><div class="ivestis"><span class="tik-iprastas">iki 2031-04-22</span><span class="tik-atsisakymas">iki 2027-05-10</span></div>
+      <span class="zymimasis pazymeta">A</span>
+      <div class="ivestis tik-iprastas">iki 2031-04-22</div>
+      <div class="ivestis klaidinga tik-atsisakymas">iki 2027-05-10</div>
+    </div>
+    <p class="uzuomina">Šiam motociklui reikia <b>A</b> kategorijos, galiojančios iki nuomos pabaigos. Pažymėkite visas kategorijas, kurias suteikia pažymėjimas (pvz., turint A – ir A1, A2).</p>
+  </section>
+
+  <section class="blokas">
+    <h2 style="margin-bottom: 8px">Kaina</h2>
+    <div class="eilute"><span>Paros kaina</span><span class="reiksme">100,00 €</span></div>
+    <div class="eilute"><span>Parų skaičius</span><span class="reiksme">3</span></div>
+    <div class="eilute suma"><span>Nuomos kaina</span><span class="reiksme">300,00 €</span></div>
+    <div class="eilute"><span>Užstatas</span><span class="reiksme">700,00 €</span></div>
+    <p class="uzuomina">Nuomos kaina ir užstatas mokami filiale; užstatas grąžinamas grąžinus motociklą. Grąžinus anksčiau, kaina nemažėja.</p>
+  </section>
+
+  <section class="blokas">
+    <h2 style="margin-bottom: 4px">Baudos už pavėluotą grąžinimą</h2>
+    <table>
+      <thead><tr><th>Vėlavimas</th><th class="skaicius">Bauda</th></tr></thead>
+      <tbody>
+        <tr><td>iki 1 val.</td><td class="skaicius">0,00 €</td></tr>
+        <tr><td>nuo 1 val.</td><td class="skaicius">20,00 €</td></tr>
+        <tr><td>nuo 3 val.</td><td class="skaicius">50,00 €</td></tr>
+        <tr><td>nuo 24 val.</td><td class="skaicius">100,00 €</td></tr>
+      </tbody>
+    </table>
+    <p class="uzuomina">Taikoma viena pakopa pagal vėlavimo trukmę; baudos nesumuojamos.</p>
+  </section>
+
+  <div class="prilipe">
+    <div class="veiksmai"><span class="mygtukas antrinis">Atgal</span><span class="mygtukas">Patvirtinti rezervaciją</span></div>
+  </div>
+</main>
+</body>
+</html>

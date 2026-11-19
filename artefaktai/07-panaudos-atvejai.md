@@ -6,9 +6,9 @@ Medžiaga ataskaitos skyriui 1.4 „Panaudos atvejų diagrama“.
 
 Diagramoje pavaizduoti visi trys vartotojai iš `02-vartotojai.md` (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. `04-reikalavimai.md`), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (1.2.1, 1.2.2, 1.2.4, 1.2.5), todėl numeris ovale nenurodytas.
 
-Šaltinis: `diagramos/07-panaudos-atvejai.drawio`, paveikslas: `diagramos/07-panaudos-atvejai.png`.
+Šaltinis: `artefaktai/07-panaudos-atvejai.drawio`, paveikslas: `artefaktai/07-panaudos-atvejai.png`.
 
-![Motociklų nuomos IS panaudos atvejų diagrama](../diagramos/07-panaudos-atvejai.png)
+![Motociklų nuomos IS panaudos atvejų diagrama](07-panaudos-atvejai.png)
 
 *Motociklų nuomos IS panaudos atvejų diagrama* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 

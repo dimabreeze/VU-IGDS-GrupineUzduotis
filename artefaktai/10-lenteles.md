@@ -6,9 +6,9 @@ Medžiaga ataskaitos skyriams 2.1.2 „Duomenų modelis“ ir 2.2.2 „Duomenų 
 
 Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kiekviena esybė tapo lentele, M:N ryšiai – atskiromis lentelėmis, o 1:N ir 1:1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu, kaip 5 paskaitos 17–20 skaidrėse: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – skyrius „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
-Šaltinis: `diagramos/10-fizinis-er.drawio`, paveikslas: `diagramos/10-fizinis-er.png`.
+Šaltinis: `artefaktai/10-fizinis-er.drawio`, paveikslas: `artefaktai/10-fizinis-er.png`.
 
-![Motociklų nuomos IS fizinė ER diagrama](../diagramos/10-fizinis-er.png)
+![Motociklų nuomos IS fizinė ER diagrama](10-fizinis-er.png)
 
 *Motociklų nuomos IS fizinė ER diagrama* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 

@@ -6,9 +6,9 @@ Medžiaga ataskaitos skyriui 2.1.1 „Sistemos struktūros modelis“.
 
 Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta kaip 2 paskaitos 20 skaidrėje („Aukšto lygio struktūrinė schema“): medis, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona), funkcijos pavadintos veiksmažodžiu bendratimi. Mūsų schemoje 4 lygiai, todėl ketvirtam lygiui pridėta šviesiai geltona spalva.
 
-Šaltinis: `diagramos/11-strukturine-schema.drawio`, paveikslas: `diagramos/11-strukturine-schema.png`.
+Šaltinis: `artefaktai/11-strukturine-schema.drawio`, paveikslas: `artefaktai/11-strukturine-schema.png`.
 
-![Motociklų nuomos IS funkcijų struktūrinė schema](../diagramos/11-strukturine-schema.png)
+![Motociklų nuomos IS funkcijų struktūrinė schema](11-strukturine-schema.png)
 
 *Motociklų nuomos IS funkcijų struktūrinė schema* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 

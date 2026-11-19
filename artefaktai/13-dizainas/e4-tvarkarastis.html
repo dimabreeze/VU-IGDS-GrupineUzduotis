@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E4 Filialo tvarkaraštis</title>
+<link rel="stylesheet" href="stilius.css">
+<style>
+  .isdestymas { display: grid; grid-template-columns: 1fr; gap: var(--t3); align-items: start; }
+  @media (min-width: 1100px) { .isdestymas { grid-template-columns: 1.45fr 1fr; } }
+  .diena { font-size: 14px; font-weight: 600; color: var(--tekstas-antrinis); padding: 14px 10px 6px; border-bottom: 1px solid var(--kontūras); }
+  tr.pasirinkta td { background: #F0FDFA; }
+  tr.pasirinkta td:first-child { box-shadow: inset 3px 0 0 var(--pagrindine); }
+  td .papildoma { font-size: 13px; color: var(--tekstas-antrinis); margin-top: 4px; }
+  .laikas { font-weight: 700; }
+  .data-pasirinkimas { display: flex; gap: 8px; align-items: center; }
+  .data-pasirinkimas .ivestis { height: 36px; font-size: 14px; }
+  .info { display: grid; grid-template-columns: 130px 1fr; gap: 6px 12px; font-size: 15px; margin-bottom: var(--t2); }
+  .formos-laukai { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .formos-laukai .platus { grid-column: 1 / -1; }
+  .skaiciavimas { background: var(--fonas); border-radius: 6px; padding: 8px 12px; margin-top: var(--t2); font-size: 15px; }
+</style>
+</head>
+<body>
+<header class="virsus"><div class="vidus">
+  <div class="logotipas">Moto<span>Nuoma</span></div>
+  <nav class="meniu"><a class="aktyvus">Tvarkaraštis</a><a>Rezervacijos</a><a>Klientai</a><a>Techninė priežiūra</a></nav>
+  <div class="desine"><span class="vartotojas">Darbuotojas 3 · Vilnius</span><span class="kalba"><b>LT</b><a>EN</a></span></div>
+</div></header>
+
+<main class="turinys">
+  <div class="puslapio-antraste">
+    <div><h1>Išdavimų ir grąžinimų tvarkaraštis</h1><p class="antrinis">Filialas Vilnius · dabar 2026-11-12 13:00</p></div>
+    <div class="data-pasirinkimas"><span class="mygtukas antrinis mazas">‹</span><div class="ivestis">2026-11-12 – 2026-11-13</div><span class="mygtukas antrinis mazas">›</span><span class="mygtukas antrinis mazas">Šiandien</span></div>
+  </div>
+
+  <div class="isdestymas">
+    <!-- Tvarkaraštis (PA8): pavėluotas grąžinimas pažymėtas, šalia – kitas motociklo laikotarpis (12 žingsnis) -->
+    <section>
+      <div class="blokas" style="padding: 0 0 6px">
+        <table>
+          <thead><tr><th style="width: 70px">Laikas</th><th>Veiksmas</th><th>Klientas</th><th>Motociklas</th><th>Būsena</th></tr></thead>
+          <tbody>
+            <tr><td colspan="5" class="diena" style="padding-top: 10px">2026-11-12, ketvirtadienis</td></tr>
+            <tr class="pasirinkta">
+              <td class="laikas">10:00</td>
+              <td>Grąžinimas<div class="papildoma">Nuoma Nr. 631</div></td>
+              <td>Klientas 19</td>
+              <td>BMW G 310 R<div class="papildoma">82 HNU</div></td>
+              <td><span class="zyma gintarine">Vėluoja 3 val.</span>
+                <div class="papildoma">Kitas laikotarpis: nuoma Nr. 632<br>nuo 2026-11-12 11:00, Vilnius</div></td>
+            </tr>
+            <tr>
+              <td class="laikas">11:00</td>
+              <td>Išdavimas<div class="papildoma">Nuoma Nr. 632</div></td>
+              <td>Klientas 22</td>
+              <td>BMW G 310 R<div class="papildoma">82 HNU</div></td>
+              <td><span class="zyma raudona">Laukia grąžinimo</span>
+                <div class="papildoma">Išduoti negalima, kol negrąžinta<br>nuoma Nr. 631</div></td>
+            </tr>
+            <tr><td colspan="5" class="diena">2026-11-13, penktadienis</td></tr>
+            <tr>
+              <td class="laikas">13:00</td>
+              <td>Grąžinimas<div class="papildoma">Nuoma Nr. 632</div></td>
+              <td>Klientas 22</td>
+              <td>BMW G 310 R<div class="papildoma">82 HNU</div></td>
+              <td><span class="zyma pilka">Rezervuota</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pranesimas ispejimas" style="margin-top: var(--t2)">
+        <span class="ikona">!</span>
+        <div><b>Nuoma Nr. 632 turėjo prasidėti 11:00</b>, bet motociklas dar negrąžintas. Galite perkelti rezervaciją į kitą motociklą, ją atšaukti arba, jei klientas laukia, po grąžinimo pakeisti nuomos pradžią į išdavimo laiką.
+          <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap"><span class="mygtukas antrinis mazas">Keisti rezervaciją</span><span class="mygtukas pavojingas mazas">Atšaukti rezervaciją</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grąžinimo forma (PA10): rida ir būklė (PA12), galutinė kaina (PA13) ir bauda (PA14) -->
+    <section class="blokas">
+      <h2>Grąžinimas – nuoma Nr. 631</h2>
+      <div class="info">
+        <span class="etikete">Klientas</span><span>Klientas 19</span>
+        <span class="etikete">Motociklas</span><span>BMW G 310 R, 82 HNU</span>
+        <span class="etikete">Išduota</span><span>2026-11-10 10:26, Vilnius<br><span class="mazas antrinis">rida 23 642 km</span></span>
+        <span class="etikete">Planuota grąžinti</span><span>2026-11-12 10:00, Vilnius</span>
+      </div>
+      <div class="formos-laukai">
+        <div class="laukas"><label>Grąžinimo laikas</label><div class="ivestis">2026-11-12&nbsp;&nbsp;13:00</div></div>
+        <div class="laukas"><label>Rida, km *</label><div class="ivestis">24 042</div></div>
+        <div class="laukas platus"><label>Būklė *</label><div class="ivestis tekstas">Be pastabų</div></div>
+      </div>
+      <div class="skaiciavimas">
+        <div class="eilute"><span>Nuoma: 2 paros × 60,00 €</span><span class="reiksme">120,00 €</span></div>
+        <div class="eilute"><span>Vėlavimas 3 val. – pakopa „nuo 3 val.“</span><span class="reiksme">25,00 €</span></div>
+        <div class="eilute suma"><span>Galutinė kaina</span><span class="reiksme">145,00 €</span></div>
+        <div class="eilute"><span>Grąžinti užstatą</span><span class="reiksme">400,00 €</span></div>
+      </div>
+      <div class="veiksmai"><span class="mygtukas antrinis">Atšaukti</span><span class="mygtukas">Įforminti grąžinimą</span></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

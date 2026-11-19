@@ -6,9 +6,9 @@ Medžiaga ataskaitos skyriui 1.5.2 „ER loginio lygmens diagrama“.
 
 Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [GeeksforGeeks, „Introduction of ER Model“](https://www.geeksforgeeks.org/dbms/introduction-of-er-model/)). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
-Šaltinis: `diagramos/08-loginis-er.drawio`, paveikslas: `diagramos/08-loginis-er.png`.
+Šaltinis: `artefaktai/08-loginis-er.drawio`, paveikslas: `artefaktai/08-loginis-er.png`.
 
-![Motociklų nuomos IS loginė ER diagrama](../diagramos/08-loginis-er.png)
+![Motociklų nuomos IS loginė ER diagrama](08-loginis-er.png)
 
 *Motociklų nuomos IS loginė ER diagrama* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 

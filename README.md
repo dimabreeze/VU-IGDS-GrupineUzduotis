@@ -9,8 +9,7 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 
 | Aplankas | Turinys |
 |---|---|
-| `artefaktai/` | Tekstinės dalys pagal plano žingsnius |
-| `diagramos/` | Diagramų šaltiniai (`.drawio`) ir paveikslai (`.png`) |
+| `artefaktai/` | Tekstinės dalys pagal plano žingsnius, prie jų – diagramų šaltiniai (`.drawio`) ir paveikslai (`.png`) tuo pačiu numeriu; `13-dizainas/` – sąsajos maketai (HTML, CSS ir jų paveikslai) |
 | `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos, paskaitų skaidrės |
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos, bandomoji duomenų bazė (žr. žemiau) ir kt. |
 | `ataskaita/` | Galutinė ataskaita (`.docx`) |
@@ -44,6 +43,7 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `make local-tikrinti` | Visos patikros be Docker: laikina PostgreSQL 18 duomenų bazė sukuriama ir po patikrų ištrinama |
 | `make duomenys` | Iš naujo sugeneruoja `duomenys.sql` |
 | `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, kitos – 2) |
+| `make dizainas` | Eksportuoja sąsajos maketus (`artefaktai/13-dizainas/*.html`) į PNG per Google Chrome (reikia Node.js ≥ 22 ir interneto šriftui Inter) |
 
 Patikros baigiasi eilute „Gerai: …“, o radus pažeidimą – „KLAIDA: …“ ir klaidos kodu. `db-lygiagreti` ir `local-tikrinti` reikia PostgreSQL 18 iš Homebrew (`brew install postgresql@18`), `diagramos` – draw.io.
 

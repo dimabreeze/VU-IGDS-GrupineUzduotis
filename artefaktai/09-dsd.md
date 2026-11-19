@@ -6,9 +6,9 @@ Medžiaga ataskaitos skyriui 1.5.1 „Duomenų srautų diagrama“.
 
 Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytojo anksčiau priimtame pavyzdyje (`saltiniai/lab-DSD-diagrama.png`): atskiros konteksto diagramos ir gilesnių lygių nėra. Žymėjimas – kaip 2 paskaitos 22 skaidrėje: išorinė esybė – stačiakampis, procesas – suapvalintas stačiakampis, duomenų saugykla – cilindras, duomenų srautas – rodyklė su pavadinimu. Elementai numeruojami E (išorinės esybės), P (procesai) ir DS (saugyklos); diagramoje yra legenda. Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
 
-Šaltinis: `diagramos/09-dsd.drawio`, paveikslas: `diagramos/09-dsd.png`.
+Šaltinis: `artefaktai/09-dsd.drawio`, paveikslas: `artefaktai/09-dsd.png`.
 
-![Motociklų nuomos IS duomenų srautų diagrama](../diagramos/09-dsd.png)
+![Motociklų nuomos IS duomenų srautų diagrama](09-dsd.png)
 
 *Motociklų nuomos IS duomenų srautų diagrama (0 lygis)* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 

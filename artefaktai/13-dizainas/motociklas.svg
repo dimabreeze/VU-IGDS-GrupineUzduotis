@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120">
+  <!-- Nuotraukos vieta: maketuose vietoj modelio nuotraukos rodomas schematinis motociklas -->
+  <g fill="none" stroke="#64748B" stroke-width="7">
+    <circle cx="45" cy="86" r="27"/>
+    <circle cx="175" cy="86" r="27"/>
+  </g>
+  <g fill="#64748B">
+    <circle cx="45" cy="86" r="6"/>
+    <circle cx="175" cy="86" r="6"/>
+    <!-- galinė šakė, rėmas -->
+    <path d="M45 82 L96 66 L100 76 L49 92 Z"/>
+    <!-- variklis -->
+    <rect x="88" y="58" width="44" height="32" rx="6"/>
+    <!-- bakas ir sėdynė -->
+    <path d="M70 46 Q72 38 84 38 L104 38 Q112 26 128 26 L146 26 Q156 26 156 38 L150 50 L74 52 Z"/>
+    <!-- priekinė šakė -->
+    <path d="M150 24 L158 20 L180 82 L172 86 Z"/>
+    <!-- vairas -->
+    <path d="M140 14 L160 14 L160 21 L140 21 Z"/>
+    <!-- išmetimo vamzdis -->
+    <path d="M100 88 L130 88 L76 104 L66 100 Z" opacity=".55"/>
+  </g>
+</svg>

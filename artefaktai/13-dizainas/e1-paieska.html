@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E1 Motociklų paieška</title>
+<link rel="stylesheet" href="stilius.css">
+<style>
+  /* Šio ekrano išdėstymas */
+  .paieska { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 600px) { .paieska { grid-template-columns: 1fr 1fr; } .paieska .mygtukas { grid-column: 1 / -1; } }
+  .rezultatai-virsus { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: var(--t3) 0 12px; flex-wrap: wrap; }
+  .filtrai { display: none; }
+  .filtrai-mygtukas { display: inline-flex; }
+  .rodyti-daugiau { display: flex; justify-content: center; margin-top: var(--t3); }
+  @media (min-width: 1000px) {
+    .paieska { grid-template-columns: 1.1fr 1.3fr 1.1fr 1.3fr auto; align-items: end; }
+    .paieska .mygtukas { grid-column: auto; }
+    .isdestymas { display: grid; grid-template-columns: 250px 1fr; gap: var(--t3); align-items: start; margin-top: var(--t3); }
+    .filtrai { display: block; }
+    .filtrai-mygtukas { display: none; }
+    .rezultatai-virsus { margin-top: 0; }
+  }
+  .filtrai h3 { margin: var(--t2) 0 4px; font-size: 14px; }
+  .filtrai h3:first-child { margin-top: 0; }
+  .intervalas { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .intervalas .ivestis { height: 38px; font-size: 14px; }
+</style>
+</head>
+<body>
+<header class="virsus"><div class="vidus">
+  <div class="logotipas">Moto<span>Nuoma</span></div>
+  <nav class="meniu"><a class="aktyvus">Paieška</a><a>Mano rezervacijos</a><a>Paskyra</a></nav>
+  <div class="desine"><span class="vartotojas">Klientas 1</span><span class="kalba"><b>LT</b><a>EN</a></span></div>
+</div></header>
+
+<main class="turinys">
+  <h1 style="margin-bottom: var(--t2)">Motociklų nuoma</h1>
+
+  <!-- Paieškos juosta: filialai ir laikotarpis (FR 1.2.1, PA1) -->
+  <section class="blokas">
+    <div class="paieska">
+      <div class="laukas"><label>Išdavimo filialas</label><div class="ivestis su-rodykle">Vilnius</div></div>
+      <div class="laukas"><label>Nuomos pradžia</label><div class="ivestis">2027-05-09&nbsp;&nbsp;10:00</div></div>
+      <div class="laukas"><label>Grąžinimo filialas</label><div class="ivestis su-rodykle">Vilnius</div></div>
+      <div class="laukas"><label>Nuomos pabaiga</label><div class="ivestis">2027-05-12&nbsp;&nbsp;10:00</div></div>
+      <span class="mygtukas">Ieškoti</span>
+    </div>
+  </section>
+
+  <div class="isdestymas">
+    <!-- Filtrai: plačiame ekrane – šoninis stulpelis, siaurame – mygtukas „Filtrai“ -->
+    <aside class="filtrai blokas">
+      <h3>Tipas</h3>
+      <div class="zymimasis">Gatvės</div>
+      <div class="zymimasis">Nuotykių</div>
+      <div class="zymimasis">Turistinis</div>
+      <div class="zymimasis">Sportinis</div>
+      <div class="zymimasis">Klasikinis</div>
+      <h3>Pažymėjimo kategorija</h3>
+      <div class="zymimasis">A1</div>
+      <div class="zymimasis">A2</div>
+      <div class="zymimasis">A</div>
+      <h3>Variklio tūris, cm³</h3>
+      <div class="intervalas"><div class="ivestis antrinis">nuo</div><div class="ivestis antrinis">iki</div></div>
+      <h3>Galia, kW</h3>
+      <div class="intervalas"><div class="ivestis antrinis">nuo</div><div class="ivestis antrinis">iki</div></div>
+      <h3>Kelionė</h3>
+      <div class="zymimasis">Leidžiama išvažiuoti į užsienį</div>
+      <div class="veiksmai" style="margin-top: var(--t2)"><span class="mygtukas antrinis mazas">Išvalyti</span></div>
+    </aside>
+
+    <section>
+      <div class="rezultatai-virsus">
+        <div>
+          <h2>Rasta 11 modelių</h2>
+          <p class="antrinis mazas">2027-05-09 10:00 – 2027-05-12 10:00 · 3&nbsp;paros · Vilnius</p>
+        </div>
+        <span class="mygtukas antrinis mazas filtrai-mygtukas">Filtrai</span>
+        <div class="laukas" style="flex-direction: row; align-items: center; gap: 8px">
+          <label>Rikiuoti</label><div class="ivestis su-rodykle" style="height: 36px; font-size: 14px">Kaina didėjančiai</div>
+        </div>
+      </div>
+
+      <div class="korteles">
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">Honda · Gatvės</span>
+            <h3>CB125R</h3>
+            <div class="savybes"><span class="savybe">125 cm³</span><span class="savybe">11 kW</span><span class="savybe kategorija">A1</span></div>
+            <div class="kaina">
+              <div><div class="para">44,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 132,00 € · užstatas 300,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">BMW · Gatvės</span>
+            <h3>G 310 R</h3>
+            <div class="savybes"><span class="savybe">313 cm³</span><span class="savybe">25 kW</span><span class="savybe kategorija">A2</span></div>
+            <div class="kaina">
+              <div><div class="para">60,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 180,00 € · užstatas 400,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">Honda · Gatvės</span>
+            <h3>CB500 Hornet</h3>
+            <div class="savybes"><span class="savybe">471 cm³</span><span class="savybe">35 kW</span><span class="savybe kategorija">A2</span></div>
+            <div class="kaina">
+              <div><div class="para">64,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 192,00 € · užstatas 400,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">Honda · Turistinis</span>
+            <h3>NC750X</h3>
+            <div class="savybes"><span class="savybe">745 cm³</span><span class="savybe">43,1 kW</span><span class="savybe kategorija">A</span></div>
+            <div class="kaina">
+              <div><div class="para">84,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 252,00 € · užstatas 600,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">Yamaha · Gatvės</span>
+            <h3>MT-07</h3>
+            <div class="savybes"><span class="savybe">689 cm³</span><span class="savybe">54 kW</span><span class="savybe kategorija">A</span></div>
+            <div class="kaina">
+              <div><div class="para">84,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 252,00 € · užstatas 600,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+        <article class="kortele">
+          <div class="nuotrauka"><img src="motociklas.svg" alt=""></div>
+          <div class="tekstas">
+            <span class="gamintojas">BMW · Gatvės</span>
+            <h3>F 900 R</h3>
+            <div class="savybes"><span class="savybe">895 cm³</span><span class="savybe">77 kW</span><span class="savybe kategorija">A</span></div>
+            <div class="kaina">
+              <div><div class="para">100,00 € <small>/ para</small></div><div class="antrinis mazas">3 paros – 300,00 € · užstatas 700,00 €</div></div>
+              <span class="mygtukas mazas">Rezervuoti</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="rodyti-daugiau"><span class="mygtukas antrinis">Rodyti dar 5 modelius</span></div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

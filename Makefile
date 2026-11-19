@@ -22,7 +22,7 @@ TIKRINTI_TESTUS  := awk -F'|' '{print} $$5 != "t" {klaida = 1} END {if (klaida) 
 
 .DEFAULT_GOAL := help
 .PHONY: help db-up db-down db-reset db-psql db-patikra db-testai db-lygiagreti db-tikrinti \
-        local-tikrinti duomenys diagramos visi
+        local-tikrinti duomenys diagramos dizainas visi
 
 help: ## Šis sąrašas
 	@echo "Naudojimas: make <tikslas>"
@@ -88,11 +88,15 @@ duomenys: ## Iš naujo sugeneruoti darbas/duomenys.sql (generuoti_duomenis.py)
 
 diagramos: ## Eksportuoti visas diagramas į PNG (draw.io)
 	@command -v drawio >/dev/null || { echo "Nerastas drawio (brew install --cask drawio)"; exit 1; }
-	drawio -x -f png -s 2   -b 20 -o diagramos/07-panaudos-atvejai.png   diagramos/07-panaudos-atvejai.drawio
-	drawio -x -f png -s 1.5 -b 20 -o diagramos/08-loginis-er.png         diagramos/08-loginis-er.drawio
-	drawio -x -f png -s 2   -b 20 -o diagramos/09-dsd.png                diagramos/09-dsd.drawio
-	drawio -x -f png -s 1.5 -b 20 -o diagramos/10-fizinis-er.png         diagramos/10-fizinis-er.drawio
-	drawio -x -f png -s 2   -b 20 -o diagramos/11-strukturine-schema.png diagramos/11-strukturine-schema.drawio
+	drawio -x -f png -s 2   -b 20 -o artefaktai/07-panaudos-atvejai.png   artefaktai/07-panaudos-atvejai.drawio
+	drawio -x -f png -s 1.5 -b 20 -o artefaktai/08-loginis-er.png         artefaktai/08-loginis-er.drawio
+	drawio -x -f png -s 2   -b 20 -o artefaktai/09-dsd.png                artefaktai/09-dsd.drawio
+	drawio -x -f png -s 1.5 -b 20 -o artefaktai/10-fizinis-er.png         artefaktai/10-fizinis-er.drawio
+	drawio -x -f png -s 2   -b 20 -o artefaktai/11-strukturine-schema.png artefaktai/11-strukturine-schema.drawio
 	@echo "Atidarykite PNG ir patikrinkite, ar jie pilni (ER diagramoms mastelis 1.5 – esant 2 drawio nupiešia ne viską)."
+
+dizainas: ## Eksportuoti dizaino maketus į PNG (Google Chrome, Node.js ≥ 22, internetas šriftui)
+	@command -v node >/dev/null || { echo "Nerastas Node.js"; exit 1; }
+	node artefaktai/13-dizainas/eksportuoti.mjs
 
 visi: duomenys local-tikrinti ## Sugeneruoti duomenis ir patikrinti be Docker

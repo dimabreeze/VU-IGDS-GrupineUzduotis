@@ -1,7 +1,7 @@
 -- Motociklų nuomos IS: duomenų bazės schema (fizinė ER diagrama, 10 žingsnis).
 -- (Ataskaitoje nepateikiama, skirta savikontrolei)
 --
--- Lentelių ir atributų vardai sutampa su diagramos diagramos/10-fizinis-er.drawio vardais (todėl rašomi dvigubose kabutėse).
+-- Lentelių ir atributų vardai sutampa su diagramos artefaktai/10-fizinis-er.drawio vardais (todėl rašomi dvigubose kabutėse).
 -- Patikrinta PostgreSQL 18 (2026-11-19).
 
 -- Personalas ir paskyros

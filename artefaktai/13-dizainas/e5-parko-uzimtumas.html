@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E5 Parko užimtumas</title>
+<link rel="stylesheet" href="stilius.css">
+<style>
+  .filtrai { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; margin-bottom: var(--t2); }
+  .filtrai .ivestis { height: 38px; font-size: 14px; }
+  .legenda { display: flex; gap: 16px; align-items: center; font-size: 14px; margin-left: auto; }
+  .legenda i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: 0; }
+  .skalė { position: relative; }
+  .eil { display: grid; grid-template-columns: 250px 1fr 64px; align-items: center; min-height: 24px; }
+  .eil + .eil { border-top: 1px solid #F1F5F9; }
+  .pav { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 8px; }
+  .pav b { font-weight: 600; }
+  .pav span { color: var(--tekstas-antrinis); }
+  .juosta { position: relative; height: 24px; }
+  .proc { font-size: 13px; text-align: right; font-weight: 600; }
+  .grupe { background: var(--fonas); border-top: 1px solid var(--kontūras) !important; }
+  .grupe .pav { font-weight: 700; font-size: 14px; }
+  .grupe .proc { color: var(--tekstas-antrinis); }
+  .diena { position: absolute; top: 0; bottom: 0; border-left: 1px solid #F1F5F9; }
+  .savaitgalis { position: absolute; top: 0; bottom: 0; background: #F8FAFC; }
+  .laik { position: absolute; top: 5px; height: 14px; border-radius: 3px; min-width: 5px; }
+  .laik.nuoma { background: var(--nuoma); }
+  .laik.tp { background: #D97706; }
+  .laik.perk { background: var(--perkelimas); }
+  .kryptis { position: absolute; top: 4px; font-size: 11px; font-weight: 600; color: var(--nuoma); white-space: nowrap; }
+  .kryptis.perk { color: var(--perkelimas); }
+  .antraste-dienos { font-size: 11px; color: var(--tekstas-antrinis); }
+  .antraste-dienos .d { position: absolute; transform: translateX(-50%); top: 22px; }
+  .antraste-dienos .men { position: absolute; top: 2px; font-weight: 600; font-size: 12px; color: var(--tekstas); }
+</style>
+</head>
+<body>
+<header class="virsus"><div class="vidus">
+  <div class="logotipas">Moto<span>Nuoma</span></div>
+  <nav class="meniu"><a class="aktyvus">Parko užimtumas</a><a>Motociklai</a><a>Tarifai</a><a>Perkėlimai</a><a>Filialai</a><a>Darbuotojai</a><a>Ataskaitos</a></nav>
+  <div class="desine"><span class="vartotojas">Administratorius 1</span><span class="kalba"><b>LT</b><a>EN</a></span></div>
+</div></header>
+
+<main class="turinys">
+  <div class="puslapio-antraste">
+    <div><h1>Parko užimtumas</h1><p class="antrinis">Nuomos, techninė priežiūra ir perkėlimai kiekvienam motociklui (PA20)</p></div>
+  </div>
+  <div class="filtrai">
+    <div class="laukas"><label>Filialas</label><div class="ivestis su-rodykle" style="width: 160px">Visi</div></div>
+    <div class="laukas"><label>Laikotarpis</label><div class="ivestis" style="width: 230px">2026-07-20 – 2026-08-30</div></div>
+    <div class="laukas"><label>Modelis</label><div class="ivestis su-rodykle" style="width: 160px">Visi</div></div>
+    <div class="legenda">
+      <span><i style="background: var(--nuoma)"></i>Nuoma</span>
+      <span><i style="background: #D97706"></i>Techninė priežiūra</span>
+      <span><i style="background: var(--perkelimas)"></i>Perkėlimas</span>
+      <span style="color: var(--nuoma); font-weight: 600">→ Kaunas</span><span class="antrinis" style="margin-left: -10px">grąžinta į kitą filialą</span>
+    </div>
+  </div>
+  <section class="blokas" style="padding: 12px var(--t2)">
+    <div id="skale"></div>
+    <p class="antrinis mazas" style="margin-top: 10px">Motociklai sugrupuoti pagal filialą laikotarpio pradžioje. Stulpelis „Nuoma“ – nuomų trukmės dalis pasirinktame laikotarpyje. Nurašyti motociklai nerodomi.</p>
+  </section>
+</main>
+<script>
+/* Duomenys – iš bandomosios duomenų bazės (darbas/duomenys.sql), laikotarpis 2026-07-20 00:00 – 2026-08-31 00:00 */
+const MOTOCIKLAI = [
+  {"fil": "Vilnius", "modelis": "Ducati Multistrada V4", "nr": "41 CGC", "proc": 0, "l": []},
+  {"fil": "Vilnius", "modelis": "Ducati Panigale V2", "nr": "44 CBG", "proc": 15, "l": [{"r": "nuoma", "nuo": "2026-08-13T09:00", "iki": "2026-08-18T08:58", "is": "Vilnius", "i": "Vilnius"}, {"r": "nuoma", "nuo": "2026-08-24T11:00", "iki": "2026-08-25T13:27", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "BMW R 1300 GS", "nr": "49 UEG", "proc": 12, "l": [{"r": "nuoma", "nuo": "2026-08-12T10:00", "iki": "2026-08-17T07:05", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "BMW R 1250 RT", "nr": "66 VAE", "proc": 12, "l": [{"r": "nuoma", "nuo": "2026-08-01T10:00", "iki": "2026-08-06T09:40", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "BMW F 900 R", "nr": "26 HUN", "proc": 10, "l": [{"r": "nuoma", "nuo": "2026-08-01T10:00", "iki": "2026-08-05T09:54", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "BMW G 310 R", "nr": "82 HNU", "proc": 2, "l": [{"r": "nuoma", "nuo": "2026-08-23T10:00", "iki": "2026-08-24T10:25", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "BMW G 310 R", "nr": "55 ENT", "proc": 4, "l": [{"r": "tp", "nuo": "2026-07-24T08:00", "iki": "2026-07-24T17:00", "is": null, "i": null}, {"r": "nuoma", "nuo": "2026-08-12T09:00", "iki": "2026-08-14T06:13", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "Honda CB500 Hornet", "nr": "52 UVE", "proc": 23, "l": [{"r": "nuoma", "nuo": "2026-07-24T10:00", "iki": "2026-07-25T07:59", "is": "Vilnius", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-06T10:00", "iki": "2026-08-08T09:18", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-24T10:00", "iki": "2026-08-31T08:38", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Vilnius", "modelis": "Honda CB500 Hornet", "nr": "71 UZR", "proc": 0, "l": []},
+  {"fil": "Vilnius", "modelis": "Honda CRF1100L Africa Twin", "nr": "88 LAS", "proc": 14, "l": [{"r": "nuoma", "nuo": "2026-07-27T09:00", "iki": "2026-07-29T08:12", "is": "Vilnius", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-07T14:00", "iki": "2026-08-08T13:29", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-25T10:00", "iki": "2026-08-28T09:54", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Vilnius", "modelis": "Honda CB125R", "nr": "21 CSS", "proc": 0, "l": []},
+  {"fil": "Vilnius", "modelis": "Yamaha MT-07", "nr": "84 JGF", "proc": 21, "l": [{"r": "nuoma", "nuo": "2026-07-24T10:00", "iki": "2026-07-28T07:14", "is": "Vilnius", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-13T12:00", "iki": "2026-08-18T14:26", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Vilnius", "modelis": "Yamaha MT-07", "nr": "48 TMB", "proc": 13, "l": [{"r": "nuoma", "nuo": "2026-07-28T10:00", "iki": "2026-07-30T08:10", "is": "Vilnius", "i": "Vilnius"}, {"r": "nuoma", "nuo": "2026-08-13T10:00", "iki": "2026-08-15T09:33", "is": "Vilnius", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-29T10:00", "iki": "2026-08-31T08:15", "is": "Klaipėda", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "Yamaha Tracer 9 GT", "nr": "60 BKT", "proc": 16, "l": [{"r": "nuoma", "nuo": "2026-08-11T14:00", "iki": "2026-08-14T13:24", "is": "Vilnius", "i": "Vilnius"}, {"r": "tp", "nuo": "2026-08-23T08:00", "iki": "2026-08-24T17:00", "is": null, "i": null}, {"r": "nuoma", "nuo": "2026-08-25T12:00", "iki": "2026-08-29T10:06", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Vilnius", "modelis": "Yamaha Tracer 9 GT", "nr": "73 GMH", "proc": 14, "l": [{"r": "nuoma", "nuo": "2026-07-26T10:00", "iki": "2026-07-28T09:52", "is": "Vilnius", "i": "Vilnius"}, {"r": "nuoma", "nuo": "2026-08-01T10:00", "iki": "2026-08-03T08:02", "is": "Vilnius", "i": "Vilnius"}, {"r": "nuoma", "nuo": "2026-08-25T09:00", "iki": "2026-08-27T07:10", "is": "Vilnius", "i": "Vilnius"}]},
+  {"fil": "Kaunas", "modelis": "Ducati Monster", "nr": "10 GKB", "proc": 5, "l": [{"r": "nuoma", "nuo": "2026-07-30T10:00", "iki": "2026-07-31T09:58", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-29T11:00", "iki": "2026-08-30T09:31", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Ducati Scrambler Icon", "nr": "73 REL", "proc": 0, "l": [{"r": "tp", "nuo": "2026-08-10T08:00", "iki": "2026-08-11T17:00", "is": null, "i": null}]},
+  {"fil": "Kaunas", "modelis": "Ducati Scrambler Icon", "nr": "89 RLB", "proc": 0, "l": [{"r": "tp", "nuo": "2026-07-26T08:00", "iki": "2026-07-26T17:00", "is": null, "i": null}, {"r": "tp", "nuo": "2026-08-29T08:00", "iki": "2026-08-29T17:00", "is": null, "i": null}]},
+  {"fil": "Kaunas", "modelis": "Ducati Panigale V2", "nr": "58 HKM", "proc": 24, "l": [{"r": "nuoma", "nuo": "2026-07-21T14:00", "iki": "2026-07-24T13:08", "is": "Kaunas", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-08T14:00", "iki": "2026-08-15T13:17", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "tp", "nuo": "2026-08-29T08:00", "iki": "2026-08-30T17:00", "is": null, "i": null}]},
+  {"fil": "Kaunas", "modelis": "BMW R 1250 RT", "nr": "77 MLF", "proc": 0, "l": [{"r": "perk", "nuo": "2026-08-17T09:00", "iki": "2026-08-17T15:00", "is": "Kaunas", "i": "Vilnius"}]},
+  {"fil": "Kaunas", "modelis": "BMW G 310 R", "nr": "44 VAB", "proc": 19, "l": [{"r": "nuoma", "nuo": "2026-07-21T14:00", "iki": "2026-07-24T13:36", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-02T11:00", "iki": "2026-08-06T09:14", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-14T12:00", "iki": "2026-08-15T10:19", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Honda CB500 Hornet", "nr": "98 DJL", "proc": 14, "l": [{"r": "nuoma", "nuo": "2026-07-21T11:00", "iki": "2026-07-24T09:30", "is": "Kaunas", "i": "Kaunas"}, {"r": "tp", "nuo": "2026-08-17T08:00", "iki": "2026-08-17T17:00", "is": null, "i": null}, {"r": "nuoma", "nuo": "2026-08-27T10:00", "iki": "2026-08-30T12:23", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Honda NC750X", "nr": "31 ZNH", "proc": 11, "l": [{"r": "nuoma", "nuo": "2026-08-05T11:00", "iki": "2026-08-07T10:56", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-15T12:00", "iki": "2026-08-17T10:52", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-30T11:00", "iki": "2026-09-06T14:10", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Honda CRF1100L Africa Twin", "nr": "44 HTV", "proc": 0, "l": []},
+  {"fil": "Kaunas", "modelis": "Honda CRF1100L Africa Twin", "nr": "30 JHF", "proc": 0, "l": []},
+  {"fil": "Kaunas", "modelis": "Honda CB125R", "nr": "67 HMZ", "proc": 1, "l": [{"r": "nuoma", "nuo": "2026-08-30T10:00", "iki": "2026-09-06T09:08", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Yamaha MT-07", "nr": "38 NFC", "proc": 21, "l": [{"r": "nuoma", "nuo": "2026-07-25T10:00", "iki": "2026-07-30T09:33", "is": "Kaunas", "i": "Kaunas"}, {"r": "nuoma", "nuo": "2026-08-05T14:00", "iki": "2026-08-09T13:54", "is": "Kaunas", "i": "Klaipėda"}]},
+  {"fil": "Kaunas", "modelis": "Yamaha Ténéré 700", "nr": "12 JPL", "proc": 5, "l": [{"r": "nuoma", "nuo": "2026-08-22T11:00", "iki": "2026-08-24T08:46", "is": "Kaunas", "i": "Kaunas"}]},
+  {"fil": "Kaunas", "modelis": "Yamaha Ténéré 700", "nr": "78 HZV", "proc": 0, "l": [{"r": "perk", "nuo": "2026-08-17T09:00", "iki": "2026-08-17T15:00", "is": "Kaunas", "i": "Vilnius"}]},
+  {"fil": "Klaipėda", "modelis": "Ducati Monster", "nr": "58 EBB", "proc": 5, "l": [{"r": "nuoma", "nuo": "2026-07-21T12:00", "iki": "2026-07-23T09:55", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "Ducati Monster", "nr": "11 DRE", "proc": 11, "l": [{"r": "nuoma", "nuo": "2026-08-26T14:00", "iki": "2026-08-31T11:03", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "Ducati Multistrada V4", "nr": "58 NDG", "proc": 21, "l": [{"r": "nuoma", "nuo": "2026-07-23T12:00", "iki": "2026-07-25T11:10", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-21T11:00", "iki": "2026-08-28T09:09", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "BMW R 1300 GS", "nr": "62 RNL", "proc": 12, "l": [{"r": "nuoma", "nuo": "2026-08-20T10:00", "iki": "2026-08-25T09:23", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "BMW R 1300 GS", "nr": "30 GSE", "proc": 19, "l": [{"r": "nuoma", "nuo": "2026-07-28T12:00", "iki": "2026-07-29T11:02", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-07T10:00", "iki": "2026-08-10T08:02", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "tp", "nuo": "2026-08-22T08:00", "iki": "2026-08-22T17:00", "is": null, "i": null}, {"r": "nuoma", "nuo": "2026-08-23T10:00", "iki": "2026-08-27T07:35", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "BMW F 900 R", "nr": "84 VZL", "proc": 0, "l": [{"r": "tp", "nuo": "2026-07-23T08:00", "iki": "2026-07-23T17:00", "is": null, "i": null}]},
+  {"fil": "Klaipėda", "modelis": "Honda CB500 Hornet", "nr": "51 SKK", "proc": 8, "l": [{"r": "nuoma", "nuo": "2026-07-19T11:00", "iki": "2026-07-23T08:07", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "tp", "nuo": "2026-08-12T08:00", "iki": "2026-08-12T17:00", "is": null, "i": null}]},
+  {"fil": "Klaipėda", "modelis": "Honda NC750X", "nr": "76 MZP", "proc": 12, "l": [{"r": "nuoma", "nuo": "2026-08-01T14:00", "iki": "2026-08-05T16:04", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-11T11:00", "iki": "2026-08-12T10:35", "is": "Klaipėda", "i": "Vilnius"}]},
+  {"fil": "Klaipėda", "modelis": "Honda NC750X", "nr": "51 ZUN", "proc": 20, "l": [{"r": "nuoma", "nuo": "2026-07-17T11:00", "iki": "2026-07-24T09:14", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-11T14:00", "iki": "2026-08-15T17:54", "is": "Klaipėda", "i": "Klaipėda"}]},
+  {"fil": "Klaipėda", "modelis": "Yamaha MT-07", "nr": "50 PLA", "proc": 17, "l": [{"r": "nuoma", "nuo": "2026-07-24T09:00", "iki": "2026-07-29T06:48", "is": "Klaipėda", "i": "Klaipėda"}, {"r": "nuoma", "nuo": "2026-08-21T11:00", "iki": "2026-08-23T14:45", "is": "Klaipėda", "i": "Klaipėda"}]}
+];
+const PR = new Date('2026-07-20T00:00'), PB = new Date('2026-08-31T00:00'), DIENU = 42;
+const proc = t => Math.max(0, Math.min(1, (new Date(t) - PR) / (PB - PR))) * 100;
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; };
+const fonas = juosta => {
+  for (let i = 0; i < DIENU; i++) {
+    const d = new Date(PR.getTime() + i * 864e5);
+    if (d.getDay() === 0 || d.getDay() === 6) { const s = el('div', 'savaitgalis'); s.style.left = (i / DIENU * 100) + '%'; s.style.width = (100 / DIENU) + '%'; juosta.append(s); }
+    const l = el('div', 'diena'); l.style.left = (i / DIENU * 100) + '%'; juosta.append(l);
+  }
+};
+const skale = document.getElementById('skale');
+/* Dienų antraštė */
+const ant = el('div', 'eil'); ant.append(el('div', 'pav antrinis', 'Motociklas'));
+const dienos = el('div', 'juosta antraste-dienos'); dienos.style.height = '40px';
+for (let i = 0; i < DIENU; i++) {
+  const d = new Date(PR.getTime() + i * 864e5);
+  if (i === 0 || d.getDate() === 1) { const m = el('span', 'men', d.getDate() === 1 ? '2026-08' : '2026-07'); m.style.left = (i / DIENU * 100) + '%'; dienos.append(m); }
+  const s = el('span', 'd', String(d.getDate())); s.style.left = ((i + .5) / DIENU * 100) + '%'; dienos.append(s);
+}
+ant.append(dienos); ant.append(el('div', 'proc antrinis', 'Nuoma')); skale.append(ant);
+/* Grupės ir eilutės */
+for (const fil of ['Vilnius', 'Kaunas', 'Klaipėda']) {
+  const g = MOTOCIKLAI.filter(m => m.fil === fil);
+  const vid = Math.round(g.reduce((s, m) => s + m.proc, 0) / g.length);
+  const ge = el('div', 'eil grupe'); ge.append(el('div', 'pav', `${fil} (${g.length})`)); const gj = el('div', 'juosta'); fonas(gj); ge.append(gj); ge.append(el('div', 'proc', vid + ' %')); skale.append(ge);
+  for (const m of g) {
+    const e = el('div', 'eil'); e.append(el('div', 'pav', `<b>${m.modelis}</b> <span>${m.nr}</span>`));
+    const j = el('div', 'juosta'); fonas(j);
+    for (const l of m.l) {
+      const r = l.r === 'tp' ? 'tp' : l.r === 'perk' ? 'perk' : 'nuoma';
+      const b = el('div', 'laik ' + r); const a = proc(l.nuo), z = proc(l.iki);
+      b.style.left = a + '%'; b.style.width = (z - a) + '%'; j.append(b);
+      if (l.i && l.is !== l.i && proc(l.iki) < 100) { const k = el('span', 'kryptis ' + r, '→ ' + l.i); k.style.left = `calc(${z}% + 4px)`; j.append(k); }
+    }
+    e.append(j); e.append(el('div', 'proc', m.proc + ' %')); skale.append(e);
+  }
+}
+</script>
+</body>
+</html>
