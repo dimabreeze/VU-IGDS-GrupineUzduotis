@@ -11,9 +11,13 @@ Laikoma, kad duomenų bazės būsena atitinka 2026-11-19 12:00 (DABAR). Sugeneru
 - techninė priežiūra prieš sezoną ir sezono metu, perkėlimai tarp filialų (taip pat suplanuoti 2027 m.).
 
 Visi motociklų užimtumo laikotarpiai nepersidengia ir atitinka motociklo buvimo vietos taisyklę
-(artefaktai/08-loginis-er.md). Galutinė kaina = nuomos parų skaičius × paros kaina + bauda;
-bauda – pakopos su didžiausia „Vėlavimas nuo“ reikšme, neviršijančia vėlavimo valandomis, suma
-(laikina taisyklė, bus patikslinta 12 žingsnyje aprašant funkciją skaiciuotiKaina).
+(artefaktai/08-loginis-er.md). Galutinė kaina apskaičiuojama kaip funkcijoje skaiciuotiKaina
+(artefaktai/12-funkcijos.md): planuojamo nuomos laikotarpio parų skaičius, suapvalintas į viršų, × paros kaina
++ bauda; bauda – pakopos su didžiausia „Vėlavimas nuo“ reikšme, neviršijančia vėlavimo valandomis, suma.
+
+Vienas atvejis sudarytas specialiai (laukiantis_klientas): nuoma grąžinta pavėluotai, o kitas klientas,
+kurio rezervacija prasidėjo valanda po planuojamos pabaigos, sutiko palaukti – darbuotojas pakeitė jo
+rezervacijos pradžią į išdavimo laiką, todėl kaina skaičiuojama už trumpesnį laikotarpį.
 """
 import math
 import random
@@ -263,8 +267,8 @@ def tinkami_klientai(kategorija, iki):
     return [k for k, t in TEISES.items() if kategorija in t and t[kategorija] >= iki.date()]
 
 
-def nauja_nuoma(m, pradzia, paros, grazinimo_fil, sukurta, busena, velavimas=None):
-    pabaiga = pradzia + timedelta(days=paros)
+def nauja_nuoma(m, pradzia, paros, grazinimo_fil, sukurta, busena, velavimas=None, pabaiga=None, isd_laikas=None):
+    pabaiga = pabaiga or pradzia + timedelta(days=paros)
     klientai = tinkami_klientai(m['kategorija'], pabaiga)
     kl = R.choice(klientai)
     turi_paskyra = KLIENTAI[kl - 1][7] is not None
@@ -275,7 +279,7 @@ def nauja_nuoma(m, pradzia, paros, grazinimo_fil, sukurta, busena, velavimas=Non
                        tarifas=t[0], motociklas=m['id'], isd_fil=m['filialas'], grz_fil=grazinimo_fil,
                        darbuotojas=darb))
     if busena in ('aktyvi', 'užbaigta'):
-        isd_laikas = pradzia + timedelta(minutes=R.randint(0, 30))
+        isd_laikas = isd_laikas or pradzia + timedelta(minutes=R.randint(0, 30))
         ISDAVIMAI.append((nid, isd_laikas, m['rida'], R.choice(ISDAVIMO_BUKLES), darbuotojas_filiale(m['filialas'])))
     if busena == 'užbaigta':
         grz = pabaiga + timedelta(minutes=velavimas)
@@ -283,7 +287,8 @@ def nauja_nuoma(m, pradzia, paros, grazinimo_fil, sukurta, busena, velavimas=Non
         m['rida'] += km
         val = velavimas / 60
         b = bauda(t[0], val)
-        GRAZINIMAI.append((nid, grz, m['rida'], R.choice(GRAZINIMO_BUKLES), paros * t[1] + b, b,
+        paros_kaina = math.ceil((pabaiga - pradzia) / timedelta(days=1)) * t[1]
+        GRAZINIMAI.append((nid, grz, m['rida'], R.choice(GRAZINIMO_BUKLES), paros_kaina + b, b,
                            darbuotojas_filiale(grazinimo_fil)))
         m['filialas'] = grazinimo_fil
         return grz
@@ -371,6 +376,26 @@ def sezonas(metai):
                 m['naudojamas'] = False
 
 
+def laukiantis_klientas():
+    """Pavėluotas grąžinimas, sutampantis su kitos nuomos pradžia (2026 m. lapkritis).
+
+    Nuoma A: 2026-11-10 10:00 – 2026-11-12 10:00, grąžinta 3 val. pavėluotai (13:00).
+    Nuoma B: rezervuota 2026-11-12 11:00 – 2026-11-13 13:00 (26 val., 2 paros). Klientas sutiko palaukti,
+    darbuotojas pakeitė rezervacijos pradžią į išdavimo laiką 13:20 (23 val. 40 min., 1 para).
+    Naudojamas atskiras atsitiktinių skaičių generatorius, kad kiti duomenys nepasikeistų.
+    """
+    global R
+    pagrindinis, R = R, random.Random(1112)
+    m = next(m for m in MOTOCIKLAI if m['naudojamas'] and m['id'] not in (9, 25)
+             and m['laisvas'] <= datetime(2026, 11, 9) and m['kategorija'] == 'A2')
+    grz = nauja_nuoma(m, datetime(2026, 11, 10, 10), 2, m['filialas'], datetime(2026, 11, 3, 18, 25), 'užbaigta', 180)
+    b_pradzia = grz + timedelta(minutes=20)
+    nauja_nuoma(m, b_pradzia, 1, m['filialas'], datetime(2026, 11, 5, 9, 40), 'užbaigta', -20,
+                pabaiga=datetime(2026, 11, 13, 13), isd_laikas=b_pradzia)
+    m['laisvas'] = datetime(2026, 11, 14)
+    R = pagrindinis
+
+
 def dabartis_ir_ateitis():
     # šiuo metu vykdomos nuomos (vėlyvo rudens kelionės)
     for mid, pr in [(9, datetime(2026, 11, 17, 10)), (25, datetime(2026, 11, 18, 11))]:
@@ -411,6 +436,7 @@ def generuoti():
     sukurti_motociklus()
     sezonas(2025)
     sezonas(2026)
+    laukiantis_klientas()
     # dabartinis filialas – baigtų laikotarpių pabaiga (išsaugomas prieš planuojant ateitį)
     dabartinis = {m['id']: m['filialas'] for m in MOTOCIKLAI}
     rida_dabar = {m['id']: m['rida'] for m in MOTOCIKLAI}

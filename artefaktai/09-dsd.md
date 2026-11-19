@@ -68,7 +68,7 @@ Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su s
 - **Naujas filialas po perkėlimo.** P6 įrašo naują motociklo filialą į DS2, kai baigiasi perkėlimo laikotarpis, o ne planuodamas perkėlimą; iki tol motociklo buvimo vietą nusako motociklo buvimo vietos taisyklė (`08-loginis-er.md`).
 - **Neplanuota techninė priežiūra** atskiru procesu nevaizduojama: darbuotojas per P2 perkelia rezervaciją į kitą motociklą arba ją atšaukia, o tada per P4 suplanuoja priežiūrą (1.2.4). Susisiekimas su klientu vyksta už sistemos ribų.
 - **Prisijungimas nevaizduojamas** (laikomas bazine funkcija). Todėl paskyrų saugyklą DS8 skaito tik P5 (darbuotojų paskyrų tvarkymas), o kliento paskyros sukūrimas registruojantis diagramoje nerodomas.
-- **Perspektyviniai reikalavimai 1.6.1–1.6.3** (mokėjimai, pažeidimai, buhalterinė apskaita) neįtraukti, kaip ir ER diagramoje.
+- **Perspektyviniai reikalavimai 1.6.1–1.6.4** (mokėjimai, pažeidimai, buhalterinė apskaita, nuolaidos) neįtraukti, kaip ir ER diagramoje.
 
 ## Aprėpties patikrinimas
 

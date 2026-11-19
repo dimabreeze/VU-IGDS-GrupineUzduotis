@@ -7,11 +7,15 @@
 WITH
 dabar AS (SELECT TIMESTAMP '2026-11-19 12:00:00' AS laikas),  -- duomenų būsenos laikas (duomenys.sql)
 
--- Motociklo užimtumo laikotarpiai: nuomos (be atšauktų), techninė priežiūra ir perkėlimai.
--- Pavėluotai grąžintos nuomos laikotarpis baigiasi faktiniu grąžinimo laiku.
+-- Motociklo užimtumo laikotarpiai: nuomos (be atšauktų), techninė priežiūra ir perkėlimai
+-- (apibrėžimas – artefaktai/12-funkcijos.md). Nuoma prasideda planuojama pradžia, o baigiasi grąžinimo laiku,
+-- jei motociklas grąžintas (anksčiau ar vėliau nei planuota); vykstanti nuoma – vėlesniu iš planuojamos pabaigos
+-- ir dabartinio laiko; rezervuota – planuojama pabaiga.
 uzimtumas AS (
     SELECT n."Motociklo ID" AS moto, 'nuoma' AS rusis, n."ID" AS id, n."Planuojama pradžia" AS pradzia,
-           CASE WHEN g."Laikas" > n."Planuojama pabaiga" THEN g."Laikas" ELSE n."Planuojama pabaiga" END AS pabaiga,
+           CASE WHEN g."Laikas" IS NOT NULL THEN g."Laikas"
+                WHEN n."Būsena" = 'aktyvi' THEN GREATEST(n."Planuojama pabaiga", (SELECT laikas FROM dabar))
+                ELSE n."Planuojama pabaiga" END AS pabaiga,
            n."Išdavimo filialo ID" AS fil_pradzioje, n."Grąžinimo filialo ID" AS fil_pabaigoje,
            n."Būsena" = 'užbaigta' AS baigtas
     FROM "Nuoma" n LEFT JOIN "Grąžinimas" g ON g."Nuomos ID" = n."ID"
@@ -115,5 +119,10 @@ UNION ALL
 SELECT 14, 'Nenaudojamas motociklas neturi laikotarpių ateityje', COUNT(*)
 FROM uzimtumas u JOIN "Motociklas" m ON m."ID" = u.moto
 WHERE NOT m."Naudojamas" AND u.pabaiga > (SELECT laikas FROM dabar)
+UNION ALL
+SELECT 15, 'Motociklas išduotas ne kito laikotarpio metu (ankstesnė nuoma grąžinta)', COUNT(*)
+FROM "Išdavimas" i JOIN "Nuoma" n ON n."ID" = i."Nuomos ID"
+JOIN uzimtumas u ON u.moto = n."Motociklo ID" AND NOT (u.rusis = 'nuoma' AND u.id = n."ID")
+WHERE u.pradzia <= i."Laikas" AND i."Laikas" < u.pabaiga
 ) patikros
 ORDER BY "Nr.";

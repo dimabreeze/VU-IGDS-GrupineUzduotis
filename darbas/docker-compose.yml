@@ -1,6 +1,7 @@
 # Motociklų nuomos IS bandomoji duomenų bazė (PostgreSQL 18).
 # Paleidimas (iš aplanko darbas/):  docker compose up -d
-# Pirmą kartą paleidus, sukuriama schema (schema.sql) ir įkeliami bandomieji duomenys (duomenys.sql).
+# Pirmą kartą paleidus, sukuriama schema (schema.sql), įkeliami bandomieji duomenys (duomenys.sql)
+# ir 2.2.1 skyriaus funkcijos (funkcijos.sql).
 # Prisijungimas: localhost:5433, duomenų bazė motonuoma, vartotojas motonuoma, slaptažodis motonuoma.
 # Duomenis sukurti iš naujo (pvz., pakeitus schema.sql ar duomenys.sql):  docker compose down -v && docker compose up -d
 services:
@@ -17,7 +18,9 @@ services:
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
       - ./duomenys.sql:/docker-entrypoint-initdb.d/02-duomenys.sql:ro
+      - ./funkcijos.sql:/docker-entrypoint-initdb.d/03-funkcijos.sql:ro
       - ./patikra.sql:/patikra.sql:ro
+      - ./funkciju_testai.sql:/funkciju_testai.sql:ro
       - duomenys:/var/lib/postgresql
 
 volumes:

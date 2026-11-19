@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 2.1.1 „Sistemos struktūros modelis“.
 
-**Būsena:** baigta 2026-11-19.
+**Būsena:** baigta 2026-11-19. Funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` išsamiai aprašytos 12 žingsnyje (`12-funkcijos.md`).
 
 Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta kaip 2 paskaitos 20 skaidrėje („Aukšto lygio struktūrinė schema“): medis, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona), funkcijos pavadintos veiksmažodžiu bendratimi. Mūsų schemoje 4 lygiai, todėl ketvirtam lygiui pridėta šviesiai geltona spalva.
 
@@ -66,13 +66,13 @@ Lentelėje kiekviena funkcija nurodyta vieną kartą; „Tikrinti motociklo uži
 - **2 ir 3 lygiai sudaryti pagal panaudos atvejų ryšius.** Operacija (2 lygis) – panaudos atvejis, kurį tiesiogiai inicijuoja aktorius; jos iškviečiamos funkcijos (3 lygis) – panaudos atvejai, kuriuos ji įtraukia («include») arba kurie ją papildo («extend»). Funkcijų pavadinimai sutampa su panaudos atvejų pavadinimais.
 - **Bendros funkcijos pakartotos.** „Tikrinti motociklo užimtumą“ kviečia penkios operacijos (kaip PA6 «include» – PA1, PA2, PA4, PA11, PA22), „Tikrinti vairuotojo pažymėjimą“ – dvi (PA2, PA4), „Užfiksuoti ridą ir būklę“ – dvi (PA9, PA10). Jei funkcija būtų nubraižyta tik vieną kartą, schemoje nesimatytų, kad, pavyzdžiui, rezervacija tikrina užimtumą. Kad būtų aišku, jog tai ta pati funkcija, visi jos pasikartojimai pažymėti dvigubomis šoninėmis linijomis.
 - **Funkcijų pavadinimai programoje** (`tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina`) nurodyti tų funkcijų, kurios išsamiai aprašomos 2.2.1 skyriuje (12 žingsnis), kad 2.1.1 ir 2.2.1 skyrius būtų galima susieti. `skaiciuotiKaina` apskaičiuoja galutinę kainą kartu su bauda, todėl pavadinimas parašytas prie „Apskaičiuoti galutinę nuomos kainą“, o baudos apskaičiavimas, kaip PA14, lieka atskira sąlygine funkcija.
-- **Taisyklės be panaudos atvejo atskiromis funkcijomis nevaizduojamos.** Tarifų galiojimo nepersidengimas ir naudoto tarifo nekeičiamumas, bent vienas motociklas perkėlime, paskyros vaidmens atitiktis savininkui (`10-lenteles.md`, „Taisyklės, kurias tikrina sistemos funkcijos“) – tai operacijų „Tvarkyti tarifus“, „Planuoti motociklų perkėlimą“ ir „Tvarkyti darbuotojų paskyras“ vidiniai patikrinimai. Atskiros funkcijos jiems būtų funkcijos be panaudos atvejo.
-- **Neplanuota techninė priežiūra** atskira funkcija nevaizduojama, kaip ir panaudos atvejų bei duomenų srautų diagramose: darbuotojas naudoja „Keisti rezervaciją“ arba „Atšaukti rezervaciją“, tada „Planuoti techninę priežiūrą“ (1.2.4).
-- **Prisijungimas ir registracija** nevaizduojami (laikomi bazine funkcija), **perspektyviniai reikalavimai 1.6.1–1.6.3** neįtraukti.
+- **Taisyklės be panaudos atvejo atskiromis funkcijomis nevaizduojamos.** Tarifų galiojimo nepersidengimas ir naudoto tarifo nekeičiamumas, bent vienas motociklas perkėlime, paskyros vaidmens atitiktis savininkui, išdavimas tik grąžinus ankstesnę nuomą ir nurašyto motociklo būsimi laikotarpiai (`10-lenteles.md`, „Taisyklės, kurias tikrina sistemos funkcijos“) – tai operacijų „Tvarkyti tarifus“, „Planuoti motociklų perkėlimą“, „Tvarkyti darbuotojų paskyras“, „Įforminti išdavimą“ ir „Tvarkyti motociklų modelius ir motociklus“ vidiniai patikrinimai. Atskiros funkcijos jiems būtų funkcijos be panaudos atvejo.
+- **Neplanuota techninė priežiūra** atskira funkcija nevaizduojama, kaip ir panaudos atvejų bei duomenų srautų diagramose: darbuotojas naudoja „Keisti rezervaciją“ arba „Atšaukti rezervaciją“, tada „Planuoti techninę priežiūrą“ (1.2.4). Taip pat ir **pavėluotas grąžinimas**: kito kliento rezervacija keičiama arba atšaukiama tomis pačiomis operacijomis (`12-funkcijos.md`).
+- **Prisijungimas ir registracija** nevaizduojami (laikomi bazine funkcija), **perspektyviniai reikalavimai 1.6.1–1.6.4** neįtraukti.
 - **Išdėstymas.** Procesai išdėstyti septyniais vienodo pločio stulpeliais, sistema – virš jų centre. 2 ir 3 lygio funkcijos po procesu surašytos vertikaliai su įtrauka, kaip darbų išskaidymo schemoje (9 paskaita, 24 skaidrė): išdėsčius 16 operacijų horizontaliai, kaip 2 paskaitos 20 skaidrėje, schema būtų per plati ataskaitos puslapiui.
 
 ## Aprėpties patikrinimas
 
 - Kiekvienas funkcinis reikalavimas 1.2.1–1.2.5 turi bent vieną šaką (procesą), o kiekvienas duomenų srautų diagramos procesas P1–P7 – vieną šaką.
 - Kiekvienas panaudos atvejis PA1–PA22 schemoje yra lygiai viena funkcija tuo pačiu pavadinimu (22 funkcijos: 16 operacijų ir 6 iškviečiamos funkcijos); kiekvienas «include» ir «extend» ryšys panaudos atvejų diagramoje atitinka iškvietimą schemoje.
-- Funkcijos, kurias 12 žingsnyje planuojama aprašyti išsamiai (`tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina`), yra schemoje. Jei 12 žingsnyje bus aprašytos tik dvi, trečiosios pavadinimas programoje iš schemos išbraukiamas.
+- Visos trys 2.2.1 skyriuje išsamiai aprašytos funkcijos (`tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina`, `12-funkcijos.md`) yra schemoje. Užraktus ir transakciją valdo 2 lygio operacijos, o 3 lygio funkcijos tik tikrina ar skaičiuoja.

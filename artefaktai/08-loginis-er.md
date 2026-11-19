@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.5.2 „ER loginio lygmens diagrama“.
 
-**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis). Po 1 kontrolinio taško (2026-11-19): pridėtas ryšys „įkainojama“ (Tarifas 1 : N Nuoma), o Nuomos atributai „Paros kaina“ ir „Užstatas“ pašalinti; Kategorija aprašyta kaip klasifikatorius; papildyta aprėpties lentelė. Aptarus diagramą (2026-11-19): Galutinė kaina ir Bauda pažymėtos kaip išvestiniai atributai, iš Baudos pakopos pašalintas atributas „Vėlavimas iki (val.)“. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19): Motociklo modelio atributai „Gamintojas“ ir „Tipas“ pakeisti klasifikatoriais – esybėmis Gamintojas ir Motociklo tipas (esybių – 16); Techninės priežiūros ir Perkėlimo atributai „Pradžios data“, „Pabaigos data“ pervadinti „Pradžia“, „Pabaiga“, nes laikotarpiai saugomi minutės tikslumu.
+**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis). Po 1 kontrolinio taško (2026-11-19): pridėtas ryšys „įkainojama“ (Tarifas 1 : N Nuoma), o Nuomos atributai „Paros kaina“ ir „Užstatas“ pašalinti; Kategorija aprašyta kaip klasifikatorius; papildyta aprėpties lentelė. Aptarus diagramą (2026-11-19): Galutinė kaina ir Bauda pažymėtos kaip išvestiniai atributai, iš Baudos pakopos pašalintas atributas „Vėlavimas iki (val.)“. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19): Motociklo modelio atributai „Gamintojas“ ir „Tipas“ pakeisti klasifikatoriais – esybėmis Gamintojas ir Motociklo tipas (esybių – 16); Techninės priežiūros ir Perkėlimo atributai „Pradžios data“, „Pabaigos data“ pervadinti „Pradžia“, „Pabaiga“, nes laikotarpiai saugomi minutės tikslumu. Aprašant funkcijas (12 žingsnis, 2026-11-19): pridėta nuoroda į užimtumo laikotarpio apibrėžimą.
 
 Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [GeeksforGeeks, „Introduction of ER Model“](https://www.geeksforgeeks.org/dbms/introduction-of-er-model/)). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
@@ -80,7 +80,7 @@ Kiekvieno ryšio kardinalumo pagrindimas ir privalomumas (ar ryšio pusėje gali
 
 ## Motociklo buvimo vietos taisyklė
 
-Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, kur buvo išduotas. Nuoma, perkėlimas ir techninė priežiūra yra motociklo užimtumo laikotarpiai: nuoma prasideda išdavimo filiale ir baigiasi grąžinimo filiale, perkėlimas – „iš“ ir „į“ filialuose, o priežiūra vyksta ten, kur motociklas tuo metu yra. Naują laikotarpį galima įrašyti tik tada, kai:
+Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, kur buvo išduotas. Nuoma, perkėlimas ir techninė priežiūra yra motociklo užimtumo laikotarpiai (kada jie prasideda ir baigiasi, apibrėžta `12-funkcijos.md`): nuoma prasideda išdavimo filiale ir baigiasi grąžinimo filiale, perkėlimas – „iš“ ir „į“ filialuose, o priežiūra vyksta ten, kur motociklas tuo metu yra. Naują laikotarpį galima įrašyti tik tada, kai:
 
 1. jis nesutampa su kitais to motociklo užimtumo laikotarpiais;
 2. jo pradžioje motociklas bus tame filiale, kuriame laikotarpis prasideda (pagal ankstesnio laikotarpio pabaigos filialą arba, jei jo nėra, pagal filialą, kuriame motociklas yra dabar);
@@ -88,7 +88,7 @@ Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, 
 
 Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (1.3.2.4).
 
-Taisyklę įgyvendins užimtumo tikrinimo funkcija (žr. 12 žingsnį), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
+Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (`12-funkcijos.md`), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
 
 ## Palyginimas su laboratoriniu darbu
 
@@ -114,4 +114,4 @@ Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Moto
 | 1.3.5.1 Prieiga pagal vaidmenis | Paskyra (Vaidmuo) |
 | 1.3.5.2 Duomenų apsauga | Paskyra (Slaptažodžio maiša) |
 
-Kiekviena esybė susijusi bent su vienu reikalavimu, o kiekvienas funkcinis reikalavimas turi bent vieną esybę. Perspektyvinių reikalavimų 1.6.1–1.6.3 duomenys (mokėjimai, pažeidimai, perdavimas į apskaitą) į modelį sąmoningai neįtraukti.
+Kiekviena esybė susijusi bent su vienu reikalavimu, o kiekvienas funkcinis reikalavimas turi bent vieną esybę. Perspektyvinių reikalavimų 1.6.1–1.6.4 duomenys (mokėjimai, pažeidimai, perdavimas į apskaitą, nuolaidos) į modelį sąmoningai neįtraukti.

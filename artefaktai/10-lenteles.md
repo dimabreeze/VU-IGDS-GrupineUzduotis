@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 2.1.2 „Duomenų modelis“ ir 2.2.2 „Duomenų modelio aprašymas“.
 
-**Būsena:** baigta 2026-11-19.
+**Būsena:** baigta 2026-11-19. Aprašant funkcijas (12 žingsnis, 2026-11-19) patikslintas skyrius „Taisyklės, kurias tikrina sistemos funkcijos“: užimtumo laikotarpio apibrėžimas, užraktai, išdavimo ir nurašymo taisyklės.
 
 Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kiekviena esybė tapo lentele, M:N ryšiai – atskiromis lentelėmis, o 1:N ir 1:1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu, kaip 5 paskaitos 17–20 skaidrėse: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – skyrius „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
@@ -12,7 +12,7 @@ Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kie
 
 *Motociklų nuomos IS fizinė ER diagrama* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 
-Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią schemą (ataskaitoje nepateikiamas). Jis patikrintas PostgreSQL 18: sukuriamos 18 lentelių ir 29 išoriniai raktai, teisingi pavyzdiniai duomenys įrašomi, o 12 apribojimus pažeidžiančių įrašų atmetami. Diagramos ir skripto lentelės, atributai, tipai ir raktai sutampa. Schemai sukurti bandomieji (išgalvoti) duomenys `darbas/duomenys.sql` – 2025–2026 m. sezonų nuomos ir 2027 m. rezervacijos – ir užklausos `darbas/patikra.sql`, kurios tikrina skyriuje „Taisyklės, kurias tikrina sistemos funkcijos“ išvardytas taisykles; su bandomaisiais duomenimis pažeidimų nerasta. Kaip paleisti duomenų bazę – `README.md`.
+Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią schemą (ataskaitoje nepateikiamas). Jis patikrintas PostgreSQL 18: sukuriamos 18 lentelių ir 29 išoriniai raktai, teisingi pavyzdiniai duomenys įrašomi, o 12 apribojimus pažeidžiančių įrašų atmetami. Diagramos ir skripto lentelės, atributai, tipai ir raktai sutampa. Schemai sukurti bandomieji (išgalvoti) duomenys `darbas/duomenys.sql` – 2025–2026 m. sezonų nuomos ir 2027 m. rezervacijos – ir užklausos `darbas/patikra.sql` (15 patikrų), kurios tikrina skyriuje „Taisyklės, kurias tikrina sistemos funkcijos“ išvardytas taisykles ir operacijų įrašomų duomenų (būsenos, motociklo filialo ir ridos) suderinamumą; su bandomaisiais duomenimis pažeidimų nerasta. Kaip paleisti duomenų bazę – `README.md`.
 
 ## Bendri sprendimai
 
@@ -30,15 +30,20 @@ Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią s
 
 ### Taisyklės, kurias tikrina sistemos funkcijos
 
-Kai kurių taisyklių duomenų bazės apribojimais (PK, FK, UNIQUE, NOT NULL, CHECK) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos (12 žingsnis) prieš įrašydamos duomenis:
+Kai kurių taisyklių duomenų bazės apribojimais (PK, FK, UNIQUE, NOT NULL, CHECK) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos ir operacijos (12 žingsnis, `12-funkcijos.md`) prieš įrašydamos duomenis:
 
-- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (`08-loginis-er.md`) – funkcija `tikrintiUzimtuma`; ji vykdoma toje pačioje transakcijoje, kurioje įrašoma rezervacija, todėl iš dviejų vienu metu pateiktų tos pačios rezervacijos bandymų įrašomas tik vienas (1.3.3.3);
-- vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“);
+- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (`08-loginis-er.md`) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; užraktas atleidžiamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (1.3.3.3);
+- vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“); rezervacija tarifo įrašą užrakina bendru užraktu, todėl tarifo keitimas laukia, kol ji bus įrašyta;
 - nuomos tarifas priklauso nuomojamo motociklo modeliui ir galiojo rezervavimo dieną;
 - perkėlimas turi bent vieną motociklą (diagramoje – „vienas arba daug“);
 - klientas turi modeliui reikiamą kategoriją, galiojančią visą nuomos laikotarpį – funkcija `tikrintiKlientoTeise`;
-- rida grąžinant ne mažesnė nei išduodant, o Galutinė kaina ir Bauda apskaičiuojamos pagal nuomos tarifą ir baudų pakopas – funkcija `skaiciuotiKaina`;
+- motociklas išduodamas tik tada, kai jis yra išdavimo filiale, o ankstesnė jo nuoma grąžinta;
+- rida grąžinant ne mažesnė nei išduodant – tikrinama fiksuojant ridą ir būklę;
+- Galutinė kaina ir Bauda apskaičiuojamos pagal nuomos tarifą ir baudų pakopas – funkcija `skaiciuotiKaina`;
+- nebenaudojamas (nurašytas) motociklas neturi būsimų užimtumo laikotarpių: nurašymas užrakina motociklo įrašą ir tik tada tikrina, ar jų nėra;
 - paskyros vaidmuo atitinka, kam ji priklauso (kliento paskyra – vaidmuo „klientas“, darbuotojo – „darbuotojas“ arba „administratorius“).
+
+Motociklo užimtumo laikotarpis apibrėžtas `12-funkcijos.md`: nuoma prasideda planuojama pradžia, o baigiasi grąžinimo laiku (jei motociklas grąžintas), vykstanti – ne anksčiau nei dabartiniu laiku, rezervuota – planuojama pabaiga.
 
 ### Ryšys su loginiu modeliu ir duomenų srautų diagrama
 

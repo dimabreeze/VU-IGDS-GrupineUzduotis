@@ -47,11 +47,12 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 
 ## Sistemos ribos
 
-Į pirmąją sistemos versiją **neįeina** (trys iš jų aprašyti kaip perspektyviniai reikalavimai 1.6.1–1.6.3):
+Į pirmąją sistemos versiją **neįeina** (keturi iš jų aprašyti kaip perspektyviniai reikalavimai 1.6.1–1.6.4):
 
 - mokėjimas internetu ir integracija su mokėjimų sistema (šioje versijoje už nuomą sumokama filiale);
 - mokėjimas dalimis;
 - nuoma organizacijoms (juridiniams asmenims);
 - integracija su buhalterinės apskaitos sistema;
 - išsamus motociklo pažeidimų registravimas (šioje versijoje darbuotojas išdavimo ir grąžinimo metu tik užfiksuoja ridą ir trumpai aprašo būklę);
+- nuolaidos ir kompensacijos klientams (šioje versijoje kompensaciją, pvz., klientui, kuris laukė pavėluotai grąžinto motociklo, įmonė suteikia už sistemos ribų);
 - mobilioji programėlė.

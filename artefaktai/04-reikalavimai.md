@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
-**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5 ir 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas. Rengiant duomenų srautų diagramą (9 žingsnis, 2026-11-18) iš 1.3.5.2 išbraukti nesėkmingų prisijungimų žurnalas ir paskyros blokavimas, nes prisijungimas į darbą neįtraukiamas. Po 1 kontrolinio taško (2026-11-19) patikslinti 1.2.2 (išdavimo ir grąžinimo filialai pasirenkami rezervuojant), 1.2.4 (priežiūra negali sutapti ir su vykstančia nuoma) ir 1.2.5 (perkėlimui taikoma motociklo buvimo vietos taisyklė).
+**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5 ir 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas. Rengiant duomenų srautų diagramą (9 žingsnis, 2026-11-18) iš 1.3.5.2 išbraukti nesėkmingų prisijungimų žurnalas ir paskyros blokavimas, nes prisijungimas į darbą neįtraukiamas. Po 1 kontrolinio taško (2026-11-19) patikslinti 1.2.2 (išdavimo ir grąžinimo filialai pasirenkami rezervuojant), 1.2.4 (priežiūra negali sutapti ir su vykstančia nuoma) ir 1.2.5 (perkėlimui taikoma motociklo buvimo vietos taisyklė). Aprašant funkcijas (12 žingsnis, 2026-11-19) pridėtas perspektyvinis reikalavimas 1.6.4 (nuolaidos ir kompensacijos).
 
 ## 1.2. Funkciniai reikalavimai
 
@@ -175,3 +175,9 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 | ***Nr. 1.6.3*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
 | ***Aprašymas:*** | Užbaigus nuomą, sistema turi automatiškai perduoti jos mokėjimų duomenis (sumą, PVM, mokėjimo datą ir būdą) į įmonės naudojamą buhalterinės apskaitos sistemą. Administratorius turi matyti, kurių nuomų duomenys perduoti, o kurių perdavimas nepavyko. |
+
+### 1.6.4. Nuolaidos ir kompensacijos
+
+| ***Nr. 1.6.4*** | ***Reikalavimo tipas: funkcinis*** |
+|---|---|
+| ***Aprašymas:*** | Filialo darbuotojas turi galėti suteikti klientui nuolaidą arba kompensaciją (suma ar procentais), nurodydamas priežastį, pvz., kai klientas laukė pavėluotai grąžinto motociklo, o administratorius – nustatyti didžiausią leidžiamą nuolaidą. Grąžinant sistema galutinę nuomos kainą apskaičiuoja įvertindama nuolaidą. Administratorius turi matyti visas suteiktas nuolaidas ir jų priežastis. |
