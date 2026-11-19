@@ -12,7 +12,7 @@ Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kie
 
 *Motociklų nuomos IS fizinė ER diagrama* (paveikslo numeris bus suteiktas surenkant ataskaitą)
 
-Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią schemą (ataskaitoje nepateikiamas). Jis patikrintas PostgreSQL 18: sukuriamos 18 lentelių ir 29 išoriniai raktai, teisingi pavyzdiniai duomenys įrašomi, o 12 apribojimus pažeidžiančių įrašų atmetami. Diagramos ir skripto lentelės, atributai, tipai ir raktai sutampa.
+Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią schemą (ataskaitoje nepateikiamas). Jis patikrintas PostgreSQL 18: sukuriamos 18 lentelių ir 29 išoriniai raktai, teisingi pavyzdiniai duomenys įrašomi, o 12 apribojimus pažeidžiančių įrašų atmetami. Diagramos ir skripto lentelės, atributai, tipai ir raktai sutampa. Schemai sukurti bandomieji (išgalvoti) duomenys `darbas/duomenys.sql` – 2025–2026 m. sezonų nuomos ir 2027 m. rezervacijos – ir užklausos `darbas/patikra.sql`, kurios tikrina skyriuje „Taisyklės, kurias tikrina sistemos funkcijos“ išvardytas taisykles; su bandomaisiais duomenimis pažeidimų nerasta. Kaip paleisti duomenų bazę – `README.md`.
 
 ## Bendri sprendimai
 
