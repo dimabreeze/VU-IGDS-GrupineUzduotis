@@ -17,7 +17,7 @@ Ataskaitą dėstytojui pateikti: **pirmadienį, 2026-11-23**. Po to – gynimas 
 | Kt 2026-11-19 | 4–7: visi reikalavimai, panaudos atvejų diagrama |
 | Pn 2026-11-20 | 8–9: loginė ER, DSD, 1 kontrolinis taškas (atlikta 2026-11-18–19) |
 | Š 2026-11-21 | 10–12: fizinė ER ir lentelės, struktūrinė schema, funkcijos (10–11 žingsniai atlikti 2026-11-19) |
-| Sk 2026-11-22 | 13–15: dizainas, testai, Ganto diagrama; 2 kontrolinis taškas; 16 žingsnis (surinkimas) (13–14 žingsniai atlikti 2026-11-19, 15 žingsnis ir 2 kontrolinis taškas – 2026-11-20) |
+| Sk 2026-11-22 | 13–15: dizainas, testai, Ganto diagrama; 2 kontrolinis taškas; 16 žingsnis (surinkimas) (13–14 žingsniai atlikti 2026-11-19, 15 žingsnis, 2 kontrolinis taškas ir 16 žingsnis – 2026-11-20) |
 | Pr 2026-11-23 | Galutinis teksto patikrinimas ir pateikimas |
 
 Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD paliekame viename lygyje.
@@ -173,6 +173,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Perskaityti ir pataisyti lietuvišką tekstą, patikrinti reikalavimų ir paveikslų numeraciją.
 - Priedas „Atsekamumo matrica“: A ir B lentelės iš `artefaktai/16-atsekamumo-matrica.md`.
 - Artefaktas: galutinis `.docx`.
+- Atlikta 2026-11-20: ataskaita `ataskaita/MotoNuoma_IS_ataskaita.docx` ir `.pdf` (84 psl., 22 paveikslai, 72 lentelės), surenkama iš `ataskaita/ataskaita.md` (žr. `README.md`). Perskaitytas ir pataisytas lietuviškas tekstas; pataisos, liečiančios artefaktus, padarytos visuose dokumentuose. Liko: galutinė peržiūra ir pateikimas 2026-11-23.
 
 ## Priminimai
 
