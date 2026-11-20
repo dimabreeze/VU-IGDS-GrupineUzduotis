@@ -6,7 +6,12 @@ Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
 ## 1.2. Funkciniai reikalavimai
 
-Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). Tekste skaičiais be žymės rašomi tik skyrių numeriai. Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Pavadinimai po numeriu skirti nuorodoms darbe.
+Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: 
+* FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), 
+* NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), 
+* PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). 
+
+Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Pavadinimai po numeriu skirti nuorodoms darbe.
 
 ### FR 1.2.1. Motociklų paieška
 

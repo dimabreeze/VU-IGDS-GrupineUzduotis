@@ -31,7 +31,7 @@ Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoj
 
 ## Kaip sudaryta
 
-- **Pagrindas** – dėstytojo patvirtintas pavyzdys `saltiniai/lab-GANTT-diagrama.xlsx`: tos pačios skiltys (Veikla, Atsakingas, Pradžia, Trukmė (sav.), Pabaiga), savaitiniai stulpeliai, spalvos, kontroliniai taškai ◆ ir projekto suvestinė apačioje. Ganto diagrama – 9 paskaitos 19–22 skaidrės, šeši etapai – 25 skaidrė.
+- **Pagrindas** – dėstytojo patvirtintas pavyzdys `saltiniai/lab-GANTT-diagrama.xlsx`: tos pačios skiltys (Veikla, Atsakingas, Pradžia, Trukmė (sav.), Pabaiga), savaitiniai stulpeliai, spalvos, kontroliniai taškai ◆ ir projekto suvestinė apačioje.
 - **Be savos antraštės:** pavyzdyje buvo pavadinimas ir eilutė „Atliko“. Grafikas yra ataskaitos dalis, todėl pavadinimas pateikiamas paveikslo pavadinime, o ne pačiame grafike.
 - **Juostos piešiamos sąlyginiu formatavimu**, kaip pavyzdyje: darbo juosta (mėlyna) – kai trukmė įvesta skaičiumi, etapo juosta (violetinė) – kai trukmė apskaičiuojama formule. Kaip ir pavyzdyje, savaitės iki šios dienos (`TODAY()`) nuspalvintos pilkai, todėl paveikslas priklauso nuo eksporto dienos.
 - **Ryšiai tarp darbų – pradžios datų formulėse.** Pabaiga = pradžia + trukmė × 7 − 1. Dažniausias ryšys – „pabaiga–pradžia“ (darbas pradedamas kitą dieną po ankstesnio pabaigos), lygiagretūs darbai turi tą pačią pradžią. Etapo pradžia ir pabaiga – mažiausia ir didžiausia jo darbų data. Pakeitus projekto pradžią arba kurio nors darbo trukmę, visos datos ir juostos persiskaičiuoja.

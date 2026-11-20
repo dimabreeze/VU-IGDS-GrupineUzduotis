@@ -14,7 +14,7 @@ Diagramoje pavaizduoti visi trys vartotojai iš `02-vartotojai.md` (klientas, fi
 
 ## Žymėjimas
 
-- Rodyklė nuo aktoriaus į panaudos atvejį: aktorius inicijuoja šį panaudos atvejį (kaip 3 paskaitos pavyzdžiuose).
+- Rodyklė nuo aktoriaus į panaudos atvejį: aktorius inicijuoja šį panaudos atvejį.
 - Punktyrinė rodyklė «include»: bazinis panaudos atvejis visada įtraukia nurodytą panaudos atvejį.
 - Punktyrinė rodyklė «extend»: panaudos atvejis papildo bazinį tik esant nurodytai sąlygai (sąlyga laužtiniuose skliaustuose).
 

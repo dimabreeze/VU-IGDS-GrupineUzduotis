@@ -8,11 +8,7 @@
 
 #### Užsakovas
 
-UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus:  
-    - Vilniuje, 
-    - Kaune,
-    - Klaipėdoje.  
-Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
+UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniuje, Kaune ir Klaipėdoje. Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
 Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
 
 #### Dabartinė veikla
@@ -164,7 +160,10 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 
 #### Palyginimas
 
-Ženklai: ✅ – yra; ❌ – nėra; ❓ – viešai nėra informacijos.
+Ženklai: 
+- ✅ – yra,
+- ❌ – nėra,
+- ❓ – viešai nėra informacijos.
 
 Lentelė: Analogų ir kuriamos IS funkcijų palyginimas {#lent:analogai}
 | Funkcija | Bikerent | KuBa Motors | RideRent | RentSyst | Mūsų IS |
@@ -225,7 +224,12 @@ Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoj
 
 ## 1.2. Funkciniai reikalavimai
 
-Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). Tekste skaičiais be žymės rašomi tik skyrių numeriai. Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Reikalavimo pavadinimas nurodytas lentelės pavadinime ir naudojamas nuorodoms kituose skyriuose.
+Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: 
+* FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), 
+* NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), 
+* PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). 
+
+Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Reikalavimo pavadinimas nurodytas lentelės pavadinime ir naudojamas nuorodoms kituose skyriuose.
 
 ::: reikalavimas FR 1.2.1 funkcinis | Motociklų paieška
 Klientas turi galėti rasti laisvus motociklus pagal nuomos datas, filialą, charakteristikas (pvz., tipą, variklio tūrį, galią), reikiamą vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį. Paieškos rezultatuose nerodomi motociklai, kurie pasirinktomis datomis yra rezervuoti, išnuomoti, techninėje priežiūroje ar perkeliami, taip pat motociklai, kurie nuomos pradžioje bus kitame filiale.
@@ -329,7 +333,7 @@ Diagramoje pavaizduoti visi trys vartotojai iš 1.1.3 skyriaus (klientas, filial
 
 #### Žymėjimas
 
-- Rodyklė nuo aktoriaus į panaudos atvejį: aktorius inicijuoja šį panaudos atvejį (kaip 3 paskaitos pavyzdžiuose).
+- Rodyklė nuo aktoriaus į panaudos atvejį: aktorius inicijuoja šį panaudos atvejį.
 - Punktyrinė rodyklė «include»: bazinis panaudos atvejis visada įtraukia nurodytą panaudos atvejį.
 - Punktyrinė rodyklė «extend»: panaudos atvejis papildo bazinį tik esant nurodytai sąlygai (sąlyga laužtiniuose skliaustuose).
 
@@ -452,7 +456,7 @@ Lentelė: Procesų gaunami ir perduodami duomenų srautai
 
 #### Modelio sprendimai
 
-- **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Taip sudarytas ir 2 paskaitos 22 skaidrės pavyzdys („Patikrinti prieinamumą“ → „Įtraukti studentą“), o panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (1.5.2 skyrius) įgyvendinama vienoje vietoje.
+- **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (1.5.2 skyrius) įgyvendinama vienoje vietoje.
 - **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, FR 1.2.2).
 - **P7 užimtumo ir nuomų duomenis gauna iš P1**, nes tik P1 skaito visus užimtumo laikotarpius. Taip išvengiama dar kelių srautų iš saugyklų, kurie kirstų daugelį kitų.
 - **P3 skaito motociklų ir klientų duomenis.** Tvarkaraštyje ir išduodant darbuotojas turi matyti, kuris motociklas (valstybinis numeris) ir kuriam klientui (vardas, pažymėjimo numeris) išduodamas, todėl P3 skaito DS2 ir DS4. Baudų pakopas P3 ima iš DS3 pagal tarifą, su kuriuo susieta nuoma (ryšys „įkainojama“, 1.5.2 skyrius). Grąžinimo filialas pasirenkamas rezervuojant (P2), todėl grąžinant jis neįvedamas, o P3 įrašo jį į DS2 kaip naują motociklo filialą.
@@ -463,7 +467,7 @@ Lentelė: Procesų gaunami ir perduodami duomenų srautai
 
 ### 1.5.2. ER loginio lygmens diagrama
 
-Duomenų modelis sudarytas pagal funkcinius reikalavimus FR 1.2.1–FR 1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (NFR 1.3.1.3, NFR 1.3.4.2, NFR 1.3.5.1, NFR 1.3.5.2). Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [10]). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
+Duomenų modelis sudarytas pagal funkcinius reikalavimus FR 1.2.1–FR 1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (NFR 1.3.1.3, NFR 1.3.4.2, NFR 1.3.5.1, NFR 1.3.5.2). Diagrama nubraižyta Cheno žymėjimu: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (žymėjimas pagal [10]). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį: parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
 Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atributų tipai, išoriniai raktai ir apribojimai apibrėžti fizinėje ER diagramoje (2.1.2 skyrius) ir lentelių aprašyme (2.2.2 skyrius).
 
@@ -573,7 +577,7 @@ Filialo darbuotojas turi galėti suteikti klientui nuolaidą arba kompensaciją 
 
 ### 2.1.1. Sistemos struktūros modelis
 
-Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta kaip 2 paskaitos 20 skaidrėje („Aukšto lygio struktūrinė schema“): medis, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona), funkcijos pavadintos veiksmažodžio bendratimi. Mūsų schemoje 4 lygiai, todėl ketvirtam lygiui pridėta šviesiai geltona spalva.
+Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta medžio pavidalu, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona, šviesiai geltona), funkcijos pavadintos veiksmažodžio bendratimi.
 
 ::: gulscias
 
@@ -595,7 +599,7 @@ Taip kiekvienas panaudos atvejis PA1–PA22 schemoje yra funkcija tuo pačiu pav
 
 #### Žymėjimas
 
-- Linija jungia funkciją su ją sudarančiomis (iškviečiamomis) funkcijomis; rodyklių nėra, kaip 2 paskaitos 20 skaidrėje.
+- Linija jungia funkciją su ją sudarančiomis (iškviečiamomis) funkcijomis.
 - **Bendra funkcija** – funkcija, kurią kviečia kelios operacijos. Ji pakartota prie kiekvienos kviečiančios operacijos ir pažymėta stačiakampiu su dvigubomis šoninėmis linijomis – taip blokinėse schemose žymimas iš anksto apibrėžtas procesas (paprogramė), aprašytas kitoje vietoje.
 - **[sąlyga]** – funkcija kviečiama tik esant sąlygai laužtiniuose skliaustuose (kaip «extend» sąlygos panaudos atvejų diagramoje).
 - **Pasviru šriftu** – funkcijos pavadinimas programoje; šios funkcijos išsamiai aprašytos 2.2.1 skyriuje.
@@ -640,11 +644,11 @@ Lentelėje kiekviena funkcija nurodyta vieną kartą; „Tikrinti motociklo uži
 - **Taisyklės be panaudos atvejo atskiromis funkcijomis nevaizduojamos.** Tarifų galiojimo nepersidengimas ir naudoto tarifo nekeičiamumas, bent vienas motociklas perkėlime, paskyros vaidmens atitiktis savininkui, išdavimas tik grąžinus ankstesnę nuomą ir nurašyto motociklo būsimi laikotarpiai (2.2.2 skyrius, „Taisyklės, kurias tikrina sistemos funkcijos“) – tai operacijų „Tvarkyti tarifus“, „Planuoti motociklų perkėlimą“, „Tvarkyti darbuotojų paskyras“, „Įforminti išdavimą“ ir „Tvarkyti motociklų modelius ir motociklus“ vidiniai patikrinimai. Atskiros funkcijos jiems būtų funkcijos be panaudos atvejo.
 - **Neplanuota techninė priežiūra** atskira funkcija nevaizduojama, kaip ir panaudos atvejų bei duomenų srautų diagramose: darbuotojas naudoja „Keisti rezervaciją“ arba „Atšaukti rezervaciją“, tada „Planuoti techninę priežiūrą“ (FR 1.2.4). Taip pat ir **pavėluotas grąžinimas**: kito kliento rezervacija keičiama arba atšaukiama tomis pačiomis operacijomis (2.2.1 skyrius).
 - **Prisijungimas ir registracija** nevaizduojami (laikomi bazine funkcija), **perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4** neįtraukti.
-- **Išdėstymas.** Procesai išdėstyti septyniais vienodo pločio stulpeliais, sistema – virš jų centre. 2 ir 3 lygio funkcijos po procesu surašytos vertikaliai su įtrauka, kaip darbų išskaidymo schemoje (9 paskaita, 24 skaidrė): išdėsčius 16 operacijų horizontaliai, kaip 2 paskaitos 20 skaidrėje, schema būtų per plati ataskaitos puslapiui.
+- **Išdėstymas.** Procesai išdėstyti septyniais vienodo pločio stulpeliais, sistema – virš jų centre. 2 ir 3 lygio funkcijos po procesu surašytos vertikaliai su įtrauka, kaip darbų išskaidymo schemoje: išdėsčius 16 operacijų horizontaliai, schema būtų per plati ataskaitos puslapiui.
 
 ### 2.1.2. Duomenų modelis
 
-Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekviena esybė tapo lentele, M : N ryšiai – atskiromis lentelėmis, o 1 : N ir 1 : 1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu, kaip 5 paskaitos 17–20 skaidrėse: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – 2.2.2 skyriaus poskyris „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
+Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekviena esybė tapo lentele, M : N ryšiai – atskiromis lentelėmis, o 1 : N ir 1 : 1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – 2.2.2 skyriaus poskyris „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
 
 ::: gulscias
@@ -819,14 +823,14 @@ Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale at
 #### Bendri sprendimai
 
 - **Duomenų bazių valdymo sistema nepasirinkta.** Naudojami tik SQL standarto duomenų tipai: INTEGER, SMALLINT, DECIMAL, VARCHAR, CHAR, DATE, TIMESTAMP, BOOLEAN. Pavadinimai tokie pat kaip loginėje diagramoje, o išorinio rakto pavadinime nurodoma lentelė, į kurią jis rodo (pvz., „Filialo ID“).
-- **Pirminiai raktai.** Loginio modelio „Kodas“ tampa sveikojo skaičiaus pirminiu raktu „ID“, kurį sistema sugeneruoja automatiškai. Toks raktas nesikeičia (5 paskaita, 22 skaidrė) ir yra trumpas išoriniuose raktuose. Išimtis – Kategorija: jos raktas yra pati kategorijos žymė „Kodas“ (AM, A1, A2, A), nes ji trumpa, nekinta ir suprantama be papildomos užklausos. Paskyros raktas taip pat „ID“, o loginio modelio raktas „Prisijungimo vardas“ tapo unikaliu atributu, kad jį būtų galima pakeisti nekeičiant susijusių įrašų.
+- **Pirminiai raktai.** Loginio modelio „Kodas“ tampa sveikojo skaičiaus pirminiu raktu „ID“, kurį sistema sugeneruoja automatiškai. Toks raktas nesikeičia ir yra trumpas išoriniuose raktuose. Išimtis – Kategorija: jos raktas yra pati kategorijos žymė „Kodas“ (AM, A1, A2, A), nes ji trumpa, nekinta ir suprantama be papildomos užklausos. Paskyros raktas taip pat „ID“, o loginio modelio raktas „Prisijungimo vardas“ tapo unikaliu atributu, kad jį būtų galima pakeisti nekeičiant susijusių įrašų.
 - **Laikas ir datos.** Visi motociklo užimtumo laikotarpiai – nuomos planuojama pradžia ir pabaiga, išdavimo ir grąžinimo laikas, techninės priežiūros ir perkėlimo pradžia ir pabaiga – saugomi kaip TIMESTAMP, nes prieinamumą reikia rodyti tiksliai, o vėlavimas skaičiuojamas valandomis. DATE naudojama tik kalendorinėms datoms, nesusijusioms su užimtumu: tarifo galiojimui (tarifas parenkamas pagal rezervavimo dieną), kategorijos galiojimui ir gimimo datai.
 - **Pinigų sumos** saugomos kaip DECIMAL eurais (ne slankiojo kablelio skaičiai), kad nebūtų apvalinimo klaidų.
 - **Silpnos esybės.** Išdavimo ir Grąžinimo pirminis raktas kartu yra išorinis raktas į Nuomą („Nuomos ID“), todėl kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą. Baudos pakopos pirminis raktas sudėtinis: tarifas ir dalinis raktas „Vėlavimas nuo (val.)“.
 - **M : N ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
 - **Ryšiai 1 : 1 su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
 - **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (NFR 1.3.4.2), o nebenaudojamo motociklo požymis „Naudojamas“ išjungiamas (motociklas netrinamas).
-- **Normalizacija.** Lentelės atitinka trečiąją normalinę formą (5 paskaita, 7–13 skaidrės): reikšmės atominės, o neraktiniai atributai priklauso tik nuo viso pirminio rakto. Sąmoningas nukrypimas – Grąžinimo „Galutinė kaina“ ir „Bauda“. Tai išvestiniai atributai, kuriuos galima apskaičiuoti iš tarifo, nuomos laikų ir baudų pakopų, bet jie saugomi kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės gali keistis, o perskaičiuotos senų nuomų sumos nebesutaptų su sumokėtomis.
+- **Normalizacija.** Lentelės atitinka trečiąją normalinę formą: reikšmės atominės, o neraktiniai atributai priklauso tik nuo viso pirminio rakto. Sąmoningas nukrypimas – Grąžinimo „Galutinė kaina“ ir „Bauda“. Tai išvestiniai atributai, kuriuos galima apskaičiuoti iš tarifo, nuomos laikų ir baudų pakopų, bet jie saugomi kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės gali keistis, o perskaičiuotos senų nuomų sumos nebesutaptų su sumokėtomis.
 - **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (FR 1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, NFR 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
 - **Išplečiamumas.** Kadangi kategorijų apimties taisyklės nesaugomos, naujas pažymėjimo kategorijas (pvz., B, C, D) ir naujus motociklų tipus galima pridėti kaip įrašus, nekeičiant schemos. Kitų transporto priemonių nuomai reikėtų tik apibendrinti lentelę „Motociklo modelis“.
 
@@ -867,7 +871,7 @@ Kiekviena lentelė priklauso vienai saugyklai, todėl duomenų srautų diagramos
 
 Diagramoje yra 29 ryšiai. Kiekvienas jungia tėvinės lentelės pirminį raktą su vaikinės lentelės išoriniu raktu. Ryšių pavadinimai tokie pat kaip loginėje ER diagramoje (1.5.2 skyrius); M : N ryšiai „turi teisę“ ir „perkeliamas“ fizinėje diagramoje išskaidyti į du 1 : N ryšius per tarpinę lentelę.
 
-Kaip skaityti linijos galus (5 paskaita, 19 skaidrė):
+Kaip skaityti linijos galus:
 
 - **Ženklas prie tėvinės lentelės** rodo, su kiek tėvinės lentelės įrašų susijęs vienas vaikinės lentelės įrašas. „Tik vienas“ reiškia, kad išorinis raktas privalomas (NOT NULL). „Nulis arba vienas“ reiškia, kad išorinis raktas gali būti tuščias.
 - **Ženklas prie vaikinės lentelės** rodo, kiek vaikinės lentelės įrašų gali turėti vienas tėvinės lentelės įrašas. „Nulis arba daug“ reiškia, kad tėvinis įrašas gali egzistuoti be vaikinių; „vienas arba daug“ – kad be bent vieno vaikinio įrašo jis neturi prasmės. 1 : 1 ryšiuose prie vaikinės lentelės yra „nulis arba vienas“: išorinis raktas yra unikalus arba kartu yra pirminis raktas, todėl antro įrašo būti negali.
@@ -1223,7 +1227,7 @@ Ko vengiame: tamsaus fono su smulkiu pilku tekstu, sąrašo „vienas motociklas
 
 ### 2.3.2. Kuriamos sistemos dizainas
 
-Sąsajos maketai sukurti kaip prototipas, kurį 3 paskaita (14–15 skaidrės) siūlo naudoti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti [11]. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir užfiksuoti ekrano nuotraukomis naršyklėje 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu.
+Sąsajos maketai sukurti kaip prototipai, skirti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir užfiksuoti ekrano nuotraukomis naršyklėje 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu.
 
 #### Dizaino principai
 
@@ -1248,7 +1252,7 @@ Lentelė: Spalvų paletė
 
 #### Šriftas
 
-Viena šriftų šeima **Inter** (Google Fonts [12], nemokama, palaiko lietuviškas raides). Dydžiai: 14 px – paaiškinimai, 16 px – tekstas, 20 px – bloko antraštė, 28 px – puslapio antraštė (siaurame ekrane 24 px). Skaičiai lygiapločiai, kad kainos ir datos lygiuotųsi stulpeliuose. Datos rašomos `yyyy-mm-dd`, laikas – 24 val. formatu, kainos – „100,00 €“.
+Viena šriftų šeima **Inter** (Google Fonts [11], nemokama, palaiko lietuviškas raides). Dydžiai: 14 px – paaiškinimai, 16 px – tekstas, 20 px – bloko antraštė, 28 px – puslapio antraštė (siaurame ekrane 24 px). Skaičiai lygiapločiai, kad kainos ir datos lygiuotųsi stulpeliuose. Datos rašomos `yyyy-mm-dd`, laikas – 24 val. formatu, kainos – „100,00 €“.
 
 #### Tinklelis ir išdėstymas (NFR 1.3.1.1)
 
@@ -1331,9 +1335,9 @@ Lentelė: Nefunkcinių reikalavimų įgyvendinimas maketuose
 
 # 3. Testavimo planas ir programa
 
-Testavimas planuojamas sistemos lygiu (11 paskaita, 16 skaidrė). Testavimo atvejai (TA) sudaryti pagal panaudos atvejus (39–40 skaidrės): kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio (44 skaidrė). Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje (33 skaidrė). Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas (28 skaidrė). Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais (39 skaidrė) ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis (37 skaidrė).
+Testavimas planuojamas sistemos lygiu. Testavimo atvejai (TA) sudaryti pagal panaudos atvejus: kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio. Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
 
-Pradiniai duomenys paimti iš bandomųjų duomenų – išgalvoto filialų, motociklų, tarifų, klientų ir nuomų rinkinio, kurio būsena užfiksuota 2026-11-19 12:00 (iš jo paimti ir 2.2.1 skyriaus funkcijų pavyzdžiai bei 2.3.2 skyriaus maketų duomenys; TA3 – to paties rinkinio būsena 2026-11-12 11:00, žr. TA3), todėl TA galima pakartoti tomis pačiomis sąlygomis (36 skaidrė). Laukiami pranešimai – 2.2.1 skyriaus funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose.
+Pradiniai duomenys paimti iš bandomųjų duomenų – išgalvoto filialų, motociklų, tarifų, klientų ir nuomų rinkinio, kurio būsena užfiksuota 2026-11-19 12:00 (iš jo paimti ir 2.2.1 skyriaus funkcijų pavyzdžiai bei 2.3.2 skyriaus maketų duomenys; TA3 – to paties rinkinio būsena 2026-11-12 11:00, žr. TA3), todėl TA galima pakartoti tomis pačiomis sąlygomis. Laukiami pranešimai – 2.2.1 skyriaus funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose.
 
 Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
 
@@ -1347,7 +1351,7 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 ### 3.1.2. Testuojamų sistemos funkcinių ir nefunkcinių reikalavimų sąrašas
 
-Šablono lentelė papildyta stulpeliu „Kaip tikrinama“: jame nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis (11 paskaita, 16 ir 23 skaidrės).
+Šablono lentelė papildyta stulpeliu „Kaip tikrinama“: jame nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis.
 
 Lentelė: Testuojami funkciniai ir nefunkciniai reikalavimai {#lent:testuojami}
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
@@ -1458,8 +1462,7 @@ Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. BMW F 
 8. Motus2p [interaktyvus]. Prieiga per internetą: [https://www.motus2p.lt/](https://www.motus2p.lt/) (žiūrėta 2026-11-18).
 9. CheapAuto. Motociklų nuoma [interaktyvus]. Prieiga per internetą: [https://www.cheapauto.lt/motociklu-nuoma/](https://www.cheapauto.lt/motociklu-nuoma/) (žiūrėta 2026-11-18).
 10. GeeksforGeeks. Introduction of ER Model [interaktyvus]. Prieiga per internetą: [https://www.geeksforgeeks.org/dbms/introduction-of-er-model/](https://www.geeksforgeeks.org/dbms/introduction-of-er-model/).
-11. Navickas G. Informacinės ir grupinio darbo sistemos: paskaitų skaidrės. Vilniaus universitetas, Matematikos ir informatikos fakultetas, 2026.
-12. Inter (šriftas). Google Fonts [interaktyvus]. Prieiga per internetą: [https://fonts.google.com/specimen/Inter](https://fonts.google.com/specimen/Inter).
+11. Inter (šriftas). Google Fonts [interaktyvus]. Prieiga per internetą: [https://fonts.google.com/specimen/Inter](https://fonts.google.com/specimen/Inter).
 
 # Priedai {-}
 

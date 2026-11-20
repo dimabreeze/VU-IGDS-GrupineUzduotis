@@ -22,7 +22,7 @@ TIKRINTI_TESTUS  := awk -F'|' '{print} $$5 != "t" {klaida = 1} END {if (klaida) 
 
 .DEFAULT_GOAL := help
 .PHONY: help db-up db-down db-reset db-psql db-patikra db-testai db-lygiagreti db-tikrinti \
-        local-tikrinti duomenys diagramos dizainas visi
+        local-tikrinti duomenys diagramos dizainas ataskaita visi
 
 help: ## Šis sąrašas
 	@echo "Naudojimas: make <tikslas>"
@@ -98,5 +98,9 @@ diagramos: ## Eksportuoti visas diagramas į PNG (draw.io)
 dizainas: ## Eksportuoti dizaino maketus į PNG (Google Chrome, Node.js ≥ 22, internetas šriftui)
 	@command -v node >/dev/null || { echo "Nerastas Node.js"; exit 1; }
 	node artefaktai/13-dizainas/eksportuoti.mjs
+
+ataskaita: ## Surinkti ataskaitą: .docx, Word programoje atnaujinti turinį ir išsaugoti PDF (atidaryta ataskaita uždaroma neišsaugojus)
+	python3 ataskaita/irankiai/surinkti.py
+	sh ataskaita/irankiai/word.sh
 
 visi: duomenys local-tikrinti ## Sugeneruoti duomenis ir patikrinti be Docker

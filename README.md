@@ -18,7 +18,7 @@ Dažniausi veiksmai (duomenų bazės paleidimas, patikros, diagramų eksportas) 
 
 ## Ataskaitos surinkimas
 
-Ataskaita surenkama iš `ataskaita/ataskaita.md` į šablono kopiją `ataskaita/sablono-kopija.docx`; šablonas `saltiniai/` nekeičiamas. Komandos vykdomos šakniniame aplanke:
+Ataskaita surenkama iš `ataskaita/ataskaita.md` į šablono kopiją `ataskaita/sablono-kopija.docx`; šablonas `saltiniai/` nekeičiamas. Viskas atliekama komanda `make ataskaita` arba dviem komandomis šakniniame aplanke:
 
 ```bash
 python3 ataskaita/irankiai/surinkti.py
@@ -58,6 +58,7 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `make duomenys` | Iš naujo sugeneruoja `duomenys.sql` |
 | `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, kitos – 2) |
 | `make dizainas` | Eksportuoja sąsajos maketus (`artefaktai/13-dizainas/*.html`) į PNG per Google Chrome (reikia Node.js ≥ 22 ir interneto šriftui Inter) |
+| `make ataskaita` | Surenka ataskaitą: `.docx` ir PDF per Microsoft Word (žr. „Ataskaitos surinkimas“) |
 
 Patikros baigiasi eilute „Gerai: …“, o radus pažeidimą – „KLAIDA: …“ ir klaidos kodu. `db-lygiagreti` ir `local-tikrinti` reikia PostgreSQL 18 iš Homebrew (`brew install postgresql@18`), `diagramos` – draw.io.
 

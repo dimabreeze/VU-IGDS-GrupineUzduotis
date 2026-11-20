@@ -5,7 +5,7 @@ Medžiaga ataskaitos skyriui 1.5.1 „Duomenų srautų diagrama“.
 **Būsena:** baigta 2026-11-19. Po 1 kontrolinio taško (2026-11-19) pridėti srautai DS2 → P3 ir DS4 → P3 (srautų – 49), patikslinta, kada P6 įrašo naują motociklo filialą. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19) į DS2 įtrauktos naujos esybės Gamintojas ir Motociklo tipas; diagrama nekeičiama.
 
 Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytojo anksčiau priimtame pavyzdyje (`saltiniai/lab-DSD-diagrama.png`): atskiros konteksto diagramos ir gilesnių lygių nėra. 
-Žymėjimas (kaip 2 paskaitos 22 skaidrėje): 
+Žymėjimas: 
 * (E) išorinė esybė – stačiakampis, 
 * (P) procesas – suapvalintas stačiakampis, 
 * (DS) duomenų saugykla – cilindras, 
@@ -68,7 +68,7 @@ Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su s
 
 ## Modelio sprendimai
 
-- **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Taip sudarytas ir 2 paskaitos 22 skaidrės pavyzdys („Patikrinti prieinamumą“ → „Įtraukti studentą“), o panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (`08-loginis-er.md`) įgyvendinama vienoje vietoje.
+- **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (`08-loginis-er.md`) įgyvendinama vienoje vietoje.
 - **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, FR 1.2.2).
 - **P7 užimtumo ir nuomų duomenis gauna iš P1**, nes tik P1 skaito visus užimtumo laikotarpius. Taip išvengiama dar kelių srautų iš saugyklų, kurie kirstų daugelį kitų.
 - **P3 skaito motociklų ir klientų duomenis.** Tvarkaraštyje ir išduodant darbuotojas turi matyti, kuris motociklas (valstybinis numeris) ir kuriam klientui (vardas, pažymėjimo numeris) išduodamas, todėl P3 skaito DS2 ir DS4. Baudų pakopas P3 ima iš DS3 pagal tarifą, su kuriuo susieta nuoma (ryšys „įkainojama“, `08-loginis-er.md`). Grąžinimo filialas pasirenkamas rezervuojant (P2), todėl grąžinant jis neįvedamas, o P3 įrašo jį į DS2 kaip naują motociklo filialą.

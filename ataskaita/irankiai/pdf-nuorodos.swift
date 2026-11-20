@@ -7,7 +7,7 @@
 //   skyrius „1.1.4“, ekranas „EKRANAS01“            -> eilutė, prasidedanti „1.1.4. “ / „EKRANAS01. “;
 //   „FR 1.2.1“, „NFR 1.3.3.3“, „PR 1.6.1“                -> „Nr. FR 1.2.1“ (reikalavimo lentelė);
 //   „Ganto diagrama, 5.4“                           -> Ganto diagramos paveikslo pavadinimas;
-//   „TA2“                                           -> „Testavimo atvejis Nr. 2 “;
+//   „TA2“                                           -> „Testavimo atvejo Nr. 2“ (TA lentelės pirmas langelis);
 //   „PA1“, „P1“, „DS1“, „E1“                         -> eilutė „PA1 …“ (lentelės eilutė);
 //   „[12]“, „3“ (skyrius), „1 priedas“              -> eilutė „12. “ / „3. “ / „1 priedas. “.
 // Antraštės, reikalavimai, TA ir ekranai dokumente yra vienoje vietoje – nuoroda nukreipiama ten, kur jie iš
@@ -36,7 +36,8 @@ func rule(_ raw: String) -> (test: Test, global: Bool)? {
     var t = raw.trimmingCharacters(in: .whitespacesAndNewlines)
     if let r = t.range(of: #"\s*\.{3,}[\s\S]*$"#, options: .regularExpression) {    // turinio eilutė
         let title = norm(String(t[..<r.lowerBound]))
-        return ({ $0 == title }, true)
+        // ilga antraštė gali būti perkelta į kitą eilutę – tinka ir jos pirmoji eilutė
+        return ({ $0 == title || ($0.count >= 12 && title.hasPrefix($0 + " ")) }, true)
     }
     if t.contains("Ganto") || t.contains("diagrama,") {   // „Ganto diagrama, 5.4“ (gali būti perkelta į kitą eilutę)
         return ({ $0.contains("pav.") && $0.contains("(Ganto diagrama)") }, true)
@@ -51,10 +52,16 @@ func rule(_ raw: String) -> (test: Test, global: Bool)? {
     if match(#"^(N?FR|PR) \d+(\.\d+)+$"#) { return ({ $0.contains("Nr. " + t) }, true) }
     if match(#"^TA\d+$"#) {
         let n = String(t.dropFirst(2))
-        return ({ $0.hasPrefix("Testavimo atvejis Nr. \(n) ") || $0.contains("lentelė. Testavimo atvejis Nr. \(n) ") }, true)
+        return ({ $0 == "Testavimo atvejo Nr. \(n)" || $0.hasPrefix("Testavimo atvejo Nr. \(n) ") }, true)   // TA lentelės viršus
     }
     if match(#"^(PA|DS|P|E)\d+$"#) { return ({ $0 == t || $0.hasPrefix(t + " ") }, false) }
     return nil
+}
+
+// lentelės eilutės ID (PA1, P1, DS1, E1) iš nuorodos teksto
+func idKey(_ raw: String) -> String? {
+    let t = norm(raw.trimmingCharacters(in: CharacterSet(charactersIn: "()[];,. \n")))
+    return t.range(of: #"^(PA|DS|P|E)\d+$"#, options: .regularExpression) != nil ? t : nil
 }
 
 // puslapių eilutės (normalizuotos) su jų vieta tekste – skaitoma vieną kartą
@@ -96,6 +103,10 @@ for i in 0..<doc.pageCount {
             for j in [k, k - 1, k + 1, k - 2, k + 2] where j >= 0 && j < doc.pageCount && !tocPages.contains(j) {
                 if let y = hits(j, test).first { found = [(j, y)]; break }
             }
+            // PDFKit kartais sujungia visą lentelės stulpelį į vieną eilutę („Nr. PA1 PA2 … PA22“) –
+            // tada tinka Word nurodytas puslapis, jei jame yra šis ID kaip atskiras žodis
+            if found.isEmpty, let key = idKey(raw),
+               (doc.page(at: k)?.string ?? "").range(of: #"(^|\s)\#(key)(\s|$)"#, options: .regularExpression) != nil { continue }
         }
         guard found.count == 1 else {
             failed.append("p\(i + 1) „\(norm(raw))“ -> \(k.map { "p\($0 + 1)" } ?? "nėra"): rasta vietų \(found.count)")

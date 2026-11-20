@@ -26,8 +26,15 @@ ataskaita.md sintaksė (Markdown poaibis):
   ::: gulscias ... :::              gulsčias puslapis (atskiras skyrius)
   \\pagebreak                        naujas puslapis
   @pav:id, @lent:id                 nuoroda į paveikslo ar lentelės numerį
-  Vidinės nuorodos sudaromos automatiškai (žymės – skyrių antraštėse, reikalavimuose, TA, paveikslų ir
-  lentelių pavadinimuose, šaltinių sąraše ir pirmame lentelės stulpelyje, kur ID pasirodo pirmą kartą):
+  Paveikslų ir lentelių pavadinimai (taip pat reikalavimų ir TA) dedami po objektu centre (stilius Caption);
+  Markdown faile lentelės pavadinimas rašomas prieš lentelę. Nuoroda į paveikslą ar lentelę veda į jo pradžią.
+
+Formatavimas – tik stiliais (STYLES): Normal (Times New Roman 12 pt, viengubas intervalas, pirmos eilutės
+įtrauka 1,4 cm, abipusė lygiuotė), Heading 1–5, Antraštė 1/2 be numerio, List Paragraph, Šaltinių sąrašas,
+Caption, Paveikslas, Paveikslo šaltiniai, Lentelės tekstas / antraštė, Reikalavimo tekstas, Turinio antraštė,
+toc 1–3, Kodas, Vidinė nuoroda. Titulinio lapo stiliai (Titulinis …) Normal nepaveldi – lapas nepakinta.
+  Vidinės nuorodos sudaromos automatiškai (žymės – skyrių antraštėse, reikalavimų ir TA lentelėse, paveiksluose,
+  lentelėse, šaltinių sąraše ir pirmame lentelės stulpelyje, kur ID pasirodo pirmą kartą):
   skyriaus numeris (1.1.4; „3 skyrius“), FR 1.2.1, NFR 1.3.1.1, PR 1.6.1, PA1, TA1, P1, DS1, E1, EKRANAS01, [1],
   „1 priedas“, „Ganto diagrama, 5.4“ (į Ganto diagramos paveikslą {#pav:gantas}). Reikalavimo numeris – tipo žymė
   ir skyriaus numeris per tarpą (FR 1.2.1); skaičius be žymės tekste visada yra skyriaus numeris.
@@ -149,9 +156,9 @@ def ilink(name, runs):
 
 def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=None):
     rpr = ''
-    if style:
-        rpr += '<w:rStyle w:val="%s"/>' % style
-    if code:
+    if style or code:
+        rpr += '<w:rStyle w:val="%s"/>' % (style or 'Kodas')
+    if code and style:
         rpr += '<w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/>'
     if b:
         rpr += '<w:b/><w:bCs/>'
@@ -161,8 +168,6 @@ def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=N
         rpr += '<w:color w:val="%s"/>' % color
     if sz:
         rpr += '<w:sz w:val="%d"/><w:szCs w:val="%d"/>' % (sz, sz)
-    elif code:
-        rpr += '<w:sz w:val="21"/><w:szCs w:val="21"/>'
     if u:
         rpr += '<w:u w:val="%s"/>' % u
     rpr += LANG
@@ -232,17 +237,15 @@ def inline(doc, text, b=False, i=False, sz=None):
     return ''.join(out)
 
 
-def para(doc, text, style='Magistrodarbotekstas', ppr_extra='', b=False, i=False, sz=None, jc='both',
-         first_line=None, spacing='<w:spacing w:line="360" w:lineRule="auto"/>'):
-    ind = '' if first_line is None else '<w:ind w:firstLine="%d"/>' % first_line
-    jcx = '<w:jc w:val="%s"/>' % jc if jc else ''
-    return ('<w:p><w:pPr><w:pStyle w:val="%s"/>%s%s%s%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
-            % (style, ppr_extra, spacing, ind, jcx, LANG, inline(doc, text, b=b, i=i, sz=sz)))
+def para(doc, text, style='Normal'):
+    """Pastraipa; visas formatavimas – stiliuje (žr. STYLES)."""
+    return ('<w:p><w:pPr><w:pStyle w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+            % (style, LANG, inline(doc, text)))
 
 
 # ---------------------------------------------------------------- antraštės
-HEAD_STYLES = {1: 'MagistrodarboHeading1', 2: 'MagistrodarboHeading2',
-               3: 'StyleMagistrodarboHeading3Linespacing15lines', 4: 'MagistrodarboHeading4'}
+HEAD_STYLES = {1: 'Heading1', 2: 'Heading2', 3: 'Heading3', 4: 'Heading4'}
+NONUM_STYLES = {1: 'Heading1Benumerio', 2: 'Heading2Benumerio'}
 
 
 def heading(doc, level, text):
@@ -251,8 +254,7 @@ def heading(doc, level, text):
     if level == 5:
         m = ID_HEAD.match(text)
         doc.self_ref = m.group(1) if m else None
-        xml = para(doc, text, b=True, ppr_extra='<w:keepNext/>', first_line=0, jc='left',
-                   spacing='<w:spacing w:before="120" w:line="360" w:lineRule="auto"/>')
+        xml = para(doc, text, style='Heading5')
         doc.self_ref = None
         if m and m.group(1) not in doc.defined:
             doc.defined.add(m.group(1))
@@ -260,14 +262,10 @@ def heading(doc, level, text):
         return xml
     doc.in_sources = text.startswith('Šaltiniai')
     bm = None
-    # šablono MagistrodarboHeading3 stilius išjungia „keep with next“, o 4 lygis per jį paveldi
-    # 3 lygio struktūrą ir patenka į TURINĮ (\o "1-3"), todėl abu dalykai nurodomi tiesiogiai
-    extra = '<w:keepNext/>'
-    if level == 1:
-        extra += '<w:pageBreakBefore/>'
-    if nonum:
-        extra += '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="0"/></w:numPr><w:ind w:left="0" w:firstLine="0"/>'
-    else:
+    # numeracija, „keep with next“, 1 lygio naujas puslapis ir TURINIO lygiai – antraščių stiliuose
+    if nonum and level not in NONUM_STYLES:
+        die('antraštė be numerio galima tik 1 ir 2 lygio: ' + text)
+    if not nonum:
         doc.heading[level - 1] += 1
         for k in range(level, 4):
             doc.heading[k] = 0
@@ -288,10 +286,9 @@ def heading(doc, level, text):
         mp = re.match(r'^(\d+) priedas', text)
         if mp:
             bm = anchor_name('priedas', mp.group(1))
-    olvl = '<w:outlineLvl w:val="3"/>' if level == 4 else ''
     doc.nolink = True
-    xml = ('<w:p><w:pPr><w:pStyle w:val="%s"/>%s%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
-           % (HEAD_STYLES[level], extra, olvl, LANG, inline(doc, text)))
+    xml = ('<w:p><w:pPr><w:pStyle w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+           % ((NONUM_STYLES if nonum else HEAD_STYLES)[level], LANG, inline(doc, text)))
     doc.nolink = False
     return bookmark(doc, xml, bm) if bm else xml
 
@@ -310,17 +307,17 @@ ABS_BULLET, ABS_DECIMAL = 90, 91
 
 
 def list_par(doc, text, num_id, ilvl, in_table=False, sz=None):
-    sp = ('<w:spacing w:after="0" w:line="240" w:lineRule="auto"/>' if in_table
-          else '<w:spacing w:line="360" w:lineRule="auto"/>')
-    style = 'Lentelestekstas' if in_table else 'Magistrodarbotekstas'
+    style = 'Lentelestekstas' if in_table else 'Saltiniusarasas' if doc.in_sources else 'ListParagraph'
+    jc = '<w:jc w:val="left"/>' if 'http' in text and not in_table else ''  # ilgų adresų neištempti
     return ('<w:p><w:pPr><w:pStyle w:val="%s"/><w:numPr><w:ilvl w:val="%d"/><w:numId w:val="%d"/></w:numPr>'
-            '%s<w:jc w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
-            % (style, ilvl, num_id, sp, 'left' if in_table or 'http' in text else 'both', LANG,
-               inline(doc, text, sz=sz)))
+            '%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+            % (style, ilvl, num_id, jc, LANG, inline(doc, text, sz=sz)))
 
 
 # ---------------------------------------------------------------- paveikslai ir šaltinio failų nuorodos
 def caption(doc, kind, text, keep_next=False):
+    """Paveikslo ar lentelės pavadinimas (dedamas po objektu). Grąžina (xml, parinktys, žymės vardas) –
+    žymę kviečiantysis uždeda ant objekto pradžios, kad nuoroda vestų į paveikslo ar lentelės viršų."""
     m = re.search(r'\{([^}]*)\}\s*$', text)
     opts = m.group(1) if m else ''
     text = text[:m.start()].strip() if m else text.strip()
@@ -331,13 +328,12 @@ def caption(doc, kind, text, keep_next=False):
         die('žymės numeris nesutampa (pirmas perėjimas): ' + lab.group(1))
     seq = 'pav' if kind == 'pav' else 'lentele'
     word = 'pav.' if kind == 'pav' else 'lentelė.'
-    jc = 'center' if kind == 'pav' else 'left'
-    kn = '<w:keepNext/>' if keep_next else ''
-    xml = ('<w:p><w:pPr><w:pStyle w:val="Caption"/>%s<w:jc w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>'
-           '<w:fldSimple w:instr=" SEQ %s \\* ARABIC \\* MERGEFORMAT "><w:r><w:rPr><w:b/>%s</w:rPr><w:t>%d</w:t></w:r></w:fldSimple>'
-           '%s%s</w:p>' % (kn, jc, LANG, seq, LANG, n, run(' ' + word, b=True), inline(doc, ' ' + text)))
-    xml = bookmark(doc, xml, anchor_name(kind, str(n)))
-    return xml, opts
+    # po pavadinimo eina šaltinio failų nuorodos – mažesnis tarpas
+    kn = '<w:keepNext/><w:spacing w:after="60"/>' if keep_next else ''
+    xml = ('<w:p><w:pPr><w:pStyle w:val="Caption"/>%s<w:rPr>%s</w:rPr></w:pPr>'
+           '<w:fldSimple w:instr=" SEQ %s \\* ARABIC \\* MERGEFORMAT "><w:r><w:rPr>%s</w:rPr><w:t>%d</w:t></w:r></w:fldSimple>'
+           '%s%s</w:p>' % (kn, LANG, seq, LANG, n, run(' ' + word), inline(doc, ' ' + text)))
+    return xml, opts, anchor_name(kind, str(n))
 
 
 def media_rid(doc, path):
@@ -426,9 +422,8 @@ def links_table(items):
     cw = 2700
     def row(cells):
         return '<w:tr><w:trPr><w:cantSplit/></w:trPr>%s</w:tr>' % ''.join(
-            '<w:tc><w:tcPr><w:tcW w:w="%d" w:type="dxa"/></w:tcPr><w:p><w:pPr><w:pStyle w:val="Paveikslas"/>'
-            '<w:keepNext/><w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/><w:jc w:val="center"/>'
-            '</w:pPr>%s</w:p></w:tc>' % (cw, c) for c in cells)
+            '<w:tc><w:tcPr><w:tcW w:w="%d" w:type="dxa"/></w:tcPr><w:p><w:pPr><w:pStyle w:val="Paveikslosaltiniai"/>'
+            '<w:keepNext/></w:pPr>%s</w:p></w:tc>' % (cw, c) for c in cells)
     none = ''.join('<w:%s w:val="nil"/>' % e for e in ('top', 'left', 'bottom', 'right', 'insideH', 'insideV'))
     return ('<w:tbl><w:tblPr><w:tblW w:w="%d" w:type="dxa"/><w:jc w:val="center"/><w:tblBorders>%s</w:tblBorders>'
             '<w:tblLayout w:type="fixed"/><w:tblLook w:val="0000"/></w:tblPr><w:tblGrid>%s</w:tblGrid>%s%s</w:tbl>'
@@ -454,11 +449,11 @@ def figure(doc, cap_text, path, opts):
         h = lim_h
         w = int(h * wpx / hpx)
     clean_cap = re.sub(r'\s*\{[^}]*\}\s*$', '', cap_text)
-    xml = ('<w:p><w:pPr><w:pStyle w:val="Paveikslas"/><w:keepNext/><w:jc w:val="center"/></w:pPr>%s</w:p>'
+    xml = ('<w:p><w:pPr><w:pStyle w:val="Paveikslas"/></w:pPr>%s</w:p>'
            % picture(doc, path, w, h, clean_cap))
     att = [a for a in o.get('failai', '').split(',') if a]
-    cap, _ = caption(doc, 'pav', cap_text, keep_next=bool(att))
-    xml += cap
+    cap, _, bm = caption(doc, 'pav', cap_text, keep_next=bool(att))
+    xml = bookmark(doc, xml, bm) + cap
     if att:
         objs = []
         for a in att:
@@ -466,9 +461,8 @@ def figure(doc, cap_text, path, opts):
             if not os.path.exists(ap):
                 die('nėra šaltinio failo ' + ap)
             objs.append(source_link(doc, ap))
-        xml += ('<w:p><w:pPr><w:pStyle w:val="Paveikslas"/><w:keepNext/><w:spacing w:before="60" w:after="60"/>'
-                '<w:jc w:val="center"/></w:pPr>%s</w:p>'
-                % run('Šaltinio failai GitHub saugykloje (atidaromi spustelėjus):', i=True, sz=18))
+        xml += ('<w:p><w:pPr><w:pStyle w:val="Paveikslosaltiniai"/><w:keepNext/><w:spacing w:before="60" w:after="60"/>'
+                '</w:pPr>%s</w:p>' % run('Šaltinio failai GitHub saugykloje (atidaromi spustelėjus):', i=True))
         xml += links_table(objs) + spacer()
     return xml
 
@@ -534,13 +528,13 @@ def cell(doc, text, width, sz, header=False, span=1, shade=None, bold=False):
             if p.strip():
                 paras.append(list_par(doc, p[2:], nid, 2, in_table=True, sz=sz))
     else:
-        paras.append('<w:p><w:pPr><w:pStyle w:val="Lentelestekstas"/>%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
-                     % ('<w:keepNext/>' if header else '', LANG, inline(doc, text, b=header or bold, sz=sz)))
+        paras.append('<w:p><w:pPr><w:pStyle w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+                     % ('Lentelesantraste' if header else 'Lentelestekstas', LANG, inline(doc, text, b=bold, sz=sz)))
     return '<w:tc><w:tcPr>%s</w:tcPr>%s</w:tc>' % (tcpr, ''.join(paras))
 
 
 def table(doc, cap_text, lines):
-    cap_xml, opts = caption(doc, 'lent', cap_text, keep_next=True)
+    cap_xml, opts, bm = caption(doc, 'lent', cap_text)
     o = dict(re.findall(r'(\w+)=([^\s}]+)', opts))
     small = 'maza' in opts.split()
     sz = 18 if small else 20
@@ -552,12 +546,12 @@ def table(doc, cap_text, lines):
     total = TEXT_W_LAND if doc.landscape else TEXT_W
     ws = col_widths(rows, total, o.get('plotis'))
     grid = ''.join('<w:gridCol w:w="%d"/>' % w for w in ws)
-    out = [cap_xml, '<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
+    out = ['<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
            '<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="85" w:type="dxa"/><w:right w:w="85" w:type="dxa"/></w:tblCellMar>'
            '<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>'
            '</w:tblPr><w:tblGrid>%s</w:tblGrid>' % (total, grid)]
     short = len(rows) <= SHORT_TABLE
-    start = len(out)
+    start = 1
     for k, r in enumerate(rows):
         hdr = k == 0
         trpr = '<w:trPr><w:cantSplit/>%s</w:trPr>' % ('<w:tblHeader/>' if hdr else '')
@@ -577,10 +571,12 @@ def table(doc, cap_text, lines):
                 x = bookmark(doc, x, anchor_name('r', c))
             cells.append(x)
         out.append('<w:tr>%s%s</w:tr>' % (trpr, ''.join(cells)))
-    if short:  # visos eilutės, išskyrus paskutinę, laikomos su kita
-        out[start:-1] = [keep_next(x) for x in out[start:-1]]
+    # pavadinimas po lentele laikomas su paskutine eilute; trumpa lentelė – visa viename puslapyje
+    out[start if short else -1:] = [keep_next(x) for x in out[start if short else -1:]]
     out.append('</w:tbl>')
-    out.append(spacer())
+    out[0] = bookmark(doc, ''.join(out[:2]), bm)
+    del out[1]
+    out.append(cap_xml)
     return ''.join(out)
 
 
@@ -591,41 +587,47 @@ def keep_next(xml):
     return re.sub(r'(<w:pStyle w:val="[^"]*"/>)(?!<w:keepNext/>)', r'\1<w:keepNext/>', xml)
 
 
+def gap_before_table(out):
+    """Tarpas tarp teksto (ar sąrašo) ir po jo einančios lentelės: tekstas be tarpų tarp pastraipų,
+    todėl be jo lentelė prisiliestų prie teksto. Po antraštės ar pavadinimo tarpo jau yra."""
+    last = re.findall(r'<w:pStyle w:val="([^"]+)"/>', out[-1]) if out else []
+    if last and last[-1] in ('Normal', 'ListParagraph', 'Saltiniusarasas'):
+        out.append('<w:p><w:pPr><w:pStyle w:val="Lentelestekstas"/><w:keepNext/><w:spacing w:before="0" w:after="0"/>'
+                   '<w:rPr><w:sz w:val="12"/><w:szCs w:val="12"/></w:rPr></w:pPr></w:p>')
+
+
 def spacer():
     return '<w:p><w:pPr><w:pStyle w:val="Lentelestekstas"/><w:spacing w:after="120"/></w:pPr></w:p>'
 
 
 def tpl_par(doc, text_runs, bold=False, keep=False):
-    return ('<w:p><w:pPr><w:pStyle w:val="Magistrodarbotekstas"/>' + ('<w:keepNext/>' if keep else '') +
-            '<w:spacing w:line="360" w:lineRule="auto"/>'
-            '<w:ind w:firstLine="0"/><w:jc w:val="both"/><w:rPr>%s%s</w:rPr></w:pPr>%s</w:p>'
-            % ('<w:b/>' if bold else '', LANG, text_runs))
+    return ('<w:p><w:pPr><w:pStyle w:val="Reikalavimotekstas"/>' + ('<w:keepNext/>' if keep else '') +
+            '<w:rPr>%s%s</w:rPr></w:pPr>%s</w:p>' % ('<w:b/>' if bold else '', LANG, text_runs))
 
 
 def requirement(doc, nr, typ, name, text):
     doc.self_ref = nr
-    cap, _ = caption(doc, 'lent', '%s %s' % (nr, name), keep_next=True)
+    cap, _, bm = caption(doc, 'lent', '%s %s' % (nr, name))
     doc.self_ref = None
     doc.defined.add(nr)
-    cap = bookmark(doc, cap, anchor_name('r', nr))
     w1, w2 = TEXT_W // 2, TEXT_W - TEXT_W // 2
     tc = lambda w, body, span='': ('<w:tc><w:tcPr><w:tcW w:w="%d" w:type="dxa"/>%s</w:tcPr>%s</w:tc>'
                                    % (w, span, body))
     r1 = (tc(w1, tpl_par(doc, run('Nr. ' + nr.replace(' ', '\u00a0'), b=True, i=True), keep=True)) +
           tc(w2, tpl_par(doc, run('Reikalavimo tipas: ' + typ, b=True, i=True), keep=True)))
-    r2 = tc(TEXT_W, tpl_par(doc, run('Aprašymas: ', b=True, i=True) + inline(doc, text)),
+    r2 = tc(TEXT_W, tpl_par(doc, run('Aprašymas: ', b=True, i=True) + inline(doc, text), keep=True),
             '<w:gridSpan w:val="2"/>')
-    return (cap + '<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
-            '<w:tblLayout w:type="fixed"/><w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" '
-            'w:lastColumn="0" w:noHBand="0" w:noVBand="1"/></w:tblPr><w:tblGrid><w:gridCol w:w="%d"/>'
-            '<w:gridCol w:w="%d"/></w:tblGrid><w:tr><w:trPr><w:cantSplit/></w:trPr>%s</w:tr>'
-            '<w:tr><w:trPr><w:cantSplit/></w:trPr>%s</w:tr></w:tbl>' % (TEXT_W, w1, w2, r1, r2) + spacer())
+    tbl = ('<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
+           '<w:tblLayout w:type="fixed"/><w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" '
+           'w:lastColumn="0" w:noHBand="0" w:noVBand="1"/></w:tblPr><w:tblGrid><w:gridCol w:w="%d"/>'
+           '<w:gridCol w:w="%d"/></w:tblGrid><w:tr><w:trPr><w:cantSplit/></w:trPr>%s</w:tr>'
+           '<w:tr><w:trPr><w:cantSplit/></w:trPr>%s</w:tr></w:tbl>' % (TEXT_W, w1, w2, r1, r2))
+    return bookmark(doc, bookmark(doc, tbl, bm), anchor_name('r', nr)) + cap
 
 
 def test_case(doc, nr, name, block):
-    cap, _ = caption(doc, 'lent', 'Testavimo atvejis Nr. %s „%s“' % (nr, name), keep_next=True)
+    cap, _, bm = caption(doc, 'lent', 'Testavimo atvejis Nr. %s „%s“' % (nr, name))
     doc.defined.add('TA' + nr)
-    cap = bookmark(doc, cap, anchor_name('r', 'TA' + nr))
     desc = pre = ''
     tlines = []
     for l in block:
@@ -647,8 +649,8 @@ def test_case(doc, nr, name, block):
         if shade:
             tcpr += '<w:shd w:val="clear" w:color="auto" w:fill="%s"/>' % shade
         body = (run(label, b=True, sz=sz) if label else '') + inline(doc, text, b=b, sz=sz)
-        return ('<w:tc><w:tcPr>%s</w:tcPr><w:p><w:pPr><w:pStyle w:val="Lentelestekstas"/><w:rPr>%s</w:rPr></w:pPr>'
-                '%s</w:p></w:tc>' % (tcpr, LANG, body))
+        return ('<w:tc><w:tcPr>%s</w:tcPr><w:p><w:pPr><w:pStyle w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>'
+                '%s</w:p></w:tc>' % (tcpr, 'Lentelesantraste' if shade else 'Lentelestekstas', LANG, body))
     tr = lambda cells, hdr=False: '<w:tr><w:trPr><w:cantSplit/>%s</w:trPr>%s</w:tr>' % (
         '<w:tblHeader/>' if hdr else '', cells)
     rows = [tr(c('Testavimo atvejo Nr. %s' % nr, sum(g[:3]), 3, b=True) + c(name, sum(g[3:]), 3, b=True)),
@@ -663,11 +665,13 @@ def test_case(doc, nr, name, block):
             die('TA %s žingsnyje per mažai langelių: %s' % (nr, s))
         rows.append(tr(c(s[0], g[0]) + c(s[1], g[1]) + c(s[2], g[2] + g[3], 2)
                        + c(s[3] if len(s) > 3 else '', g[4]) + c(s[4] if len(s) > 4 else '', g[5])))
-    return (cap + '<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
-            '<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="85" w:type="dxa"/><w:right w:w="85" w:type="dxa"/></w:tblCellMar>'
-            '<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" '
-            'w:noHBand="0" w:noVBand="1"/></w:tblPr><w:tblGrid>%s</w:tblGrid>%s</w:tbl>'
-            % (sum(g), ''.join('<w:gridCol w:w="%d"/>' % x for x in g), ''.join(rows)) + spacer())
+    rows[-1] = keep_next(rows[-1])  # pavadinimas po lentele – su paskutine eilute
+    tbl = ('<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
+           '<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="85" w:type="dxa"/><w:right w:w="85" w:type="dxa"/></w:tblCellMar>'
+           '<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" '
+           'w:noHBand="0" w:noVBand="1"/></w:tblPr><w:tblGrid>%s</w:tblGrid>%s</w:tbl>'
+           % (sum(g), ''.join('<w:gridCol w:w="%d"/>' % x for x in g), ''.join(rows)))
+    return bookmark(doc, bookmark(doc, tbl, bm), anchor_name('r', 'TA' + nr)) + cap
 
 
 # ---------------------------------------------------------------- skyriai (puslapio orientacija)
@@ -802,6 +806,7 @@ def convert(doc, md, sect_tpl):
             while lines[k].strip() != ':::':
                 body.append(lines[k].strip())
                 k += 1
+            gap_before_table(out)
             out.append(requirement(doc, m.group(1), m.group(2), m.group(3).strip(), ' '.join(x for x in body if x)))
             k += 1
             continue
@@ -812,6 +817,7 @@ def convert(doc, md, sect_tpl):
             while lines[k].strip() != ':::':
                 body.append(lines[k])
                 k += 1
+            gap_before_table(out)
             out.append(test_case(doc, m.group(1), m.group(2).strip(), body))
             k += 1
             continue
@@ -836,6 +842,7 @@ def convert(doc, md, sect_tpl):
                 k += 1
             if pending_caption is None:
                 die('lentelė be pavadinimo: ' + tl[0])
+            gap_before_table(out)
             out.append(table(doc, pending_caption, tl))
             pending_caption = None
             continue
@@ -893,23 +900,107 @@ def convert(doc, md, sect_tpl):
 
 
 # ---------------------------------------------------------------- stiliai ir numeracija
-EXTRA_STYLES = (
-    '<w:style w:type="character" w:customStyle="1" w:styleId="Vidinenuoroda"><w:name w:val="Vidinė nuoroda"/>'
-    '<w:basedOn w:val="DefaultParagraphFont"/><w:uiPriority w:val="99"/><w:unhideWhenUsed/>'
-    '<w:rPr><w:color w:val="1F4E79"/></w:rPr></w:style>'
-    '<w:style w:type="paragraph" w:styleId="Caption"><w:name w:val="caption"/><w:basedOn w:val="Normal"/>'
-    '<w:next w:val="Magistrodarbotekstas"/><w:uiPriority w:val="35"/><w:unhideWhenUsed/><w:qFormat/>'
-    '<w:pPr><w:spacing w:before="60" w:after="120" w:line="240" w:lineRule="auto"/></w:pPr>'
-    '<w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>'
-    '<w:sz w:val="22"/><w:szCs w:val="22"/><w:lang w:val="lt-LT"/></w:rPr></w:style>'
-    '<w:style w:type="paragraph" w:customStyle="1" w:styleId="Lentelestekstas"><w:name w:val="Lentelės tekstas"/>'
-    '<w:basedOn w:val="Normal"/><w:qFormat/><w:pPr><w:spacing w:before="20" w:after="20" w:line="240" w:lineRule="auto"/></w:pPr>'
-    '<w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>'
-    '<w:sz w:val="20"/><w:szCs w:val="20"/><w:lang w:val="lt-LT"/></w:rPr></w:style>'
-    '<w:style w:type="paragraph" w:customStyle="1" w:styleId="Paveikslas"><w:name w:val="Paveikslas"/>'
-    '<w:basedOn w:val="Normal"/><w:pPr><w:spacing w:before="120" w:after="0" w:line="240" w:lineRule="auto"/>'
-    '<w:jc w:val="center"/></w:pPr><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" '
-    'w:cs="Times New Roman"/><w:lang w:val="lt-LT"/></w:rPr></w:style>')
+# Stilių sistema (sprendimas 2026-11-21): pagrindinis tekstas – Normal, kiti stiliai paveldi jį.
+# Šablono stiliai, kurie keičiami arba nenaudojami, pašalinami ir apibrėžiami iš naujo (STYLES).
+# Titulinio lapo stiliai Normal nepaveldi: jie lieka su šablono numatytuoju formatavimu (docDefaults),
+# todėl titulinis lapas atrodo kaip šablone.
+CM14 = 794                      # 1,4 cm pirmos eilutės įtrauka
+TNR = '<w:rFonts w:ascii="Times New Roman" w:eastAsia="Times New Roman" w:hAnsi="Times New Roman" w:cs="Times New Roman"/>'
+
+
+def _sz(n):
+    return '<w:sz w:val="%d"/><w:szCs w:val="%d"/>' % (n, n)
+
+
+def _sp(before=0, after=0):
+    return '<w:spacing w:before="%d" w:after="%d" w:line="240" w:lineRule="auto"/>' % (before, after)
+
+
+def _style(sid, name, ppr='', rpr='', based='Normal', typ='paragraph', custom=True, extra=''):
+    """Stiliaus apibrėžimas (elementų tvarka pagal OOXML schemą)."""
+    return ('<w:style w:type="%s"%s w:styleId="%s"><w:name w:val="%s"/>%s%s<w:qFormat/>%s%s</w:style>'
+            % (typ, ' w:customStyle="1"' if custom else '', sid, name,
+               '<w:basedOn w:val="%s"/>' % based if based else '', extra,
+               '<w:pPr>%s</w:pPr>' % ppr if ppr else '', '<w:rPr>%s</w:rPr>' % rpr if rpr else ''))
+
+
+def _num(ilvl):
+    return '<w:numPr><w:ilvl w:val="%d"/><w:numId w:val="1"/></w:numPr>' % ilvl
+
+
+def _ind(left, hanging):
+    return '<w:ind w:left="%d" w:hanging="%d"/>' % (left, hanging)
+
+
+# antraščių įtraukos: (kairė, kabanti) – numeris nuo kairė−kabanti, tekstas ir kitos eilutės nuo kairė
+HEAD_IND = {1: (567, 567), 2: (851, 851), 3: (CM14 + 1134, 1134), 4: (CM14 + 1134, 1134)}
+TOC_W = TEXT_W - 10
+DOT_TAB = '<w:tabs><w:tab w:val="right" w:leader="dot" w:pos="%d"/></w:tabs>' % TOC_W
+NEXT = '<w:next w:val="Normal"/>'
+HEAD_PPR = '<w:keepNext/><w:keepLines/>'
+
+STYLES = ''.join([
+    # pagrindinis tekstas
+    '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/>'
+    '<w:pPr>%s<w:ind w:firstLine="%d"/><w:jc w:val="both"/></w:pPr><w:rPr>%s%s%s</w:rPr></w:style>'
+    % (_sp(), CM14, TNR, _sz(24), LANG),
+    # antraštės (numeracija – abstractNum 1, žr. patch_numbering)
+    _style('Heading1', 'heading 1', HEAD_PPR + '<w:pageBreakBefore/>' + _num(0) + _sp(0, 240) + _ind(*HEAD_IND[1])
+           + '<w:jc w:val="left"/><w:outlineLvl w:val="0"/>', '<w:b/><w:bCs/><w:caps/>' + _sz(36), custom=False, extra=NEXT),
+    _style('Heading2', 'heading 2', HEAD_PPR + _num(1) + _sp(360, 120) + _ind(*HEAD_IND[2])
+           + '<w:jc w:val="left"/><w:outlineLvl w:val="1"/>', '<w:b/><w:bCs/>' + _sz(32), custom=False, extra=NEXT),
+    _style('Heading3', 'heading 3', HEAD_PPR + _num(2) + _sp(240, 120) + _ind(*HEAD_IND[3])
+           + '<w:jc w:val="left"/><w:outlineLvl w:val="2"/>', '<w:b/><w:bCs/><w:i/><w:iCs/>' + _sz(28), custom=False, extra=NEXT),
+    _style('Heading4', 'heading 4', HEAD_PPR + _num(3) + _sp(240, 120) + _ind(*HEAD_IND[4])
+           + '<w:jc w:val="left"/><w:outlineLvl w:val="3"/>', '<w:i/><w:iCs/>' + _sz(24), custom=False, extra=NEXT),
+    _style('Heading5', 'heading 5', HEAD_PPR + _sp(120, 60) + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>'
+           '<w:outlineLvl w:val="4"/>', '<w:b/><w:bCs/>', custom=False, extra=NEXT),
+    _style('Heading1Benumerio', 'Antraštė 1 be numerio', '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="0"/></w:numPr>'
+           '<w:ind w:left="0" w:firstLine="0"/>', based='Heading1', extra=NEXT),
+    _style('Heading2Benumerio', 'Antraštė 2 be numerio', '<w:numPr><w:ilvl w:val="0"/><w:numId w:val="0"/></w:numPr>'
+           '<w:ind w:left="0" w:firstLine="0"/>', based='Heading2', extra=NEXT),
+    # sąrašai (įtrauką nustato sąrašo lygis)
+    _style('ListParagraph', 'List Paragraph', '<w:ind w:firstLine="0"/>', custom=False),
+    _style('Saltiniusarasas', 'Šaltinių sąrašas', '<w:jc w:val="left"/>', based='ListParagraph'),
+    # paveikslai, lentelės, pavadinimai
+    _style('Caption', 'caption', '<w:keepLines/>' + _sp(60, 240) + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>',
+           custom=False, extra=NEXT),
+    _style('Paveikslas', 'Paveikslas', '<w:keepNext/>' + _sp(120, 60) + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>'),
+    _style('Paveikslosaltiniai', 'Paveikslo šaltiniai', _sp() + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>', _sz(18)),
+    _style('Lentelestekstas', 'Lentelės tekstas', _sp(20, 20) + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>', _sz(20)),
+    _style('Lentelesantraste', 'Lentelės antraštė', '<w:keepNext/>', '<w:b/><w:bCs/>', based='Lentelestekstas'),
+    _style('Reikalavimotekstas', 'Reikalavimo tekstas', _sp(40, 40) + '<w:ind w:firstLine="0"/>'),
+    # turinys
+    _style('Turinioantraste', 'Turinio antraštė', '<w:keepNext/>' + _sp(0, 240) + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>',
+           '<w:b/><w:bCs/><w:caps/>' + _sz(28), extra=NEXT),
+    _style('TOC1', 'toc 1', DOT_TAB + _sp(120, 0) + _ind(567, 567) + '<w:jc w:val="left"/>', '<w:b/><w:bCs/><w:caps/>',
+           custom=False, extra=NEXT),
+    _style('TOC2', 'toc 2', DOT_TAB + _sp() + _ind(1134, 850) + '<w:jc w:val="left"/>', custom=False, extra=NEXT),
+    _style('TOC3', 'toc 3', DOT_TAB + _sp() + _ind(1701, 1134) + '<w:jc w:val="left"/>', custom=False, extra=NEXT),
+    # poraštė ir antraštė (puslapio numeris)
+    _style('Header', 'header', '<w:tabs><w:tab w:val="center" w:pos="4153"/><w:tab w:val="right" w:pos="8306"/></w:tabs>'
+           + _sp() + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>', custom=False),
+    _style('Footer', 'footer', '<w:tabs><w:tab w:val="center" w:pos="4153"/><w:tab w:val="right" w:pos="8306"/></w:tabs>'
+           + _sp() + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>', custom=False),
+    # simbolių stiliai
+    _style('Kodas', 'Kodas', rpr='<w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/>' + _sz(21),
+           based='DefaultParagraphFont', typ='character'),
+    _style('Vidinenuoroda', 'Vidinė nuoroda', rpr='<w:color w:val="1F4E79"/>', based='DefaultParagraphFont', typ='character'),
+    # titulinis lapas: be Normal paveldėjimo (šablono numatytasis formatavimas), lygiuotė – stiliuje
+    _style('Titulinislapas', 'Titulinis lapas', based=None),
+] + [_style(sid, name, '<w:jc w:val="%s"/>' % jc, based='Titulinislapas') for sid, name, jc in [
+    ('Titulinisinstitucija', 'Titulinis – institucija', 'center'),
+    ('Titulinispavadinimas', 'Titulinis – pavadinimas', 'center'),
+    ('Titulinislaukas', 'Titulinis – laukas', 'right'),
+    ('Titulinisreiksme', 'Titulinis – reikšmė', 'center'),
+    ('Titulinispaaiskinimas', 'Titulinis – paaiškinimas', 'center'),
+    ('Titulinistarpas', 'Titulinis – tarpas', 'center'),
+    ('Titulinisvieta', 'Titulinis – vieta ir metai', 'center')]])
+
+# šablono stiliai, kurie apibrėžiami iš naujo arba nenaudojami (pašalinami)
+DROP_STYLES = re.compile(r'^(Normal|Heading\dChar|Heading\d|Magistro.*|StyleMagistro.*|Sutarties.*|Literatra1|Paskaitos.*'
+                         r'|Terminas.*|Baktekstas|Title|TitleChar|Author|Address|AbstractText|Baigiamojodarbotekstas'
+                         r'|BodyText|BodyTextChar|TOC[123]|ListParagraph|Header|HeaderChar|Footer|FooterChar|Caption)$')
 
 ABSTRACTS = (
     '<w:abstractNum w:abstractNumId="%d"><w:multiLevelType w:val="hybridMultilevel"/>' % ABS_BULLET
@@ -930,18 +1021,93 @@ ABSTRACTS = (
 
 def patch_styles(xml):
     xml = xml.replace('<w:lang w:val="en-US"/>', '<w:lang w:val="lt-LT"/>')
-    xml = re.sub(r'<w:style [^>]*w:styleId="Caption".*?</w:style>', '', xml, flags=re.S)
-    # 4 lygio antraštė paveldi 3 lygio struktūrą (per MagistrodarboHeading3), todėl pateko į TURINĮ (\o "1-3")
-    xml = re.sub(r'(<w:style [^>]*w:styleId="MagistrodarboHeading4".*?<w:pPr>)(.*?)(</w:pPr>)',
-                 lambda m: m.group(1) + m.group(2) + '<w:outlineLvl w:val="3"/>' + m.group(3), xml, count=1, flags=re.S)
-    return xml.replace('</w:styles>', EXTRA_STYLES + '</w:styles>')
+    xml = re.sub(r'<w:style [^>]*w:styleId="([^"]+)"[^>]*>.*?</w:style>',
+                 lambda m: '' if DROP_STYLES.match(m.group(1)) else m.group(0), xml, flags=re.S)
+    xml = re.sub(r'<w:link w:val="(Heading\dChar|HeaderChar|FooterChar|TitleChar|BodyTextChar)"/>', '', xml)
+    left = set(re.findall(r'<w:(?:basedOn|next|link) w:val="([^"]+)"', xml)) - set(re.findall(r'w:styleId="([^"]+)"', xml + STYLES))
+    if left:
+        die('stiliai nurodo pašalintus stilius: ' + ', '.join(sorted(left)))
+    return xml.replace('</w:styles>', STYLES + '</w:styles>')
+
+
+def heading_lvl(ilvl):
+    left, hang = HEAD_IND[ilvl + 1]
+    return ('<w:lvl w:ilvl="%d"><w:start w:val="1"/><w:numFmt w:val="decimal"/><w:pStyle w:val="Heading%d"/>%s'
+            '<w:lvlText w:val="%s"/><w:lvlJc w:val="left"/><w:pPr><w:tabs><w:tab w:val="num" w:pos="%d"/></w:tabs>%s</w:pPr>'
+            '<w:rPr><w:rFonts w:hint="default"/></w:rPr></w:lvl>'
+            % (ilvl, ilvl + 1, '<w:isLgl/>' if ilvl else '', '.'.join('%%%d' % (k + 1) for k in range(ilvl + 1)) + '.',
+               left, _ind(left, hang)))
 
 
 def patch_numbering(xml, nums):
+    # antraščių numeracija (abstractNum 1, numId 1) susiejama su Heading1–Heading4
+    m = re.search(r'<w:abstractNum [^>]*w:abstractNumId="1"[^>]*>.*?</w:abstractNum>', xml, re.S)
+    an = m.group(0)
+    for k in range(4):
+        an = re.sub(r'<w:lvl w:ilvl="%d">.*?</w:lvl>' % k, lambda _: heading_lvl(k), an, count=1, flags=re.S)
+    xml = xml[:m.start()] + an + xml[m.end():]
+    # kiti šablono sąrašai nebesusieti su pašalintais stiliais
+    xml = re.sub(r'<w:pStyle w:val="(?!Heading\d")[^"]*"/>', '', xml)
     # abstraktūs apibrėžimai turi eiti prieš <w:num>
     i = xml.index('<w:num ')
     xml = xml[:i] + ABSTRACTS + xml[i:]
     return xml.replace('</w:numbering>', ''.join(nums) + '</w:numbering>')
+
+
+def paragraph_spans(xml):
+    """(pradžia, pabaiga, gylis) kiekvienai <w:p> pastraipai, įskaitant įdėtas (teksto laukuose)."""
+    out, stack = [], []
+    for m in re.finditer(r'<w:p[ >]|</w:p>', xml):
+        if m.group(0) == '</w:p>':
+            st = stack.pop()
+            out.append((st, m.end(), len(stack)))
+        else:
+            stack.append(m.start())
+    return out
+
+
+def title_role(p):
+    """Titulinio lapo pastraipos stilius pagal jos turinį."""
+    if 'txbxContent' in p or '<w:drawing' in p or '<w:pict' in p:
+        return 'Titulinislapas'                      # logotipas, teksto lauko inkaras
+    t = ''.join(re.findall(r'<w:t(?: [^>]*)?>([^<]*)</w:t>', p)).strip()
+    if not t:
+        return 'Titulinistarpas'
+    if re.search(r'UNIVERSITETAS|FAKULTETAS|STUDIJŲ PROGRAMA', t):
+        return 'Titulinisinstitucija'
+    if t.endswith(':'):
+        return 'Titulinislaukas'
+    if t.startswith('('):
+        return 'Titulinispaaiskinimas'
+    if t.startswith('Vilnius'):
+        return 'Titulinisvieta'
+    return 'Titulinisreiksme'
+
+
+def style_jc(sid):
+    m = re.search(r'w:styleId="%s".*?</w:style>' % sid, STYLES, re.S)
+    j = re.search(r'<w:jc w:val="(\w+)"/>', m.group(0))
+    return j.group(1) if j else 'left'
+
+
+def set_par_style(p, sid, keep_jc=True):
+    """Pastraipai priskiria stilių; tiesioginė lygiuotė paliekama tik jei skiriasi nuo stiliaus."""
+    head = re.match(r'<w:p(?: [^>]*)?>', p).group(0)
+    rest = p[len(head):]
+    m = re.match(r'<w:pPr>(.*?)</w:pPr>', rest, re.S) if rest.startswith('<w:pPr>') else None
+    ppr = m.group(1) if m else ''
+    tail = rest[m.end():] if m else rest
+    ppr = re.sub(r'<w:pStyle w:val="[^"]*"/>', '', ppr)
+    rpr = re.search(r'<w:rPr>.*?</w:rPr>', ppr, re.S)
+    rpr = rpr.group(0) if rpr else ''
+    body = ppr.replace(rpr, '') if rpr else ppr
+    if keep_jc:
+        j = re.search(r'<w:jc w:val="(\w+)"/>', body)
+        cur = j.group(1) if j else 'left'
+        body = re.sub(r'<w:jc w:val="\w+"/>', '', body)
+        if cur != style_jc(sid):
+            body += '<w:jc w:val="%s"/>' % cur
+    return '%s<w:pPr><w:pStyle w:val="%s"/>%s%s</w:pPr>%s' % (head, sid, body, rpr, tail)
 
 
 def patch_title(xml):
@@ -950,7 +1116,34 @@ def patch_title(xml):
     if n != 2:
         die('šablone „Sistemos pavadinimas“ rasta %d kartų' % n)
     xml = xml.replace('Sistemos pavadinimas', SISTEMA)
-    return xml.replace('<w:highlight w:val="yellow"/>', '')
+    xml = xml.replace('<w:highlight w:val="yellow"/>', '')
+    # titulinio lapo ir turinio antraštės pastraipoms – savi stiliai (iki „TURINYS“ imtinai)
+    toc = xml.index('>TURINYS<')
+    spans = paragraph_spans(xml)
+    edits = []
+    for a, b, depth in spans:
+        if a > toc:
+            continue
+        p = xml[a:b]
+        if '>TURINYS<' in p:
+            sid = 'Turinioantraste'
+        elif depth > 0:
+            sid = 'Titulinispavadinimas'             # teksto lauko vidus
+        else:
+            sid = title_role(p)
+        edits.append((a, b, sid))
+    # nuo galo; pastraipoje su įdėtomis pastraipomis keičiama tik jos pradžia (<w:p> ir <w:pPr>),
+    # nes įdėtos (esančios toliau) jau pakeistos ir jos pabaigos vieta pasislinkusi
+    for a, b, sid in sorted(edits, reverse=True):
+        if len(re.findall(r'<w:p[ >]', xml[a:b])) > 1:
+            head = re.match(r'<w:p(?: [^>]*)?>', xml[a:]).group(0)
+            e = a + len(head)
+            if xml.startswith('<w:pPr>', e):
+                e = xml.index('</w:pPr>', e) + len('</w:pPr>')
+            xml = xml[:a] + set_par_style(xml[a:e] + '</w:p>', sid)[:-len('</w:p>')] + xml[e:]
+        else:
+            xml = xml[:a] + set_par_style(xml[a:b], sid) + xml[b:]
+    return xml
 
 
 # ---------------------------------------------------------------- pagrindinė dalis
