@@ -5,10 +5,10 @@
 SET motonuoma.dabar = '2026-11-19 12:00';
 
 WITH atvejai (nr, atvejis, tiketina, gauta) AS (
-    -- tikrintiUzimtuma. CB500 Hornet (motociklas 22, dabar Vilniuje) rezervuotas 2027-05-12 10:00 – 05-15 10:00
-    -- (Vilnius → Klaipėda) ir 2027-05-24 10:00 – 05-26 10:00 (Klaipėdoje).
+    -- tikrintiUzimtuma. CB500 Hornet (motociklas 22, dabar Vilniuje) rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00
+    -- (Vilnius → Klaipėda) ir 2027-05-24 10:00 – 2027-05-26 10:00 (Klaipėdoje).
     SELECT 'U1', 'Nuoma sutampa su rezervacija',
-           'Motociklas užimtas 2027-05-12 10:00–2027-05-15 10:00 (nuoma)',
+           'Motociklas užimtas 2027-05-12 10:00 – 2027-05-15 10:00 (nuoma)',
            (SELECT CASE WHEN uzimtas THEN priezastis ELSE 'laisvas' END
             FROM "tikrintiUzimtuma"(22, '2027-05-13 10:00', '2027-05-14 10:00', 1, 1))
     UNION ALL
@@ -26,8 +26,8 @@ WITH atvejai (nr, atvejis, tiketina, gauta) AS (
            (SELECT CASE WHEN uzimtas THEN priezastis ELSE 'laisvas' END
             FROM "tikrintiUzimtuma"(22, '2027-05-05 10:00', '2027-05-08 10:00', 1, 1))
     UNION ALL
-    SELECT 'U5', 'Techninė priežiūra ant rezervacijos',
-           'Motociklas užimtas 2027-05-12 10:00–2027-05-15 10:00 (nuoma)',
+    SELECT 'U5', 'Techninė priežiūra, sutampanti su rezervacija',
+           'Motociklas užimtas 2027-05-12 10:00 – 2027-05-15 10:00 (nuoma)',
            (SELECT CASE WHEN uzimtas THEN priezastis ELSE 'laisvas' END
             FROM "tikrintiUzimtuma"(22, '2027-05-14 08:00', '2027-05-14 17:00', NULL, NULL))
     UNION ALL
@@ -45,7 +45,7 @@ WITH atvejai (nr, atvejis, tiketina, gauta) AS (
             FROM "tikrintiUzimtuma"(15, '2027-04-15 11:00', '2027-04-19 11:00', 2, 2, 642))
     UNION ALL
     SELECT 'U9', 'Tas pats laikotarpis kaip nauja rezervacija',
-           'Motociklas užimtas 2027-04-14 11:00–2027-04-18 11:00 (nuoma)',
+           'Motociklas užimtas 2027-04-14 11:00 – 2027-04-18 11:00 (nuoma)',
            (SELECT CASE WHEN uzimtas THEN priezastis ELSE 'laisvas' END
             FROM "tikrintiUzimtuma"(15, '2027-04-15 11:00', '2027-04-19 11:00', 2, 2))
     UNION ALL

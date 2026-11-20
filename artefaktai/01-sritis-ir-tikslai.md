@@ -16,7 +16,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 
 - **Dvigubos rezervacijos.** Ta pati lentelė pildoma keliose vietose, todėl tas pats motociklas kartais rezervuojamas dviem klientams tam pačiam laikotarpiui.
 - **Nėra momentinio patvirtinimo.** Klientas sužino, ar motociklas laisvas, tik darbuotojui atsakius į skambutį ar žinutę.
-- **Didelės darbuotojų laiko sąnaudos.** Sezono metu didelė darbo dalis tenka atsakinėti į skambučius ir žinutes apie laisvus motociklus.
+- **Didelės darbuotojų laiko sąnaudos.** Sezono metu didelę darbo laiko dalį darbuotojams tenka skirti atsakinėjimui į skambučius ir žinutes apie laisvus motociklus.
 - **Klientas nemato pasiūlymo.** Jis negali pats rasti motociklo pagal datas, filialą ar charakteristikas (variklio tūrį, tipą, vairuotojo pažymėjimo kategoriją).
 - **Kainos klaidos.** Kaina ir baudos skaičiuojamos ranka, todėl pasitaiko klaidų ir ginčų su klientais.
 - **Nenuoseklus vairuotojo teisių tikrinimas.** Ne visada patikrinama, ar kliento vairuotojo pažymėjimo kategorija (A2 ar A) leidžia vairuoti pasirinktą motociklą ir ar pažymėjimas dar galioja.
@@ -30,7 +30,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 - klientui internetu rasti laisvą motociklą pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį;
 - klientui (arba darbuotojui kliento vardu) rezervuoti motociklą, pasirinkus išdavimo ir grąžinimo filialus, su momentiniu patvirtinimu, iš karto matant nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
 - automatiškai neleisti rezervuoti motociklo, jei pasirinktos datos sutampa su kita nuoma, suplanuota technine priežiūra ar perkėlimu į kitą filialą arba jei motociklas tuo metu bus kitame filiale;
-- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis, patikrinti, ar jame yra motociklui tinkama kategorija ir ar ji galios visą nuomos laikotarpį;
+- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis ir patikrinti, ar jame yra motociklui tinkama kategorija ir ar ji galios visą nuomos laikotarpį;
 - klientui asmeninėje paskyroje peržiūrėti, keisti ir atšaukti savo rezervacijas;
 - filialo darbuotojui įforminti motociklo išdavimą ir grąžinimą (įskaitant grąžinimą į kitą filialą), užfiksuojant motociklo ridą ir būklę, matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir planuoti motociklų techninės priežiūros laikotarpius;
 - automatiškai apskaičiuoti nuomos kainą ir baudą už pavėluotą grąžinimą;

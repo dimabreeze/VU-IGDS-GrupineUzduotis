@@ -4,7 +4,7 @@ Medžiaga ataskaitos skyriui 2.1.1 „Sistemos struktūros modelis“.
 
 **Būsena:** baigta 2026-11-19. Funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` išsamiai aprašytos 12 žingsnyje (`12-funkcijos.md`).
 
-Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta kaip 2 paskaitos 20 skaidrėje („Aukšto lygio struktūrinė schema“): medis, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona), funkcijos pavadintos veiksmažodžiu bendratimi. Mūsų schemoje 4 lygiai, todėl ketvirtam lygiui pridėta šviesiai geltona spalva.
+Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos skaidomos į smulkesnes. Ji nubraižyta kaip 2 paskaitos 20 skaidrėje („Aukšto lygio struktūrinė schema“): medis, kurio viršuje – sistema, kiekvienas lygis nuspalvintas sava spalva (žalia, oranžinė, geltona), funkcijos pavadintos veiksmažodžio bendratimi. Mūsų schemoje 4 lygiai, todėl ketvirtam lygiui pridėta šviesiai geltona spalva.
 
 Šaltinis: `artefaktai/11-strukturine-schema.drawio`, paveikslas: `artefaktai/11-strukturine-schema.png`.
 
@@ -18,7 +18,7 @@ Struktūrinė schema rodo, iš kokių funkcijų sudaryta sistema ir kaip jos ska
 |---|---|---|
 | 0 | Motociklų nuomos IS | – |
 | 1 | Procesai P1–P7, skliaustuose – funkcinis reikalavimas | Duomenų srautų diagrama (`09-dsd.md`), tie patys numeriai ir pavadinimai |
-| 2 | Operacijos, kurias inicijuoja vartotojas | Panaudos atvejai, neįtraukiami į kitus ryšiais «include» ar «extend» (`07-panaudos-atvejai.md`) |
+| 2 | Operacijos, kurias inicijuoja vartotojas | Panaudos atvejai, kurie nėra įtraukiami į kitus ryšiu «include» ir nepapildo kitų ryšiu «extend» (`07-panaudos-atvejai.md`) |
 | 3 | Funkcijos, kurias iškviečia operacija | Panaudos atvejai, įtraukiami ryšiu «include» arba papildantys ryšiu «extend» |
 
 Taip kiekvienas panaudos atvejis PA1–PA22 schemoje yra funkcija tuo pačiu pavadinimu, o grandinė „reikalavimas → panaudos atvejis → procesas → funkcija“ skaitoma be pavadinimų vertimo.

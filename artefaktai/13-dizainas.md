@@ -4,7 +4,7 @@ Medžiaga ataskaitos skyriams 2.3.1 „Panašių sistemų apžvalga ir pasirinkt
 
 **Būsena:** baigta 2026-11-19. E4 ekrano panaudos atvejų sąrašas papildytas PA9 per 2 kontrolinį tašką (2026-11-20).
 
-Maketai sukurti kaip prototipas, kurį 3 paskaita (14–15 skaidrės) siūlo naudoti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir nufotografuoti naršykle 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu. Šaltiniai ir paveikslai – `artefaktai/13-dizainas/`, eksportas – `make dizainas`.
+Maketai sukurti kaip prototipas, kurį 3 paskaita (14–15 skaidrės) siūlo naudoti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir užfiksuoti ekrano nuotraukomis naršyklėje 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu. Šaltiniai ir paveikslai – `artefaktai/13-dizainas/`, eksportas – `make dizainas`.
 
 ## 2.3.1. Panašių sistemų apžvalga ir pasirinkti dizaino sprendimai
 
@@ -41,8 +41,8 @@ Apžvelgtos trijų Lietuvos motociklų nuomos įmonių svetainės, aprašytos 1.
 
 *KuBa Motors: rezervacijos langas, 1 žingsnis iš 3 (2026-11-19)*
 
-- **Pasiteisina.** Motociklai rodomi kortelėmis po tris eilutėje: nuotrauka, tipo ir variklio tūrio žyma, gamintojas ir metai, pavadinimas, galia ir svoris, kaina. Filtras pagal vairuotojo pažymėjimo kategoriją (A, A1, A2). Rezervacijos lange rodomas žingsnių skaičius („1 / 3“) ir juosta, kiek liko.
-- **Reikėtų keisti.** Filtrai paslėpti atskirame lange, todėl nesimato, kurie taikomi. Užimtumas rodomas tik šiai dienai („Laisvas šiandien“), o ne pasirinktam laikotarpiui. Tamsiose kortelėse smulkus pilkas tekstas (galia, svoris, ypatybės) sunkiai įskaitomas. Kalendoriuje renkamos tik dienos, be laiko.
+- **Pasiteisina.** Motociklai rodomi kortelėmis po tris eilutėje: nuotrauka, tipo ir variklio tūrio žyma, gamintojas ir metai, pavadinimas, galia ir svoris, kaina. Filtras pagal vairuotojo pažymėjimo kategoriją (A, A1, A2). Rezervacijos lange rodomas žingsnių skaičius („1 / 3“) ir juosta, rodanti, kiek liko.
+- **Reikėtų keisti.** Filtrai paslėpti atskirame lange, todėl nematyti, kurie taikomi. Užimtumas rodomas tik šiai dienai („Laisvas šiandien“), o ne pasirinktam laikotarpiui. Tamsiose kortelėse smulkus pilkas tekstas (galia, svoris, ypatybės) sunkiai įskaitomas. Kalendoriuje renkamos tik dienos, be laiko.
 
 ### RideRent (riderent.lt)
 
@@ -108,7 +108,7 @@ Viena šriftų šeima **Inter** (Google Fonts, nemokama, palaiko lietuviškas ra
 
 ### Mygtukų išdėstymas
 
-- **Pagrindinis veiksmas** – užpildytas pagrindinės spalvos mygtukas formos apačioje dešinėje. Siaurame ekrane jis per visą plotį ir prilipęs ekrano apačioje, kad būtų pasiekiamas neslenkant.
+- **Pagrindinis veiksmas** – užpildytas pagrindinės spalvos mygtukas formos apačioje dešinėje. Siaurame ekrane jis per visą plotį ir pritvirtintas ekrano apačioje, kad būtų pasiekiamas neslenkant.
 - **Antrinis veiksmas** („Atgal“, „Atšaukti“) – baltas mygtukas pilku kontūru kairėje nuo pagrindinio (siaurame ekrane – po juo).
 - **Negrįžtamas veiksmas** („Atšaukti rezervaciją“) – baltas mygtukas raudonu kontūru, atskirai nuo kitų, su patvirtinimu.
 - **Kalbos perjungiklis LT | EN** – kiekvieno puslapio viršutinėje juostoje dešinėje (1.3.2.1).
@@ -169,7 +169,7 @@ Rezervacija patvirtinama iš karto (Nr. 684 – kitas laisvas numeris bandomojoj
 
 *E4 Išdavimų ir grąžinimų tvarkaraštis su grąžinimo forma (1280 px)*
 
-Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandomųjų duomenų (nuomos 631 ir 632, BMW G 310 R). Nuoma 631 turėjo būti grąžinta 10:00 – ji pažymėta „Vėluoja 3 val.“, šalia parodytas kitas motociklo laikotarpis (nuoma 632 nuo 11:00). Nuomos 632 išduoti negalima, kol 631 negrąžinta; įspėjime – trys galimi darbuotojo veiksmai (12 žingsnis, „Pavėluotas grąžinimas“). Grąžinimo formoje darbuotojas įveda ridą ir būklę, o sistema apskaičiuoja kainą: 2 paros × 60,00 € + bauda 25,00 € (pakopa „nuo 3 val.“) = 145,00 €, kaip įrašyta duomenų bazėje.
+Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandomųjų duomenų (nuomos 631 ir 632, BMW G 310 R). Nuoma 631 turėjo būti grąžinta 10:00 – ji pažymėta „Vėluoja 3 val.“, šalia parodytas kitas motociklo laikotarpis (nuoma 632 nuo 11:00). Nuomos 632 išduoti negalima, kol 631 negrąžinta; įspėjime – trys galimi darbuotojo veiksmai (12 žingsnis, „Pavėluotas grąžinimas“). Grąžinimo formoje darbuotojas įveda ridą ir būklę, o sistema apskaičiuoja kainą: 2 paros × 60,00 € + bauda 25,00 € (pakopa „nuo 3 val.“) = 145,00 €, kaip įrašyta bandomuosiuose duomenyse.
 
 #### E5. Parko užimtumas
 

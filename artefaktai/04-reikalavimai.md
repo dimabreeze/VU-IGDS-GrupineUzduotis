@@ -36,7 +36,7 @@ Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos
 
 | ***Nr. 1.2.5*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Administratorius turi galėti tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras, matyti esamą ir istorinį parko užimtumą ir formuoti statistines ataskaitas. Jis taip pat turi galėti suplanuoti vieno ar kelių motociklų perkėlimą į kitą filialą, jei perkėlimo laikotarpis nesutampa su šių motociklų rezervacijomis, vykstančiomis nuomomis ir technine priežiūra, perkėlimo pradžioje motociklai bus filiale, iš kurio perkeliama, o kita jų rezervacija ar perkėlimas (jei yra) prasideda filiale, į kurį jie perkeliami. Perkėlimo laikotarpiu šie motociklai nerodomi paieškoje ir jų negalima rezervuoti. |
+| ***Aprašymas:*** | Administratorius turi galėti tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras, matyti esamą ir istorinį parko užimtumą ir formuoti statistines ataskaitas. Jis taip pat turi galėti suplanuoti vieno ar kelių motociklų perkėlimą į kitą filialą, jei perkėlimo laikotarpis nesutampa su šių motociklų rezervacijomis, vykstančiomis nuomomis ir technine priežiūra, jei perkėlimo pradžioje motociklai bus filiale, iš kurio perkeliama, ir jei kita jų rezervacija ar perkėlimas (jei yra) prasideda filiale, į kurį jie perkeliami. Perkėlimo laikotarpiu šie motociklai nerodomi paieškoje ir jų negalima rezervuoti. |
 
 ### Reikalavimų ryšys su vartotojais ir IS tikslais
 
@@ -82,7 +82,7 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 |---|---|
 | ***Aprašymas:*** | Sąsaja turi būti lietuvių ir anglų kalbomis. Kalbą galima pakeisti bet kuriame puslapyje neprarandant įvestų duomenų. |
 
-#### 1.3.2.2. Darbuotojo apmokymas
+#### 1.3.2.2. Darbuotojo mokymas
 
 | ***Nr. 1.3.2.2*** | ***Reikalavimo tipas: nefunkcinis*** |
 |---|---|
@@ -98,7 +98,7 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 
 | ***Nr. 1.3.2.4*** | ***Reikalavimo tipas: nefunkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Jei rezervacija ar jos pakeitimas neleidžiami, sistema turi nurodyti konkrečią priežastį: datos užimtos, motociklas nuomos pradžioje bus kitame filiale, motociklo negalima grąžinti į pasirinktą filialą, nes kita jo rezervacija ar perkėlimas prasideda kitame filiale, netinka pažymėjimo kategorija arba jos galiojimas baigiasi anksčiau nei nuoma. |
+| ***Aprašymas:*** | Jei rezervacija ar jos pakeitimas neleidžiami, sistema turi nurodyti konkrečią priežastį: datos užimtos; motociklas nuomos pradžioje bus kitame filiale; motociklo negalima grąžinti į pasirinktą filialą, nes kita jo rezervacija ar perkėlimas prasideda kitame filiale; netinka pažymėjimo kategorija arba jos galiojimas baigiasi anksčiau nei nuoma. |
 
 ### 1.3.3. Reikalavimai veikimo charakteristikoms
 
@@ -180,4 +180,4 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 
 | ***Nr. 1.6.4*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Filialo darbuotojas turi galėti suteikti klientui nuolaidą arba kompensaciją (suma ar procentais), nurodydamas priežastį, pvz., kai klientas laukė pavėluotai grąžinto motociklo, o administratorius – nustatyti didžiausią leidžiamą nuolaidą. Grąžinant sistema galutinę nuomos kainą apskaičiuoja įvertindama nuolaidą. Administratorius turi matyti visas suteiktas nuolaidas ir jų priežastis. |
+| ***Aprašymas:*** | Filialo darbuotojas turi galėti suteikti klientui nuolaidą arba kompensaciją (suma ar procentais), nurodydamas priežastį (pvz., klientas laukė pavėluotai grąžinto motociklo), o administratorius – nustatyti didžiausią leidžiamą nuolaidą. Grąžinant sistema galutinę nuomos kainą apskaičiuoja įvertindama nuolaidą. Administratorius turi matyti visas suteiktas nuolaidas ir jų priežastis. |

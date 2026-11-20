@@ -69,7 +69,7 @@ Ne iš eilės vienas po kito einantys ryšiai:
 | 4.5 Atkūrimo ir saugumo testai atskirame sistemos egzemplioriuje | Atkūrimas iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val. | 1.3.4.1 |
 | | Saugumo skenavimas: žinomos pažeidžiamumos naudojamose bibliotekose ir automatinis žiniatinklio pažeidžiamumų skenavimas | 1.3.5.2 |
 
-Atkūrimas ir saugumo skenavimas vykdomi atskirame egzemplioriuje, nes pagrindiniame jie trukdytų pasiekiamumo matavimui: sistema būtų laikoma nepasiekiama ne dėl klaidos, o dėl paties testo. Naktiniais testais negalima patikrinti darbuotojo apmokymo (1.3.2.2), rezervacijos kelio ilgio (1.3.2.3) ir klaidų taisymo tvarkos (1.3.4.3).
+Atkūrimas ir saugumo skenavimas vykdomi atskirame egzemplioriuje, nes pagrindiniame jie trukdytų pasiekiamumo matavimui: sistema būtų laikoma nepasiekiama ne dėl klaidos, o dėl paties testo. Naktiniais testais negalima patikrinti darbuotojo mokymo (1.3.2.2), rezervacijos kelio ilgio (1.3.2.3) ir klaidų taisymo tvarkos (1.3.4.3).
 
 ## Darbai ir šio darbo skyriai
 

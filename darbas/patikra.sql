@@ -120,7 +120,7 @@ SELECT 14, 'Nenaudojamas motociklas neturi laikotarpių ateityje', COUNT(*)
 FROM uzimtumas u JOIN "Motociklas" m ON m."ID" = u.moto
 WHERE NOT m."Naudojamas" AND u.pabaiga > (SELECT laikas FROM dabar)
 UNION ALL
-SELECT 15, 'Motociklas išduotas ne kito laikotarpio metu (ankstesnė nuoma grąžinta)', COUNT(*)
+SELECT 15, 'Motociklas išduotas ne kito laikotarpio metu (ankstesnė nuoma užbaigta)', COUNT(*)
 FROM "Išdavimas" i JOIN "Nuoma" n ON n."ID" = i."Nuomos ID"
 JOIN uzimtumas u ON u.moto = n."Motociklo ID" AND NOT (u.rusis = 'nuoma' AND u.id = n."ID")
 WHERE u.pradzia <= i."Laikas" AND i."Laikas" < u.pabaiga

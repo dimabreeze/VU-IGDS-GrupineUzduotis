@@ -4,7 +4,7 @@ Medžiaga ataskaitos skyriams 2.1.2 „Duomenų modelis“ ir 2.2.2 „Duomenų 
 
 **Būsena:** baigta 2026-11-19. Aprašant funkcijas (12 žingsnis, 2026-11-19) patikslintas skyrius „Taisyklės, kurias tikrina sistemos funkcijos“: užimtumo laikotarpio apibrėžimas, užraktai, išdavimo ir nurašymo taisyklės.
 
-Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kiekviena esybė tapo lentele, M:N ryšiai – atskiromis lentelėmis, o 1:N ir 1:1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu, kaip 5 paskaitos 17–20 skaidrėse: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – skyrius „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
+Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kiekviena esybė tapo lentele, M : N ryšiai – atskiromis lentelėmis, o 1 : N ir 1 : 1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu, kaip 5 paskaitos 17–20 skaidrėse: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – skyrius „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
 Šaltinis: `artefaktai/10-fizinis-er.drawio`, paveikslas: `artefaktai/10-fizinis-er.png`.
 
@@ -21,25 +21,25 @@ Savikontrolei parašytas SQL skriptas `darbas/schema.sql`, kuris sukuria šią s
 - **Laikas ir datos.** Visi motociklo užimtumo laikotarpiai – nuomos planuojama pradžia ir pabaiga, išdavimo ir grąžinimo laikas, techninės priežiūros ir perkėlimo pradžia ir pabaiga – saugomi kaip TIMESTAMP, nes prieinamumą reikia rodyti tiksliai, o vėlavimas skaičiuojamas valandomis. DATE naudojama tik kalendorinėms datoms, nesusijusioms su užimtumu: tarifo galiojimui (tarifas parenkamas pagal rezervavimo dieną), kategorijos galiojimui ir gimimo datai.
 - **Pinigų sumos** saugomos kaip DECIMAL eurais (ne slankiojo kablelio skaičiai), kad nebūtų apvalinimo klaidų.
 - **Silpnos esybės.** Išdavimo ir Grąžinimo pirminis raktas kartu yra išorinis raktas į Nuomą („Nuomos ID“), todėl kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą. Baudos pakopos pirminis raktas sudėtinis: tarifas ir dalinis raktas „Vėlavimas nuo (val.)“.
-- **M:N ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
-- **Ryšiai 1:1 su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
-- **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (1.3.4.2), o nebenaudojamas motociklas pažymimas požymiu „Naudojamas“, o ne trinamas.
+- **M : N ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
+- **Ryšiai 1 : 1 su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
+- **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (1.3.4.2), o nebenaudojamo motociklo požymis „Naudojamas“ išjungiamas (motociklas netrinamas).
 - **Normalizacija.** Lentelės atitinka trečiąją normalinę formą (5 paskaita, 7–13 skaidrės): reikšmės atominės, o neraktiniai atributai priklauso tik nuo viso pirminio rakto. Sąmoningas nukrypimas – Grąžinimo „Galutinė kaina“ ir „Bauda“. Tai išvestiniai atributai, kuriuos galima apskaičiuoti iš tarifo, nuomos laikų ir baudų pakopų, bet jie saugomi kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės gali keistis, o perskaičiuotos senų nuomų sumos nebesutaptų su sumokėtomis.
-- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ atskiromis lentelėmis nedaromi: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
+- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
 - **Išplečiamumas.** Kadangi kategorijų apimties taisyklės nesaugomos, naujas pažymėjimo kategorijas (pvz., B, C, D) ir naujus motociklų tipus galima pridėti kaip įrašus, nekeičiant schemos. Kitų transporto priemonių nuomai reikėtų tik apibendrinti lentelę „Motociklo modelis“.
 
 ### Taisyklės, kurias tikrina sistemos funkcijos
 
 Kai kurių taisyklių duomenų bazės apribojimais (PK, FK, UNIQUE, NOT NULL, CHECK) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos ir operacijos (12 žingsnis, `12-funkcijos.md`) prieš įrašydamos duomenis:
 
-- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (`08-loginis-er.md`) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; užraktas atleidžiamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (1.3.3.3);
+- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (`08-loginis-er.md`) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; įrašas atrakinamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (1.3.3.3);
 - vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“); rezervacija tarifo įrašą užrakina bendru užraktu, todėl tarifo keitimas laukia, kol ji bus įrašyta;
 - nuomos tarifas priklauso nuomojamo motociklo modeliui ir galiojo rezervavimo dieną;
 - perkėlimas turi bent vieną motociklą (diagramoje – „vienas arba daug“);
 - klientas turi modeliui reikiamą kategoriją, galiojančią visą nuomos laikotarpį – funkcija `tikrintiKlientoTeise`;
-- motociklas išduodamas tik tada, kai jis yra išdavimo filiale, o ankstesnė jo nuoma grąžinta;
+- motociklas išduodamas tik tada, kai jis yra išdavimo filiale, o pagal ankstesnę nuomą jis jau grąžintas;
 - rida grąžinant ne mažesnė nei išduodant – tikrinama fiksuojant ridą ir būklę;
-- Galutinė kaina ir Bauda apskaičiuojamos pagal nuomos tarifą ir baudų pakopas – funkcija `skaiciuotiKaina`;
+- „Galutinė kaina“ ir „Bauda“ apskaičiuojamos pagal nuomos tarifą ir baudų pakopas – funkcija `skaiciuotiKaina`;
 - nebenaudojamas (nurašytas) motociklas neturi būsimų užimtumo laikotarpių: nurašymas užrakina motociklo įrašą ir tik tada tikrina, ar jų nėra;
 - paskyros vaidmuo atitinka, kam ji priklauso (kliento paskyra – vaidmuo „klientas“, darbuotojo – „darbuotojas“ arba „administratorius“).
 
@@ -62,16 +62,16 @@ Kiekviena lentelė priklauso vienai saugyklai, todėl duomenų srautų diagramos
 
 ## Ryšiai
 
-Diagramoje yra 29 ryšiai. Kiekvienas jungia tėvinės lentelės pirminį raktą su vaikinės lentelės išoriniu raktu. Ryšių pavadinimai tokie pat kaip loginėje ER diagramoje (`08-loginis-er.md`); M:N ryšiai „turi teisę“ ir „perkeliamas“ fizinėje diagramoje išskaidyti į du 1:N ryšius per tarpinę lentelę.
+Diagramoje yra 29 ryšiai. Kiekvienas jungia tėvinės lentelės pirminį raktą su vaikinės lentelės išoriniu raktu. Ryšių pavadinimai tokie pat kaip loginėje ER diagramoje (`08-loginis-er.md`); M : N ryšiai „turi teisę“ ir „perkeliamas“ fizinėje diagramoje išskaidyti į du 1 : N ryšius per tarpinę lentelę.
 
 Kaip skaityti linijos galus (5 paskaita, 19 skaidrė):
 
 - **Ženklas prie tėvinės lentelės** rodo, su kiek tėvinės lentelės įrašų susijęs vienas vaikinės lentelės įrašas. „Tik vienas“ reiškia, kad išorinis raktas privalomas (NOT NULL). „Nulis arba vienas“ reiškia, kad išorinis raktas gali būti tuščias.
-- **Ženklas prie vaikinės lentelės** rodo, kiek vaikinės lentelės įrašų gali turėti vienas tėvinės lentelės įrašas. „Nulis arba daug“ reiškia, kad tėvinis įrašas gali egzistuoti be vaikinių; „vienas arba daug“ – kad be bent vieno vaikinio įrašo jis neturi prasmės. 1:1 ryšiuose prie vaikinės lentelės yra „nulis arba vienas“: išorinis raktas yra unikalus arba kartu yra pirminis raktas, todėl antro įrašo būti negali.
+- **Ženklas prie vaikinės lentelės** rodo, kiek vaikinės lentelės įrašų gali turėti vienas tėvinės lentelės įrašas. „Nulis arba daug“ reiškia, kad tėvinis įrašas gali egzistuoti be vaikinių; „vienas arba daug“ – kad be bent vieno vaikinio įrašo jis neturi prasmės. 1 : 1 ryšiuose prie vaikinės lentelės yra „nulis arba vienas“: išorinis raktas yra unikalus arba kartu yra pirminis raktas, todėl antro įrašo būti negali.
 
 Pavyzdys: ryšys „apibūdina“ (Motociklo modelis – Motociklas) pažymėtas „tik vienas“ prie Motociklo modelio ir „nulis arba daug“ prie Motociklo. Tai reiškia: kiekvienas motociklas turi lygiai vieną modelį, o modelis gali turėti daug motociklų arba nė vieno.
 
-Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė → vaikinė (FK)** – kuri lentelė į kurią rodo; **kardinalumas**; **ženklai** – prie tėvinės / prie vaikinės lentelės.
+Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė → vaikinė (FK)** – tėvinė ir vaikinė lentelė, skliaustuose – vaikinės lentelės išorinis raktas; **kardinalumas**; **ženklai** – prie tėvinės / prie vaikinės lentelės.
 
 ### Parkas, klasifikatoriai ir tarifai
 
@@ -87,7 +87,7 @@ Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė →
 | prižiūrimas | Motociklas → Techninė priežiūra (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Priežiūros laikotarpis visada skirtas vienam motociklui; motociklas prižiūrimas daug kartų arba dar nė karto. |
 | perkeliamas (1) | Motociklas → Perkeliamas motociklas (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Loginio M : N ryšio dalis: motociklas per savo naudojimo laiką gali būti perkeltas daug kartų arba nė karto. |
 | perkeliamas (2) | Perkėlimas → Perkeliamas motociklas (Perkėlimo ID) | 1 : N | tik vienas / vienas arba daug | Vienu perkėlimu (vienu reisu) vežamas vienas ar keli motociklai, todėl ryšys loginiame modelyje M : N. Perkėlimas be motociklų neturi prasmės, todėl „vienas arba daug“; šią sąlygą tikrina perkėlimo planavimo funkcija, nes duomenų bazės apribojimu jos išreikšti negalima. |
-| perkeliama iš | Filialas → Perkėlimas (Iš filialo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną pradžios filialą. Du ryšiai su ta pačia lentele reikalingi, nes filialas perkėlime atlieka dvi skirtingas roles. |
+| perkeliama iš | Filialas → Perkėlimas (Iš filialo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną pradžios filialą. Du ryšiai su ta pačia lentele reikalingi, nes filialas perkėlime atlieka du skirtingus vaidmenis. |
 | perkeliama į | Filialas → Perkėlimas (Į filialo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną tikslo filialą, kuris skiriasi nuo pradžios filialo (CHECK). |
 
 ### Klientai ir nuomos
@@ -102,7 +102,7 @@ Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė →
 | išduodama | Filialas → Nuoma (Išdavimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Išdavimo filialas pasirenkamas rezervuojant ir yra privalomas (1.2.2). |
 | grąžinama | Filialas → Nuoma (Grąžinimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Grąžinimo filialas taip pat pasirenkamas rezervuojant; jis gali skirtis nuo išdavimo filialo (grąžinimas į kitą filialą), todėl tai atskiras ryšys. |
 | pradedama | Nuoma → Išdavimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Motociklas pagal nuomą išduodamas ne daugiau kaip vieną kartą: Išdavimo pirminis raktas yra nuomos raktas. Kol rezervacija neįvykdyta ar jei ji atšaukta, išdavimo nėra, todėl „nulis arba vienas“. Išdavimas be nuomos neegzistuoja (silpna esybė). |
-| baigiama | Nuoma → Grąžinimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Tas pats kaip išdavimui: grąžinimas įforminamas vieną kartą ir tik išduotai nuomai, o iki tol jo nėra. |
+| baigiama | Nuoma → Grąžinimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Kaip ir išdavimo atveju: grąžinimas įforminamas vieną kartą ir tik išduotai nuomai, o iki tol jo nėra. |
 
 ### Personalas ir paskyros
 
@@ -117,7 +117,7 @@ Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė →
 | naudoja (klientas) | Paskyra → Klientas (Paskyros ID) | 1 : 1 | nulis arba vienas / nulis arba vienas | Klientas gali turėti ne daugiau kaip vieną paskyrą, bet gali neturėti ir jokios (jį telefonu užregistravo darbuotojas). Paskyra priklauso daugiausia vienam klientui (raktas unikalus) arba nė vienam, jei tai darbuotojo paskyra. |
 | naudoja (darbuotojas) | Paskyra → Darbuotojas (Paskyros ID) | 1 : 1 | tik vienas / nulis arba vienas | Darbuotojas visada turi lygiai vieną paskyrą, nes be jos negalėtų dirbti sistemoje. Paskyra priklauso daugiausia vienam darbuotojui arba nė vienam, jei tai kliento paskyra. |
 
-Ryšiai 1 : 1 su Paskyra nesujungti į vieną lentelę, nes paskyra klientui neprivaloma, o prisijungimo duomenys vienodi klientams ir darbuotojams. Išdavimas ir Grąžinimas nesujungti su Nuoma, kad kol motociklas neišduotas, nuomoje nebūtų tuščių laukų (`08-loginis-er.md`).
+Ryšiai 1 : 1 su Paskyra nesujungti į vieną lentelę, nes paskyra klientui neprivaloma, o prisijungimo duomenys vienodi klientams ir darbuotojams. Išdavimas ir Grąžinimas nesujungti su Nuoma, kad nuomoje nebūtų tuščių laukų, kol motociklas neišduotas (`08-loginis-er.md`).
 
 ## Lentelių aprašymas
 
@@ -189,7 +189,7 @@ Konkretus parko motociklas.
 | Pagaminimo metai | SMALLINT | NOT NULL, CHECK (≥ 1900) |
 | Rida | INTEGER | NOT NULL, CHECK (≥ 0); km, atnaujinama grąžinant |
 | Leidžiama išvažiuoti į užsienį | BOOLEAN | NOT NULL, DEFAULT FALSE |
-| Naudojamas | BOOLEAN | NOT NULL, DEFAULT TRUE; nurašytas motociklas netrinamas, o nerodomas paieškoje |
+| Naudojamas | BOOLEAN | NOT NULL, DEFAULT TRUE; nurašytas motociklas netrinamas, tik nerodomas paieškoje |
 | Modelio ID | INTEGER | FK → Motociklo modelis, NOT NULL |
 | Filialo ID | INTEGER | FK → Filialas, NOT NULL; filialas, kuriame motociklas yra dabar (keičiamas grąžinant ir pasibaigus perkėlimui) |
 
@@ -208,7 +208,7 @@ Modelio paros kaina ir užstatas, galiojantys rezervacijoms, sudarytoms nurodytu
 
 ### Baudos pakopa
 
-Baudų už pavėluotą grąžinimą lentelės eilutė. Pakopa galioja nuo savo „Vėlavimas nuo“ iki kitos pakopos pradžios; taikoma pakopa su didžiausia „Vėlavimas nuo“ reikšme, kuri neviršija vėlavimo.
+Baudų už pavėluotą grąžinimą lentelės eilutė. Pakopa galioja nuo savo „Vėlavimas nuo (val.)“ iki kitos pakopos pradžios; taikoma pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, kuri neviršija vėlavimo.
 
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
@@ -313,7 +313,7 @@ Vieno ar kelių motociklų pervežimas į kitą filialą.
 
 ### Perkeliamas motociklas
 
-Kurie motociklai vežami perkėlimu (loginio modelio ryšys „perkeliamas“). Perkėlimas turi bent vieną motociklą.
+Motociklai, vežami perkėlimu (loginio modelio ryšys „perkeliamas“). Perkėlimas turi bent vieną motociklą.
 
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
@@ -347,4 +347,4 @@ Prisijungimo duomenys ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (1.3.
 
 ## Palyginimas su laboratoriniu darbu
 
-Laboratorinio darbo fizinėje diagramoje buvo 5 lentelės. Šioje – 18: pridėti klasifikatoriai, tarifai su baudų pakopomis, techninė priežiūra, perkėlimai, išdavimas ir grąžinimas, darbuotojai ir paskyros, M:N ryšių lentelės. Diagramoje parodytas ryšių privalomumas (nulis arba vienas, tik vienas, nulis arba daug, vienas arba daug), o lentelių aprašyme – visi apribojimai. Būsena saugoma kaip VARCHAR(12) su leistinų reikšmių sąrašu, o ne VARCHAR(128); motociklo būsenos atributo nėra – jį pakeitė užimtumo laikotarpiai ir požymis „Naudojamas“.
+Laboratorinio darbo fizinėje diagramoje buvo 5 lentelės. Šioje – 18: pridėti klasifikatoriai, tarifai su baudų pakopomis, techninė priežiūra, perkėlimai, išdavimas ir grąžinimas, darbuotojai ir paskyros, M : N ryšių lentelės. Diagramoje parodytas ryšių privalomumas (nulis arba vienas, tik vienas, nulis arba daug, vienas arba daug), o lentelių aprašyme – visi apribojimai. Būsena saugoma kaip VARCHAR(12) su leistinų reikšmių sąrašu, o ne VARCHAR(128); motociklo būsenos atributo nėra – jį pakeitė užimtumo laikotarpiai ir požymis „Naudojamas“.

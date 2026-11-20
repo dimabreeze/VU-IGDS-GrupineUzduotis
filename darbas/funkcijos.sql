@@ -56,7 +56,7 @@ BEGIN
     WHERE x.pradzia < pabaiga AND pradzia < x.pabaiga
     ORDER BY x.pradzia LIMIT 1;
     IF FOUND THEN
-        RETURN QUERY SELECT true, format('Motociklas užimtas %s–%s (%s)',
+        RETURN QUERY SELECT true, format('Motociklas užimtas %s – %s (%s)',
             to_char(l.pradzia, 'YYYY-MM-DD HH24:MI'), to_char(l.pabaiga, 'YYYY-MM-DD HH24:MI'), l.rusis)::VARCHAR;
         RETURN;
     END IF;
@@ -79,9 +79,10 @@ BEGIN
     WHERE x.rusis <> 'techninė priežiūra' AND x.pradzia >= pabaiga
     ORDER BY x.pradzia LIMIT 1;
     IF FOUND AND l."pradziosFilialas" <> "pabaigosFilialasId" THEN
-        RETURN QUERY SELECT true, format('Motociklą reikia grąžinti į filialą %s, nes %s ten prasideda kita jo %s',
+        RETURN QUERY SELECT true, format('Motociklą reikia grąžinti į filialą %s, nes %s ten prasideda %s',
             (SELECT "Miestas" FROM "Filialas" WHERE "ID" = l."pradziosFilialas"),
-            to_char(l.pradzia, 'YYYY-MM-DD HH24:MI'), l.rusis)::VARCHAR;
+            to_char(l.pradzia, 'YYYY-MM-DD HH24:MI'),
+            CASE l.rusis WHEN 'nuoma' THEN 'kita jo nuoma' ELSE 'kitas jo perkėlimas' END)::VARCHAR;
         RETURN;
     END IF;
     -- 8. Motociklas laisvas
@@ -133,7 +134,7 @@ BEGIN
     paros := CEIL(EXTRACT(EPOCH FROM (n.pabaiga - n.pradzia)) / 86400);
     -- 3. Vėlavimas valandomis
     velavimas := EXTRACT(EPOCH FROM ("grazinimoLaikas" - n.pabaiga)) / 3600;
-    -- 4. Bauda – pakopa su didžiausia „Vėlavimas nuo“, neviršijančia vėlavimo (PA14)
+    -- 4. Bauda – pakopa su didžiausia „Vėlavimas nuo (val.)“, neviršijančia vėlavimo (PA14)
     IF velavimas > 0 THEN
         SELECT bp."Bauda" INTO b FROM "Baudos pakopa" bp
         WHERE bp."Tarifo ID" = n.tarifas AND bp."Vėlavimas nuo (val.)" <= velavimas
@@ -145,7 +146,7 @@ BEGIN
 END $$;
 
 -- Operacijos pavyzdys: Rezervuoti motociklą (PA2). Viena transakcija – užrakinti, patikrinti, įrašyti.
--- Kai funkcija iškviečiama atskiru sakiniu, transakcija baigiasi sakinio pabaigoje ir tik tada atleidžiami užraktai.
+-- Kai funkcija iškviečiama atskiru sakiniu, transakcija baigiasi sakinio pabaigoje ir tik tada nuimami užraktai.
 -- "uzrakinti" = false ir "lauktiSek" naudojami tik demonstruoti, kas nutiktų be užrakto (funkciju_testai.sql).
 CREATE OR REPLACE FUNCTION "rezervuoti"(
     "klientasId" INTEGER, "motociklasId" INTEGER, pradzia TIMESTAMP, pabaiga TIMESTAMP,

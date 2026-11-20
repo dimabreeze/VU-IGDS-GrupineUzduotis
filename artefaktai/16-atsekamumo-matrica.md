@@ -50,7 +50,7 @@ Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas p
 | 1.3.1.2 Vieningas stilius | 2.3.2: paletė, šriftas, mygtukai; vienas stiliaus failas | Puslapių palyginimas su 2.3.2 |
 | 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka, charakteristikos), Motociklo tipas, Kategorija, Tarifas (Paros kaina); E1 | Paieškos rezultatų peržiūra |
 | 1.3.2.1 Kalbos | Perjungiklis LT \| EN visuose ekranuose | Kalbos perjungimas kiekviename puslapyje |
-| 1.3.2.2 Darbuotojo apmokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; E4; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
+| 1.3.2.2 Darbuotojo mokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; E4; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
 | 1.3.2.3 Trumpas rezervacijos kelias | E1 → E2 → E3 | TA2 (4) |
 | 1.3.2.4 Aiški atsisakymo priežastis | *tikrintiUzimtuma* ir *tikrintiKlientoTeise* grąžina priežastį; E2 (atmetimas), E4 (įspėjimas) | TA1–TA4 |
 | 1.3.3.1 Atsako laikas | Užraktas laikomas tik transakcijos metu (`12-funkcijos.md`) | Našumo ir apkrovos testavimas |

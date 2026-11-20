@@ -13,7 +13,7 @@ Laikoma, kad duomenų bazės būsena atitinka 2026-11-19 12:00 (DABAR). Sugeneru
 Visi motociklų užimtumo laikotarpiai nepersidengia ir atitinka motociklo buvimo vietos taisyklę
 (artefaktai/08-loginis-er.md). Galutinė kaina apskaičiuojama kaip funkcijoje skaiciuotiKaina
 (artefaktai/12-funkcijos.md): planuojamo nuomos laikotarpio parų skaičius, suapvalintas į viršų, × paros kaina
-+ bauda; bauda – pakopos su didžiausia „Vėlavimas nuo“ reikšme, neviršijančia vėlavimo valandomis, suma.
++ bauda; bauda – pakopos su didžiausia „Vėlavimas nuo (val.)“ reikšme, neviršijančia vėlavimo valandomis, suma.
 
 Vienas atvejis sudarytas specialiai (laukiantis_klientas): nuoma grąžinta pavėluotai, o kitas klientas,
 kurio rezervacija prasidėjo valanda po planuojamos pabaigos, sutiko palaukti – darbuotojas pakeitė jo
