@@ -14,7 +14,18 @@ Medžiaga ataskaitos skyriui 1.1.5 „Sistemos kūrimo terminai“.
 
 Sistemos kūrimo grafikas apima visus šešis IS kūrimo etapus: analizę, projektavimą, programavimą, testavimą, diegimą, veikimą ir priežiūrą. Nors šiame darbe atliekami tik pirmieji du etapai, grafike parodyti ir likusių etapų terminai. Projektas pradedamas 2026-09-21 ir trunka 90 savaičių; techninis projektas suderinamas su užsakovu 2026-11-23 – 2026-11-29 savaitę.
 
-Sistema sukuriama per 9 savaites (iki 2027-01-31). Testuojama 14 savaičių: sistemos testavimas pagal panaudos atvejus, naktiniai automatiniai testai, priėmimo bandymai su filialų darbuotojais (UAT) ir eksploatacinis priėmimo testavimas (OAT); programuotojai klaidas taiso nuo pirmos testavimo dienos iki OAT pabaigos. Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant, todėl diegiant sistema įdiegiama ir duomenys iš senos sistemos (bendros filialų „Excel“ lentelės) perkeliami per vieną savaitę. Po to darbuotojai mokomi, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po mokymų. Po paleidimo 52 savaites vyksta garantinė priežiūra; ji apima visus metus, taigi ir visus nuomos sezono mėnesius (2027 m. birželį–spalį ir 2028 m. balandį–gegužę), todėl per ją patikrinamas metinis pasiekiamumas (1.3.3.2) ir klaidų taisymo bei atnaujinimų terminai (1.3.4.3).
+Sistema sukuriama per 9 savaites (iki 2027-01-31).  
+* Testuojama 14 savaičių:  
+  - sistemos testavimas pagal panaudos atvejus, 
+  - naktiniai automatiniai testai,
+  - priėmimo bandymai su filialų darbuotojais (UAT) ir 
+  - eksploatacinis priėmimo testavimas (OAT); 
+     
+* Programuotojai taiso klaidas nuo pirmos testavimo dienos iki OAT pabaigos. 
+* Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant, todėl diegiant sistema įdiegiama ir duomenys iš senos sistemos (bendros filialų „Excel“ lentelės) perkeliami per vieną savaitę. 
+* Po to darbuotojai mokomi, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. 
+* Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po mokymų. 
+* Po paleidimo 52 savaites vyksta garantinė priežiūra; ji apima visus metus, taigi ir visus nuomos sezono mėnesius (2027 m. birželį–spalį ir 2028 m. balandį–gegužę), todėl per ją patikrinamas metinis pasiekiamumas (NFR 1.3.3.2) ir klaidų taisymo bei atnaujinimų terminai (NFR 1.3.4.3).
 
 Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoje savaitėje po etapo pabaigos: užsakovas patvirtina reikalavimų specifikaciją, techninį projektą, priimtą sistemą ir projekto užbaigimą, o projekto vadovas – programavimo pabaigą ir sistemos paleidimą.
 
@@ -50,7 +61,7 @@ Ne iš eilės vienas po kito einantys ryšiai:
 ## Kodėl tokie terminai
 
 - **Projekto pradžia 2026-09-21** parinkta taip, kad techninio projekto suderinimas (2.5) būtų 2026-11-23 savaitę – kai pateikiama ši ataskaita.
-- **Programavimas** (3.2–3.6) trunka 9 savaites, nes sistema nedidelė: 18 lentelių, 7 procesai, 22 panaudos atvejai. Serverio daliai skirta 8 savaitės, sąsajai – 7: maketai parengti 5 pagrindiniams ekranams (E1–E5), o formų reikia visiems panaudos atvejams, taip pat administratoriaus (PA16–PA22).
+- **Programavimas** (3.2–3.6) trunka 9 savaites, nes sistema nedidelė: 18 lentelių, 7 procesai, 22 panaudos atvejai. Serverio daliai skirta 8 savaitės, sąsajai – 7: maketai parengti 5 pagrindiniams ekranams (EKRANAS01–EKRANAS05), o formų reikia visiems panaudos atvejams, taip pat administratoriaus (PA16–PA22).
 - **Vienetų testai ir kodo peržiūros** atskiru darbu nerodomi: tai neatskiriama programavimo dalis.
 
 ## Naktiniai testai
@@ -59,17 +70,17 @@ Ne iš eilės vienas po kito einantys ryšiai:
 
 | Darbas | Kas tikrinama | Reikalavimas |
 |---|---|---|
-| 4.4 Naktiniai testai | Pasiekiamumas: kas minutę vykdomi paieškos ir rezervacijos scenarijai, ≥ 99 % sėkmingų per naktį | 1.3.3.2 |
-| | Atsako laikas esant 300 vienu metu dirbančių vartotojų apkrovai | 1.3.3.1 |
-| | Funkcinė regresija: automatizuoti testavimo atvejai TA1–TA4, įskaitant vienalaikes rezervacijas | 1.2.1–1.2.4, 1.3.3.3 |
-| | Duomenų taisyklės, kurių neužtikrina duomenų bazės apribojimai (kaip `darbas/patikra.sql`) | 1.2.2–1.2.5 |
-| | Prieiga pagal vaidmenis: klientas neatidaro kito kliento rezervacijos tiesiogine nuoroda | 1.3.5.1 |
-| | Nukreipimas iš HTTP į HTTPS | 1.3.5.2 |
-| | Sąsajos ekrano nuotraukos 360 ir 1280 px pločio, palyginamos su ankstesnės nakties; LT ir EN vertimų pilnumas | 1.3.1.1, 1.3.2.1 |
-| 4.5 Atkūrimo ir saugumo testai atskirame sistemos egzemplioriuje | Atkūrimas iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val. | 1.3.4.1 |
-| | Saugumo skenavimas: žinomos pažeidžiamumos naudojamose bibliotekose ir automatinis žiniatinklio pažeidžiamumų skenavimas | 1.3.5.2 |
+| 4.4 Naktiniai testai | Pasiekiamumas: kas minutę vykdomi paieškos ir rezervacijos scenarijai, ≥ 99 % sėkmingų per naktį | NFR 1.3.3.2 |
+| | Atsako laikas esant 300 vienu metu dirbančių vartotojų apkrovai | NFR 1.3.3.1 |
+| | Funkcinė regresija: automatizuoti testavimo atvejai TA1–TA4, įskaitant vienalaikes rezervacijas | FR 1.2.1–FR 1.2.4, NFR 1.3.3.3 |
+| | Duomenų taisyklės, kurių neužtikrina duomenų bazės apribojimai (kaip `darbas/patikra.sql`) | FR 1.2.2–FR 1.2.5 |
+| | Prieiga pagal vaidmenis: klientas neatidaro kito kliento rezervacijos tiesiogine nuoroda | NFR 1.3.5.1 |
+| | Nukreipimas iš HTTP į HTTPS | NFR 1.3.5.2 |
+| | Sąsajos ekrano nuotraukos 360 ir 1280 px pločio, palyginamos su ankstesnės nakties; LT ir EN vertimų pilnumas | NFR 1.3.1.1, NFR 1.3.2.1 |
+| 4.5 Atkūrimo ir saugumo testai atskirame sistemos egzemplioriuje | Atkūrimas iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val. | NFR 1.3.4.1 |
+| | Saugumo skenavimas: žinomos pažeidžiamumos naudojamose bibliotekose ir automatinis žiniatinklio pažeidžiamumų skenavimas | NFR 1.3.5.2 |
 
-Atkūrimas ir saugumo skenavimas vykdomi atskirame egzemplioriuje, nes pagrindiniame jie trukdytų pasiekiamumo matavimui: sistema būtų laikoma nepasiekiama ne dėl klaidos, o dėl paties testo. Naktiniais testais negalima patikrinti darbuotojo mokymo (1.3.2.2), rezervacijos kelio ilgio (1.3.2.3) ir klaidų taisymo tvarkos (1.3.4.3).
+Atkūrimas ir saugumo skenavimas vykdomi atskirame egzemplioriuje, nes pagrindiniame jie trukdytų pasiekiamumo matavimui: sistema būtų laikoma nepasiekiama ne dėl klaidos, o dėl paties testo. Naktiniais testais negalima patikrinti darbuotojo mokymo (NFR 1.3.2.2), rezervacijos kelio ilgio (NFR 1.3.2.3) ir klaidų taisymo tvarkos (NFR 1.3.4.3).
 
 ## Darbai ir šio darbo skyriai
 
@@ -87,28 +98,28 @@ Analizės ir projektavimo darbai atitinka šios ataskaitos skyrius; vėlesnių e
 | 2.3 Vartotojo sąsajos dizainas ir maketai | 2.3.1, 2.3.2 |
 | 2.4 Testavimo plano ir testavimo atvejų parengimas | 3.1, 3.2 |
 | 2.5 Techninio projekto suderinimas su užsakovu | Visa ataskaita |
-| 3.2 Duomenų bazės ir bendrųjų tikrinimo funkcijų kūrimas | 2.2.2 lentelės; 2.2.1 funkcijos `tikrintiUzimtuma` (kviečia PA1, PA2, PA4, PA11, PA22), `tikrintiKlientoTeise` (PA2, PA4), `skaiciuotiKaina` (PA10); 1.3.3.3 |
+| 3.2 Duomenų bazės ir bendrųjų tikrinimo funkcijų kūrimas | 2.2.2 lentelės; 2.2.1 funkcijos `tikrintiUzimtuma` (kviečia PA1, PA2, PA4, PA11, PA22), `tikrintiKlientoTeise` (PA2, PA4), `skaiciuotiKaina` (PA10); NFR 1.3.3.3 |
 | 3.3 Serverio dalies (procesų P1–P7 operacijų) kūrimas | 2.1.1: 16 operacijų, kurias inicijuoja aktorius, ir kitos jų kviečiamos funkcijos; ataskaitos (P7) |
 | 3.4 Pastovių žinynų ir duomenų perkėlimo scenarijų parengimas | Vairuotojo pažymėjimo kategorijos, gamintojai, motociklų tipai; perkėlimas iš bendros filialų „Excel“ lentelės (1.1.1) |
-| 3.5 Vartotojo sąsajos kūrimas pagal maketus (LT ir EN kalbos) | 2.3.2 (maketai E1–E5); 1.3.1.1–1.3.1.3, 1.3.2.1, 1.3.2.3 |
-| 3.6 Prieigos pagal vaidmenis ir duomenų apsaugos realizavimas | 1.3.5.1, 1.3.5.2 |
+| 3.5 Vartotojo sąsajos kūrimas pagal maketus (LT ir EN kalbos) | 2.3.2 (maketai EKRANAS01–EKRANAS05); NFR 1.3.1.1–NFR 1.3.1.3, NFR 1.3.2.1, NFR 1.3.2.3 |
+| 3.6 Prieigos pagal vaidmenis ir duomenų apsaugos realizavimas | NFR 1.3.5.1, NFR 1.3.5.2 |
 | 3.7 Aktualių žinynų (modelių, tarifų, baudų pakopų) parengimas | Motociklų modeliai ir jų charakteristikos, tarifai ir baudų pakopos |
 | 4.1 Testavimo plano ir atvejų patikslinimas pagal sukurtą sistemą | 3.1, 3.2: testavimo atvejų žingsniai aprašyti per sąsają, todėl patikslinami pagal sukurtą sistemą |
 | 4.3 Sistemos testavimas pagal panaudos atvejus ir testavimo atvejus | 3.1.2, TA1–TA4 |
 | 4.4, 4.5 Naktiniai testai | Žr. skyrių „Naktiniai testai“ |
-| 4.6 Priėmimo bandymai su filialų darbuotojais (UAT) | 1.3.2.2 (naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo dirba savarankiškai) |
-| 4.7 Eksploatacinis priėmimo testavimas (OAT) | Pasirengimas eksploatacijai: dubliuojanti duomenų bazė, atsarginės kopijos ir atkūrimas (1.3.4.1), sintetinė stebėsena (1.3.3.2), atnaujinimų diegimo tvarka (1.3.4.3) |
+| 4.6 Priėmimo bandymai su filialų darbuotojais (UAT) | NFR 1.3.2.2 (naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo dirba savarankiškai) |
+| 4.7 Eksploatacinis priėmimo testavimas (OAT) | Pasirengimas eksploatacijai: dubliuojanti duomenų bazė, atsarginės kopijos ir atkūrimas (NFR 1.3.4.1), sintetinė stebėsena (NFR 1.3.3.2), atnaujinimų diegimo tvarka (NFR 1.3.4.3) |
 | 4.8 Klaidų taisymas | 4.2–4.7 darbuose rastos klaidos |
-| 5.1 Gamybinės infrastruktūros paruošimas | HTTPS (1.3.5.2), dubliuojanti duomenų bazė ir atsarginės kopijos (1.3.4.1) |
+| 5.1 Gamybinės infrastruktūros paruošimas | HTTPS (NFR 1.3.5.2), dubliuojanti duomenų bazė ir atsarginės kopijos (NFR 1.3.4.1) |
 | 5.2 Įdiegimas ir duomenų perkėlimas (migracija) iš senos sistemos | Sistemos įdiegimas gamybinėje aplinkoje; 3.4 ir 3.7 scenarijais įkeliami žinynai, motociklai, tarifai, klientai ir būsimos rezervacijos iš bendros filialų „Excel“ lentelės (1.1.1) |
 | 5.3 Naudotojo dokumentacijos rengimas | Papildoma vietomis, kurios mokymuose pasirodė sudėtingos |
-| 5.4 Darbuotojų mokymai | 1.3.2.2 (ne ilgiau kaip 3 val. vienam darbuotojui) |
-| 6.1 Garantinė priežiūra: klaidų taisymas ir atnaujinimai | 1.3.4.3 |
-| 6.3 Sintetinė stebėsena ir metinio pasiekiamumo matavimas | 1.3.3.2 |
-| 6.4 Atsarginės kopijos ir atkūrimo patikra | 1.3.4.1 |
-| 6.5 Projekto užbaigimo ataskaita ir perspektyvinių reikalavimų planas | 1.6.1–1.6.4 |
+| 5.4 Darbuotojų mokymai | NFR 1.3.2.2 (ne ilgiau kaip 3 val. vienam darbuotojui) |
+| 6.1 Garantinė priežiūra: klaidų taisymas ir atnaujinimai | NFR 1.3.4.3 |
+| 6.3 Sintetinė stebėsena ir metinio pasiekiamumo matavimas | NFR 1.3.3.2 |
+| 6.4 Atsarginės kopijos ir atkūrimo patikra | NFR 1.3.4.1 |
+| 6.5 Projekto užbaigimo ataskaita ir perspektyvinių reikalavimų planas | PR 1.6.1–PR 1.6.4 |
 
-**Ko grafike nėra:** integracijų su išorinėmis sistemomis (pavyzdyje – 3.4). Mokėjimas internetu ir integracija su buhalterinės apskaitos sistema į pirmąją versiją neįeina (sistemos ribos, 1.6.1, 1.6.3), todėl jų kūrimas planuojamas tik 6.5 darbe.
+**Ko grafike nėra:** integracijų su išorinėmis sistemomis (pavyzdyje – 3.4). Mokėjimas internetu ir integracija su buhalterinės apskaitos sistema į pirmąją versiją neįeina (sistemos ribos, PR 1.6.1, PR 1.6.3), todėl jų kūrimas planuojamas tik 6.5 darbe.
 
 ## Savikontrolė (ataskaitoje nepateikiama)
 

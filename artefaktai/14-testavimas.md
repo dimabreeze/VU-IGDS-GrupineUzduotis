@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie 1.2.1 pridėtas TA2 1 žingsnis.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis.
 
 Testavimas planuojamas sistemos lygiu (11 paskaita, 16 skaidrė). Testavimo atvejai (TA) sudaryti pagal panaudos atvejus (39–40 skaidrės): kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio (44 skaidrė). Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje (33 skaidrė). Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas (28 skaidrė). Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais (39 skaidrė) ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis (37 skaidrė).
 
@@ -14,8 +14,8 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 ### 3.1.1. Testavimo tikslai
 
-1. Patikrinti, ar sistema atitinka funkcinius reikalavimus 1.2.1–1.2.5, ypač taisykles, kurių duomenų bazės apribojimai neužtikrina: motociklo užimtumą ir buvimo vietą, vairuotojo pažymėjimo kategoriją ir jos galiojimą, galutinės kainos ir baudos skaičiavimą (2.2.1 skyriaus funkcijos).
-2. Surasti defektus įvedant netinkamus ir ribinius duomenis (sutampantys ir besiliečiantys laikotarpiai, kategorija, kuri baigia galioti nuomos pabaigos dieną, vėlavimas lygiai ties baudos pakopos riba) ir patikrinti, ar sistema tokių veiksmų neleidžia ir nurodo aiškią priežastį (1.3.2.4).
+1. Patikrinti, ar sistema atitinka funkcinius reikalavimus FR 1.2.1–FR 1.2.5, ypač taisykles, kurių duomenų bazės apribojimai neužtikrina: motociklo užimtumą ir buvimo vietą, vairuotojo pažymėjimo kategoriją ir jos galiojimą, galutinės kainos ir baudos skaičiavimą (2.2.1 skyriaus funkcijos).
+2. Surasti defektus įvedant netinkamus ir ribinius duomenis (sutampantys ir besiliečiantys laikotarpiai, kategorija, kuri baigia galioti nuomos pabaigos dieną, vėlavimas lygiai ties baudos pakopos riba) ir patikrinti, ar sistema tokių veiksmų neleidžia ir nurodo aiškią priežastį (NFR 1.3.2.4).
 3. Patikrinti nefunkcinius reikalavimus, kurių negalima patikrinti atskiromis funkcijomis: vienalaikes rezervacijas, atsako laiką ir pasiekiamumą esant 300 vartotojų, prieigą pagal vaidmenis.
 
 ### 3.1.2. Testuojamų sistemos funkcinių ir nefunkcinių reikalavimų sąrašas
@@ -24,46 +24,46 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
 |---|---|---|
-| Motociklų paieška | 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
-| Rezervacija ir jos valdymas | 1.2.2 | TA1, TA2, TA4 |
-| Išdavimas ir grąžinimas | 1.2.3 | TA3 |
-| Techninė priežiūra | 1.2.4 | TA1 (7–8 žingsniai) |
-| Parko administravimas ir ataskaitos | 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
-| Prisitaikanti sąsaja | 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
-| Vieningas stilius | 1.3.1.2 | Visų puslapių palyginimas su 2.3.2 skyriuje apibrėžta spalvų palete, šriftu ir mygtukų išdėstymu |
-| Motociklo kortelė | 1.3.1.3 | Paieškos rezultatų peržiūra: kiekvienam tinkamam modeliui – viena kortelė su nuotrauka, pavadinimu, tipu, variklio tūriu, galia, kategorija ir paros kaina |
-| Kalbos | 1.3.2.1 | Kiekviename puslapyje kalba perjungiama LT ↔ EN; įvesti formos duomenys išlieka |
-| Darbuotojo mokymas | 1.3.2.2 | Priėmimo bandymai: naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo savarankiškai atlieka rezervaciją kliento vardu, išdavimą, grąžinimą ir techninės priežiūros planavimą |
-| Trumpas rezervacijos kelias | 1.3.2.3 | TA2 (4 žingsnis): nuo motociklo pasirinkimo iki patvirtinimo – 3 ekranai |
-| Aiški atsisakymo priežastis | 1.3.2.4 | TA1–TA4 |
-| Atsako laikas | 1.3.3.1 | Našumo ir apkrovos testavimas: imituojant 300 vienu metu dirbančių vartotojų, paieškos rezultatai ir rezervacijos patvirtinimas parodomi ne vėliau kaip per 2 s, kiti puslapiai – per 3 s |
-| Pasiekiamumas | 1.3.3.2 | Patikimumo testavimas sintetiniais testais: testavimo etape kiekvieną naktį 6 valandas kas minutę automatiškai vykdomi paieškos ir rezervacijos scenarijai, kartu imituojant 300 vienu metu prisijungusių vartotojų apkrovą; per kiekvieną naktį sėkmingų vykdymų turi būti ne mažiau kaip 99 % (iš 360 – ne daugiau kaip 3 nesėkmingi). Naktį testuojama tam, kad apkrova netrukdytų dienos testams. Metinis pasiekiamumas matuojamas tais pačiais testais sistemos veikimo ir priežiūros etape (sintetinė stebėsena) |
-| Vienalaikės rezervacijos | 1.3.3.3 | TA4 |
-| Duomenų dubliavimas ir atsarginės kopijos | 1.3.4.1 | Atkūrimo bandymas: pagrindinėje duomenų bazėje įrašyta rezervacija iš karto yra ir atsarginėje; sistema atkuriama iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val.; saugomos ne mažiau kaip 30 dienų kopijos |
-| Istoriniai duomenys | 1.3.4.2 | Bandoma ištrinti užbaigtą nuomą kiekvieno vaidmens paskyra – sistema neleidžia |
-| Prieiga pagal vaidmenis | 1.3.5.1 | TA1 (1 žingsnis): klientas mato tik savo rezervacijas |
-| Duomenų apsauga | 1.3.5.2 | Kreipiantis HTTP adresu naršyklė nukreipiama į HTTPS; duomenų bazėje saugoma tik slaptažodžio maiša, o ne pats slaptažodis |
+| Motociklų paieška | FR 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
+| Rezervacija ir jos valdymas | FR 1.2.2 | TA1, TA2, TA4 |
+| Išdavimas ir grąžinimas | FR 1.2.3 | TA3 |
+| Techninė priežiūra | FR 1.2.4 | TA1 (7–8 žingsniai) |
+| Parko administravimas ir ataskaitos | FR 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
+| Prisitaikanti sąsaja | NFR 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
+| Vieningas stilius | NFR 1.3.1.2 | Visų puslapių palyginimas su 2.3.2 skyriuje apibrėžta spalvų palete, šriftu ir mygtukų išdėstymu |
+| Motociklo kortelė | NFR 1.3.1.3 | Paieškos rezultatų peržiūra: kiekvienam tinkamam modeliui – viena kortelė su nuotrauka, pavadinimu, tipu, variklio tūriu, galia, kategorija ir paros kaina |
+| Kalbos | NFR 1.3.2.1 | Kiekviename puslapyje kalba perjungiama LT ↔ EN; įvesti formos duomenys išlieka |
+| Darbuotojo mokymas | NFR 1.3.2.2 | Priėmimo bandymai: naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo savarankiškai atlieka rezervaciją kliento vardu, išdavimą, grąžinimą ir techninės priežiūros planavimą |
+| Trumpas rezervacijos kelias | NFR 1.3.2.3 | TA2 (4 žingsnis): nuo motociklo pasirinkimo iki patvirtinimo – 3 ekranai |
+| Aiški atsisakymo priežastis | NFR 1.3.2.4 | TA1–TA4 |
+| Atsako laikas | NFR 1.3.3.1 | Našumo ir apkrovos testavimas: imituojant 300 vienu metu dirbančių vartotojų, paieškos rezultatai ir rezervacijos patvirtinimas parodomi ne vėliau kaip per 2 s, kiti puslapiai – per 3 s |
+| Pasiekiamumas | NFR 1.3.3.2 | Patikimumo testavimas sintetiniais testais: testavimo etape kiekvieną naktį 6 valandas kas minutę automatiškai vykdomi paieškos ir rezervacijos scenarijai, kartu imituojant 300 vienu metu prisijungusių vartotojų apkrovą; per kiekvieną naktį sėkmingų vykdymų turi būti ne mažiau kaip 99 % (iš 360 – ne daugiau kaip 3 nesėkmingi). Naktį testuojama tam, kad apkrova netrukdytų dienos testams. Metinis pasiekiamumas matuojamas tais pačiais testais sistemos veikimo ir priežiūros etape (sintetinė stebėsena) |
+| Vienalaikės rezervacijos | NFR 1.3.3.3 | TA4 |
+| Duomenų dubliavimas ir atsarginės kopijos | NFR 1.3.4.1 | Atkūrimo bandymas: pagrindinėje duomenų bazėje įrašyta rezervacija iš karto yra ir atsarginėje; sistema atkuriama iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val.; saugomos ne mažiau kaip 30 dienų kopijos |
+| Istoriniai duomenys | NFR 1.3.4.2 | Bandoma ištrinti užbaigtą nuomą kiekvieno vaidmens paskyra – sistema neleidžia |
+| Prieiga pagal vaidmenis | NFR 1.3.5.1 | TA1 (1 žingsnis): klientas mato tik savo rezervacijas |
+| Duomenų apsauga | NFR 1.3.5.2 | Kreipiantis HTTP adresu naršyklė nukreipiama į HTTPS; duomenų bazėje saugoma tik slaptažodžio maiša, o ne pats slaptažodis |
 
-**Netestuojamas reikalavimas – 1.3.4.3 „Klaidų taisymas ir atnaujinimai“.** Reikalavimas nustato ne programos savybę, o priežiūros darbų tvarką: per kiek laiko ištaisomos kritinės klaidos ir kada diegiami atnaujinimai. Todėl programos testavimu jo patikrinti negalima. Jo laikymasis vertinamas sistemos veikimo ir priežiūros etape.
+**Netestuojamas reikalavimas – NFR 1.3.4.3 „Klaidų taisymas ir atnaujinimai“.** Reikalavimas nustato ne programos savybę, o priežiūros darbų tvarką: per kiek laiko ištaisomos kritinės klaidos ir kada diegiami atnaujinimai. Todėl programos testavimu jo patikrinti negalima. Jo laikymasis vertinamas sistemos veikimo ir priežiūros etape.
 
-**Pasiekiamumas ir planiniai atnaujinimai.** 1.3.3.2 neišskiria planinių atnaujinimų, kurie sezono metu diegiami 0–6 val. (1.3.4.3), todėl sintetinė stebėsena veikimo etape jų metu sistemą laiko nepasiekiama ir šios prastovos turi tilpti į leistiną 1 %. Testavimo etape atnaujinimai nediegiami, todėl naktiniams testams tai įtakos neturi.
+**Pasiekiamumas ir planiniai atnaujinimai.** NFR 1.3.3.2 neišskiria planinių atnaujinimų, kurie sezono metu diegiami 0–6 val. (NFR 1.3.4.3), todėl sintetinė stebėsena veikimo etape jų metu sistemą laiko nepasiekiama ir šios prastovos turi tilpti į leistiną 1 %. Testavimo etape atnaujinimai nediegiami, todėl naktiniams testams tai įtakos neturi.
 
 ## 3.2. Testavimo atvejai
 
-Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis:
+Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis:
 
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|
-| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA3, PA4, PA6, PA11 | 1.2.2, 1.2.4, 1.3.2.4, 1.3.5.1 |
-| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | 1.2.1, 1.2.2, 1.3.2.3, 1.3.2.4 |
-| 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | 1.2.3, 1.3.2.4 |
-| 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | 1.2.1, 1.2.2, 1.3.2.4, 1.3.3.3 |
+| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA3, PA4, PA6, PA11 | FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1 |
+| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 |
+| 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | FR 1.2.3, NFR 1.3.2.4 |
+| 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3 |
 
 ### Testavimo atvejo Nr. 1
 
 **Rezervacijos keitimas ir techninės priežiūros planavimas: motociklo užimtumas ir buvimo vieta**
 
-**Aprašymas:** tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai 1.2.2, 1.2.4, 1.3.2.4, 1.3.5.1.
+**Aprašymas:** tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1.
 
 **Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. Klientas 8 prisijungęs prie savo paskyros; jo pažymėjimo kategorijos A1, A2, A galioja iki 2033-10-13. Kliento 8 rezervacija Nr. 655: Honda CB500 Hornet, valst. nr. 52 UVE (motociklas dabar Vilniuje), 2027-05-12 10:00 – 2027-05-15 10:00, išdavimas Vilniuje, grąžinimas Klaipėdoje, tarifas 64,00 €/para, užstatas 400,00 €. Kita šio motociklo nuoma – Kliento 12 rezervacija Nr. 661: 2027-05-24 10:00 – 2027-05-26 10:00, išdavimas ir grąžinimas Klaipėdoje. Kitų šio motociklo užimtumo laikotarpių po 2027-05-12 nėra. 7–8 žingsniuose dirba Klaipėdos filialo darbuotojas (Darbuotojas 6).
 
@@ -84,7 +84,7 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Vairuotojo pažymėjimo tikrinimas rezervuojant**
 
-**Aprašymas:** tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai 1.2.1, 1.2.2, 1.3.2.3, 1.3.2.4.
+**Aprašymas:** tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4.
 
 **Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 26 HUN – vienintelis šio modelio motociklas Vilniuje, laisvas 2027-05-09 10:00 – 2027-05-12 10:00. Modeliui reikia A kategorijos; tarifas 100,00 €/para, užstatas 700,00 €, baudų pakopos: nuo 1 val. – 20,00 €, nuo 3 val. – 50,00 €, nuo 24 val. – 100,00 €. Klientas 26 (turi paskyrą): A1, A2 ir A galioja iki 2027-05-10; jo rezervacija Nr. 642 – BMW F 900 R, valst. nr. 84 VZL, 2027-04-14 11:00 – 2027-04-18 11:00, išdavimas ir grąžinimas Kaune. Klientas 33 (turi paskyrą): tik A1, galioja iki 2030-01-21. Klientas 35: paskyros neturi, pažymėjime motociklų kategorijų nėra. 2 žingsnyje dirba Vilniaus filialo darbuotojas (Darbuotojas 1).
 
@@ -102,7 +102,7 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Pavėluotas grąžinimas ir galutinė kaina**
 
-**Aprašymas:** tikrinama, kaip sistema elgiasi, kai motociklas grąžinamas pavėluotai, o po šios nuomos jau rezervuota kita. Tvarkaraštyje (PA8) vėlavimas pažymimas; motociklo neleidžiama išduoti, kol ankstesnė nuoma negrąžinta (PA9); neleidžiama įrašyti mažesnės ridos nei išduodant (PA12); grąžinant apskaičiuojama galutinė kaina ir bauda (PA13, PA14, funkcija `skaiciuotiKaina`). Ribinė reikšmė: vėlavimas lygiai 3 val. – baudos pakopos „nuo 3 val.“ pradžia. Laukusiam klientui pakeičiama nuomos pradžia (PA4). Testuojami reikalavimai 1.2.3, 1.3.2.4.
+**Aprašymas:** tikrinama, kaip sistema elgiasi, kai motociklas grąžinamas pavėluotai, o po šios nuomos jau rezervuota kita. Tvarkaraštyje (PA8) vėlavimas pažymimas; motociklo neleidžiama išduoti, kol ankstesnė nuoma negrąžinta (PA9); neleidžiama įrašyti mažesnės ridos nei išduodant (PA12); grąžinant apskaičiuojama galutinė kaina ir bauda (PA13, PA14, funkcija `skaiciuotiKaina`). Ribinė reikšmė: vėlavimas lygiai 3 val. – baudos pakopos „nuo 3 val.“ pradžia. Laukusiam klientui pakeičiama nuomos pradžia (PA4). Testuojami reikalavimai FR 1.2.3, NFR 1.3.2.4.
 
 **Pradiniai duomenys (sąlygos prieš):** Vilniaus filialas, dabartinis laikas 2026-11-12 11:00, prisijungęs Darbuotojas 3. Duomenys – bandomųjų duomenų būsena šiuo momentu: rinkinyje (būsena 2026-11-19 12:00) nuomos Nr. 631 ir 632 jau užbaigtos taip, kaip nurodyta „Sąlygose po“. Motociklas BMW G 310 R, valst. nr. 82 HNU. Nuoma Nr. 631 (Klientas 19): 2026-11-10 10:00 – 2026-11-12 10:00, išdavimas ir grąžinimas Vilniuje, išduota 2026-11-10 10:26 su 23 642 km rida, dar negrąžinta (būsena „aktyvi“). Nuoma Nr. 632 (Klientas 22) tam pačiam motociklui: 2026-11-12 11:00 – 2026-11-13 13:00, išdavimas ir grąžinimas Vilniuje, būsena „rezervuota“. Abiejų nuomų tarifas: 60,00 €/para, užstatas 400,00 €, baudų pakopos: nuo 1 val. – 10,00 €, nuo 3 val. – 25,00 €, nuo 24 val. – 60,00 €.
 
@@ -122,7 +122,7 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Vienalaikės rezervacijos**
 
-**Aprašymas:** tikrinama, ar sistema, gavusi dvi tuo pačiu metu pateiktas to paties motociklo rezervacijas sutampančiam laikotarpiui, patvirtina tik vieną, o kitam klientui praneša, kad motociklas užimtas, ir ar užimtas motociklas nebėra paieškos rezultatuose. Testas vykdomas automatizuotai: abi rezervacijos pateikiamos dviem lygiagrečiomis užklausomis, nes rankiniu būdu to paties momento pasiekti negalima. Testuojami reikalavimai 1.2.1, 1.2.2, 1.3.2.4, 1.3.3.3.
+**Aprašymas:** tikrinama, ar sistema, gavusi dvi tuo pačiu metu pateiktas to paties motociklo rezervacijas sutampančiam laikotarpiui, patvirtina tik vieną, o kitam klientui praneša, kad motociklas užimtas, ir ar užimtas motociklas nebėra paieškos rezultatuose. Testas vykdomas automatizuotai: abi rezervacijos pateikiamos dviem lygiagrečiomis užklausomis, nes rankiniu būdu to paties momento pasiekti negalima. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3.
 
 **Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 84 VZL – vienintelis šio modelio motociklas Kaune, laisvas 2027-05-05 11:00 – 2027-05-08 11:00. Klientai 2 ir 3 prisijungę skirtingose naršyklėse; abiejų A kategorija galioja (iki 2034-11-26 ir 2034-02-26). Abu ieškojo motociklų Kaune šiam laikotarpiui, pasirinko BMW F 900 R ir yra rezervacijos duomenų ekrane.
 

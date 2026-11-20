@@ -50,7 +50,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Einame žingsniais iš eilės. Kiekviename žingsnyje pirmiausia aptariame, paskui rezultatą įrašome į šio projekto artefaktą.
 - Visus sprendimus rašome į `sprendimai.md` (sprendimų žurnalas, rašomas tik lietuvių kalba), kad kituose žingsniuose nereikėtų ginčytis iš naujo.
 - Artefaktus ir šį planą rašome lietuvių kalba, aptarimas vyksta rusų kalba.
-- Reikalavimų numerius (1.2.1, 1.3.1.1 ir t. t.) suteikiame vieną kartą ir toliau nurodome tik juos: pagal juos susiejamos diagramos, funkcijos ir testai.
+- Reikalavimų numerius (FR 1.2.1, NFR 1.3.1.1 ir t. t.) suteikiame vieną kartą ir toliau nurodome tik juos: pagal juos susiejamos diagramos, funkcijos ir testai.
 - Pabaigoje (16 žingsnis) viską surenkame į šabloną.
 - Visi dokumentai suderinti tarpusavyje: bet kokio pakeitimo atveju iš karto atnaujiname visus failus, kuriuose minimas tas pats faktas (artefaktus, `planas.md`, `sprendimai.md`, `README.md`). Neatitikimų būti neturi.
 - Pakeitimus į saugyklą įrašome (commit) tik Dmitrijui juos patikrinus.
@@ -79,19 +79,19 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 ### B etapas. Reikalavimai
 
 **4 žingsnis. Funkciniai reikalavimai** → 1.2
-- 4–5 reikalavimai po 1–3 sakinius, kiekvienas su numeriu 1.2.N; jei reikalavimas netelpa į 3 sakinius, skaidome jį į kelis.
-- Atlikta 2026-11-18: 1.2.1–1.2.5 faile `artefaktai/04-reikalavimai.md`.
+- 4–5 reikalavimai po 1–3 sakinius, kiekvienas su numeriu FR 1.2.N (FR 1.2.1–FR 1.2.5); jei reikalavimas netelpa į 3 sakinius, skaidome jį į kelis.
+- Atlikta 2026-11-18: FR 1.2.1–FR 1.2.5 faile `artefaktai/04-reikalavimai.md`.
 - Patikra: kiekvienas reikalavimas turi būti matomas bent vienam vaidmeniui ir patikrinamas testu.
 
 **5 žingsnis. Nefunkciniai reikalavimai** → 1.3
 - Išvaizda 2–3, naudojimo paprastumas 2–3, veikimo charakteristikos 2–3, priežiūra 1–2, saugumas 1–2.
 - Formuluotės išmatuojamos („paieška grąžina rezultatą per ≤ 2 s“), o ne „sistema patogi“.
-- Atlikta 2026-11-18: 1.3.1.1–1.3.5.2 (14 reikalavimų: 3/4/3/3/2) faile `artefaktai/04-reikalavimai.md`.
+- Atlikta 2026-11-18: NFR 1.3.1.1–NFR 1.3.5.2 (14 reikalavimų: 3/4/3/3/2) faile `artefaktai/04-reikalavimai.md`.
 
 **6 žingsnis. Perspektyviniai reikalavimai** → 1.6
 - 2–3 reikalavimai iš 1 žingsnio sąrašo „ko nedarome“.
 - 4–6 žingsnių artefaktas: `artefaktai/04-reikalavimai.md` (visi reikalavimai šablono lentelių formatu).
-- Atlikta 2026-11-18: 1.6.1–1.6.3 (visi funkciniai) faile `artefaktai/04-reikalavimai.md`. 12 žingsnyje (2026-11-19) pridėtas 1.6.4 Nuolaidos ir kompensacijos.
+- Atlikta 2026-11-18: PR 1.6.1–PR 1.6.3 (visi funkciniai) faile `artefaktai/04-reikalavimai.md`. 12 žingsnyje (2026-11-19) pridėtas PR 1.6.4 Nuolaidos ir kompensacijos.
 
 ### C etapas. Analizės modeliai
 
@@ -101,11 +101,11 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Atlikta 2026-11-18: `artefaktai/07-panaudos-atvejai.drawio` + PNG (21 panaudos atvejis, „include“ / „extend“), panaudos atvejų lentelė faile `artefaktai/07-panaudos-atvejai.md`. 8 žingsnyje pridėtas PA22 „Planuoti motociklų perkėlimą“ – dabar 22 panaudos atvejai.
 
 **8 žingsnis. Loginė ER diagrama** → 1.5.2
-- Modelį kuriame pagal reikalavimus 1.2.1–1.2.5, laboratorinis darbas – tik idėjų šaltinis: Darbuotojas, vairuotojo pažymėjimo kategorijos, techninė priežiūra, nuomos būsena ir laukai (rida ir būklė išduodant ir grąžinant), kliento kontaktai ir pan.
-- Iš nefunkcinių reikalavimų: motociklo nuotrauka (1.3.1.3). Nesėkmingų prisijungimų žurnalas (1.3.5.2) iš pradžių buvo modelyje, 9 žingsnyje pašalintas: prisijungimo prie sistemos į darbą neįtraukiame.
+- Modelį kuriame pagal reikalavimus FR 1.2.1–FR 1.2.5, laboratorinis darbas – tik idėjų šaltinis: Darbuotojas, vairuotojo pažymėjimo kategorijos, techninė priežiūra, nuomos būsena ir laukai (rida ir būklė išduodant ir grąžinant), kliento kontaktai ir pan.
+- Iš nefunkcinių reikalavimų: motociklo nuotrauka (NFR 1.3.1.3). Nesėkmingų prisijungimų žurnalas (NFR 1.3.5.2) iš pradžių buvo modelyje, 9 žingsnyje pašalintas: prisijungimo prie sistemos į darbą neįtraukiame.
 - Žymėjimą suderinti su 5 paskaita (laboratoriniame darbe – Cheno); laboratorinio darbo pavadinimų neatitikimų neperkelti.
 - Artefaktas: naujas `.drawio` + PNG aplanke `artefaktai/`.
-- Atlikta 2026-11-18: `artefaktai/08-loginis-er.drawio` + PNG (Cheno žymėjimas, 15 esybių, silpnos esybės ir ryšiai, M : N; 9 žingsnyje pašalinta Prisijungimo bandymas – liko 14; 10 žingsnyje pridėti žinynai Gamintojas ir Motociklo tipas – 16), aprašymas faile `artefaktai/08-loginis-er.md`. Kartu patikslinti 1.2.1, 1.2.2, 1.2.4, 1.2.5, 1.3.2.4: motociklų perkėlimas, motociklo buvimo vietos taisyklė, kiekvienos pažymėjimo kategorijos galiojimo terminas.
+- Atlikta 2026-11-18: `artefaktai/08-loginis-er.drawio` + PNG (Cheno žymėjimas, 15 esybių, silpnos esybės ir ryšiai, M : N; 9 žingsnyje pašalinta Prisijungimo bandymas – liko 14; 10 žingsnyje pridėti žinynai Gamintojas ir Motociklo tipas – 16), aprašymas faile `artefaktai/08-loginis-er.md`. Kartu patikslinti FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4: motociklų perkėlimas, motociklo buvimo vietos taisyklė, kiekvienos pažymėjimo kategorijos galiojimo terminas.
 
 **9 žingsnis. Duomenų srautų diagrama (DSD)** → 1.5.1
 - Žymėjimas ir lygis (nuspręsta 2026-11-18): viena „0 lygio“ diagrama su procesais, kaip dėstytojo priimtame pavyzdyje `saltiniai/lab-DSD-diagrama.png`; žymenys – pagal 2 paskaitos 22 skaidrę (stačiakampis, suapvalintas stačiakampis, cilindras), E/P/DS numeracija ir legenda – kaip pavyzdyje.
@@ -114,7 +114,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Atlikta 2026-11-19: `artefaktai/09-dsd.drawio` + PNG (3 išorinės esybės, 7 procesai, 8 duomenų saugyklos, 47 srautai; po 1 kontrolinio taško – 49), aprašymas faile `artefaktai/09-dsd.md`. Užimtumą tikrina tik P1, kiti procesai kreipiasi į jį.
 
 **1 kontrolinis taškas.** Suderinti reikalavimus ↔ panaudos atvejus ↔ DSD ↔ ER (šablonas tiesiogiai prašo patikrinti, ar nepraleista reikalavimų). Jei reikia, grįžti prie 4–9 žingsnių.
-- Atlikta 2026-11-19: ryšys Tarifas 1 : N Nuoma „įkainojama“ (tarifas pagal rezervacijos datą, panaudotas tarifas nekeičiamas; iš Nuoma pašalinti „Paros kaina“ ir „Užstatas“); išdavimo ir grąžinimo filialai pasirenkami rezervuojant (1.2.2); motociklo buvimo vietos taisyklė perkėlimui (1.2.5); srautai DS2 → P3 ir DS4 → P3 DSD diagramoje; Kategorija – žinynas; užimtumo tikrinimo funkcija – `tikrintiUzimtuma`. Išsamiai – `sprendimai.md`, 2026-11-19 įrašas.
+- Atlikta 2026-11-19: ryšys Tarifas 1 : N Nuoma „įkainojama“ (tarifas pagal rezervacijos datą, panaudotas tarifas nekeičiamas; iš Nuoma pašalinti „Paros kaina“ ir „Užstatas“); išdavimo ir grąžinimo filialai pasirenkami rezervuojant (FR 1.2.2); motociklo buvimo vietos taisyklė perkėlimui (FR 1.2.5); srautai DS2 → P3 ir DS4 → P3 DSD diagramoje; Kategorija – žinynas; užimtumo tikrinimo funkcija – `tikrintiUzimtuma`. Išsamiai – `sprendimai.md`, 2026-11-19 įrašas.
 
 ### D etapas. Projektavimas
 
@@ -138,7 +138,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Kiekvienai: paskirtis, įėjimai (vardas, tipas), algoritmas (pseudokodas arba blokinė schema), išėjimas.
 - Artefaktas: `artefaktai/12-funkcijos.md` (+ blokinės schemos, jei nuspręsime jas braižyti).
 - Vardai `tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina` jau yra struktūrinėje schemoje (11 žingsnis); jei pasirinksime tik 2 funkcijas, trečios vardą pašalinti iš schemos ir iš `11-strukturine-schema.md`.
-- Atlikta 2026-11-19: `artefaktai/12-funkcijos.md` – visos trys funkcijos (paskirtis, įėjimai, algoritmas sunumeruotais žingsniais, išėjimas, pavyzdžiai), be blokinių schemų. Patikros grąžina `uzimtas` / `turiTeise` ir priežastį (1.3.2.4); transakciją ir užraktą valdo kviečianti operacija (1.3.3.3); nuomos laikotarpis: pradžia planinė, pabaiga – grąžinimas, vykstančios nuomos – ne ankstesnė už dabartinį laiką; pavėluotas grąžinimas: išdavimas tik po grąžinimo (PA9), žymė tvarkaraštyje (PA8), rezervacijos perkėlimas, atšaukimas arba laiko keitimas (PA4, PA5). Savikontrolė: `darbas/funkcijos.sql`, `darbas/funkciju_testai.sql` (24 atvejai), `darbas/lygiagreti_rezervacija.sh`; `patikra.sql` – 15-a patikra, generatoriuje – laukusio kliento atvejis. Pridėtas perspektyvinis reikalavimas 1.6.4 Nuolaidos ir kompensacijos.
+- Atlikta 2026-11-19: `artefaktai/12-funkcijos.md` – visos trys funkcijos (paskirtis, įėjimai, algoritmas sunumeruotais žingsniais, išėjimas, pavyzdžiai), be blokinių schemų. Patikros grąžina `uzimtas` / `turiTeise` ir priežastį (NFR 1.3.2.4); transakciją ir užraktą valdo kviečianti operacija (NFR 1.3.3.3); nuomos laikotarpis: pradžia planinė, pabaiga – grąžinimas, vykstančios nuomos – ne ankstesnė už dabartinį laiką; pavėluotas grąžinimas: išdavimas tik po grąžinimo (PA9), žymė tvarkaraštyje (PA8), rezervacijos perkėlimas, atšaukimas arba laiko keitimas (PA4, PA5). Savikontrolė: `darbas/funkcijos.sql`, `darbas/funkciju_testai.sql` (24 atvejai), `darbas/lygiagreti_rezervacija.sh`; `patikra.sql` – 15-a patikra, generatoriuje – laukusio kliento atvejis. Pridėtas perspektyvinis reikalavimas PR 1.6.4 Nuolaidos ir kompensacijos.
 
 **13 žingsnis. Dizainas** → 2.3.1, 2.3.2
 - Analogų dizaino apžvalga pagal 3 žingsnio ekrano nuotraukas (`darbas/ekrano-nuotraukos/`): kas veikia gerai, ką keisti. Jei nuotraukos 3 žingsnyje nesurinktos, pirmiausia surinkti jas čia.
@@ -152,9 +152,9 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Scenarijų „Pradiniai duomenys“ imti iš bandomosios duomenų bazės (konkretūs motociklai, klientai, rezervacijos).
 - 2–3 testavimo tikslai.
 - Testuojamų reikalavimų lentelė (pavadinimas + numeris), įskaitant nefunkcinius (šablono 3.1.2 skyrius prašo ir tų, ir kitų).
-- 3 testavimo scenarijai šablono formatu, susieti su 12 žingsnio funkcijomis (datų sutapimas, pavėluotas grąžinimas, netinkama pažymėjimo kategorija arba kategorija nustoja galioti iki nuomos pabaigos, grąžinimas į kitą filialą prieš kitą rezervaciją pradiniame filiale). Paruošti duomenys ir laukiami rezultatai – `darbas/funkciju_testai.sql` (U, K, S atvejai), dvi vienalaikės rezervacijos (1.3.3.3) – `darbas/lygiagreti_rezervacija.sh`, pavėluotas grąžinimas su laukusiu klientu – nuomos 631 ir 632.
+- 3 testavimo scenarijai šablono formatu, susieti su 12 žingsnio funkcijomis (datų sutapimas, pavėluotas grąžinimas, netinkama pažymėjimo kategorija arba kategorija nustoja galioti iki nuomos pabaigos, grąžinimas į kitą filialą prieš kitą rezervaciją pradiniame filiale). Paruošti duomenys ir laukiami rezultatai – `darbas/funkciju_testai.sql` (U, K, S atvejai), dvi vienalaikės rezervacijos (NFR 1.3.3.3) – `darbas/lygiagreti_rezervacija.sh`, pavėluotas grąžinimas su laukusiu klientu – nuomos 631 ir 632.
 - Artefaktas: `artefaktai/14-testavimas.md`.
-- Atlikta 2026-11-19: `artefaktai/14-testavimas.md` – 3 tikslai; 3.1.2 lentelė su trečiu stulpeliu „Kaip tikrinama“ (visi funkciniai ir 13 iš 14 nefunkcinių; 1.3.4.3 netestuojamas – tai priežiūros darbų tvarka, priežastis aprašyta; 1.3.3.2 – naktiniai sintetiniai testai po 6 val., ≥ 99 % sėkmingų); 4 testavimo atvejai vietoj 3: TA1 rezervacijos keitimas ir TP (`tikrintiUzimtuma`, rezervacija 655), TA2 pažymėjimo kategorija (`tikrintiKlientoTeise`, klientai 26, 33, 35), TA3 pavėluotas grąžinimas ir kaina (`skaiciuotiKaina`, nuomos 631, 632), TA4 vienalaikės rezervacijos (1.3.3.3, automatizuotai). Stulpeliai „Pavyko?“ ir „Klaidos, pastabos“ tušti – sistemos nėra. Visi duomenys ir pranešimai suderinti su funkcijomis bandomojoje duomenų bazėje.
+- Atlikta 2026-11-19: `artefaktai/14-testavimas.md` – 3 tikslai; 3.1.2 lentelė su trečiu stulpeliu „Kaip tikrinama“ (visi funkciniai ir 13 iš 14 nefunkcinių; NFR 1.3.4.3 netestuojamas – tai priežiūros darbų tvarka, priežastis aprašyta; NFR 1.3.3.2 – naktiniai sintetiniai testai po 6 val., ≥ 99 % sėkmingų); 4 testavimo atvejai vietoj 3: TA1 rezervacijos keitimas ir TP (`tikrintiUzimtuma`, rezervacija 655), TA2 pažymėjimo kategorija (`tikrintiKlientoTeise`, klientai 26, 33, 35), TA3 pavėluotas grąžinimas ir kaina (`skaiciuotiKaina`, nuomos 631, 632), TA4 vienalaikės rezervacijos (NFR 1.3.3.3, automatizuotai). Stulpeliai „Pavyko?“ ir „Klaidos, pastabos“ tušti – sistemos nėra. Visi duomenys ir pranešimai suderinti su funkcijomis bandomojoje duomenų bazėje.
 
 **15 žingsnis. Ganto diagrama** → 1.1.5
 - Visi 6 IS gyvavimo ciklo etapai su terminais, nors aprašome tik analizę ir projektavimą.
@@ -165,7 +165,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 ### F etapas. Surinkimas
 
 **2 kontrolinis taškas.** Atsekamumo matrica: reikalavimas → panaudos atvejis → DSD procesas → esybė → funkcija → testas. Patikrinti, kad niekas nekabo ore ir pavadinimai visur vienodi.
-- Atlikta 2026-11-20: `artefaktai/16-atsekamumo-matrica.md` – A lentelė pagal PA1–PA22 (funkcinis reikalavimas, aktorius, procesas, duomenų saugyklos, esybės, schemos funkcija, maketas, testas), B lentelė pagal 14 nefunkcinių reikalavimų, C lentelė – atvirkštinės patikros; pavadinimai `.drawio` ir `.md` failuose ir visi skaičiai sutampa. Ištaisyta: būsena „baigta“ 13–15 žingsnių failuose, PA9 prie ekrano E4, TA2 (1) prie 1.2.1 lentelėje 3.1.2. Ne visi PA tikrinami TA (šablonas prašo 3 TA) – taip ir sumanyta. A (be stulpelių „Aktoriai“ ir „Maketas“) ir B lentelės dedamos į ataskaitą kaip priedas.
+- Atlikta 2026-11-20: `artefaktai/16-atsekamumo-matrica.md` – A lentelė pagal PA1–PA22 (funkcinis reikalavimas, aktorius, procesas, duomenų saugyklos, esybės, schemos funkcija, maketas, testas), B lentelė pagal 14 nefunkcinių reikalavimų, C lentelė – atvirkštinės patikros; pavadinimai `.drawio` ir `.md` failuose ir visi skaičiai sutampa. Ištaisyta: būsena „baigta“ 13–15 žingsnių failuose, PA9 prie ekrano EKRANAS04, TA2 (1) prie FR 1.2.1 lentelėje 3.1.2. Ne visi PA tikrinami TA (šablonas prašo 3 TA) – taip ir sumanyta. A (be stulpelių „Aktoriai“ ir „Maketas“) ir B lentelės dedamos į ataskaitą kaip priedas.
 
 **16 žingsnis. Perkėlimas į šabloną**
 - Užpildyti skyrius šablono tvarka, įterpti diagramas su pavadinimais.

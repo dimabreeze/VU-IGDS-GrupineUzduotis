@@ -23,3 +23,8 @@ tell application "Microsoft Word"
 end tell
 end timeout
 OSA
+# Word kai kurioms vidinėms nuorodoms PDF faile neįrašo paskirties – atkuriama pagal nuorodos tekstą
+TOOL="${TMPDIR:-/tmp}/ataskaita-pdf-nuorodos"
+SRC="$(dirname "$0")/pdf-nuorodos.swift"
+if [ ! -x "$TOOL" ] || [ "$TOOL" -ot "$SRC" ]; then swiftc -O -o "$TOOL" "$SRC"; fi
+"$TOOL" "$PDF"

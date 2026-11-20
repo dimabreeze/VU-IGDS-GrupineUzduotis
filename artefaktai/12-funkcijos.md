@@ -8,11 +8,11 @@ Medžiaga ataskaitos skyriui 2.2.1 „Sistemos struktūros aprašymas“.
 
 | Funkcija programoje | Pavadinimas (panaudos atvejis) | Procesas | Struktūrinės schemos lygis | Reikalavimai |
 |---|---|---|---|---|
-| `tikrintiUzimtuma` | Tikrinti motociklo užimtumą (PA6) | P1 | 3, kviečia PA1, PA2, PA4, PA11, PA22 | 1.2.1, 1.2.2, 1.2.4, 1.2.5, 1.3.2.4, 1.3.3.3 |
-| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | 1.2.2, 1.3.2.4 |
-| `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | 1.2.3 |
+| `tikrintiUzimtuma` | Tikrinti motociklo užimtumą (PA6) | P1 | 3, kviečia PA1, PA2, PA4, PA11, PA22 | FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4, NFR 1.3.3.3 |
+| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | FR 1.2.2, NFR 1.3.2.4 |
+| `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | FR 1.2.3 |
 
-Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-strukturine-schema.md`), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (`10-lenteles.md`). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
+Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-strukturine-schema.md`), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (`10-lenteles.md`). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
 
 ## Bendros sąvokos
 
@@ -30,7 +30,7 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 **Paskirtis.** Patikrina, ar motociklas norimu laikotarpiu užimtas: ar laikotarpis sutampa su kitu to motociklo užimtumo laikotarpiu ir ar pažeidžiama motociklo buvimo vietos taisyklė. Funkcija duomenų nekeičia. Ją kviečia:
 
-- paieška (PA1): kiekvienam motociklui, o išdavimo ir grąžinimo filialas – paieškoje pasirinktas filialas; rezultatuose rodomi tik neužimti motociklai (1.2.1);
+- paieška (PA1): kiekvienam motociklui, o išdavimo ir grąžinimo filialas – paieškoje pasirinktas filialas; rezultatuose rodomi tik neužimti motociklai (FR 1.2.1);
 - rezervacijos sukūrimas ir keitimas (PA2, PA4);
 - techninės priežiūros planavimas (PA11);
 - perkėlimo planavimas (PA22): kiekvienam perkeliamam motociklui atskirai.
@@ -69,17 +69,17 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 - nuoma 2027-05-20 – 2027-05-22 Vilniuje → „Laikotarpio pradžioje motociklas bus filiale Klaipėda“;
 - nuoma 2027-05-05 – 2027-05-08 su grąžinimu į Kauną → „Motociklą reikia grąžinti į filialą Vilnius, nes 2027-05-12 10:00 ten prasideda kita jo nuoma“; su grąžinimu į Vilnių – motociklas laisvas.
 
-### Naudojimas įrašant laikotarpį (1.3.3.3)
+### Naudojimas įrašant laikotarpį (NFR 1.3.3.3)
 
 Funkcija tik tikrina ir užraktų nevaldo, todėl pati negali užtikrinti, kad tarp patikrinimo ir įrašymo kitas vartotojas neužims to paties motociklo. Tai užtikrina ją kviečianti operacija – rezervacijos sukūrimas ar keitimas (PA2, PA4), techninės priežiūros planavimas (PA11), perkėlimo planavimas (PA22). Viską ji atlieka vienoje transakcijoje:
 
 1. pradeda transakciją;
 2. užrakina motociklo įrašą (perkėlime – visų perkeliamų motociklų įrašus didėjančia ID tvarka, kad dvi operacijos neužblokuotų viena kitos), o rezervuodama – ir taikomo tarifo įrašą bendru užraktu;
 3. iškviečia `tikrintiUzimtuma` (rezervuodama – ir `tikrintiKlientoTeise`);
-4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (1.3.2.4), kitaip įrašo laikotarpį;
+4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (NFR 1.3.2.4), kitaip įrašo laikotarpį;
 5. patvirtina transakciją – tik tada užraktai nuimami.
 
-Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
 
 Užraktas nėra duomenų srautas, todėl duomenų srautų diagramoje (`09-dsd.md`) nevaizduojamas: ten P2, P4 ir P6 siunčia P1 motociklą ir laikotarpį, gauna atsakymą ir patys įrašo duomenis į saugyklą.
 
@@ -89,7 +89,7 @@ Funkcija neleidžia suplanuoti laikotarpio, kuris sutampa su jau suplanuotu, bet
 
 1. išduoti motociklą (PA9) galima tik tada, kai jis yra išdavimo filiale ir neturi vykstančios nuomos, techninės priežiūros ar perkėlimo, t. y. ankstesnė nuoma jau užbaigta (motociklas grąžintas);
 2. filialo tvarkaraštyje (PA8) vėluojanti nuoma pažymima, o šalia parodomas kitas to motociklo laikotarpis;
-3. darbuotojas susisiekia su kitu klientu, kaip ir neplanuotos techninės priežiūros atveju (1.2.4), ir perkelia rezervaciją į kitą laisvą motociklą (PA4) arba ją atšaukia (PA5). Jei klientas sutinka palaukti, motociklą grąžinus darbuotojas pakeičia rezervacijos pradžią į išdavimo laiką (PA4), todėl kaina skaičiuojama už trumpesnį laikotarpį; tarifas nesikeičia. Ar laukusiam klientui taikoma kompensacija, sprendžia įmonės verslo taisyklės – pirmoje versijoje nuolaidų nėra (perspektyvinis reikalavimas 1.6.4);
+3. darbuotojas susisiekia su kitu klientu, kaip ir neplanuotos techninės priežiūros atveju (FR 1.2.4), ir perkelia rezervaciją į kitą laisvą motociklą (PA4) arba ją atšaukia (PA5). Jei klientas sutinka palaukti, motociklą grąžinus darbuotojas pakeičia rezervacijos pradžią į išdavimo laiką (PA4), todėl kaina skaičiuojama už trumpesnį laikotarpį; tarifas nesikeičia. Ar laukusiam klientui taikoma kompensacija, sprendžia įmonės verslo taisyklės – pirmoje versijoje nuolaidų nėra (perspektyvinis reikalavimas PR 1.6.4);
 4. pavėlavęs klientas moka baudą pagal baudų pakopas (`skaiciuotiKaina`).
 
 Jei po vėluojančios nuomos suplanuota techninė priežiūra ar perkėlimas, juos perplanuoja darbuotojas arba administratorius.
@@ -98,7 +98,7 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 ## 2. tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
 
-**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
+**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
 
 **Įėjimai.**
 
@@ -123,7 +123,7 @@ Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl j
 
 ## 3. skaiciuotiKaina – Apskaičiuoti galutinę nuomos kainą
 
-**Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (`10-lenteles.md`, „Normalizacija“).
+**Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (FR 1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (FR 1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (`10-lenteles.md`, „Normalizacija“).
 
 **Įėjimai.**
 
@@ -143,7 +143,7 @@ Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl j
 
 **Išėjimas.** `galutineKaina` DECIMAL(10,2) – visa suma eurais su bauda; `bauda` DECIMAL(10,2) – bauda už pavėluotą grąžinimą eurais.
 
-Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
+Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (FR 1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
 
 **Pavyzdys.** NC750X, 2 paros po 84 €, baudų pakopos „nuo 0 val. – 10 €“, „nuo 2 val. – 30 €“, „nuo 24 val. – 84 €“:
 

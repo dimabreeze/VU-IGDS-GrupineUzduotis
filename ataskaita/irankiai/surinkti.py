@@ -10,20 +10,28 @@ sugeneruotu turiniu. Naudojama tik standartinė Python biblioteka.
 
 ataskaita.md sintaksė (Markdown poaibis):
   # 1. Sistemos analizė            antraštės 1–4 lygio; numeris tikrinamas su automatine numeracija
-  ##### E1. Paieška                 paryškinta pastraipa (5 lygis, be numeracijos)
+  ##### EKRANAS01. Paieška              paryškinta pastraipa (5 lygis, be numeracijos)
   # Šaltiniai {-}                   antraštė be numerio
-  - punktas / 1. punktas            sąrašai (įtrauka 2 tarpais – antras lygis)
+  - punktas / * punktas / 1. punktas  sąrašai (didesnė įtrauka nei pirmojo punkto – antras lygis);
+                                    tuščios eilutės tarp punktų sąrašo nenutraukia, numeruotas sąrašas
+                                    prasideda iš naujo nuo punkto „1.“
+  eilutė, kurios gale 2 tarpai      eilutės lūžis; sąrašo punkte po jo gali eiti eilutė be įtraukos
   Lentelė: Pavadinimas {#lent:id plotis=1,2,3 maza}
   | a | b |                         lentelė (pirma eilutė – antraštė)
   ![Pavadinimas {#pav:id}](kelias.png){plotis=16 aukstis=20 failai=a.drawio,b.png}
                                     failai= – šaltinio failai; po paveikslu rodomos jų piktogramos su
                                     nuorodomis į failus viešoje GitHub saugykloje (main šaka)
-  ::: reikalavimas 1.2.1 funkcinis | Pavadinimas    ... :::
+  ::: reikalavimas FR 1.2.1 funkcinis | Pavadinimas    ... :::
   ::: ta 1 | Pavadinimas  (Aprašymas:, Pradiniai duomenys (sąlygos prieš):, žingsnių lentelė)  :::
   ::: gulscias ... :::              gulsčias puslapis (atskiras skyrius)
   \\pagebreak                        naujas puslapis
   @pav:id, @lent:id                 nuoroda į paveikslo ar lentelės numerį
-  **paryškinta**, *pasvira*, `kodas`, <u>pabraukta</u>, <ud>pabraukta punktyru</ud>, [tekstas](url), <br>
+  Vidinės nuorodos sudaromos automatiškai (žymės – skyrių antraštėse, reikalavimuose, TA, paveikslų ir
+  lentelių pavadinimuose, šaltinių sąraše ir pirmame lentelės stulpelyje, kur ID pasirodo pirmą kartą):
+  skyriaus numeris (1.1.4; „3 skyrius“), FR 1.2.1, NFR 1.3.1.1, PR 1.6.1, PA1, TA1, P1, DS1, E1, EKRANAS01, [1],
+  „1 priedas“, „Ganto diagrama, 5.4“ (į Ganto diagramos paveikslą {#pav:gantas}). Reikalavimo numeris – tipo žymė
+  ir skyriaus numeris per tarpą (FR 1.2.1); skaičius be žymės tekste visada yra skyriaus numeris.
+  **paryškinta**, *pasvira*, _pasvira_, `kodas`, <u>pabraukta</u>, <ud>pabraukta punktyru</ud>, [tekstas](url), <br>
   <!-- komentaras -->                į ataskaitą nepatenka
 """
 import os
@@ -79,6 +87,17 @@ class Doc:
         self.icon_cache = {}
         self.landscape = False
         self.sections = 0       # kiek skyrių pertraukų įterpta
+        self.secs = set()       # skyrių numeriai (be galinio taško)
+        self.ids = set()        # ID, turintys žymę (FR 1.2.1, PA1, ...)
+        self.table_ids = set()  # ID, kurių žymė dedama pirmame lentelės stulpelyje
+        self.defined = set()
+        self.sources = 0
+        self.in_sources = False
+        self.src_n = 0
+        self.self_ref = None    # ID, kurio apibrėžimas dabar rašomas (į save nesiejama)
+        self.next_bm = 90000
+        self.unresolved = {}
+        self.nolink = False
 
     def rid(self, typ, target, external=False):
         self.next_rid += 1
@@ -97,8 +116,35 @@ def png_size(path):
 
 # ---------------------------------------------------------------- tekstas eilutėje
 INLINE = re.compile(r'(\*\*(?P<b>.+?)\*\*|`(?P<c>[^`]+)`|(?<![\w*])\*(?P<i>[^*\s][^*]*?)\*(?!\w)'
+                    r'|(?<![\w_])_(?P<i2>[^_\s][^_]*?)_(?![\w_])'
                     r'|<u>(?P<u>.+?)</u>|<ud>(?P<ud>.+?)</ud>|\[(?P<lt>[^\]]+)\]\((?P<lu>https?://[^)]+)\)'
-                    r'|(?P<br><br>)|@(?P<ref>(?:pav|lent):[\w-]+))')
+                    r'|(?P<br><br>)|@(?P<ref>(?:pav|lent):[\w-]+)'
+                    r'|(?P<src>\[(?P<srcn>\d+)\](?!\())'
+                    r'|(?P<gantt>Ganto diagrama, \d+\.\d+(?:, \d+\.\d+)*)'
+                    r'|(?P<id>\b(?:(?:N?FR|PR) \d+(?:\.\d+)+(?!\.?\d)|EKRANAS\d{2}|PA\d+|TA\d+|DS\d+|P\d+|E\d)\b)'
+                    r'|(?P<pr>\b(?P<prn>\d+) pried(?:as|o|e|ą|ui)\b)'
+                    r'|(?P<sec>(?<![\d.,\w])\d+(?:\.\d+)+(?!\d|\.\d)|\b\d+(?= skyri))'
+                    r')')
+
+LINK_STYLE = 'Vidinenuoroda'
+GANTT_LABEL = 'pav:gantas'
+
+
+def bookmark(doc, xml, name):
+    """Žymė pirmos pastraipos tekstui (po <w:pPr>)."""
+    doc.next_bm += 1
+    i = xml.index('</w:pPr>') + len('</w:pPr>') if '</w:pPr>' in xml else xml.index('<w:p>') + len('<w:p>')
+    j = xml.index('</w:p>', i)
+    return (xml[:i] + '<w:bookmarkStart w:id="%d" w:name="%s"/>' % (doc.next_bm, name) + xml[i:j]
+            + '<w:bookmarkEnd w:id="%d"/>' % doc.next_bm + xml[j:])
+
+
+def anchor_name(kind, key):
+    return '_%s_%s' % (kind, re.sub(r'\W', '_', key))
+
+
+def ilink(name, runs):
+    return '<w:hyperlink w:anchor="%s" w:history="1">%s</w:hyperlink>' % (name, runs)
 
 
 def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=None):
@@ -134,8 +180,8 @@ def inline(doc, text, b=False, i=False, sz=None):
             out.append(inline(doc, g['b'], b=True, i=i, sz=sz))
         elif g['c'] is not None:
             out.append(run(g['c'], b=b, i=i, code=True, sz=(sz - 1 if sz else None)))
-        elif g['i'] is not None:
-            out.append(inline(doc, g['i'], b=b, i=True, sz=sz))
+        elif g['i'] is not None or g['i2'] is not None:
+            out.append(inline(doc, g['i'] if g['i'] is not None else g['i2'], b=b, i=True, sz=sz))
         elif g['u'] is not None:
             out.append(run(g['u'], b=b, i=i, u='single', sz=sz))
         elif g['ud'] is not None:
@@ -149,7 +195,37 @@ def inline(doc, text, b=False, i=False, sz=None):
         elif g['ref'] is not None:
             if g['ref'] not in doc.labels:
                 die('nežinoma nuoroda @' + g['ref'])
-            out.append(run(str(doc.labels[g['ref']]), b=b, i=i, sz=sz))
+            kind = g['ref'].split(':')[0]
+            out.append(ilink(anchor_name(kind, str(doc.labels[g['ref']])),
+                             run(str(doc.labels[g['ref']]), b=b, i=i, sz=sz, style=LINK_STYLE)))
+        elif g['src'] is not None:
+            n = int(g['srcn'])
+            out.append(ilink(anchor_name('src', str(n)), run(g['src'], b=b, i=i, sz=sz, style=LINK_STYLE))
+                       if 1 <= n <= doc.sources and not doc.in_sources and not doc.nolink else run(g['src'], b=b, i=i, sz=sz))
+        elif g['gantt'] is not None:
+            # „Ganto diagrama, 5.1, 6.4“ – nuoroda į Ganto diagramos paveikslą; skaičiai neatskiriami nuo žodžių
+            t = g['gantt'].replace(', ', ',\u00a0')
+            n = doc.labels.get(GANTT_LABEL)
+            if n is None:
+                die('nėra Ganto diagramos paveikslo žymės @' + GANTT_LABEL)
+            out.append(run(t, b=b, i=i, sz=sz) if doc.nolink else
+                       ilink(anchor_name('pav', str(n)), run(t, b=b, i=i, sz=sz, style=LINK_STYLE)))
+        elif g['id'] is not None:
+            t = g['id']
+            shown = t.replace(' ', '\u00a0')  # „FR 1.2.1“ – žymė neatskiriama nuo numerio
+            if t in doc.ids and t != doc.self_ref and not doc.nolink:
+                out.append(ilink(anchor_name('r', t), run(shown, b=b, i=i, sz=sz, style=LINK_STYLE)))
+            else:
+                if t not in doc.ids:
+                    doc.unresolved[t] = doc.unresolved.get(t, 0) + 1
+                out.append(run(shown, b=b, i=i, sz=sz))
+        elif g['pr'] is not None:
+            out.append(ilink(anchor_name('priedas', g['prn']), run(g['pr'], b=b, i=i, sz=sz, style=LINK_STYLE))
+                       if g['prn'] in doc.secs_appendix and not doc.nolink else run(g['pr'], b=b, i=i, sz=sz))
+        elif g['sec'] is not None:
+            t = g['sec']
+            out.append(ilink(anchor_name('s', t), run(t, b=b, i=i, sz=sz, style=LINK_STYLE))
+                       if t in doc.secs and not doc.nolink else run(t, b=b, i=i, sz=sz))
         pos = m.end()
     if pos < len(text):
         out.append(run(text[pos:], b=b, i=i, sz=sz))
@@ -173,8 +249,17 @@ def heading(doc, level, text):
     nonum = text.endswith('{-}')
     text = text.replace('{-}', '').strip()
     if level == 5:
-        return para(doc, text, b=True, ppr_extra='<w:keepNext/>', first_line=0, jc='left',
-                    spacing='<w:spacing w:before="120" w:line="360" w:lineRule="auto"/>')
+        m = ID_HEAD.match(text)
+        doc.self_ref = m.group(1) if m else None
+        xml = para(doc, text, b=True, ppr_extra='<w:keepNext/>', first_line=0, jc='left',
+                   spacing='<w:spacing w:before="120" w:line="360" w:lineRule="auto"/>')
+        doc.self_ref = None
+        if m and m.group(1) not in doc.defined:
+            doc.defined.add(m.group(1))
+            xml = bookmark(doc, xml, anchor_name('r', m.group(1)))
+        return xml
+    doc.in_sources = text.startswith('Šaltiniai')
+    bm = None
     # šablono MagistrodarboHeading3 stilius išjungia „keep with next“, o 4 lygis per jį paveldi
     # 3 lygio struktūrą ir patenka į TURINĮ (\o "1-3"), todėl abu dalykai nurodomi tiesiogiai
     extra = '<w:keepNext/>'
@@ -196,11 +281,19 @@ def heading(doc, level, text):
         if m.group(1) and num != expected:
             die('antraštės numeris %s, o turėtų būti %s: %s' % (num, expected, text))
         text = m.group(2)
+        bm = anchor_name('s', expected[:-1])
     if level == 1 and not nonum:
         text = text.upper()
+    if nonum:
+        mp = re.match(r'^(\d+) priedas', text)
+        if mp:
+            bm = anchor_name('priedas', mp.group(1))
     olvl = '<w:outlineLvl w:val="3"/>' if level == 4 else ''
-    return ('<w:p><w:pPr><w:pStyle w:val="%s"/>%s%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
-            % (HEAD_STYLES[level], extra, olvl, LANG, inline(doc, text)))
+    doc.nolink = True
+    xml = ('<w:p><w:pPr><w:pStyle w:val="%s"/>%s%s<w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+           % (HEAD_STYLES[level], extra, olvl, LANG, inline(doc, text)))
+    doc.nolink = False
+    return bookmark(doc, xml, bm) if bm else xml
 
 
 # ---------------------------------------------------------------- sąrašai
@@ -243,6 +336,7 @@ def caption(doc, kind, text, keep_next=False):
     xml = ('<w:p><w:pPr><w:pStyle w:val="Caption"/>%s<w:jc w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>'
            '<w:fldSimple w:instr=" SEQ %s \\* ARABIC \\* MERGEFORMAT "><w:r><w:rPr><w:b/>%s</w:rPr><w:t>%d</w:t></w:r></w:fldSimple>'
            '%s%s</w:p>' % (kn, jc, LANG, seq, LANG, n, run(' ' + word, b=True), inline(doc, ' ' + text)))
+    xml = bookmark(doc, xml, anchor_name(kind, str(n)))
     return xml, opts
 
 
@@ -472,8 +566,17 @@ def table(doc, cap_text, lines):
             # grupės eilutė: vienas tekstas per visą plotį
             out.append('<w:tr>%s%s</w:tr>' % (trpr, cell(doc, nonempty[0], total, sz, span=n, shade='F2F2F2')))
             continue
-        out.append('<w:tr>%s%s</w:tr>' % (trpr, ''.join(
-            cell(doc, c, ws[j], sz, header=hdr, shade='D9D9D9' if hdr else None) for j, c in enumerate(r))))
+        cells = []
+        for j, c in enumerate(r):
+            defin = not hdr and j == 0 and c in doc.table_ids and c not in doc.defined
+            doc.self_ref = c if defin else None
+            x = cell(doc, c, ws[j], sz, header=hdr, shade='D9D9D9' if hdr else None)
+            doc.self_ref = None
+            if defin:
+                doc.defined.add(c)
+                x = bookmark(doc, x, anchor_name('r', c))
+            cells.append(x)
+        out.append('<w:tr>%s%s</w:tr>' % (trpr, ''.join(cells)))
     if short:  # visos eilutės, išskyrus paskutinę, laikomos su kita
         out[start:-1] = [keep_next(x) for x in out[start:-1]]
     out.append('</w:tbl>')
@@ -500,11 +603,15 @@ def tpl_par(doc, text_runs, bold=False, keep=False):
 
 
 def requirement(doc, nr, typ, name, text):
+    doc.self_ref = nr
     cap, _ = caption(doc, 'lent', '%s %s' % (nr, name), keep_next=True)
+    doc.self_ref = None
+    doc.defined.add(nr)
+    cap = bookmark(doc, cap, anchor_name('r', nr))
     w1, w2 = TEXT_W // 2, TEXT_W - TEXT_W // 2
     tc = lambda w, body, span='': ('<w:tc><w:tcPr><w:tcW w:w="%d" w:type="dxa"/>%s</w:tcPr>%s</w:tc>'
                                    % (w, span, body))
-    r1 = (tc(w1, tpl_par(doc, run('Nr. ' + nr, b=True, i=True), keep=True)) +
+    r1 = (tc(w1, tpl_par(doc, run('Nr. ' + nr.replace(' ', '\u00a0'), b=True, i=True), keep=True)) +
           tc(w2, tpl_par(doc, run('Reikalavimo tipas: ' + typ, b=True, i=True), keep=True)))
     r2 = tc(TEXT_W, tpl_par(doc, run('Aprašymas: ', b=True, i=True) + inline(doc, text)),
             '<w:gridSpan w:val="2"/>')
@@ -517,6 +624,8 @@ def requirement(doc, nr, typ, name, text):
 
 def test_case(doc, nr, name, block):
     cap, _ = caption(doc, 'lent', 'Testavimo atvejis Nr. %s „%s“' % (nr, name), keep_next=True)
+    doc.defined.add('TA' + nr)
+    cap = bookmark(doc, cap, anchor_name('r', 'TA' + nr))
     desc = pre = ''
     tlines = []
     for l in block:
@@ -592,9 +701,70 @@ def collect_labels(md):
     return labels
 
 
+LIST_RE = re.compile(r'^(\s*)([-*] |\d+\. )')
+HARD_BR = re.compile(r'\S {2,}$')
+
+
+def join_lines(parts):
+    """Sujungia eilutes į vieną pastraipą; eilutė su 2 tarpais gale – eilutės lūžis."""
+    out = ''
+    for i, p in enumerate(parts):
+        if i:
+            out += '<br>' if HARD_BR.search(parts[i - 1]) else ' '
+        out += p.strip()
+    return out.strip()
+
+
+ID_RE = r'(?:(?:N?FR|PR) \d+(?:\.\d+)+|EKRANAS\d{2}|PA\d+|TA\d+|DS\d+|P\d+|E\d)'
+ID_HEAD = re.compile(r'^(' + ID_RE + r')\b')
+
+
+def collect_anchors(doc, md):
+    """Pirmas perėjimas: skyrių numeriai, ID su žymėmis ir šaltinių skaičius."""
+    h = [0, 0, 0, 0]
+    doc.secs_appendix = set()
+    in_src = False
+    tables = []
+    for line in md.split('\n'):
+        s = line.strip()
+        m = re.match(r'^(#{1,5})\s+(.*)$', s)
+        if m:
+            lv, t = len(m.group(1)), m.group(2)
+            in_src = t.startswith('Šaltiniai')
+            if lv == 5:
+                mm = ID_HEAD.match(t)
+                if mm:
+                    doc.ids.add(mm.group(1))
+            elif t.endswith('{-}'):
+                mp = re.match(r'^(\d+) priedas', t)
+                if mp:
+                    doc.secs_appendix.add(mp.group(1))
+            else:
+                h[lv - 1] += 1
+                for k in range(lv, 4):
+                    h[k] = 0
+                doc.secs.add('.'.join(str(x) for x in h[:lv]))
+            continue
+        mr = re.match(r'::: reikalavimas\s+((?:N?FR|PR) [\d.]+)\s', s)
+        if mr:
+            doc.ids.add(mr.group(1))
+        mt = re.match(r'::: ta\s+(\d+)', s)
+        if mt:
+            doc.ids.add('TA' + mt.group(1))
+        if in_src and re.match(r'^\d+\. ', s):
+            doc.sources += 1
+        if s.startswith('|') and not re.match(r'^\|?\s*:?-{3,}', s):
+            tables.append(split_row(s)[0])
+    for c in tables:  # ID, kurie apibrėžiami tik lentelėse – pirmame stulpelyje, kur pasirodo pirmą kartą
+        if re.fullmatch(ID_RE, c) and c not in doc.ids:
+            doc.ids.add(c)
+            doc.table_ids.add(c)
+
+
 def convert(doc, md, sect_tpl):
     md = re.sub(r'<!--.*?-->', '', md, flags=re.S)
     doc.labels = collect_labels(md)
+    collect_anchors(doc, md)
     lines = md.split('\n')
     out = []
     k = 0
@@ -624,7 +794,7 @@ def convert(doc, md, sect_tpl):
             k += 1
             continue
         if s.startswith('::: reikalavimas'):
-            m = re.match(r'::: reikalavimas\s+([\d.]+)\s+(\S+)\s*\|\s*(.+)$', s)
+            m = re.match(r'::: reikalavimas\s+((?:N?FR|PR) [\d.]+)\s+(\S+)\s*\|\s*(.+)$', s)
             if not m:
                 die('blogas reikalavimo blokas: ' + s)
             body = []
@@ -669,35 +839,54 @@ def convert(doc, md, sect_tpl):
             out.append(table(doc, pending_caption, tl))
             pending_caption = None
             continue
-        if re.match(r'^(\s*)(- |\d+\. )', line):
+        if LIST_RE.match(line):
             items = []
-            while k < len(lines) and re.match(r'^(\s*)(- |\d+\. )', lines[k]):
-                mm = re.match(r'^(\s*)(- |\d+\. )(.*)$', lines[k])
-                text = mm.group(3)
+            base = len(LIST_RE.match(line).group(1))
+            while True:
+                mm = LIST_RE.match(lines[k])
+                ind = len(mm.group(1))
+                parts = [lines[k][mm.end():]]
                 k += 1
-                while k < len(lines) and lines[k].strip() and not re.match(r'^(\s*)(- |\d+\. )', lines[k]) \
-                        and lines[k].startswith('  '):
-                    text += ' ' + lines[k].strip()
+                # tęsinys: eilutė su įtrauka arba (po eilutės lūžio) eilutė ne mažesne įtrauka nei punkto
+                while k < len(lines) and lines[k].strip() and not LIST_RE.match(lines[k]) and (
+                        len(lines[k]) - len(lines[k].lstrip()) > ind or
+                        HARD_BR.search(parts[-1]) and len(lines[k]) - len(lines[k].lstrip()) >= ind):
+                    parts.append(lines[k])
                     k += 1
-                items.append((1 if mm.group(1) else 0, mm.group(2) != '- ', text))
+                marker = mm.group(2).strip()
+                numbered = marker[0].isdigit()
+                restart = numbered and int(marker[:-1]) == 1 and bool(items)
+                items.append((1 if ind > base else 0, numbered, restart, join_lines(parts)))
+                # tuščios eilutės tarp punktų sąrašo nenutraukia
+                j = k
+                while j < len(lines) and not lines[j].strip():
+                    j += 1
+                if j < len(lines) and LIST_RE.match(lines[j]):
+                    k = j
+                    continue
+                break
             nums = {}
-            for lvl, numbered, text in items:
+            for lvl, numbered, restart, text in items:
                 key = (lvl, numbered)
-                if key not in nums:
+                if key not in nums or restart:
                     nums[key] = new_num(doc, ABS_DECIMAL if numbered else ABS_BULLET)
                 for kk in list(nums):
                     if kk[0] > lvl:
                         del nums[kk]
-                out.append(list_par(doc, text, nums[key], lvl))
+                x = list_par(doc, text, nums[key], lvl)
+                if doc.in_sources and numbered and lvl == 0:
+                    doc.src_n += 1
+                    x = bookmark(doc, x, anchor_name('src', str(doc.src_n)))
+                out.append(x)
             continue
         # pastraipa
-        buf = [s]
+        buf = [line]
         k += 1
         while k < len(lines) and lines[k].strip() and not re.match(
-                r'^(#{1,5}\s|!\[|\||Lentelė:|:::|\\pagebreak|\s*- |\s*\d+\. )', lines[k].strip()):
-            buf.append(lines[k].strip())
+                r'^(#{1,5}\s|!\[|\||Lentelė:|:::|\\pagebreak|[-*] |\d+\. )', lines[k].strip()):
+            buf.append(lines[k])
             k += 1
-        out.append(para(doc, ' '.join(buf)))
+        out.append(para(doc, join_lines(buf)))
     if doc.landscape:
         die('neuždarytas ::: gulscias blokas')
     return ''.join(out), first_section
@@ -705,6 +894,9 @@ def convert(doc, md, sect_tpl):
 
 # ---------------------------------------------------------------- stiliai ir numeracija
 EXTRA_STYLES = (
+    '<w:style w:type="character" w:customStyle="1" w:styleId="Vidinenuoroda"><w:name w:val="Vidinė nuoroda"/>'
+    '<w:basedOn w:val="DefaultParagraphFont"/><w:uiPriority w:val="99"/><w:unhideWhenUsed/>'
+    '<w:rPr><w:color w:val="1F4E79"/></w:rPr></w:style>'
     '<w:style w:type="paragraph" w:styleId="Caption"><w:name w:val="caption"/><w:basedOn w:val="Normal"/>'
     '<w:next w:val="Magistrodarbotekstas"/><w:uiPriority w:val="35"/><w:unhideWhenUsed/><w:qFormat/>'
     '<w:pPr><w:spacing w:before="60" w:after="120" w:line="240" w:lineRule="auto"/></w:pPr>'
@@ -792,6 +984,11 @@ def main():
     xml = xml[:body_start] + new_body + xml[body_end:]
     files['word/document.xml'] = xml.encode('utf-8')
 
+    # eilutė prieš rankinį lūžį (<br>) lygiuojamame abiem pusėms tekste neištempiama
+    st = files['word/settings.xml'].decode('utf-8')
+    if '<w:doNotExpandShiftReturn/>' not in st:
+        st = st.replace('<w:compat>', '<w:compat><w:doNotExpandShiftReturn/>', 1)
+    files['word/settings.xml'] = st.encode('utf-8')
     files['word/styles.xml'] = patch_styles(files['word/styles.xml'].decode('utf-8')).encode('utf-8')
     files['word/numbering.xml'] = patch_numbering(files['word/numbering.xml'].decode('utf-8'),
                                                   doc.numbering_nums).encode('utf-8')
@@ -812,6 +1009,11 @@ def main():
         for n in order:
             z.writestr(n, files[n])
     os.replace(tmp, OUT)
+    if doc.unresolved:
+        print('Įspėjimas: ID be žymės (nesusieti): ' + ', '.join('%s×%d' % kv for kv in sorted(doc.unresolved.items())))
+    missing = doc.ids - doc.defined
+    if missing:
+        die('žymės nesukurtos: ' + ', '.join(sorted(missing)))
     print('Surinkta: %s (%d pav., %d lent., %d nuorodos į šaltinio failus, %.1f MB)'
           % (os.path.relpath(OUT, ROOT), doc.counters['pav'], doc.counters['lent'], doc.link_count,
              os.path.getsize(OUT) / 1e6))

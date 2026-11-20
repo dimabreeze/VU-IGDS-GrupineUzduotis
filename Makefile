@@ -58,7 +58,7 @@ db-testai: ## Funkcijų pavyzdžiai (darbas/funkciju_testai.sql) Docker duomenų
 	@$(DC) exec -T db psql -X -q -U motonuoma -d motonuoma -f /funkciju_testai.sql
 	@$(DC) exec -T db psql -X -q -At -U motonuoma -d motonuoma -f /funkciju_testai.sql | $(TIKRINTI_TESTUS) | tail -1
 
-db-lygiagreti: ## Dvi vienu metu pateiktos rezervacijos (1.3.3.3) Docker duomenų bazėje
+db-lygiagreti: ## Dvi vienu metu pateiktos rezervacijos (NFR 1.3.3.3) Docker duomenų bazėje
 	@$(DB_ENV) sh darbas/lygiagreti_rezervacija.sh
 
 db-tikrinti: db-up db-patikra db-testai db-lygiagreti ## Paleisti Docker duomenų bazę ir atlikti visas patikras

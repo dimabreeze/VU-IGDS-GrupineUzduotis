@@ -4,7 +4,12 @@ Medžiaga ataskaitos skyriams 1.1.1 „Vartotojo poreikis ir sistemos pagrindima
 
 ## Užsakovas
 
-UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniuje, Kaune ir Klaipėdoje. Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
+UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus:  
+    - Vilniuje, 
+    - Kaune,
+    - Klaipėdoje.  
+Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
+Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
 
 ## Dabartinė veikla
 
@@ -47,7 +52,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 
 ## Sistemos ribos
 
-Į pirmąją sistemos versiją **neįeina** (keturi iš jų aprašyti kaip perspektyviniai reikalavimai 1.6.1–1.6.4):
+Į pirmąją sistemos versiją **neįeina** (keturi iš jų aprašyti kaip perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4):
 
 - mokėjimas internetu ir integracija su mokėjimų sistema (šioje versijoje už nuomą sumokama filiale);
 - mokėjimas dalimis;

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Motociklų nuomos IS: dviejų vienu metu pateiktų rezervacijų pavyzdys (1.3.3.3, artefaktai/12-funkcijos.md).
+# Motociklų nuomos IS: dviejų vienu metu pateiktų rezervacijų pavyzdys (NFR 1.3.3.3, artefaktai/12-funkcijos.md).
 # Du klientai per dvi atskiras sesijas rezervuoja tą patį motociklą tam pačiam laikotarpiui. Funkcija "rezervuoti"
 # (darbas/funkcijos.sql) po patikrinimų palaukia 3 s, kad antroji sesija spėtų pradėti tikrinimą.
 #   1) su užraktu: antroji sesija laukia, kol pirmoji baigs transakciją, ir gauna „Motociklas užimtas“;

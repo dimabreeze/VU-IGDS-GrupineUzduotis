@@ -4,7 +4,14 @@ Medžiaga ataskaitos skyriui 1.5.1 „Duomenų srautų diagrama“.
 
 **Būsena:** baigta 2026-11-19. Po 1 kontrolinio taško (2026-11-19) pridėti srautai DS2 → P3 ir DS4 → P3 (srautų – 49), patikslinta, kada P6 įrašo naują motociklo filialą. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19) į DS2 įtrauktos naujos esybės Gamintojas ir Motociklo tipas; diagrama nekeičiama.
 
-Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytojo anksčiau priimtame pavyzdyje (`saltiniai/lab-DSD-diagrama.png`): atskiros konteksto diagramos ir gilesnių lygių nėra. Žymėjimas – kaip 2 paskaitos 22 skaidrėje: išorinė esybė – stačiakampis, procesas – suapvalintas stačiakampis, duomenų saugykla – cilindras, duomenų srautas – rodyklė su pavadinimu. Elementai numeruojami E (išorinės esybės), P (procesai) ir DS (saugyklos); diagramoje yra legenda. Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
+Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytojo anksčiau priimtame pavyzdyje (`saltiniai/lab-DSD-diagrama.png`): atskiros konteksto diagramos ir gilesnių lygių nėra. 
+Žymėjimas (kaip 2 paskaitos 22 skaidrėje): 
+* (E) išorinė esybė – stačiakampis, 
+* (P) procesas – suapvalintas stačiakampis, 
+* (DS) duomenų saugykla – cilindras, 
+* duomenų srautas – rodyklė su pavadinimu.
+
+Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
 
 Šaltinis: `artefaktai/09-dsd.drawio`, paveikslas: `artefaktai/09-dsd.png`.
 
@@ -24,13 +31,13 @@ Diagrama nubraižyta viename lygyje („0 lygis“) su procesais, kaip dėstytoj
 
 | Nr. | Procesas | Reikalavimas | Panaudos atvejai |
 |---|---|---|---|
-| P1 | Ieškoti laisvų motociklų ir tikrinti užimtumą | 1.2.1 (ir užimtumo tikrinimas 1.2.2, 1.2.4, 1.2.5) | PA1, PA6 |
-| P2 | Rezervuoti ir valdyti rezervacijas | 1.2.2 | PA2, PA3, PA4, PA5, PA7 |
-| P3 | Įforminti išdavimą ir grąžinimą | 1.2.3 | PA8, PA9, PA10, PA12, PA13, PA14, PA15 |
-| P4 | Planuoti techninę priežiūrą | 1.2.4 | PA11 |
-| P5 | Tvarkyti parko duomenis | 1.2.5 | PA16, PA17, PA18, PA19 |
-| P6 | Planuoti motociklų perkėlimą | 1.2.5 | PA22 |
-| P7 | Formuoti užimtumo ir statistines ataskaitas | 1.2.5 | PA20, PA21 |
+| P1 | Ieškoti laisvų motociklų ir tikrinti užimtumą | FR 1.2.1 (ir užimtumo tikrinimas FR 1.2.2, FR 1.2.4, FR 1.2.5) | PA1, PA6 |
+| P2 | Rezervuoti ir valdyti rezervacijas | FR 1.2.2 | PA2, PA3, PA4, PA5, PA7 |
+| P3 | Įforminti išdavimą ir grąžinimą | FR 1.2.3 | PA8, PA9, PA10, PA12, PA13, PA14, PA15 |
+| P4 | Planuoti techninę priežiūrą | FR 1.2.4 | PA11 |
+| P5 | Tvarkyti parko duomenis | FR 1.2.5 | PA16, PA17, PA18, PA19 |
+| P6 | Planuoti motociklų perkėlimą | FR 1.2.5 | PA22 |
+| P7 | Formuoti užimtumo ir statistines ataskaitas | FR 1.2.5 | PA20, PA21 |
 
 ## Duomenų saugyklos
 
@@ -62,16 +69,16 @@ Saugyklos sudarytos iš loginės ER diagramos esybių (`08-loginis-er.md`); su s
 ## Modelio sprendimai
 
 - **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Taip sudarytas ir 2 paskaitos 22 skaidrės pavyzdys („Patikrinti prieinamumą“ → „Įtraukti studentą“), o panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (`08-loginis-er.md`) įgyvendinama vienoje vietoje.
-- **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, 1.2.2).
+- **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, FR 1.2.2).
 - **P7 užimtumo ir nuomų duomenis gauna iš P1**, nes tik P1 skaito visus užimtumo laikotarpius. Taip išvengiama dar kelių srautų iš saugyklų, kurie kirstų daugelį kitų.
 - **P3 skaito motociklų ir klientų duomenis.** Tvarkaraštyje ir išduodant darbuotojas turi matyti, kuris motociklas (valstybinis numeris) ir kuriam klientui (vardas, pažymėjimo numeris) išduodamas, todėl P3 skaito DS2 ir DS4. Baudų pakopas P3 ima iš DS3 pagal tarifą, su kuriuo susieta nuoma (ryšys „įkainojama“, `08-loginis-er.md`). Grąžinimo filialas pasirenkamas rezervuojant (P2), todėl grąžinant jis neįvedamas, o P3 įrašo jį į DS2 kaip naują motociklo filialą.
 - **Naujas filialas po perkėlimo.** P6 įrašo naują motociklo filialą į DS2, kai baigiasi perkėlimo laikotarpis, o ne planuodamas perkėlimą; iki tol motociklo buvimo vietą nusako motociklo buvimo vietos taisyklė (`08-loginis-er.md`).
-- **Neplanuota techninė priežiūra** atskiru procesu nevaizduojama: darbuotojas per P2 perkelia rezervaciją į kitą motociklą arba ją atšaukia, o tada per P4 suplanuoja priežiūrą (1.2.4). Susisiekimas su klientu vyksta už sistemos ribų.
+- **Neplanuota techninė priežiūra** atskiru procesu nevaizduojama: darbuotojas per P2 perkelia rezervaciją į kitą motociklą arba ją atšaukia, o tada per P4 suplanuoja priežiūrą (FR 1.2.4). Susisiekimas su klientu vyksta už sistemos ribų.
 - **Prisijungimas nevaizduojamas** (laikomas bazine funkcija). Todėl paskyrų saugyklą DS8 skaito tik P5 (darbuotojų paskyrų tvarkymas), o kliento paskyros sukūrimas registruojantis diagramoje nerodomas.
-- **Perspektyviniai reikalavimai 1.6.1–1.6.4** (mokėjimai, pažeidimai, buhalterinė apskaita, nuolaidos) neįtraukti, kaip ir ER diagramoje.
+- **Perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4** (mokėjimai, pažeidimai, buhalterinė apskaita, nuolaidos) neįtraukti, kaip ir ER diagramoje.
 
 ## Aprėpties patikrinimas
 
-- Kiekvienas funkcinis reikalavimas 1.2.1–1.2.5 turi bent vieną procesą, o kiekvienas panaudos atvejis PA1–PA22 – procesą (žr. lentelę „Procesai“).
+- Kiekvienas funkcinis reikalavimas FR 1.2.1–FR 1.2.5 turi bent vieną procesą, o kiekvienas panaudos atvejis PA1–PA22 – procesą (žr. lentelę „Procesai“).
 - Kiekviena loginės ER diagramos esybė (16) priklauso vienai saugyklai, o kiekviena saugykla turi bent vieną rašantį ir bent vieną skaitantį procesą.
 - Kiekviena išorinė esybė atitinka vartotoją iš `02-vartotojai.md` ir aktorių panaudos atvejų diagramoje; procesai, su kuriais ji susijusi, atitinka jos panaudos atvejus (E1 – P1, P2; E2 – P1, P2, P3, P4; E3 – P5, P6, P7).

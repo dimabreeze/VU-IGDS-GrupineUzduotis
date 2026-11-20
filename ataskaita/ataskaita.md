@@ -8,13 +8,18 @@
 
 #### Užsakovas
 
-UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniuje, Kaune ir Klaipėdoje. Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
+UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus:  
+    - Vilniuje, 
+    - Kaune,
+    - Klaipėdoje.  
+Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
+Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
 
 #### Dabartinė veikla
 
 Klientai motociklus rezervuoja telefonu, el. paštu arba „Facebook“ žinutėmis. Filialo darbuotojas laisvus motociklus tikrina bendroje „Excel“ lentelėje, kurią pildo visi trys filialai. Išduodant motociklą pildoma popierinė nuomos sutartis, o nuomos kaina ir bauda už pavėluotą grąžinimą skaičiuojamos rankiniu būdu. Taikomas tik grąžinimas į tą patį filialą: motociklą reikia grąžinti ten, kur jis buvo paimtas.
 
-Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos motociklų nuomos įmonių svetaines, dauguma jų rezervacijas priima telefonu arba per formą, kurią vėliau rankiniu būdu patvirtina darbuotojas, todėl klientas neturi garantijos, kad motociklas bus laisvas. Paieška pagal datas yra tik keliose svetainėse, filtrus pagal motociklo tipą ir vairuotojo pažymėjimo kategoriją turi tik viena, o paieškos pagal kitas charakteristikas (variklio tūrį, galią ir pan.) nėra nė vienoje. Peržiūrėtos svetainės [1]–[3], [5]–[9]. Išsami analogų apžvalga pateikta 1.1.4 skyriuje.
+Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos motociklų nuomos įmonių svetaines, dauguma jų rezervacijas priima telefonu arba per formą, kurią vėliau rankiniu būdu patvirtina darbuotojas, todėl klientas neturi garantijos, kad motociklas bus laisvas. Paieška pagal datas yra tik keliose svetainėse, filtrus pagal motociklo tipą ir vairuotojo pažymėjimo kategoriją turi tik viena, o paieškos pagal kitas charakteristikas (variklio tūrį, galią ir pan.) nėra nė vienoje. Peržiūrėtos svetainės _[1]–[3]_, _[5]–[9]_. Išsami analogų apžvalga pateikta 1.1.4 skyriuje.
 
 #### Problemos
 
@@ -51,7 +56,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 
 #### Sistemos ribos
 
-Į pirmąją sistemos versiją **neįeina** (keturi iš jų aprašyti kaip perspektyviniai reikalavimai 1.6.1–1.6.4):
+Į pirmąją sistemos versiją **neįeina** (keturi iš jų aprašyti kaip perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4):
 
 - mokėjimas internetu ir integracija su mokėjimų sistema (šioje versijoje už nuomą sumokama filiale);
 - mokėjimas dalimis;
@@ -108,7 +113,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 
 ### 1.1.4. Egzistuojantys sprendimai
 
-Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainės ir viena pasaulinė SaaS nuomos sistema. Visi duomenys patikrinti 2026-11-18 tiesiogiai svetainėse [1]–[4]; svetainių ekrano nuotraukos pateiktos 2.3.1 skyriuje.
+Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainės ir viena pasaulinė SaaS nuomos sistema. Visi duomenys patikrinti 2026-11-18 tiesiogiai svetainėse _[1]–[4]_; svetainių ekrano nuotraukos pateiktos 2.3.1 skyriuje.
 
 #### Bikerent (bikerent.lt)
 
@@ -159,38 +164,60 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 
 #### Palyginimas
 
-Ženklai: ✓ – yra; ✗ – nėra; „?“ – viešai nėra informacijos.
+Ženklai: ✅ – yra; ❌ – nėra; ❓ – viešai nėra informacijos.
 
 Lentelė: Analogų ir kuriamos IS funkcijų palyginimas {#lent:analogai}
 | Funkcija | Bikerent | KuBa Motors | RideRent | RentSyst | Mūsų IS |
 |---|---|---|---|---|---|
-| Paieška pagal datas | ✓ | ✗ | ✗ | ✓ | ✓ |
-| Filtrai pagal charakteristikas ir kategoriją | ✗ | ✓ (tipas, kategorija) | ✗ | ? | ✓ |
-| Užimtumas pasirinktoms datoms | ✓ | tik šiandien | tik „šiuo metu“ | ✓ | ✓ |
-| Momentinis patvirtinimas | ? | ✗ | ? | ? | ✓ |
-| Asmeninė paskyra | ✓ | prisijungimas yra | ✗ | ✓ | ✓ |
-| Vairuotojo pažymėjimo kategorijos tikrinimas | ? | ? | ? | ? | ✓ |
-| Grąžinimas į kitą filialą | ✗ | derinama individualiai | ✗ | ? | ✓ |
-| Galimybė išvažiuoti į užsienį | taisyklėse | ? | ? | ? | ✓ (filtras paieškoje) |
-| Techninės priežiūros planavimas | ? | ? | ? | ✓ | ✓ (su datomis, susietas su paieška) |
-| Statistinės ataskaitos | ? | ? | ? | ✓ | ✓ |
-| Užstatas nurodomas iš anksto | ✗ | ? | ✓ (100 €) | ? | ✓ |
+| Paieška pagal datas | ✅ | ❌ | ❌ | ✅ | ✅ |
+| Filtrai pagal charakteristikas ir kategoriją | ❌ | ✅ (tipas, kategorija) | ❌ | ❓ | ✅ |
+| Užimtumas pasirinktoms datoms | ✅ | tik šiandien | tik „šiuo metu“ | ✅ | ✅ |
+| Momentinis patvirtinimas | ❓ | ❌ | ❓ | ❓ | ✅ |
+| Asmeninė paskyra | ✅ | prisijungimas yra | ❌ | ✅ | ✅ |
+| Vairuotojo pažymėjimo kategorijos tikrinimas | ❓ | ❓ | ❓ | ❓ | ✅ |
+| Grąžinimas į kitą filialą | ❌ | derinama individualiai | ❌ | ❓ | ✅ |
+| Galimybė išvažiuoti į užsienį | taisyklėse | ❓ | ❓ | ❓ | ✅ (filtras paieškoje) |
+| Techninės priežiūros planavimas | ❓ | ❓ | ❓ | ✅ | ✅ (su datomis, susietas su paieška) |
+| Statistinės ataskaitos | ❓ | ❓ | ❓ | ✅ | ✅ |
+| Užstatas nurodomas iš anksto | ❌ | ❓ | ✅ (100 €) | ❓ | ✅ |
 | Kalbos | LT, EN | LT, EN | LT, EN, RU | kelios | LT, EN |
 
 #### Ką darome kitaip
 
-1. **Momentinis ir garantuotas patvirtinimas.** Rezervacija patvirtinama iš karto, tikrinant užimtumą vienoje duomenų bazėje; KuBa Motors rezervaciją tvirtina darbuotojas.
-2. **Visa paieška vienoje vietoje.** Paieška pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį; nagrinėtose Lietuvos svetainėse yra tik dalis šių kriterijų.
-3. **Grąžinimas į kitą filialą.** Nė viena nagrinėta Lietuvos įmonė neturi kelių filialų su grąžinimu į kitą filialą: Bikerent grąžinimą kitoje vietoje tiesiogiai draudžia, o KuBa Motors grąžinimo vietą Vilniuje derina individualiai.
-4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.** Sistema prieš patvirtindama rezervaciją tikrina, ar pažymėjime yra tinkama kategorija ir ar ji galios visą nuomos laikotarpį.
-5. **Techninė priežiūra, susieta su paieška.** Priežiūros laikotarpiai planuojami su datomis ir automatiškai pašalina motociklą iš paieškos tiems laikotarpiams.
-6. **Pritaikyta motociklų nuomai.** Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, kelionės į užsienį).
+1. **Momentinis ir garantuotas patvirtinimas.**  
+Rezervacija patvirtinama iš karto, tikrinant užimtumą vienoje duomenų bazėje; KuBa Motors rezervaciją tvirtina darbuotojas. 
+
+2. **Visa paieška vienoje vietoje.**  
+Paieška pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį; nagrinėtose Lietuvos svetainėse yra tik dalis šių kriterijų. 
+
+3. **Grąžinimas į kitą filialą.**  
+Nė viena nagrinėta Lietuvos įmonė neturi kelių filialų su grąžinimu į kitą filialą: Bikerent grąžinimą kitoje vietoje tiesiogiai draudžia, o KuBa Motors grąžinimo vietą Vilniuje derina individualiai. 
+
+4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.**  
+Sistema prieš patvirtindama rezervaciją tikrina, ar pažymėjime yra tinkama kategorija ir ar ji galios visą nuomos laikotarpį. 
+
+5. **Techninė priežiūra, susieta su paieška.**  
+Priežiūros laikotarpiai planuojami su datomis ir automatiškai pašalina motociklą iš paieškos tiems laikotarpiams. 
+
+6. **Pritaikyta motociklų nuomai.**  
+Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, kelionės į užsienį).
 
 ### 1.1.5. Sistemos kūrimo terminai
 
 Sistemos kūrimo grafikas apima visus šešis IS kūrimo etapus: analizę, projektavimą, programavimą, testavimą, diegimą, veikimą ir priežiūrą. Nors šiame darbe atliekami tik pirmieji du etapai, grafike parodyti ir likusių etapų terminai. Projektas pradedamas 2026-09-21 ir trunka 90 savaičių; techninis projektas suderinamas su užsakovu 2026-11-23 – 2026-11-29 savaitę.
 
-Sistema sukuriama per 9 savaites (iki 2027-01-31). Testuojama 14 savaičių: sistemos testavimas pagal panaudos atvejus, naktiniai automatiniai testai, priėmimo bandymai su filialų darbuotojais (UAT) ir eksploatacinis priėmimo testavimas (OAT); programuotojai klaidas taiso nuo pirmos testavimo dienos iki OAT pabaigos. Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant, todėl diegiant sistema įdiegiama ir duomenys iš senos sistemos (bendros filialų „Excel“ lentelės) perkeliami per vieną savaitę. Po to darbuotojai mokomi, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po mokymų. Po paleidimo 52 savaites vyksta garantinė priežiūra; ji apima visus metus, taigi ir visus nuomos sezono mėnesius (2027 m. birželį–spalį ir 2028 m. balandį–gegužę), todėl per ją patikrinamas metinis pasiekiamumas (1.3.3.2) ir klaidų taisymo bei atnaujinimų terminai (1.3.4.3).
+Sistema sukuriama per 9 savaites (iki 2027-01-31).  
+* Testuojama 14 savaičių:  
+  - sistemos testavimas pagal panaudos atvejus, 
+  - naktiniai automatiniai testai,
+  - priėmimo bandymai su filialų darbuotojais (UAT) ir 
+  - eksploatacinis priėmimo testavimas (OAT); 
+     
+* Programuotojai taiso klaidas nuo pirmos testavimo dienos iki OAT pabaigos. 
+* Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant, todėl diegiant sistema įdiegiama ir duomenys iš senos sistemos (bendros filialų „Excel“ lentelės) perkeliami per vieną savaitę. 
+* Po to darbuotojai mokomi, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. 
+* Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po mokymų. 
+* Po paleidimo 52 savaites vyksta garantinė priežiūra; ji apima visus metus, taigi ir visus nuomos sezono mėnesius (2027 m. birželį–spalį ir 2028 m. balandį–gegužę), todėl per ją patikrinamas metinis pasiekiamumas (NFR 1.3.3.2) ir klaidų taisymo bei atnaujinimų terminai (NFR 1.3.4.3).
 
 Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoje savaitėje po etapo pabaigos: užsakovas patvirtina reikalavimų specifikaciją, techninį projektą, priimtą sistemą ir projekto užbaigimą, o projekto vadovas – programavimo pabaigą ir sistemos paleidimą.
 
@@ -198,25 +225,25 @@ Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoj
 
 ## 1.2. Funkciniai reikalavimai
 
-Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Reikalavimo pavadinimas nurodytas lentelės pavadinime ir naudojamas nuorodoms kituose skyriuose.
+Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). Tekste skaičiais be žymės rašomi tik skyrių numeriai. Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos susiejamos diagramos, funkcijos ir testai. Reikalavimo pavadinimas nurodytas lentelės pavadinime ir naudojamas nuorodoms kituose skyriuose.
 
-::: reikalavimas 1.2.1 funkcinis | Motociklų paieška
+::: reikalavimas FR 1.2.1 funkcinis | Motociklų paieška
 Klientas turi galėti rasti laisvus motociklus pagal nuomos datas, filialą, charakteristikas (pvz., tipą, variklio tūrį, galią), reikiamą vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį. Paieškos rezultatuose nerodomi motociklai, kurie pasirinktomis datomis yra rezervuoti, išnuomoti, techninėje priežiūroje ar perkeliami, taip pat motociklai, kurie nuomos pradžioje bus kitame filiale.
 :::
 
-::: reikalavimas 1.2.2 funkcinis | Rezervacija ir jos valdymas
+::: reikalavimas FR 1.2.2 funkcinis | Rezervacija ir jos valdymas
 Klientas (arba filialo darbuotojas kliento vardu) turi galėti rezervuoti laisvą motociklą, pasirinkęs išdavimo ir grąžinimo filialus ir pateikęs vairuotojo pažymėjimo duomenis, ir iš karto gauti patvirtinimą, kuriame nurodyta nuomos kaina, užstatas ir baudų už pavėluotą grąžinimą tarifai. Sistema rezervacijos ar jos pakeitimo neleidžia, jei pasirinktos datos sutampa su kita rezervacija, technine priežiūra ar perkėlimu, jei nuomos pradžioje motociklas bus ne išdavimo filiale arba po grąžinimo nebus tame filiale, kuriame prasideda kita jo rezervacija ar perkėlimas, taip pat jei kliento pažymėjime nėra motociklui tinkamos kategorijos, galiojančios visą nuomos laikotarpį. Klientas turi galėti peržiūrėti, keisti ir atšaukti savo rezervacijas asmeninėje paskyroje.
 :::
 
-::: reikalavimas 1.2.3 funkcinis | Išdavimas ir grąžinimas
+::: reikalavimas FR 1.2.3 funkcinis | Išdavimas ir grąžinimas
 Filialo darbuotojas turi galėti matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir įforminti motociklo išdavimą bei grąžinimą, įskaitant grąžinimą į kitą filialą. Išdavimo ir grąžinimo metu darbuotojas užfiksuoja motociklo ridą ir trumpai aprašo jo būklę. Grąžinant sistema pagal tarifus apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą.
 :::
 
-::: reikalavimas 1.2.4 funkcinis | Techninė priežiūra
+::: reikalavimas FR 1.2.4 funkcinis | Techninė priežiūra
 Filialo darbuotojas turi galėti iš anksto suplanuoti motociklo techninės priežiūros laikotarpį; tuo laikotarpiu motociklas nerodomas paieškoje ir jo negalima rezervuoti. Sistema neleidžia suplanuoti priežiūros, jei jos laikotarpis sutampa su rezervacija, vykstančia nuoma ar perkėlimu. Neplanuotos priežiūros atveju darbuotojas pirmiausia susisiekia su klientu, pasiūlo kitą motociklą ir perkelia rezervaciją arba ją atšaukia, o tik tada suplanuoja priežiūrą.
 :::
 
-::: reikalavimas 1.2.5 funkcinis | Parko administravimas ir ataskaitos
+::: reikalavimas FR 1.2.5 funkcinis | Parko administravimas ir ataskaitos
 Administratorius turi galėti tvarkyti filialus, motociklų modelius, motociklus, tarifus ir darbuotojų paskyras, matyti esamą ir istorinį parko užimtumą ir formuoti statistines ataskaitas. Jis taip pat turi galėti suplanuoti vieno ar kelių motociklų perkėlimą į kitą filialą, jei perkėlimo laikotarpis nesutampa su šių motociklų rezervacijomis, vykstančiomis nuomomis ir technine priežiūra, jei perkėlimo pradžioje motociklai bus filiale, iš kurio perkeliama, ir jei kita jų rezervacija ar perkėlimas (jei yra) prasideda filiale, į kurį jie perkeliami. Perkėlimo laikotarpiu šie motociklai nerodomi paieškoje ir jų negalima rezervuoti.
 :::
 
@@ -226,77 +253,77 @@ Nefunkciniai reikalavimai apibrėžia, KAIP sistema turi veikti, ir taikomi visa
 
 ### 1.3.1. Reikalavimai sistemos išvaizdai
 
-::: reikalavimas 1.3.1.1 nefunkcinis | Prisitaikanti sąsaja
+::: reikalavimas NFR 1.3.1.1 nefunkcinis | Prisitaikanti sąsaja
 Sistemos sąsaja turi tinkamai veikti ekranuose nuo 360 px pločio, be viršutinės ribos. Siauruose ekranuose elementai nepersidengia ir nėra horizontalios slinkties juostos, o plačiuose ekranuose turinys neišsitempia per visą plotį, bet lieka sugrupuotas.
 :::
 
-::: reikalavimas 1.3.1.2 nefunkcinis | Vieningas stilius
+::: reikalavimas NFR 1.3.1.2 nefunkcinis | Vieningas stilius
 Visi sistemos puslapiai turi naudoti vienodą spalvų paletę, šriftus ir mygtukų išdėstymą, apibrėžtus 2.3.2 skyriuje.
 :::
 
-::: reikalavimas 1.3.1.3 nefunkcinis | Motociklo kortelė
+::: reikalavimas NFR 1.3.1.3 nefunkcinis | Motociklo kortelė
 Paieškos rezultatuose kiekvienas motociklo modelis, kurio bent vienas motociklas atitinka paieškos sąlygas, rodomas kortele su nuotrauka, modelio pavadinimu, pagrindinėmis charakteristikomis (tipas, variklio tūris, galia, reikiama pažymėjimo kategorija) ir paros kaina, kad modelius būtų galima palyginti neatidarant atskiro puslapio.
 :::
 
 ### 1.3.2. Reikalavimai naudojimo paprastumui
 
-::: reikalavimas 1.3.2.1 nefunkcinis | Kalbos
+::: reikalavimas NFR 1.3.2.1 nefunkcinis | Kalbos
 Sąsaja turi būti lietuvių ir anglų kalbomis. Kalbą galima pakeisti bet kuriame puslapyje neprarandant įvestų duomenų.
 :::
 
-::: reikalavimas 1.3.2.2 nefunkcinis | Darbuotojo mokymas
+::: reikalavimas NFR 1.3.2.2 nefunkcinis | Darbuotojo mokymas
 Naujas filialo darbuotojas po ne ilgesnio kaip 3 valandų mokymo turi savarankiškai atlikti pagrindines operacijas: rezervaciją kliento vardu, motociklo išdavimą ir grąžinimą bei techninės priežiūros planavimą.
 :::
 
-::: reikalavimas 1.3.2.3 nefunkcinis | Trumpas rezervacijos kelias
+::: reikalavimas NFR 1.3.2.3 nefunkcinis | Trumpas rezervacijos kelias
 Klientas nuo motociklo pasirinkimo paieškos rezultatuose iki rezervacijos patvirtinimo turi pereiti ne daugiau kaip 3 ekranus (neskaičiuojant prisijungimo).
 :::
 
-::: reikalavimas 1.3.2.4 nefunkcinis | Aiški atsisakymo priežastis
+::: reikalavimas NFR 1.3.2.4 nefunkcinis | Aiški atsisakymo priežastis
 Jei rezervacija ar jos pakeitimas neleidžiami, sistema turi nurodyti konkrečią priežastį: datos užimtos; motociklas nuomos pradžioje bus kitame filiale; motociklo negalima grąžinti į pasirinktą filialą, nes kita jo rezervacija ar perkėlimas prasideda kitame filiale; netinka pažymėjimo kategorija arba jos galiojimas baigiasi anksčiau nei nuoma.
 :::
 
 ### 1.3.3. Reikalavimai veikimo charakteristikoms
 
-::: reikalavimas 1.3.3.1 nefunkcinis | Atsako laikas
+::: reikalavimas NFR 1.3.3.1 nefunkcinis | Atsako laikas
 Paieškos rezultatai ir rezervacijos patvirtinimas turi būti parodyti ne vėliau kaip per 2 s, o kiti puslapiai – per 3 s, kai sistema vienu metu naudojasi iki 300 vartotojų.
 :::
 
-::: reikalavimas 1.3.3.2 nefunkcinis | Pasiekiamumas
+::: reikalavimas NFR 1.3.3.2 nefunkcinis | Pasiekiamumas
 Sistema turi veikti visą parą, 7 dienas per savaitę, ir būti pasiekiama ne mažiau kaip 99 % laiko. Nuomos sezono metu (balandžio–spalio mėn.) šis reikalavimas taikomas esant iki 300, o ne sezono metu – iki 50 vienu metu prisijungusių vartotojų.
 :::
 
-::: reikalavimas 1.3.3.3 nefunkcinis | Vienalaikės rezervacijos
+::: reikalavimas NFR 1.3.3.3 nefunkcinis | Vienalaikės rezervacijos
 Jei du vartotojai vienu metu rezervuoja tą patį motociklą sutampančioms datoms, sistema turi patvirtinti tik vieną rezervaciją, o kitam vartotojui pranešti, kad motociklas jau užimtas.
 :::
 
 ### 1.3.4. Reikalavimai sistemos priežiūrai
 
-::: reikalavimas 1.3.4.1 nefunkcinis | Duomenų dubliavimas ir atsarginės kopijos
+::: reikalavimas NFR 1.3.4.1 nefunkcinis | Duomenų dubliavimas ir atsarginės kopijos
 Visi duomenų bazės įrašai realiuoju laiku dubliuojami į atsarginę duomenų bazę, be to, kas 24 valandas daroma atsarginė kopija, saugoma ne trumpiau kaip 30 dienų. Sutrikus sistemai, duomenys atkuriami ne ilgiau kaip per 4 valandas.
 :::
 
-::: reikalavimas 1.3.4.2 nefunkcinis | Istoriniai duomenys
+::: reikalavimas NFR 1.3.4.2 nefunkcinis | Istoriniai duomenys
 Užbaigtos nuomos iš sistemos netrinamos ir saugomos ne trumpiau kaip 5 metus, kad būtų galima formuoti statistines ataskaitas.
 :::
 
-::: reikalavimas 1.3.4.3 nefunkcinis | Klaidų taisymas ir atnaujinimai
+::: reikalavimas NFR 1.3.4.3 nefunkcinis | Klaidų taisymas ir atnaujinimai
 Sezono metu kritinės klaidos, dėl kurių neveikia rezervacija, išdavimas ar grąžinimas, ištaisomos ne vėliau kaip per 1 darbo dieną; planiniai atnaujinimai sezono metu diegiami tik 0–6 val.
 :::
 
 ### 1.3.5. Reikalavimai saugumui
 
-::: reikalavimas 1.3.5.1 nefunkcinis | Prieiga pagal vaidmenis
+::: reikalavimas NFR 1.3.5.1 nefunkcinis | Prieiga pagal vaidmenis
 Vartotojas gali atlikti tik savo vaidmeniui (klientas, filialo darbuotojas, administratorius) leistus veiksmus: klientas mato tik savo rezervacijas ir asmens duomenis, o tarifus ir darbuotojų paskyras keisti gali tik administratorius.
 :::
 
-::: reikalavimas 1.3.5.2 nefunkcinis | Duomenų apsauga
+::: reikalavimas NFR 1.3.5.2 nefunkcinis | Duomenų apsauga
 Duomenys tarp naršyklės ir serverio perduodami tik šifruotu ryšiu (HTTPS), o slaptažodžiai saugomi tik kaip maišos reikšmės.
 :::
 
 ## 1.4. Panaudos atvejų diagrama
 
-Diagramoje pavaizduoti visi trys vartotojai iš 1.1.3 skyriaus (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. 1.2 skyrių), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (1.2.1, 1.2.2, 1.2.4, 1.2.5), todėl numeris ovale nenurodytas.
+Diagramoje pavaizduoti visi trys vartotojai iš 1.1.3 skyriaus (klientas, filialo darbuotojas, administratorius) ir jiems sistemoje prieinami panaudos atvejai. Kiekvieno panaudos atvejo ovale skliaustuose nurodytas funkcinio reikalavimo numeris (žr. 1.2 skyrių), kad diagramą būtų galima susieti su reikalavimais. Panaudos atvejis „Tikrinti motociklo užimtumą“ naudojamas keliuose reikalavimuose (FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5), todėl numeris ovale nenurodytas.
 
 ![Motociklų nuomos IS panaudos atvejų diagrama {#pav:pa}](../artefaktai/07-panaudos-atvejai.png){failai=../artefaktai/07-panaudos-atvejai.drawio,../artefaktai/07-panaudos-atvejai.png}
 
@@ -308,52 +335,63 @@ Diagramoje pavaizduoti visi trys vartotojai iš 1.1.3 skyriaus (klientas, filial
 
 #### Panaudos atvejų sąrašas
 
-Panaudos atvejų numeriai PA1–PA22 diagramoje nerodomi; jais remiamasi duomenų srautų diagramos ir struktūrinės schemos aprašymuose, testavimo atvejuose ir atsekamumo matricoje (1 priedas). Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius.
+Panaudos atvejų numeriai PA1–PA22 diagramoje nerodomi; jais remiamasi duomenų srautų diagramos ir struktūrinės schemos aprašymuose, testavimo atvejuose ir atsekamumo matricoje (1 priedas).  
+Aktoriai: 
+* K – klientas, 
+* D – filialo darbuotojas, 
+* A – administratorius.
 
 Lentelė: Panaudos atvejų sąrašas {#lent:pa}
-| Nr. | Panaudos atvejis | Aktoriai | Reikalavimas | Ryšiai |
-|---|---|---|---|---|
-| PA1 | Ieškoti laisvų motociklų | K, D | 1.2.1 | «include» PA6 |
-| PA2 | Rezervuoti motociklą | K, D | 1.2.2 | «include» PA6, PA7 |
-| PA3 | Peržiūrėti savo rezervacijas | K | 1.2.2 | – |
-| PA4 | Keisti rezervaciją | K, D | 1.2.2 | «include» PA6, PA7 |
-| PA5 | Atšaukti rezervaciją | K, D | 1.2.2 | – |
-| PA6 | Tikrinti motociklo užimtumą | – | 1.2.1, 1.2.2, 1.2.4, 1.2.5 | įtraukiamas į PA1, PA2, PA4, PA11, PA22 |
-| PA7 | Tikrinti vairuotojo pažymėjimą | – | 1.2.2 | įtraukiamas į PA2, PA4 |
-| PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | D | 1.2.3 | – |
-| PA9 | Įforminti išdavimą | D | 1.2.3 | «include» PA12 |
-| PA10 | Įforminti grąžinimą | D | 1.2.3 | «include» PA12, PA13 |
-| PA11 | Planuoti techninę priežiūrą | D | 1.2.4 | «include» PA6 |
-| PA12 | Užfiksuoti ridą ir būklę | – | 1.2.3 | įtraukiamas į PA9, PA10 |
-| PA13 | Apskaičiuoti galutinę nuomos kainą | – | 1.2.3 | įtraukiamas į PA10 |
-| PA14 | Apskaičiuoti baudą už pavėluotą grąžinimą | – | 1.2.3 | «extend» PA10 [grąžinta pavėluotai] |
-| PA15 | Grąžinti į kitą filialą | – | 1.2.3 | «extend» PA10 [kitas filialas] |
-| PA16 | Tvarkyti filialus | A | 1.2.5 | – |
-| PA17 | Tvarkyti motociklų modelius ir motociklus | A | 1.2.5 | – |
-| PA18 | Tvarkyti tarifus | A | 1.2.5 | – |
-| PA19 | Tvarkyti darbuotojų paskyras | A | 1.2.5 | – |
-| PA20 | Peržiūrėti parko užimtumą | A | 1.2.5 | – |
-| PA21 | Formuoti statistines ataskaitas | A | 1.2.5 | – |
-| PA22 | Planuoti motociklų perkėlimą | A | 1.2.5 | «include» PA6 |
+| Nr. | Panaudos atvejis | Aktoriai | Reikalavimas |
+|---|---|---|---|
+| PA1 | Ieškoti laisvų motociklų | K, D | FR 1.2.1 |
+| PA2 | Rezervuoti motociklą | K, D | FR 1.2.2 |
+| PA3 | Peržiūrėti savo rezervacijas | K | FR 1.2.2 |
+| PA4 | Keisti rezervaciją | K, D | FR 1.2.2 |
+| PA5 | Atšaukti rezervaciją | K, D | FR 1.2.2 |
+| PA6 | Tikrinti motociklo užimtumą | – | FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5 |
+| PA7 | Tikrinti vairuotojo pažymėjimą | – | FR 1.2.2 |
+| PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | D | FR 1.2.3 |
+| PA9 | Įforminti išdavimą | D | FR 1.2.3 |
+| PA10 | Įforminti grąžinimą | D | FR 1.2.3 |
+| PA11 | Planuoti techninę priežiūrą | D | FR 1.2.4 |
+| PA12 | Užfiksuoti ridą ir būklę | – | FR 1.2.3 |
+| PA13 | Apskaičiuoti galutinę nuomos kainą | – | FR 1.2.3 |
+| PA14 | Apskaičiuoti baudą už pavėluotą grąžinimą | – | FR 1.2.3 |
+| PA15 | Grąžinti į kitą filialą | – | FR 1.2.3 |
+| PA16 | Tvarkyti filialus | A | FR 1.2.5 |
+| PA17 | Tvarkyti motociklų modelius ir motociklus | A | FR 1.2.5 |
+| PA18 | Tvarkyti tarifus | A | FR 1.2.5 |
+| PA19 | Tvarkyti darbuotojų paskyras | A | FR 1.2.5 |
+| PA20 | Peržiūrėti parko užimtumą | A | FR 1.2.5 |
+| PA21 | Formuoti statistines ataskaitas | A | FR 1.2.5 |
+| PA22 | Planuoti motociklų perkėlimą | A | FR 1.2.5 |
 
 
 #### Paaiškinimai
 
-- **PA6 Tikrinti motociklo užimtumą** tikrina, ar pasirinktomis datomis motociklas nėra rezervuotas, išnuomotas, techninėje priežiūroje ar perkeliamas. Todėl paieška nerodo užimtų motociklų (1.2.1), rezervacijos ir jos pakeitimo negalima atlikti užimtomis datomis (1.2.2), o techninės priežiūros ir perkėlimo negalima suplanuoti laikotarpiui, kuris sutampa su rezervacija (1.2.4, 1.2.5). Be to, PA6 tikrina motociklo buvimo vietą: nuomos ar perkėlimo pradžioje motociklas turi būti tame filiale, iš kurio jis išduodamas ar perkeliamas, o pabaigoje – tame filiale, kuriame prasideda kitas jo užimtumo laikotarpis. Todėl, pavyzdžiui, neleidžiama grąžinti motociklo į kitą filialą, jei kitą dieną jis rezervuotas pradiniame filiale (1.2.2). Plačiau – 1.5.2.4 skyriuje.
-- **PA7 Tikrinti vairuotojo pažymėjimą** tikrina, ar kliento pažymėjime yra motociklui tinkama kategorija ir ar ji galioja visą nuomos laikotarpį (1.2.2). Kiekvienos kategorijos galiojimo data saugoma atskirai.
-- **Rezervacija kliento vardu:** filialo darbuotojas susietas su PA1, PA2, PA4 ir PA5, nes registruoja rezervacijas skambinantiems ar į filialą atvykusiems klientams (1.2.2).
-- **Neplanuota techninė priežiūra** atskiru panaudos atveju nevaizduojama: darbuotojas perkelia rezervaciją į kitą motociklą (PA4) arba ją atšaukia (PA5), o tada suplanuoja priežiūrą (PA11), kurią leidžia PA6 patikrinimas (1.2.4).
+- **PA6 Tikrinti motociklo užimtumą** tikrina, ar pasirinktomis datomis motociklas nėra rezervuotas, išnuomotas, techninėje priežiūroje ar perkeliamas. Todėl paieška nerodo užimtų motociklų (FR 1.2.1), rezervacijos ir jos pakeitimo negalima atlikti užimtomis datomis (FR 1.2.2), o techninės priežiūros ir perkėlimo negalima suplanuoti laikotarpiui, kuris sutampa su rezervacija (FR 1.2.4, FR 1.2.5). Be to, PA6 tikrina motociklo buvimo vietą: nuomos ar perkėlimo pradžioje motociklas turi būti tame filiale, iš kurio jis išduodamas ar perkeliamas, o pabaigoje – tame filiale, kuriame prasideda kitas jo užimtumo laikotarpis. Todėl, pavyzdžiui, neleidžiama grąžinti motociklo į kitą filialą, jei kitą dieną jis rezervuotas pradiniame filiale (FR 1.2.2). Plačiau – 1.5.2.4 skyriuje.
+- **PA7 Tikrinti vairuotojo pažymėjimą** tikrina, ar kliento pažymėjime yra motociklui tinkama kategorija ir ar ji galioja visą nuomos laikotarpį (FR 1.2.2). Kiekvienos kategorijos galiojimo data saugoma atskirai.
+- **Rezervacija kliento vardu:** filialo darbuotojas susietas su PA1, PA2, PA4 ir PA5, nes registruoja rezervacijas skambinantiems ar į filialą atvykusiems klientams (FR 1.2.2).
+- **Neplanuota techninė priežiūra** atskiru panaudos atveju nevaizduojama: darbuotojas perkelia rezervaciją į kitą motociklą (PA4) arba ją atšaukia (PA5), o tada suplanuoja priežiūrą (PA11), kurią leidžia PA6 patikrinimas (FR 1.2.4).
 - **PA9 Įforminti išdavimą:** motociklą galima išduoti tik tada, kai jis yra išdavimo filiale ir ankstesnė jo nuoma jau užbaigta (motociklas grąžintas).
 - **Pavėluotas grąžinimas** atskiru panaudos atveju nevaizduojamas. Filialo tvarkaraštyje (PA8) vėluojanti nuoma pažymima, o šalia rodomas kitas to motociklo laikotarpis. Kaip ir neplanuotos techninės priežiūros atveju, darbuotojas susisiekia su kitu klientu ir perkelia rezervaciją į kitą motociklą (PA4) arba ją atšaukia (PA5). Jei klientas sutinka palaukti, grąžinus motociklą darbuotojas pakeičia rezervacijos pradžią į išdavimo laiką (PA4), kad kaina būtų skaičiuojama už trumpesnį laikotarpį. Plačiau – 2.2.1 skyriuje.
-- **Grąžinimo filialas pasirenkamas rezervuojant** (PA2) kartu su išdavimo filialu, todėl jis matomas filialo tvarkaraštyje (PA8) ir PA6 gali patikrinti motociklo buvimo vietą. PA15 taikomas, kai rezervacijoje nurodytas grąžinimo filialas skiriasi nuo išdavimo filialo. Jei klientas nori grąžinti motociklą kitur, rezervacija keičiama (PA4), o PA6 patikrina, ar tai leidžiama (1.2.2).
+- **Grąžinimo filialas pasirenkamas rezervuojant** (PA2) kartu su išdavimo filialu, todėl jis matomas filialo tvarkaraštyje (PA8) ir PA6 gali patikrinti motociklo buvimo vietą. PA15 taikomas, kai rezervacijoje nurodytas grąžinimo filialas skiriasi nuo išdavimo filialo. Jei klientas nori grąžinti motociklą kitur, rezervacija keičiama (PA4), o PA6 patikrina, ar tai leidžiama (FR 1.2.2).
 - **Patvirtinimas su kaina, užstatu ir baudų tarifais** yra PA2 rezultatas ir atskiru panaudos atveju nevaizduojamas.
-- **PA22 Planuoti motociklų perkėlimą:** administratorius vienu perkėlimu gali perkelti vieną ar kelis motociklus (jie vežami kartu) į kitą filialą. Perkėlimo laikotarpiu motociklai užimti taip pat, kaip nuomos ar techninės priežiūros metu (1.2.5).
+- **PA22 Planuoti motociklų perkėlimą:** administratorius vienu perkėlimu gali perkelti vieną ar kelis motociklus (jie vežami kartu) į kitą filialą. Perkėlimo laikotarpiu motociklai užimti taip pat, kaip nuomos ar techninės priežiūros metu (FR 1.2.5).
 
 ## 1.5. Duomenų diagramos
 
 ### 1.5.1. Duomenų srautų diagrama
 
-Diagrama nubraižyta viename lygyje („0 lygis“) su procesais: atskiros konteksto diagramos ir gilesnių lygių nėra. Žymėjimas – kaip 2 paskaitos 22 skaidrėje: išorinė esybė – stačiakampis, procesas – suapvalintas stačiakampis, duomenų saugykla – cilindras, duomenų srautas – rodyklė su pavadinimu. Elementai numeruojami E (išorinės esybės), P (procesai) ir DS (saugyklos); diagramoje yra legenda. Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
+Diagrama nubraižyta viename lygyje („0 lygis“) su procesais: atskiros konteksto diagramos ir gilesnių lygių nėra. 
+Žymėjimas: 
+* (E) išorinė esybė – stačiakampis, 
+* (P) procesas – suapvalintas stačiakampis, 
+* (DS) duomenų saugykla – cilindras, 
+* duomenų srautas – rodyklė su pavadinimu.
+
+Kai srautai kertasi nesujungti, kirtimo vietoje piešiamas lankelis.
 
 ::: gulscias
 
@@ -375,13 +413,13 @@ Lentelė: Duomenų srautų diagramos išorinės esybės
 Lentelė: Duomenų srautų diagramos procesai {#lent:procesai}
 | Nr. | Procesas | Reikalavimas | Panaudos atvejai |
 |---|---|---|---|
-| P1 | Ieškoti laisvų motociklų ir tikrinti užimtumą | 1.2.1 (ir užimtumo tikrinimas 1.2.2, 1.2.4, 1.2.5) | PA1, PA6 |
-| P2 | Rezervuoti ir valdyti rezervacijas | 1.2.2 | PA2, PA3, PA4, PA5, PA7 |
-| P3 | Įforminti išdavimą ir grąžinimą | 1.2.3 | PA8, PA9, PA10, PA12, PA13, PA14, PA15 |
-| P4 | Planuoti techninę priežiūrą | 1.2.4 | PA11 |
-| P5 | Tvarkyti parko duomenis | 1.2.5 | PA16, PA17, PA18, PA19 |
-| P6 | Planuoti motociklų perkėlimą | 1.2.5 | PA22 |
-| P7 | Formuoti užimtumo ir statistines ataskaitas | 1.2.5 | PA20, PA21 |
+| P1 | Ieškoti laisvų motociklų ir tikrinti užimtumą | FR 1.2.1 (ir užimtumo tikrinimas FR 1.2.2, FR 1.2.4, FR 1.2.5) | PA1, PA6 |
+| P2 | Rezervuoti ir valdyti rezervacijas | FR 1.2.2 | PA2, PA3, PA4, PA5, PA7 |
+| P3 | Įforminti išdavimą ir grąžinimą | FR 1.2.3 | PA8, PA9, PA10, PA12, PA13, PA14, PA15 |
+| P4 | Planuoti techninę priežiūrą | FR 1.2.4 | PA11 |
+| P5 | Tvarkyti parko duomenis | FR 1.2.5 | PA16, PA17, PA18, PA19 |
+| P6 | Planuoti motociklų perkėlimą | FR 1.2.5 | PA22 |
+| P7 | Formuoti užimtumo ir statistines ataskaitas | FR 1.2.5 | PA20, PA21 |
 
 #### Duomenų saugyklos
 
@@ -415,17 +453,17 @@ Lentelė: Procesų gaunami ir perduodami duomenų srautai
 #### Modelio sprendimai
 
 - **Užimtumą tikrina tik P1.** Rezervacija (P2), techninės priežiūros planavimas (P4) ir perkėlimo planavimas (P6) siunčia P1 motociklą ir laikotarpį, o P1 grąžina, ar jis laisvas. Taip sudarytas ir 2 paskaitos 22 skaidrės pavyzdys („Patikrinti prieinamumą“ → „Įtraukti studentą“), o panaudos atvejų diagramoje tai atitinka PA6 „Tikrinti motociklo užimtumą“, įtraukiamas į PA1, PA2, PA4, PA11 ir PA22. Todėl nuomų, priežiūros ir perkėlimų laikotarpius (DS5, DS6, DS7) skaito vienas procesas, o motociklo buvimo vietos taisyklė (1.5.2 skyrius) įgyvendinama vienoje vietoje.
-- **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, 1.2.2).
+- **P2 tarifą ir reikiamą kategoriją gauna iš P1.** P1 vis tiek skaito motociklus ir tarifus, todėl kartu su prieinamumu grąžina motociklo reikiamą kategoriją (P2 ją palygina su kliento kategorijomis iš DS4, PA7) ir tarifą (paros kaina, užstatas ir baudų pakopos rodomi patvirtinime, FR 1.2.2).
 - **P7 užimtumo ir nuomų duomenis gauna iš P1**, nes tik P1 skaito visus užimtumo laikotarpius. Taip išvengiama dar kelių srautų iš saugyklų, kurie kirstų daugelį kitų.
 - **P3 skaito motociklų ir klientų duomenis.** Tvarkaraštyje ir išduodant darbuotojas turi matyti, kuris motociklas (valstybinis numeris) ir kuriam klientui (vardas, pažymėjimo numeris) išduodamas, todėl P3 skaito DS2 ir DS4. Baudų pakopas P3 ima iš DS3 pagal tarifą, su kuriuo susieta nuoma (ryšys „įkainojama“, 1.5.2 skyrius). Grąžinimo filialas pasirenkamas rezervuojant (P2), todėl grąžinant jis neįvedamas, o P3 įrašo jį į DS2 kaip naują motociklo filialą.
 - **Naujas filialas po perkėlimo.** P6 įrašo naują motociklo filialą į DS2, kai baigiasi perkėlimo laikotarpis, o ne planuodamas perkėlimą; iki tol motociklo buvimo vietą nusako motociklo buvimo vietos taisyklė (1.5.2 skyrius).
-- **Neplanuota techninė priežiūra** atskiru procesu nevaizduojama: darbuotojas per P2 perkelia rezervaciją į kitą motociklą arba ją atšaukia, o tada per P4 suplanuoja priežiūrą (1.2.4). Susisiekimas su klientu vyksta už sistemos ribų.
+- **Neplanuota techninė priežiūra** atskiru procesu nevaizduojama: darbuotojas per P2 perkelia rezervaciją į kitą motociklą arba ją atšaukia, o tada per P4 suplanuoja priežiūrą (FR 1.2.4). Susisiekimas su klientu vyksta už sistemos ribų.
 - **Prisijungimas nevaizduojamas** (laikomas bazine funkcija). Todėl paskyrų saugyklą DS8 skaito tik P5 (darbuotojų paskyrų tvarkymas), o kliento paskyros sukūrimas registruojantis diagramoje nerodomas.
-- **Perspektyviniai reikalavimai 1.6.1–1.6.4** (mokėjimai, pažeidimai, buhalterinė apskaita, nuolaidos) neįtraukti, kaip ir ER diagramoje.
+- **Perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4** (mokėjimai, pažeidimai, buhalterinė apskaita, nuolaidos) neįtraukti, kaip ir ER diagramoje.
 
 ### 1.5.2. ER loginio lygmens diagrama
 
-Duomenų modelis sudarytas pagal funkcinius reikalavimus 1.2.1–1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (1.3.1.3, 1.3.4.2, 1.3.5.1, 1.3.5.2). Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [10]). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
+Duomenų modelis sudarytas pagal funkcinius reikalavimus FR 1.2.1–FR 1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (NFR 1.3.1.3, NFR 1.3.4.2, NFR 1.3.5.1, NFR 1.3.5.2). Diagrama nubraižyta Cheno žymėjimu, kaip 5 paskaitos skaidrėse: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (5 paskaitos skaidrėse jo nėra; žymėjimas pagal [10]). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį (5 paskaitos patarimas): parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
 Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atributų tipai, išoriniai raktai ir apribojimai apibrėžti fizinėje ER diagramoje (2.1.2 skyrius) ir lentelių aprašyme (2.2.2 skyrius).
 
@@ -436,22 +474,22 @@ Išoriniai raktai loginiame lygmenyje nevaizduojami: juos atstoja ryšiai. Atrib
 Lentelė: Loginės ER diagramos esybės {#lent:esybes}
 | Esybė | Atributai (raktas pabrauktas) | Paskirtis | Reikalavimai |
 |---|---|---|---|
-| Filialas | <u>Kodas</u>, Miestas, Adresas, Telefonas | Įmonės filialas (Vilnius, Kaunas, Klaipėda) | 1.2.1, 1.2.3, 1.2.5 |
-| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Aprašymas | Vairuotojo pažymėjimo kategorija (klasifikatorius); aprašymas paaiškina kategoriją klientui (pvz., „A2 – vidutinės galios motociklai“) | 1.2.1, 1.2.2 |
-| Gamintojas | <u>Kodas</u>, Pavadinimas | Motociklų gamintojas (klasifikatorius, pvz., Honda, BMW) | 1.2.5 |
-| Motociklo tipas | <u>Kodas</u>, Pavadinimas | Motociklo tipas paieškai ir kortelei (klasifikatorius, pvz., turistinis, enduro) | 1.2.1, 1.2.5, 1.3.1.3 |
-| Motociklo modelis | <u>Kodas</u>, Pavadinimas, Variklio tūris, Galia, Degalų sąnaudos, Nuotrauka | Charakteristikos paieškai ir motociklo kortelei | 1.2.1, 1.2.5, 1.3.1.3 |
-| Motociklas | <u>Kodas</u>, Valstybinis numeris, VIN, Pagaminimo metai, Rida, Leidžiama išvažiuoti į užsienį, Naudojamas | Konkretus parko motociklas | 1.2.1, 1.2.3, 1.2.5 |
-| Tarifas | <u>Kodas</u>, Paros kaina, Užstatas, Galioja nuo, Galioja iki | Modelio paros kaina, užstatas ir baudų pakopos rezervacijoms, sudarytoms tam tikru laikotarpiu | 1.2.2, 1.2.3, 1.2.5 |
-| Baudos pakopa (silpna) | <ud>Vėlavimas nuo (val.)</ud>, Bauda | Baudų už pavėluotą grąžinimą tarifų lentelės eilutė | 1.2.2, 1.2.3 |
-| Techninė priežiūra | <u>Kodas</u>, Pradžia, Pabaiga, Priežastis | Laikotarpis, kai motociklas prižiūrimas ir neprieinamas | 1.2.4 |
-| Perkėlimas | <u>Kodas</u>, Pradžia, Pabaiga | Vieno ar kelių motociklų pervežimas į kitą filialą | 1.2.5 |
-| Klientas | <u>Kodas</u>, Vardas, Pavardė, Gimimo data, El. paštas, Telefonas, Pažymėjimo numeris | Nuomininkas ir jo vairuotojo pažymėjimo duomenys | 1.2.2 |
-| Nuoma | <u>Kodas</u>, Sukūrimo laikas, Planuojama pradžia, Planuojama pabaiga, Būsena | Rezervacija, kuri vėliau tampa nuoma | 1.2.2, 1.2.3, 1.3.4.2 |
-| Išdavimas (silpna) | Laikas, Rida, Būklė | Motociklo išdavimo klientui faktas | 1.2.3 |
-| Grąžinimas (silpna) | Laikas, Rida, Būklė, Galutinė kaina (išvestinis), Bauda (išvestinis) | Motociklo grąžinimo faktas ir galutinis atsiskaitymas | 1.2.3 |
-| Darbuotojas | <u>Kodas</u>, Vardas, Pavardė, El. paštas, Telefonas | Filialo darbuotojas arba administratorius | 1.2.3, 1.2.4, 1.2.5 |
-| Paskyra | <u>Prisijungimo vardas</u>, Slaptažodžio maiša, Vaidmuo | Prisijungimo duomenys ir vaidmuo | 1.3.5.1, 1.3.5.2 |
+| Filialas | <u>Kodas</u>, Miestas, Adresas, Telefonas | Įmonės filialas (Vilnius, Kaunas, Klaipėda) | FR 1.2.1, FR 1.2.3, FR 1.2.5 |
+| Kategorija | <u>Kodas</u> (AM, A1, A2, A), Aprašymas | Vairuotojo pažymėjimo kategorija (klasifikatorius); aprašymas paaiškina kategoriją klientui (pvz., „A2 – vidutinės galios motociklai“) | FR 1.2.1, FR 1.2.2 |
+| Gamintojas | <u>Kodas</u>, Pavadinimas | Motociklų gamintojas (klasifikatorius, pvz., Honda, BMW) | FR 1.2.5 |
+| Motociklo tipas | <u>Kodas</u>, Pavadinimas | Motociklo tipas paieškai ir kortelei (klasifikatorius, pvz., turistinis, enduro) | FR 1.2.1, FR 1.2.5, NFR 1.3.1.3 |
+| Motociklo modelis | <u>Kodas</u>, Pavadinimas, Variklio tūris, Galia, Degalų sąnaudos, Nuotrauka | Charakteristikos paieškai ir motociklo kortelei | FR 1.2.1, FR 1.2.5, NFR 1.3.1.3 |
+| Motociklas | <u>Kodas</u>, Valstybinis numeris, VIN, Pagaminimo metai, Rida, Leidžiama išvažiuoti į užsienį, Naudojamas | Konkretus parko motociklas | FR 1.2.1, FR 1.2.3, FR 1.2.5 |
+| Tarifas | <u>Kodas</u>, Paros kaina, Užstatas, Galioja nuo, Galioja iki | Modelio paros kaina, užstatas ir baudų pakopos rezervacijoms, sudarytoms tam tikru laikotarpiu | FR 1.2.2, FR 1.2.3, FR 1.2.5 |
+| Baudos pakopa (silpna) | <ud>Vėlavimas nuo (val.)</ud>, Bauda | Baudų už pavėluotą grąžinimą tarifų lentelės eilutė | FR 1.2.2, FR 1.2.3 |
+| Techninė priežiūra | <u>Kodas</u>, Pradžia, Pabaiga, Priežastis | Laikotarpis, kai motociklas prižiūrimas ir neprieinamas | FR 1.2.4 |
+| Perkėlimas | <u>Kodas</u>, Pradžia, Pabaiga | Vieno ar kelių motociklų pervežimas į kitą filialą | FR 1.2.5 |
+| Klientas | <u>Kodas</u>, Vardas, Pavardė, Gimimo data, El. paštas, Telefonas, Pažymėjimo numeris | Nuomininkas ir jo vairuotojo pažymėjimo duomenys | FR 1.2.2 |
+| Nuoma | <u>Kodas</u>, Sukūrimo laikas, Planuojama pradžia, Planuojama pabaiga, Būsena | Rezervacija, kuri vėliau tampa nuoma | FR 1.2.2, FR 1.2.3, NFR 1.3.4.2 |
+| Išdavimas (silpna) | Laikas, Rida, Būklė | Motociklo išdavimo klientui faktas | FR 1.2.3 |
+| Grąžinimas (silpna) | Laikas, Rida, Būklė, Galutinė kaina (išvestinis), Bauda (išvestinis) | Motociklo grąžinimo faktas ir galutinis atsiskaitymas | FR 1.2.3 |
+| Darbuotojas | <u>Kodas</u>, Vardas, Pavardė, El. paštas, Telefonas | Filialo darbuotojas arba administratorius | FR 1.2.3, FR 1.2.4, FR 1.2.5 |
+| Paskyra | <u>Prisijungimo vardas</u>, Slaptažodžio maiša, Vaidmuo | Prisijungimo duomenys ir vaidmuo | NFR 1.3.5.1, NFR 1.3.5.2 |
 
 #### Ryšiai
 
@@ -485,17 +523,17 @@ Lentelė: Loginės ER diagramos ryšiai {#lent:ryšiai-log}
 
 #### Modelio sprendimai
 
-- **Rezervacija ir nuoma – viena esybė Nuoma.** Jos būsena: rezervuota, aktyvi, užbaigta arba atšaukta. Užbaigtos nuomos netrinamos (1.3.4.2), todėl iš jų formuojamos statistinės ataskaitos ir parko užimtumas (1.2.5); atskiros ataskaitų esybės nereikia.
-- **Tarifas parenkamas rezervuojant.** Nuoma susieta su motociklo modelio tarifu, galiojusiu rezervavimo dieną (ryšys „įkainojama“). Iš jo imama paros kaina ir užstatas, o grąžinant – baudų pakopos, todėl baudą galima apskaičiuoti pagal tuos pačius tarifus, kuriuos klientas matė patvirtinime (1.2.2). Tarifas, pagal kurį jau yra rezervacijų, nekeičiamas: jo galiojimas baigiamas data „Galioja iki“ ir sukuriamas naujas tarifas. Vienam modeliui tą pačią dieną galioja tik vienas tarifas. Todėl Nuomoje paros kainos ir užstato kopijuoti nereikia. Galutinė kaina ir bauda apskaičiuojamos grąžinant ir saugomos Grąžinime (1.2.3).
+- **Rezervacija ir nuoma – viena esybė Nuoma.** Jos būsena: rezervuota, aktyvi, užbaigta arba atšaukta. Užbaigtos nuomos netrinamos (NFR 1.3.4.2), todėl iš jų formuojamos statistinės ataskaitos ir parko užimtumas (FR 1.2.5); atskiros ataskaitų esybės nereikia.
+- **Tarifas parenkamas rezervuojant.** Nuoma susieta su motociklo modelio tarifu, galiojusiu rezervavimo dieną (ryšys „įkainojama“). Iš jo imama paros kaina ir užstatas, o grąžinant – baudų pakopos, todėl baudą galima apskaičiuoti pagal tuos pačius tarifus, kuriuos klientas matė patvirtinime (FR 1.2.2). Tarifas, pagal kurį jau yra rezervacijų, nekeičiamas: jo galiojimas baigiamas data „Galioja iki“ ir sukuriamas naujas tarifas. Vienam modeliui tą pačią dieną galioja tik vienas tarifas. Todėl Nuomoje paros kainos ir užstato kopijuoti nereikia. Galutinė kaina ir bauda apskaičiuojamos grąžinant ir saugomos Grąžinime (FR 1.2.3).
 - **Išdavimas ir Grąžinimas – silpnos esybės.** Jos neturi savo rakto ir identifikuojamos per nuomą (kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą). Taip nuomoje nėra tuščių laukų, kol motociklas neišduotas, ir matyti, kas išdavė ir kas priėmė motociklą.
 - **Baudos pakopa – silpna esybė.** Pakopa neturi savo kodo: ji identifikuojama tarifu ir daliniu raktu „Vėlavimas nuo (val.)“, o kitos esybės į ją nenurodo (Grąžinime saugoma baudos suma). Pakopa turi tik apatinę ribą: ji galioja nuo savo „Vėlavimas nuo (val.)“ iki kitos pakopos pradžios, o paskutinė pakopa – be viršutinės ribos. Taikoma pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, kuri neviršija vėlavimo (vėlavimas ≥ „Vėlavimas nuo (val.)“). Bauda nesumuojama: imama tik tos pakopos suma. Jei pakopos su „Vėlavimas nuo (val.)“ = 0 nėra, iki pirmosios pakopos bauda lygi 0; jei tarifas pakopų neturi, baudos nėra. Pavyzdys: pakopos „nuo 1 val. – 20 Eur“ ir „nuo 3 val. – 60 Eur“ reiškia, kad vėluojant iki 1 val. bauda – 0 Eur, 2 val. – 20 Eur, 50 val. – 60 Eur (sumos – tik pavyzdys). Didesniems motociklams baudos gali būti didesnės. Viršutinė riba nesaugoma, todėl pakopos negali persidengti ir tarp jų negali likti tarpų.
 - **Išvestiniai atributai.** Grąžinimo „Galutinė kaina“ ir „Bauda“ apskaičiuojamos iš tarifo, nuomos datų, grąžinimo laiko ir baudų pakopų, todėl diagramoje pažymėtos punktyrine elipse. Jos vis tiek saugomos kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės (pvz., kaip skaičiuojamos paros) gali keistis, o perskaičiavus senas nuomas sumos nebesutaptų su sumokėtomis. Fizinėje ER diagramoje (2.1.2 skyrius) tai sąmoningas nukrypimas nuo normalizacijos. Kiti atributai išvestiniais nelaikomi: Nuomos „Būsena“ neišvedama, nes būsenos „atšaukta“ negalima nustatyti iš kitų duomenų; Motociklo „Rida“ turi pradinę reikšmę iki pirmosios nuomos; Tarifo „Galioja iki“ reikalinga, nes tarifas gali būti uždarytas be įpėdinio, o tarp tarifų gali būti tarpų.
-- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra būtent ta kategorija, kurios reikalauja modelis, ir ji galioja visą nuomos laikotarpį (1.2.2). Kurios kategorijos apima kitas, sistema nesaugo: tai verslo proceso dalis. Registruojant pažymėjimą (klientas rezervuodamas arba darbuotojas kliento vardu) pažymimos visos kategorijos, kurias suteikia pažymėjimas; pavyzdžiui, turinčiam A kategoriją pažymimos ir A1, A2. Taip sistemoje nereikia saugoti kategorijų apimties taisyklių, kurios skirtingose šalyse gali skirtis, o naujas kategorijas galima pridėti kaip įrašus. Kategorija yra klasifikatorius: jo įrašai (AM, A1, A2, A) įvedami diegiant sistemą, todėl atskiro reikalavimo ir panaudos atvejo jiems tvarkyti nėra.
-- **Klasifikatoriai.** Gamintojas ir Motociklo tipas yra atskiros esybės, o ne Motociklo modelio teksto atributai: tipu ieškoma (1.2.1) ir jis rodomas kortelėje (1.3.1.3), o pagal gamintoją ir tipą grupuojama statistika (1.2.5). Įvedant tekstą, ta pati reikšmė gali būti užrašyta skirtingai (pvz., „Enduro“ ir „enduro“), ir paieškos filtras bei ataskaitos ją laikytų dviem skirtingomis reikšmėmis. Šiuos klasifikatorius tvarko administratorius kartu su motociklų modeliais (1.2.5, panaudos atvejis „Tvarkyti motociklų modelius ir motociklus“). Kategorija taip pat klasifikatorius, bet jos įrašai įvedami diegiant sistemą, nes kategorijas nustato teisės aktai, o ne įmonė. Klasifikatoriais nelaikomi šie atributai. Nuomos „Būsena“ ir Paskyros „Vaidmuo“: jų reikšmių sąrašą nustato ne įmonė, o pati sistema – nuo kiekvienos būsenos priklauso nuomos eiga, o nuo vaidmens – leidžiami veiksmai (1.3.5.1), todėl naujos reikšmės be programos pakeitimų nebūtų naudingos, o atskira esybė suteiktų tik tariamą lankstumą. Filialo „Miestas“: kiekvienas iš trijų filialų yra skirtingame mieste, todėl reikšmės nesikartoja. Techninės priežiūros „Priežastis“: tai laisvas aprašymas, o ne reikšmė iš sąrašo.
+- **Pažymėjimo kategorijos.** Kliento kategorijos saugomos ryšiu „turi teisę“, kiekviena su savo galiojimo data. Rezervuoti leidžiama, jei kliento pažymėjime yra būtent ta kategorija, kurios reikalauja modelis, ir ji galioja visą nuomos laikotarpį (FR 1.2.2). Kurios kategorijos apima kitas, sistema nesaugo: tai verslo proceso dalis. Registruojant pažymėjimą (klientas rezervuodamas arba darbuotojas kliento vardu) pažymimos visos kategorijos, kurias suteikia pažymėjimas; pavyzdžiui, turinčiam A kategoriją pažymimos ir A1, A2. Taip sistemoje nereikia saugoti kategorijų apimties taisyklių, kurios skirtingose šalyse gali skirtis, o naujas kategorijas galima pridėti kaip įrašus. Kategorija yra klasifikatorius: jo įrašai (AM, A1, A2, A) įvedami diegiant sistemą, todėl atskiro reikalavimo ir panaudos atvejo jiems tvarkyti nėra.
+- **Klasifikatoriai.** Gamintojas ir Motociklo tipas yra atskiros esybės, o ne Motociklo modelio teksto atributai: tipu ieškoma (FR 1.2.1) ir jis rodomas kortelėje (NFR 1.3.1.3), o pagal gamintoją ir tipą grupuojama statistika (FR 1.2.5). Įvedant tekstą, ta pati reikšmė gali būti užrašyta skirtingai (pvz., „Enduro“ ir „enduro“), ir paieškos filtras bei ataskaitos ją laikytų dviem skirtingomis reikšmėmis. Šiuos klasifikatorius tvarko administratorius kartu su motociklų modeliais (FR 1.2.5, panaudos atvejis „Tvarkyti motociklų modelius ir motociklus“). Kategorija taip pat klasifikatorius, bet jos įrašai įvedami diegiant sistemą, nes kategorijas nustato teisės aktai, o ne įmonė. Klasifikatoriais nelaikomi šie atributai. Nuomos „Būsena“ ir Paskyros „Vaidmuo“: jų reikšmių sąrašą nustato ne įmonė, o pati sistema – nuo kiekvienos būsenos priklauso nuomos eiga, o nuo vaidmens – leidžiami veiksmai (NFR 1.3.5.1), todėl naujos reikšmės be programos pakeitimų nebūtų naudingos, o atskira esybė suteiktų tik tariamą lankstumą. Filialo „Miestas“: kiekvienas iš trijų filialų yra skirtingame mieste, todėl reikšmės nesikartoja. Techninės priežiūros „Priežastis“: tai laisvas aprašymas, o ne reikšmė iš sąrašo.
 - **Techninė priežiūra ir perkėlimas – laikotarpiai, o ne motociklo būsena.** Motociklas taip pat turi požymį „Naudojamas“: nurašytas motociklas netrinamas, nes reikalingas istorijai, bet nerodomas paieškoje.
-- **Nuotrauka ir charakteristikos priskirtos modeliui**, nes paieškos kortelėje rodomas modelis (1.3.1.3). **Pagaminimo metai ir leidimas išvažiuoti į užsienį priskirti motociklui**, nes leidimas priklauso nuo konkretaus motociklo draudimo.
+- **Nuotrauka ir charakteristikos priskirtos modeliui**, nes paieškos kortelėje rodomas modelis (NFR 1.3.1.3). **Pagaminimo metai ir leidimas išvažiuoti į užsienį priskirti motociklui**, nes leidimas priklauso nuo konkretaus motociklo draudimo.
 - **Klientas be paskyros.** Kliento kodas nepriklauso nuo paskyros. Skambinančiam klientui darbuotojas sukuria kliento įrašą (vardas, telefonas, pažymėjimo duomenys) ir jam registruoja rezervaciją. Jei klientas vėliau užsiregistruoja svetainėje tuo pačiu el. paštu, paskyra susiejama su esamu kliento įrašu. Todėl klientas gali neturėti paskyros, o darbuotojas paskyrą turi visada.
-- **Paskyra.** Prisijungimas laikomas bazine funkcija ir į darbą neįtraukiamas, todėl nesėkmingų prisijungimų žurnalo ir paskyros blokavimo modelyje nėra. Paskyroje saugomas prisijungimo vardas, slaptažodžio maiša (1.3.5.2) ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (1.3.5.1).
+- **Paskyra.** Prisijungimas laikomas bazine funkcija ir į darbą neįtraukiamas, todėl nesėkmingų prisijungimų žurnalo ir paskyros blokavimo modelyje nėra. Paskyroje saugomas prisijungimo vardas, slaptažodžio maiša (NFR 1.3.5.2) ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (NFR 1.3.5.1).
 
 #### Motociklo buvimo vietos taisyklė
 
@@ -505,7 +543,7 @@ Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, 
 2. jo pradžioje motociklas bus tame filiale, kuriame laikotarpis prasideda (pagal ankstesnio laikotarpio pabaigos filialą arba, jei jo nėra, pagal filialą, kuriame motociklas yra dabar);
 3. jo pabaigoje motociklas bus tame filiale, kuriame prasideda kitas jo laikotarpis (jei toks yra).
 
-Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (1.3.2.4).
+Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (NFR 1.3.2.4).
 
 Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (2.2.1 skyrius), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
 
@@ -513,19 +551,19 @@ Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (2.2.1 sky
 
 Šie reikalavimai neįeina į pirmąją sistemos versiją, tačiau galėtų būti įgyvendinti naujoje versijoje. Jie atrinkti iš 1.1.2 skyriuje („Sistemos ribos“) išvardytų galimybių.
 
-::: reikalavimas 1.6.1 funkcinis | Mokėjimas internetu
+::: reikalavimas PR 1.6.1 funkcinis | Mokėjimas internetu
 Klientas rezervuodamas turi galėti internetu sumokėti avansą arba visą nuomos kainą per integruotą mokėjimų sistemą. Išdavimo metu filialo darbuotojas mato, kokia suma jau sumokėta ir kiek liko sumokėti.
 :::
 
-::: reikalavimas 1.6.2 funkcinis | Išsamus pažeidimų registravimas
+::: reikalavimas PR 1.6.2 funkcinis | Išsamus pažeidimų registravimas
 Išdavimo ir grąžinimo metu filialo darbuotojas turi galėti pažymėti motociklo pažeidimus jo schemoje ir pridėti nuotraukų. Grąžinant sistema parodo naujus pažeidimus, kurių nebuvo išdavimo metu, ir susieja juos su ta nuoma. Visa motociklo pažeidimų istorija saugoma ir matoma kitiems darbuotojams.
 :::
 
-::: reikalavimas 1.6.3 funkcinis | Integracija su buhalterinės apskaitos sistema
+::: reikalavimas PR 1.6.3 funkcinis | Integracija su buhalterinės apskaitos sistema
 Užbaigus nuomą, sistema turi automatiškai perduoti jos mokėjimų duomenis (sumą, PVM, mokėjimo datą ir būdą) į įmonės naudojamą buhalterinės apskaitos sistemą. Administratorius turi matyti, kurių nuomų duomenys perduoti, o kurių perdavimas nepavyko.
 :::
 
-::: reikalavimas 1.6.4 funkcinis | Nuolaidos ir kompensacijos
+::: reikalavimas PR 1.6.4 funkcinis | Nuolaidos ir kompensacijos
 Filialo darbuotojas turi galėti suteikti klientui nuolaidą arba kompensaciją (suma ar procentais), nurodydamas priežastį (pvz., klientas laukė pavėluotai grąžinto motociklo), o administratorius – nustatyti didžiausią leidžiamą nuolaidą. Grąžinant sistema galutinę nuomos kainą apskaičiuoja įvertindama nuolaidą. Administratorius turi matyti visas suteiktas nuolaidas ir jų priežastis.
 :::
 
@@ -568,40 +606,40 @@ Taip kiekvienas panaudos atvejis PA1–PA22 schemoje yra funkcija tuo pačiu pav
 Lentelė: Struktūrinės schemos funkcijos {#lent:funkcijos}
 | Funkcija | Lygis | Procesas | Panaudos atvejis | Reikalavimas | Kviečia |
 |---|---|---|---|---|---|
-| Ieškoti laisvų motociklų | 2 | P1 | PA1 | 1.2.1 | Tikrinti motociklo užimtumą |
-| Tikrinti motociklo užimtumą (`tikrintiUzimtuma`) | 3 | P1 | PA6 | 1.2.1, 1.2.2, 1.2.4, 1.2.5 | – |
-| Rezervuoti motociklą | 2 | P2 | PA2 | 1.2.2 | Tikrinti motociklo užimtumą, Tikrinti vairuotojo pažymėjimą |
-| Peržiūrėti savo rezervacijas | 2 | P2 | PA3 | 1.2.2 | – |
-| Keisti rezervaciją | 2 | P2 | PA4 | 1.2.2 | Tikrinti motociklo užimtumą, Tikrinti vairuotojo pažymėjimą |
-| Atšaukti rezervaciją | 2 | P2 | PA5 | 1.2.2 | – |
-| Tikrinti vairuotojo pažymėjimą (`tikrintiKlientoTeise`) | 3 | P2 | PA7 | 1.2.2 | – |
-| Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | 2 | P3 | PA8 | 1.2.3 | – |
-| Įforminti išdavimą | 2 | P3 | PA9 | 1.2.3 | Užfiksuoti ridą ir būklę |
-| Įforminti grąžinimą | 2 | P3 | PA10 | 1.2.3 | Užfiksuoti ridą ir būklę, Apskaičiuoti galutinę nuomos kainą, Apskaičiuoti baudą už pavėluotą grąžinimą [grąžinta pavėluotai], Grąžinti į kitą filialą [kitas filialas] |
-| Užfiksuoti ridą ir būklę | 3 | P3 | PA12 | 1.2.3 | – |
-| Apskaičiuoti galutinę nuomos kainą (`skaiciuotiKaina`) | 3 | P3 | PA13 | 1.2.3 | – |
-| Apskaičiuoti baudą už pavėluotą grąžinimą | 3 | P3 | PA14 | 1.2.3 | – |
-| Grąžinti į kitą filialą | 3 | P3 | PA15 | 1.2.3 | – |
-| Planuoti techninę priežiūrą | 2 | P4 | PA11 | 1.2.4 | Tikrinti motociklo užimtumą |
-| Tvarkyti filialus | 2 | P5 | PA16 | 1.2.5 | – |
-| Tvarkyti motociklų modelius ir motociklus | 2 | P5 | PA17 | 1.2.5 | – |
-| Tvarkyti tarifus | 2 | P5 | PA18 | 1.2.5 | – |
-| Tvarkyti darbuotojų paskyras | 2 | P5 | PA19 | 1.2.5 | – |
-| Planuoti motociklų perkėlimą | 2 | P6 | PA22 | 1.2.5 | Tikrinti motociklo užimtumą |
-| Peržiūrėti parko užimtumą | 2 | P7 | PA20 | 1.2.5 | – |
-| Formuoti statistines ataskaitas | 2 | P7 | PA21 | 1.2.5 | – |
+| Ieškoti laisvų motociklų | 2 | P1 | PA1 | FR 1.2.1 | Tikrinti motociklo užimtumą |
+| Tikrinti motociklo užimtumą (`tikrintiUzimtuma`) | 3 | P1 | PA6 | FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5 | – |
+| Rezervuoti motociklą | 2 | P2 | PA2 | FR 1.2.2 | Tikrinti motociklo užimtumą, Tikrinti vairuotojo pažymėjimą |
+| Peržiūrėti savo rezervacijas | 2 | P2 | PA3 | FR 1.2.2 | – |
+| Keisti rezervaciją | 2 | P2 | PA4 | FR 1.2.2 | Tikrinti motociklo užimtumą, Tikrinti vairuotojo pažymėjimą |
+| Atšaukti rezervaciją | 2 | P2 | PA5 | FR 1.2.2 | – |
+| Tikrinti vairuotojo pažymėjimą (`tikrintiKlientoTeise`) | 3 | P2 | PA7 | FR 1.2.2 | – |
+| Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | 2 | P3 | PA8 | FR 1.2.3 | – |
+| Įforminti išdavimą | 2 | P3 | PA9 | FR 1.2.3 | Užfiksuoti ridą ir būklę |
+| Įforminti grąžinimą | 2 | P3 | PA10 | FR 1.2.3 | Užfiksuoti ridą ir būklę, Apskaičiuoti galutinę nuomos kainą, Apskaičiuoti baudą už pavėluotą grąžinimą [grąžinta pavėluotai], Grąžinti į kitą filialą [kitas filialas] |
+| Užfiksuoti ridą ir būklę | 3 | P3 | PA12 | FR 1.2.3 | – |
+| Apskaičiuoti galutinę nuomos kainą (`skaiciuotiKaina`) | 3 | P3 | PA13 | FR 1.2.3 | – |
+| Apskaičiuoti baudą už pavėluotą grąžinimą | 3 | P3 | PA14 | FR 1.2.3 | – |
+| Grąžinti į kitą filialą | 3 | P3 | PA15 | FR 1.2.3 | – |
+| Planuoti techninę priežiūrą | 2 | P4 | PA11 | FR 1.2.4 | Tikrinti motociklo užimtumą |
+| Tvarkyti filialus | 2 | P5 | PA16 | FR 1.2.5 | – |
+| Tvarkyti motociklų modelius ir motociklus | 2 | P5 | PA17 | FR 1.2.5 | – |
+| Tvarkyti tarifus | 2 | P5 | PA18 | FR 1.2.5 | – |
+| Tvarkyti darbuotojų paskyras | 2 | P5 | PA19 | FR 1.2.5 | – |
+| Planuoti motociklų perkėlimą | 2 | P6 | PA22 | FR 1.2.5 | Tikrinti motociklo užimtumą |
+| Peržiūrėti parko užimtumą | 2 | P7 | PA20 | FR 1.2.5 | – |
+| Formuoti statistines ataskaitas | 2 | P7 | PA21 | FR 1.2.5 | – |
 
 Lentelėje kiekviena funkcija nurodyta vieną kartą; „Tikrinti motociklo užimtumą“ priskirta P1, nes duomenų srautų diagramoje užimtumą tikrina tik P1, o P2, P4 ir P6 kreipiasi į jį.
 
 #### Modelio sprendimai
 
-- **Šakos – pagal duomenų srautų diagramos procesus P1–P7**, o ne pagal funkcinius reikalavimus 1.2.1–1.2.5. Reikalavimą 1.2.5 įgyvendina trys skirtingi procesai (P5, P6, P7), o P1 tikrina užimtumą keliems reikalavimams, todėl šakos pagal reikalavimus nesutaptų su duomenų srautų diagrama. Reikalavimo numeris vis tiek nurodytas kiekviename procese.
+- **Šakos – pagal duomenų srautų diagramos procesus P1–P7**, o ne pagal funkcinius reikalavimus FR 1.2.1–FR 1.2.5. Reikalavimą FR 1.2.5 įgyvendina trys skirtingi procesai (P5, P6, P7), o P1 tikrina užimtumą keliems reikalavimams, todėl šakos pagal reikalavimus nesutaptų su duomenų srautų diagrama. Reikalavimo numeris vis tiek nurodytas kiekviename procese.
 - **2 ir 3 lygiai sudaryti pagal panaudos atvejų ryšius.** Operacija (2 lygis) – panaudos atvejis, kurį tiesiogiai inicijuoja aktorius; jos iškviečiamos funkcijos (3 lygis) – panaudos atvejai, kuriuos ji įtraukia («include») arba kurie ją papildo («extend»). Funkcijų pavadinimai sutampa su panaudos atvejų pavadinimais.
 - **Bendros funkcijos pakartotos.** „Tikrinti motociklo užimtumą“ kviečia penkios operacijos (kaip PA6 «include» – PA1, PA2, PA4, PA11, PA22), „Tikrinti vairuotojo pažymėjimą“ – dvi (PA2, PA4), „Užfiksuoti ridą ir būklę“ – dvi (PA9, PA10). Jei funkcija būtų nubraižyta tik vieną kartą, schemoje nesimatytų, kad, pavyzdžiui, rezervacija tikrina užimtumą. Kad būtų aišku, jog tai ta pati funkcija, visi jos pasikartojimai pažymėti dvigubomis šoninėmis linijomis.
 - **Funkcijų pavadinimai programoje** (`tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina`) nurodyti tų funkcijų, kurios išsamiai aprašomos 2.2.1 skyriuje, kad 2.1.1 ir 2.2.1 skyrius būtų galima susieti. `skaiciuotiKaina` apskaičiuoja galutinę kainą kartu su bauda, todėl pavadinimas parašytas prie „Apskaičiuoti galutinę nuomos kainą“, o baudos apskaičiavimas, kaip PA14, lieka atskira sąlygine funkcija.
 - **Taisyklės be panaudos atvejo atskiromis funkcijomis nevaizduojamos.** Tarifų galiojimo nepersidengimas ir naudoto tarifo nekeičiamumas, bent vienas motociklas perkėlime, paskyros vaidmens atitiktis savininkui, išdavimas tik grąžinus ankstesnę nuomą ir nurašyto motociklo būsimi laikotarpiai (2.2.2 skyrius, „Taisyklės, kurias tikrina sistemos funkcijos“) – tai operacijų „Tvarkyti tarifus“, „Planuoti motociklų perkėlimą“, „Tvarkyti darbuotojų paskyras“, „Įforminti išdavimą“ ir „Tvarkyti motociklų modelius ir motociklus“ vidiniai patikrinimai. Atskiros funkcijos jiems būtų funkcijos be panaudos atvejo.
-- **Neplanuota techninė priežiūra** atskira funkcija nevaizduojama, kaip ir panaudos atvejų bei duomenų srautų diagramose: darbuotojas naudoja „Keisti rezervaciją“ arba „Atšaukti rezervaciją“, tada „Planuoti techninę priežiūrą“ (1.2.4). Taip pat ir **pavėluotas grąžinimas**: kito kliento rezervacija keičiama arba atšaukiama tomis pačiomis operacijomis (2.2.1 skyrius).
-- **Prisijungimas ir registracija** nevaizduojami (laikomi bazine funkcija), **perspektyviniai reikalavimai 1.6.1–1.6.4** neįtraukti.
+- **Neplanuota techninė priežiūra** atskira funkcija nevaizduojama, kaip ir panaudos atvejų bei duomenų srautų diagramose: darbuotojas naudoja „Keisti rezervaciją“ arba „Atšaukti rezervaciją“, tada „Planuoti techninę priežiūrą“ (FR 1.2.4). Taip pat ir **pavėluotas grąžinimas**: kito kliento rezervacija keičiama arba atšaukiama tomis pačiomis operacijomis (2.2.1 skyrius).
+- **Prisijungimas ir registracija** nevaizduojami (laikomi bazine funkcija), **perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4** neįtraukti.
 - **Išdėstymas.** Procesai išdėstyti septyniais vienodo pločio stulpeliais, sistema – virš jų centre. 2 ir 3 lygio funkcijos po procesu surašytos vertikaliai su įtrauka, kaip darbų išskaidymo schemoje (9 paskaita, 24 skaidrė): išdėsčius 16 operacijų horizontaliai, kaip 2 paskaitos 20 skaidrėje, schema būtų per plati ataskaitos puslapiui.
 
 ### 2.1.2. Duomenų modelis
@@ -624,11 +662,11 @@ Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekvien
 Lentelė: Išsamiai aprašomos funkcijos
 | Funkcija programoje | Pavadinimas (panaudos atvejis) | Procesas | Struktūrinės schemos lygis | Reikalavimai |
 |---|---|---|---|---|
-| `tikrintiUzimtuma` | Tikrinti motociklo užimtumą (PA6) | P1 | 3, kviečia PA1, PA2, PA4, PA11, PA22 | 1.2.1, 1.2.2, 1.2.4, 1.2.5, 1.3.2.4, 1.3.3.3 |
-| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | 1.2.2, 1.3.2.4 |
-| `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | 1.2.3 |
+| `tikrintiUzimtuma` | Tikrinti motociklo užimtumą (PA6) | P1 | 3, kviečia PA1, PA2, PA4, PA11, PA22 | FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4, NFR 1.3.3.3 |
+| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | FR 1.2.2, NFR 1.3.2.4 |
+| `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | FR 1.2.3 |
 
-Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (2.1.1 skyrius), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (2.2.2 skyrius). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
+Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (2.1.1 skyrius), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (2.2.2 skyrius). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
 
 #### Bendros sąvokos
 
@@ -646,7 +684,7 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 **Paskirtis.** Patikrina, ar motociklas norimu laikotarpiu užimtas: ar laikotarpis sutampa su kitu to motociklo užimtumo laikotarpiu ir ar pažeidžiama motociklo buvimo vietos taisyklė. Funkcija duomenų nekeičia. Ją kviečia:
 
-- paieška (PA1): kiekvienam motociklui, o išdavimo ir grąžinimo filialas – paieškoje pasirinktas filialas; rezultatuose rodomi tik neužimti motociklai (1.2.1);
+- paieška (PA1): kiekvienam motociklui, o išdavimo ir grąžinimo filialas – paieškoje pasirinktas filialas; rezultatuose rodomi tik neužimti motociklai (FR 1.2.1);
 - rezervacijos sukūrimas ir keitimas (PA2, PA4);
 - techninės priežiūros planavimas (PA11);
 - perkėlimo planavimas (PA22): kiekvienam perkeliamam motociklui atskirai.
@@ -684,17 +722,17 @@ Lentelė: Funkcijos `tikrintiUzimtuma` įėjimai
 - nuoma 2027-05-20 – 2027-05-22 Vilniuje → „Laikotarpio pradžioje motociklas bus filiale Klaipėda“;
 - nuoma 2027-05-05 – 2027-05-08 su grąžinimu į Kauną → „Motociklą reikia grąžinti į filialą Vilnius, nes 2027-05-12 10:00 ten prasideda kita jo nuoma“; su grąžinimu į Vilnių – motociklas laisvas.
 
-##### Naudojimas įrašant laikotarpį (1.3.3.3)
+##### Naudojimas įrašant laikotarpį (NFR 1.3.3.3)
 
 Funkcija tik tikrina ir užraktų nevaldo, todėl pati negali užtikrinti, kad tarp patikrinimo ir įrašymo kitas vartotojas neužims to paties motociklo. Tai užtikrina ją kviečianti operacija – rezervacijos sukūrimas ar keitimas (PA2, PA4), techninės priežiūros planavimas (PA11), perkėlimo planavimas (PA22). Viską ji atlieka vienoje transakcijoje:
 
 1. pradeda transakciją;
 2. užrakina motociklo įrašą (perkėlime – visų perkeliamų motociklų įrašus didėjančia ID tvarka, kad dvi operacijos neužblokuotų viena kitos), o rezervuodama – ir taikomo tarifo įrašą bendru užraktu;
 3. iškviečia `tikrintiUzimtuma` (rezervuodama – ir `tikrintiKlientoTeise`);
-4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (1.3.2.4), kitaip įrašo laikotarpį;
+4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (NFR 1.3.2.4), kitaip įrašo laikotarpį;
 5. patvirtina transakciją – tik tada užraktai nuimami.
 
-Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
 
 Užraktas nėra duomenų srautas, todėl duomenų srautų diagramoje (1.5.1 skyrius) nevaizduojamas: ten P2, P4 ir P6 siunčia P1 motociklą ir laikotarpį, gauna atsakymą ir patys įrašo duomenis į saugyklą.
 
@@ -704,7 +742,7 @@ Funkcija neleidžia suplanuoti laikotarpio, kuris sutampa su jau suplanuotu, bet
 
 1. išduoti motociklą (PA9) galima tik tada, kai jis yra išdavimo filiale ir neturi vykstančios nuomos, techninės priežiūros ar perkėlimo, t. y. ankstesnė nuoma jau užbaigta (motociklas grąžintas);
 2. filialo tvarkaraštyje (PA8) vėluojanti nuoma pažymima, o šalia parodomas kitas to motociklo laikotarpis;
-3. darbuotojas susisiekia su kitu klientu, kaip ir neplanuotos techninės priežiūros atveju (1.2.4), ir perkelia rezervaciją į kitą laisvą motociklą (PA4) arba ją atšaukia (PA5). Jei klientas sutinka palaukti, motociklą grąžinus darbuotojas pakeičia rezervacijos pradžią į išdavimo laiką (PA4), todėl kaina skaičiuojama už trumpesnį laikotarpį; tarifas nesikeičia. Ar laukusiam klientui taikoma kompensacija, sprendžia įmonės verslo taisyklės – pirmoje versijoje nuolaidų nėra (perspektyvinis reikalavimas 1.6.4);
+3. darbuotojas susisiekia su kitu klientu, kaip ir neplanuotos techninės priežiūros atveju (FR 1.2.4), ir perkelia rezervaciją į kitą laisvą motociklą (PA4) arba ją atšaukia (PA5). Jei klientas sutinka palaukti, motociklą grąžinus darbuotojas pakeičia rezervacijos pradžią į išdavimo laiką (PA4), todėl kaina skaičiuojama už trumpesnį laikotarpį; tarifas nesikeičia. Ar laukusiam klientui taikoma kompensacija, sprendžia įmonės verslo taisyklės – pirmoje versijoje nuolaidų nėra (perspektyvinis reikalavimas PR 1.6.4);
 4. pavėlavęs klientas moka baudą pagal baudų pakopas (`skaiciuotiKaina`).
 
 Jei po vėluojančios nuomos suplanuota techninė priežiūra ar perkėlimas, juos perplanuoja darbuotojas arba administratorius.
@@ -713,7 +751,7 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 #### tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
 
-**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
+**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
 
 **Įėjimai.**
 
@@ -739,7 +777,7 @@ Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl j
 
 #### skaiciuotiKaina – Apskaičiuoti galutinę nuomos kainą
 
-**Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (2.2.2 skyrius, „Normalizacija“).
+**Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (FR 1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (FR 1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (2.2.2 skyrius, „Normalizacija“).
 
 **Įėjimai.**
 
@@ -760,7 +798,7 @@ Lentelė: Funkcijos `skaiciuotiKaina` įėjimai
 
 **Išėjimas.** `galutineKaina` DECIMAL(10,2) – visa suma eurais su bauda; `bauda` DECIMAL(10,2) – bauda už pavėluotą grąžinimą eurais.
 
-Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
+Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (FR 1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
 
 **Pavyzdys.** NC750X, 2 paros po 84 €, baudų pakopos „nuo 0 val. – 10 €“, „nuo 2 val. – 30 €“, „nuo 24 val. – 84 €“:
 
@@ -787,16 +825,16 @@ Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale at
 - **Silpnos esybės.** Išdavimo ir Grąžinimo pirminis raktas kartu yra išorinis raktas į Nuomą („Nuomos ID“), todėl kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą. Baudos pakopos pirminis raktas sudėtinis: tarifas ir dalinis raktas „Vėlavimas nuo (val.)“.
 - **M : N ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
 - **Ryšiai 1 : 1 su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
-- **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (1.3.4.2), o nebenaudojamo motociklo požymis „Naudojamas“ išjungiamas (motociklas netrinamas).
+- **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (NFR 1.3.4.2), o nebenaudojamo motociklo požymis „Naudojamas“ išjungiamas (motociklas netrinamas).
 - **Normalizacija.** Lentelės atitinka trečiąją normalinę formą (5 paskaita, 7–13 skaidrės): reikšmės atominės, o neraktiniai atributai priklauso tik nuo viso pirminio rakto. Sąmoningas nukrypimas – Grąžinimo „Galutinė kaina“ ir „Bauda“. Tai išvestiniai atributai, kuriuos galima apskaičiuoti iš tarifo, nuomos laikų ir baudų pakopų, bet jie saugomi kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės gali keistis, o perskaičiuotos senų nuomų sumos nebesutaptų su sumokėtomis.
-- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
+- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (FR 1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, NFR 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
 - **Išplečiamumas.** Kadangi kategorijų apimties taisyklės nesaugomos, naujas pažymėjimo kategorijas (pvz., B, C, D) ir naujus motociklų tipus galima pridėti kaip įrašus, nekeičiant schemos. Kitų transporto priemonių nuomai reikėtų tik apibendrinti lentelę „Motociklo modelis“.
 
 ##### Taisyklės, kurias tikrina sistemos funkcijos
 
 Kai kurių taisyklių duomenų bazės apribojimais (PK, FK, UNIQUE, NOT NULL, CHECK) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos ir operacijos (2.2.1 skyrius) prieš įrašydamos duomenis:
 
-- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (1.5.2 skyrius) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; įrašas atrakinamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (1.3.3.3);
+- motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (1.5.2 skyrius) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; įrašas atrakinamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (NFR 1.3.3.3);
 - vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“); rezervacija tarifo įrašą užrakina bendru užraktu, todėl tarifo keitimas laukia, kol ji bus įrašyta;
 - nuomos tarifas priklauso nuomojamo motociklo modeliui ir galiojo rezervavimo dieną;
 - perkėlimas turi bent vieną motociklą (diagramoje – „vienas arba daug“);
@@ -843,9 +881,9 @@ Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė →
 Lentelė: Fizinės ER diagramos ryšiai. Parkas, klasifikatoriai ir tarifai
 | Ryšys | Tėvinė → vaikinė (FK) | Kard. | Ženklai | Kodėl taip |
 |---|---|---|---|---|
-| reikalauja | Kategorija → Motociklo modelis (Kategorijos kodas) | 1 : N | tik vienas / nulis arba daug | Modeliui vairuoti reikia vienos konkrečios kategorijos, be jos negalima patikrinti kliento teisės (1.2.2), todėl raktas privalomas. Ta pati kategorija tinka daugeliui modelių, o kategorija gali būti įvesta, nors parke dar nėra jai priskirto modelio. |
+| reikalauja | Kategorija → Motociklo modelis (Kategorijos kodas) | 1 : N | tik vienas / nulis arba daug | Modeliui vairuoti reikia vienos konkrečios kategorijos, be jos negalima patikrinti kliento teisės (FR 1.2.2), todėl raktas privalomas. Ta pati kategorija tinka daugeliui modelių, o kategorija gali būti įvesta, nors parke dar nėra jai priskirto modelio. |
 | gamina | Gamintojas → Motociklo modelis (Gamintojo ID) | 1 : N | tik vienas / nulis arba daug | Modelį gamina vienas gamintojas, o gamintojas – daug modelių. Gamintojas įvedamas anksčiau nei jo modeliai. |
-| priklauso | Motociklo tipas → Motociklo modelis (Tipo ID) | 1 : N | tik vienas / nulis arba daug | Modelis priskiriamas vienam tipui, kad paieškoje jį būtų galima atrinkti pagal tipą (1.2.1); tipui gali priklausyti daug modelių arba dar nė vieno. |
+| priklauso | Motociklo tipas → Motociklo modelis (Tipo ID) | 1 : N | tik vienas / nulis arba daug | Modelis priskiriamas vienam tipui, kad paieškoje jį būtų galima atrinkti pagal tipą (FR 1.2.1); tipui gali priklausyti daug modelių arba dar nė vieno. |
 | apibūdina | Motociklo modelis → Motociklas (Modelio ID) | 1 : N | tik vienas / nulis arba daug | Charakteristikos, nuotrauka ir reikiama kategorija saugomos modelyje, todėl motociklas be modelio neturėtų šių duomenų. Parke yra keli to paties modelio motociklai; modelis įvedamas anksčiau nei motociklai. |
 | taikomas | Motociklo modelis → Tarifas (Modelio ID) | 1 : N | tik vienas / nulis arba daug | Tarifas visada nustatomas konkrečiam modeliui. Modelis turi kelis tarifus skirtingiems laikotarpiams (pasikeitus kainai, senas tarifas uždaromas ir sukuriamas naujas); ką tik įvestas modelis tarifo dar neturi. |
 | apima | Tarifas → Baudos pakopa (Tarifo ID) | 1 : N | tik vienas / nulis arba daug | Baudos pakopa be tarifo neegzistuoja (silpna esybė). Tarifas gali turėti kelias pakopas arba nė vienos – tada bauda už vėlavimą neskaičiuojama. |
@@ -861,12 +899,12 @@ Lentelė: Fizinės ER diagramos ryšiai. Parkas, klasifikatoriai ir tarifai
 Lentelė: Fizinės ER diagramos ryšiai. Klientai ir nuomos
 | Ryšys | Tėvinė → vaikinė (FK) | Kard. | Ženklai | Kodėl taip |
 |---|---|---|---|---|
-| turi teisę (1) | Klientas → Kliento kategorija (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Loginio M : N ryšio dalis: kliento pažymėjime gali būti kelios kategorijos, ir kiekvienos galiojimo data skirtinga, todėl „Galioja iki“ priklauso porai klientas–kategorija ir saugoma tarpinėje lentelėje. Klientas gali neturėti nė vienos sistemoje esančios kategorijos (pvz., turi tik B kategorijos pažymėjimą) – tada motociklo rezervacija atmetama (1.3.2.4). |
+| turi teisę (1) | Klientas → Kliento kategorija (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Loginio M : N ryšio dalis: kliento pažymėjime gali būti kelios kategorijos, ir kiekvienos galiojimo data skirtinga, todėl „Galioja iki“ priklauso porai klientas–kategorija ir saugoma tarpinėje lentelėje. Klientas gali neturėti nė vienos sistemoje esančios kategorijos (pvz., turi tik B kategorijos pažymėjimą) – tada motociklo rezervacija atmetama (NFR 1.3.2.4). |
 | turi teisę (2) | Kategorija → Kliento kategorija (Kategorijos kodas) | 1 : N | tik vienas / nulis arba daug | Ta pati kategorija yra daugelio klientų pažymėjimuose arba dar nė viename. |
-| užsako | Klientas → Nuoma (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Kiekviena rezervacija yra lygiai vieno kliento – net jei ją registravo darbuotojas, ji priskiriama klientui. Klientas gali turėti daug nuomų (užbaigtos saugomos, 1.3.4.2) arba dar nė vienos. |
+| užsako | Klientas → Nuoma (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Kiekviena rezervacija yra lygiai vieno kliento – net jei ją registravo darbuotojas, ji priskiriama klientui. Klientas gali turėti daug nuomų (užbaigtos saugomos, NFR 1.3.4.2) arba dar nė vienos. |
 | įkainojama | Tarifas → Nuoma (Tarifo ID) | 1 : N | tik vienas / nulis arba daug | Nuomai taikomas lygiai vienas tarifas – galiojęs rezervavimo dieną; pagal jį skaičiuojama kaina, užstatas ir bauda. Pagal vieną tarifą sudaroma daug nuomų, o naujas tarifas gali būti dar nepanaudotas. |
 | nuomojamas | Motociklas → Nuoma (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Rezervuojamas konkretus motociklas, o ne modelis, nes užimtumas tikrinamas kiekvienam motociklui. Motociklas nuomojamas daug kartų (laikotarpiai nepersidengia) arba dar nė karto. |
-| išduodama | Filialas → Nuoma (Išdavimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Išdavimo filialas pasirenkamas rezervuojant ir yra privalomas (1.2.2). |
+| išduodama | Filialas → Nuoma (Išdavimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Išdavimo filialas pasirenkamas rezervuojant ir yra privalomas (FR 1.2.2). |
 | grąžinama | Filialas → Nuoma (Grąžinimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Grąžinimo filialas taip pat pasirenkamas rezervuojant; jis gali skirtis nuo išdavimo filialo (grąžinimas į kitą filialą), todėl tai atskiras ryšys. |
 | pradedama | Nuoma → Išdavimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Motociklas pagal nuomą išduodamas ne daugiau kaip vieną kartą: Išdavimo pirminis raktas yra nuomos raktas. Kol rezervacija neįvykdyta ar jei ji atšaukta, išdavimo nėra, todėl „nulis arba vienas“. Išdavimas be nuomos neegzistuoja (silpna esybė). |
 | baigiama | Nuoma → Grąžinimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Kaip ir išdavimo atveju: grąžinimas įforminamas vieną kartą ir tik išduotai nuomai, o iki tol jo nėra. |
@@ -880,8 +918,8 @@ Lentelė: Fizinės ER diagramos ryšiai. Personalas ir paskyros
 | užregistravo | Darbuotojas → Nuoma (Užregistravusio darbuotojo ID) | 1 : N | nulis arba vienas / nulis arba daug | Jei rezervaciją sudarė pats klientas svetainėje, darbuotojo nėra, todėl raktas neprivalomas; jei skambinusiam klientui rezervavo darbuotojas – nurodomas jis. |
 | išdavė | Darbuotojas → Išdavimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Motociklą visada išduoda konkretus darbuotojas (atsakomybė už ridą ir būklę). Administratorius išdavimų gali neturėti. |
 | priėmė | Darbuotojas → Grąžinimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Grąžintą motociklą visada priima konkretus darbuotojas. |
-| planuoja | Darbuotojas → Techninė priežiūra (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvieną priežiūrą suplanuoja vienas darbuotojas (1.2.4). |
-| organizuoja | Darbuotojas → Perkėlimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Perkėlimą suplanuoja vienas administratorius (1.2.5). |
+| planuoja | Darbuotojas → Techninė priežiūra (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvieną priežiūrą suplanuoja vienas darbuotojas (FR 1.2.4). |
+| organizuoja | Darbuotojas → Perkėlimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Perkėlimą suplanuoja vienas administratorius (FR 1.2.5). |
 | naudoja (klientas) | Paskyra → Klientas (Paskyros ID) | 1 : 1 | nulis arba vienas / nulis arba vienas | Klientas gali turėti ne daugiau kaip vieną paskyrą, bet gali neturėti ir jokios (jį telefonu užregistravo darbuotojas). Paskyra priklauso daugiausia vienam klientui (raktas unikalus) arba nė vienam, jei tai darbuotojo paskyra. |
 | naudoja (darbuotojas) | Paskyra → Darbuotojas (Paskyros ID) | 1 : 1 | tik vienas / nulis arba vienas | Darbuotojas visada turi lygiai vieną paskyrą, nes be jos negalėtų dirbti sistemoje. Paskyra priklauso daugiausia vienam darbuotojui arba nė vienam, jei tai kliento paskyra. |
 
@@ -935,7 +973,7 @@ Lentelė: Lentelės „Motociklo tipas“ atributai
 
 ##### Motociklo modelis
 
-Modelio charakteristikos, rodomos paieškoje ir motociklo kortelėje (1.2.1, 1.3.1.3).
+Modelio charakteristikos, rodomos paieškoje ir motociklo kortelėje (FR 1.2.1, NFR 1.3.1.3).
 
 Lentelė: Lentelės „Motociklo modelis“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
@@ -1121,14 +1159,14 @@ Lentelė: Lentelės „Darbuotojas“ atributai
 
 ##### Paskyra
 
-Prisijungimo duomenys ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (1.3.5.1).
+Prisijungimo duomenys ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (NFR 1.3.5.1).
 
 Lentelė: Lentelės „Paskyra“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
 | ID | INTEGER | PK, generuojamas automatiškai |
 | Prisijungimo vardas | VARCHAR(50) | NOT NULL, UNIQUE |
-| Slaptažodžio maiša | VARCHAR(255) | NOT NULL; saugoma tik slaptažodžio maiša, ne pats slaptažodis (1.3.5.2) |
+| Slaptažodžio maiša | VARCHAR(255) | NOT NULL; saugoma tik slaptažodžio maiša, ne pats slaptažodis (NFR 1.3.5.2) |
 | Vaidmuo | VARCHAR(16) | NOT NULL, CHECK (reikšmė iš sąrašo: klientas, darbuotojas, administratorius) |
 
 ## 2.3. Sistemos dizainas
@@ -1175,11 +1213,11 @@ Apžvelgtos trijų Lietuvos motociklų nuomos įmonių svetainės, aprašytos 1.
 Lentelė: Pasirinkti dizaino sprendimai
 | Sprendimas | Iš kurios sistemos | Kaip pritaikome |
 |---|---|---|
-| Paieškos juosta – pirmas elementas | Bikerent | Išdavimo ir grąžinimo filialas, nuomos pradžia ir pabaiga, mygtukas „Ieškoti“ (E1) |
-| Motociklų kortelės tinklelyje | KuBa Motors | Kortelė su nuotrauka, tipu, variklio tūriu, galia, kategorija ir paros kaina (1.3.1.3); 1–3 kortelės eilutėje pagal ekrano plotį |
-| Filtras pagal kategoriją | KuBa Motors | Filtrai matomi šoniniame stulpelyje; papildomai – variklio tūris, galia, išvažiavimas į užsienį (1.2.1) |
-| Rezervacijos žingsniai | KuBa Motors | Juosta „1. Motociklas – 2. Duomenys – 3. Patvirtinimas“ (1.3.2.3) |
-| Sąlygos prie formos | RideRent | Kaina, užstatas ir baudų lentelė rodomi prieš patvirtinimą (1.2.2) |
+| Paieškos juosta – pirmas elementas | Bikerent | Išdavimo ir grąžinimo filialas, nuomos pradžia ir pabaiga, mygtukas „Ieškoti“ (EKRANAS01) |
+| Motociklų kortelės tinklelyje | KuBa Motors | Kortelė su nuotrauka, tipu, variklio tūriu, galia, kategorija ir paros kaina (NFR 1.3.1.3); 1–3 kortelės eilutėje pagal ekrano plotį |
+| Filtras pagal kategoriją | KuBa Motors | Filtrai matomi šoniniame stulpelyje; papildomai – variklio tūris, galia, išvažiavimas į užsienį (FR 1.2.1) |
+| Rezervacijos žingsniai | KuBa Motors | Juosta „1. Motociklas – 2. Duomenys – 3. Patvirtinimas“ (NFR 1.3.2.3) |
+| Sąlygos prie formos | RideRent | Kaina, užstatas ir baudų lentelė rodomi prieš patvirtinimą (FR 1.2.2) |
 
 Ko vengiame: tamsaus fono su smulkiu pilku tekstu, sąrašo „vienas motociklas per visą plotį“, filtrų atskirame lange, užimtumo „tik šiandien“ (rodome tik pasirinktam laikotarpiui laisvus motociklus) ir kainos intervalo be datų.
 
@@ -1190,7 +1228,7 @@ Sąsajos maketai sukurti kaip prototipas, kurį 3 paskaita (14–15 skaidrės) s
 #### Dizaino principai
 
 - **Dizaino tipas.** Prisitaikanti (angl. *responsive*) žiniatinklio sąsaja, projektuojama nuo siauro ekrano. Plokščias, minimalistinis stilius: balti blokai šviesiame fone, be šešėlių ir dekoracijų. Klientui – kortelės, darbuotojui ir administratoriui – lentelės ir laiko juosta.
-- **Vienas stilius visiems puslapiams (1.3.1.2).** Spalvos, šriftai, tarpai ir mygtukai apibrėžti viename stiliaus faile, kurį naudoja visi maketai.
+- **Vienas stilius visiems puslapiams (NFR 1.3.1.2).** Spalvos, šriftai, tarpai ir mygtukai apibrėžti viename stiliaus faile, kurį naudoja visi maketai.
 
 #### Spalvos
 
@@ -1212,7 +1250,7 @@ Lentelė: Spalvų paletė
 
 Viena šriftų šeima **Inter** (Google Fonts [12], nemokama, palaiko lietuviškas raides). Dydžiai: 14 px – paaiškinimai, 16 px – tekstas, 20 px – bloko antraštė, 28 px – puslapio antraštė (siaurame ekrane 24 px). Skaičiai lygiapločiai, kad kainos ir datos lygiuotųsi stulpeliuose. Datos rašomos `yyyy-mm-dd`, laikas – 24 val. formatu, kainos – „100,00 €“.
 
-#### Tinklelis ir išdėstymas (1.3.1.1)
+#### Tinklelis ir išdėstymas (NFR 1.3.1.1)
 
 - Tarpai – 8 px žingsniu (8, 16, 24, 32 px).
 - Plačiame ekrane turinys ne platesnis kaip 1200 px ir centruojamas, todėl neišsitempia; kortelių eilutėje – 3 (nuo 1200 px), 2 (nuo 768 px) arba 1.
@@ -1224,11 +1262,11 @@ Viena šriftų šeima **Inter** (Google Fonts [12], nemokama, palaiko lietuvišk
 - **Pagrindinis veiksmas** – užpildytas pagrindinės spalvos mygtukas formos apačioje dešinėje. Siaurame ekrane jis per visą plotį ir pritvirtintas ekrano apačioje, kad būtų pasiekiamas neslenkant.
 - **Antrinis veiksmas** („Atgal“, „Atšaukti“) – baltas mygtukas pilku kontūru kairėje nuo pagrindinio (siaurame ekrane – po juo).
 - **Negrįžtamas veiksmas** („Atšaukti rezervaciją“) – baltas mygtukas raudonu kontūru, atskirai nuo kitų, su patvirtinimu.
-- **Kalbos perjungiklis LT | EN** – kiekvieno puslapio viršutinėje juostoje dešinėje (1.3.2.1).
+- **Kalbos perjungiklis LT | EN** – kiekvieno puslapio viršutinėje juostoje dešinėje (NFR 1.3.2.1).
 
 #### Pranešimai ir žymos
 
-- **Atsisakymo priežastis (1.3.2.4)** – raudonas blokas puslapio viršuje su konkrečia priežastimi iš funkcijos (2.2.1 skyrius) ir patarimu, ką daryti; klaidingas laukas pažymimas raudonai.
+- **Atsisakymo priežastis (NFR 1.3.2.4)** – raudonas blokas puslapio viršuje su konkrečia priežastimi iš funkcijos (2.2.1 skyrius) ir patarimu, ką daryti; klaidingas laukas pažymimas raudonai.
 - **Sėkmė** – žalias blokas; **įspėjimas** – gintarinis.
 - **Būsenų žymos** – apvalūs ženkleliai: „Rezervuota“ (pilka), „Vėluoja 3 val.“ (gintarinė), „Laukia grąžinimo“ (raudona).
 
@@ -1237,45 +1275,45 @@ Viena šriftų šeima **Inter** (Google Fonts [12], nemokama, palaiko lietuvišk
 Lentelė: Sąsajos maketų ekranai {#lent:ekranai}
 | Nr. | Ekranas | Vartotojas | Panaudos atvejai | Reikalavimai | Plotis |
 |---|---|---|---|---|---|
-| E1 | Motociklų paieška | Klientas | PA1 | 1.2.1, 1.3.1.1, 1.3.1.3 | 360 ir 1280 px |
-| E2 | Rezervacijos duomenys | Klientas | PA2, PA7 | 1.2.2, 1.3.2.3, 1.3.2.4 | 360 px |
-| E3 | Rezervacija patvirtinta | Klientas | PA2 | 1.2.2, 1.3.2.3 | 360 px |
-| E4 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA8–PA10, PA12–PA14 | 1.2.3 | 1280 px |
-| E5 | Parko užimtumas | Administratorius | PA20 | 1.2.5 | 1280 px |
+| EKRANAS01 | Motociklų paieška | Klientas | PA1 | FR 1.2.1, NFR 1.3.1.1, NFR 1.3.1.3 | 360 ir 1280 px |
+| EKRANAS02 | Rezervacijos duomenys | Klientas | PA2, PA7 | FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 | 360 px |
+| EKRANAS03 | Rezervacija patvirtinta | Klientas | PA2 | FR 1.2.2, NFR 1.3.2.3 | 360 px |
+| EKRANAS04 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA8–PA10, PA12–PA14 | FR 1.2.3 | 1280 px |
+| EKRANAS05 | Parko užimtumas | Administratorius | PA20 | FR 1.2.5 | 1280 px |
 
-Rezervacijos kelias: klientas pasirenka motociklą paieškos rezultatuose (E1), įveda pažymėjimo duomenis ir mato kainą (E2), gauna patvirtinimą (E3) – 3 ekranai (1.3.2.3). Visi maketuose rodomi duomenys paimti iš bandomųjų duomenų (3 skyrius); nuotraukos vietoje rodomas schematinis motociklas.
+Rezervacijos kelias: klientas pasirenka motociklą paieškos rezultatuose (EKRANAS01), įveda pažymėjimo duomenis ir mato kainą (EKRANAS02), gauna patvirtinimą (EKRANAS03) – 3 ekranai (NFR 1.3.2.3). Visi maketuose rodomi duomenys paimti iš bandomųjų duomenų (3 skyrius); nuotraukos vietoje rodomas schematinis motociklas.
 
-##### E1. Motociklų paieška
+##### EKRANAS01. Motociklų paieška
 
-![E1 Motociklų paieška, platus ekranas (1280 px)](../artefaktai/13-dizainas/13-e1-paieska-1280.png){failai=../artefaktai/13-dizainas/13-e1-paieska-1280.png}
+![EKRANAS01 Motociklų paieška, platus ekranas (1280 px)](../artefaktai/13-dizainas/13-e1-paieska-1280.png){failai=../artefaktai/13-dizainas/13-e1-paieska-1280.png}
 
-![E1 Motociklų paieška, siauras ekranas (360 px; parodyta puslapio pradžia)](../artefaktai/13-dizainas/13-e1-paieska-360.png){failai=../artefaktai/13-dizainas/13-e1-paieska-360.png}
+![EKRANAS01 Motociklų paieška, siauras ekranas (360 px; parodyta puslapio pradžia)](../artefaktai/13-dizainas/13-e1-paieska-360.png){failai=../artefaktai/13-dizainas/13-e1-paieska-360.png}
 
-Paieška Vilniuje 2027-05-09 10:00 – 2027-05-12 10:00: laisvi 11 modelių, rodomi 6 pigiausi. Viena kortelė – vienas modelis (1.3.1.3); rezervuojant sistema parenka laisvą to modelio motociklą, atitinkantį paieškos sąlygas (pvz., leidimą išvažiuoti į užsienį). Kortelėje – paros kaina, kaina už visą laikotarpį ir užstatas, kad klientas juos matytų iš karto.
+Paieška Vilniuje 2027-05-09 10:00 – 2027-05-12 10:00: laisvi 11 modelių, rodomi 6 pigiausi. Viena kortelė – vienas modelis (NFR 1.3.1.3); rezervuojant sistema parenka laisvą to modelio motociklą, atitinkantį paieškos sąlygas (pvz., leidimą išvažiuoti į užsienį). Kortelėje – paros kaina, kaina už visą laikotarpį ir užstatas, kad klientas juos matytų iš karto.
 
-##### E2. Rezervacijos duomenys
+##### EKRANAS02. Rezervacijos duomenys
 
-![E2 Rezervacijos duomenys (360 px)](../artefaktai/13-dizainas/13-e2-rezervacijos-duomenys-360.png){failai=../artefaktai/13-dizainas/13-e2-rezervacijos-duomenys-360.png}
+![EKRANAS02 Rezervacijos duomenys (360 px)](../artefaktai/13-dizainas/13-e2-rezervacijos-duomenys-360.png){failai=../artefaktai/13-dizainas/13-e2-rezervacijos-duomenys-360.png}
 
-![E2 Rezervacija atmesta: pažymėjimo kategorija baigia galioti anksčiau nei nuoma (360 px)](../artefaktai/13-dizainas/13-e2-atsisakymas-360.png){failai=../artefaktai/13-dizainas/13-e2-atsisakymas-360.png}
+![EKRANAS02 Rezervacija atmesta: pažymėjimo kategorija baigia galioti anksčiau nei nuoma (360 px)](../artefaktai/13-dizainas/13-e2-atsisakymas-360.png){failai=../artefaktai/13-dizainas/13-e2-atsisakymas-360.png}
 
 Klientas 1 rezervuoja BMW F 900 R: 3 paros × 100,00 € = 300,00 €, užstatas 700,00 €, baudų lentelė pagal tarifą. Antrame variante tą patį motociklą rezervuoja Klientas 26, kurio A kategorija galioja iki 2027-05-10, todėl rodoma funkcijos `tikrintiKlientoTeise` priežastis „A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“. Užuomina prie kategorijų primena pažymėti visas pažymėjimo suteikiamas kategorijas (kurios kategorijos apima kitas, sistema nesaugo, 1.5.2 skyrius).
 
-##### E3. Rezervacija patvirtinta
+##### EKRANAS03. Rezervacija patvirtinta
 
-![E3 Rezervacija patvirtinta (360 px)](../artefaktai/13-dizainas/13-e3-patvirtinimas-360.png){failai=../artefaktai/13-dizainas/13-e3-patvirtinimas-360.png}
+![EKRANAS03 Rezervacija patvirtinta (360 px)](../artefaktai/13-dizainas/13-e3-patvirtinimas-360.png){failai=../artefaktai/13-dizainas/13-e3-patvirtinimas-360.png}
 
 Rezervacija patvirtinama iš karto (Nr. 684 – kitas laisvas numeris bandomuosiuose duomenyse). Rodoma visa baudų lentelė, įskaitant numanomą pakopą „iki 1 val. – 0,00 €“, nes pirmoji tarifo pakopa prasideda nuo 1 val.
 
-##### E4. Išdavimų ir grąžinimų tvarkaraštis
+##### EKRANAS04. Išdavimų ir grąžinimų tvarkaraštis
 
-![E4 Išdavimų ir grąžinimų tvarkaraštis su grąžinimo forma (1280 px)](../artefaktai/13-dizainas/13-e4-tvarkarastis-1280.png){failai=../artefaktai/13-dizainas/13-e4-tvarkarastis-1280.png}
+![EKRANAS04 Išdavimų ir grąžinimų tvarkaraštis su grąžinimo forma (1280 px)](../artefaktai/13-dizainas/13-e4-tvarkarastis-1280.png){failai=../artefaktai/13-dizainas/13-e4-tvarkarastis-1280.png}
 
 Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandomųjų duomenų (nuomos 631 ir 632, BMW G 310 R). Nuoma 631 turėjo būti grąžinta 10:00 – ji pažymėta „Vėluoja 3 val.“, šalia parodytas kitas motociklo laikotarpis (nuoma 632 nuo 11:00). Nuomos 632 išduoti negalima, kol 631 negrąžinta; įspėjime – trys galimi darbuotojo veiksmai (2.2.1 skyrius, „Pavėluotas grąžinimas“). Grąžinimo formoje darbuotojas įveda ridą ir būklę, o sistema apskaičiuoja kainą: 2 paros × 60,00 € + bauda 25,00 € (pakopa „nuo 3 val.“) = 145,00 €, kaip įrašyta bandomuosiuose duomenyse.
 
-##### E5. Parko užimtumas
+##### EKRANAS05. Parko užimtumas
 
-![E5 Parko užimtumas (1280 px)](../artefaktai/13-dizainas/13-e5-parko-uzimtumas-1280.png){failai=../artefaktai/13-dizainas/13-e5-parko-uzimtumas-1280.png}
+![EKRANAS05 Parko užimtumas (1280 px)](../artefaktai/13-dizainas/13-e5-parko-uzimtumas-1280.png){failai=../artefaktai/13-dizainas/13-e5-parko-uzimtumas-1280.png}
 
 Laiko juosta 2026-07-20 – 2026-08-30 (sezono vidurys) visiems 39 naudojamiems motociklams, sugrupuotiems pagal filialą laikotarpio pradžioje. Mėlyna – nuomos, gintarinė – techninė priežiūra, violetinė – perkėlimas (2026-08-17 Kaunas → Vilnius); „→ Kaunas“ – nuoma grąžinta į kitą filialą. Dešiniajame stulpelyje – nuomų trukmės dalis laikotarpyje, grupės eilutėje – filialo vidurkis. Statistinės ataskaitos (PA21) nemaketuojamos, nes jų turinys dar nenustatytas.
 
@@ -1284,12 +1322,12 @@ Laiko juosta 2026-07-20 – 2026-08-30 (sezono vidurys) visiems 39 naudojamiems 
 Lentelė: Nefunkcinių reikalavimų įgyvendinimas maketuose
 | Reikalavimas | Kaip įgyvendinta maketuose |
 |---|---|
-| 1.3.1.1 Prisitaikanti sąsaja | E1 parodytas 360 ir 1280 px pločio; turinys ne platesnis kaip 1200 px |
-| 1.3.1.2 Vieningas stilius | Visi ekranai naudoja vieną stiliaus failą; paletė, šriftas ir mygtukai aprašyti šiame skyriuje |
-| 1.3.1.3 Motociklo kortelė | E1 – po vieną kortelę kiekvienam tinkamam modeliui: nuotrauka, modelis, tipas, variklio tūris, galia, kategorija, paros kaina |
-| 1.3.2.1 Kalbos | Perjungiklis LT \| EN kiekvieno ekrano viršuje dešinėje |
-| 1.3.2.3 Trumpas rezervacijos kelias | E1 → E2 → E3, žingsnių juosta E2 ir E3 |
-| 1.3.2.4 Aiški atsisakymo priežastis | E2 atmetimo variantas; E4 – priežastis, kodėl nuomos negalima išduoti |
+| NFR 1.3.1.1 Prisitaikanti sąsaja | EKRANAS01 parodytas 360 ir 1280 px pločio; turinys ne platesnis kaip 1200 px |
+| NFR 1.3.1.2 Vieningas stilius | Visi ekranai naudoja vieną stiliaus failą; paletė, šriftas ir mygtukai aprašyti šiame skyriuje |
+| NFR 1.3.1.3 Motociklo kortelė | EKRANAS01 – po vieną kortelę kiekvienam tinkamam modeliui: nuotrauka, modelis, tipas, variklio tūris, galia, kategorija, paros kaina |
+| NFR 1.3.2.1 Kalbos | Perjungiklis LT \| EN kiekvieno ekrano viršuje dešinėje |
+| NFR 1.3.2.3 Trumpas rezervacijos kelias | EKRANAS01 → EKRANAS02 → EKRANAS03, žingsnių juosta EKRANAS02 ir EKRANAS03 |
+| NFR 1.3.2.4 Aiški atsisakymo priežastis | EKRANAS02 atmetimo variantas; EKRANAS04 – priežastis, kodėl nuomos negalima išduoti |
 
 # 3. Testavimo planas ir programa
 
@@ -1303,8 +1341,8 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 ### 3.1.1. Testavimo tikslai
 
-1. Patikrinti, ar sistema atitinka funkcinius reikalavimus 1.2.1–1.2.5, ypač taisykles, kurių duomenų bazės apribojimai neužtikrina: motociklo užimtumą ir buvimo vietą, vairuotojo pažymėjimo kategoriją ir jos galiojimą, galutinės kainos ir baudos skaičiavimą (2.2.1 skyriaus funkcijos).
-2. Surasti defektus įvedant netinkamus ir ribinius duomenis (sutampantys ir besiliečiantys laikotarpiai, kategorija, kuri baigia galioti nuomos pabaigos dieną, vėlavimas lygiai ties baudos pakopos riba) ir patikrinti, ar sistema tokių veiksmų neleidžia ir nurodo aiškią priežastį (1.3.2.4).
+1. Patikrinti, ar sistema atitinka funkcinius reikalavimus FR 1.2.1–FR 1.2.5, ypač taisykles, kurių duomenų bazės apribojimai neužtikrina: motociklo užimtumą ir buvimo vietą, vairuotojo pažymėjimo kategoriją ir jos galiojimą, galutinės kainos ir baudos skaičiavimą (2.2.1 skyriaus funkcijos).
+2. Surasti defektus įvedant netinkamus ir ribinius duomenis (sutampantys ir besiliečiantys laikotarpiai, kategorija, kuri baigia galioti nuomos pabaigos dieną, vėlavimas lygiai ties baudos pakopos riba) ir patikrinti, ar sistema tokių veiksmų neleidžia ir nurodo aiškią priežastį (NFR 1.3.2.4).
 3. Patikrinti nefunkcinius reikalavimus, kurių negalima patikrinti atskiromis funkcijomis: vienalaikes rezervacijas, atsako laiką ir pasiekiamumą esant 300 vartotojų, prieigą pagal vaidmenis.
 
 ### 3.1.2. Testuojamų sistemos funkcinių ir nefunkcinių reikalavimų sąrašas
@@ -1314,44 +1352,44 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 Lentelė: Testuojami funkciniai ir nefunkciniai reikalavimai {#lent:testuojami}
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
 |---|---|---|
-| Motociklų paieška | 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
-| Rezervacija ir jos valdymas | 1.2.2 | TA1, TA2, TA4 |
-| Išdavimas ir grąžinimas | 1.2.3 | TA3 |
-| Techninė priežiūra | 1.2.4 | TA1 (7–8 žingsniai) |
-| Parko administravimas ir ataskaitos | 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
-| Prisitaikanti sąsaja | 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
-| Vieningas stilius | 1.3.1.2 | Visų puslapių palyginimas su 2.3.2 skyriuje apibrėžta spalvų palete, šriftu ir mygtukų išdėstymu |
-| Motociklo kortelė | 1.3.1.3 | Paieškos rezultatų peržiūra: kiekvienam tinkamam modeliui – viena kortelė su nuotrauka, pavadinimu, tipu, variklio tūriu, galia, kategorija ir paros kaina |
-| Kalbos | 1.3.2.1 | Kiekviename puslapyje kalba perjungiama LT ↔ EN; įvesti formos duomenys išlieka |
-| Darbuotojo mokymas | 1.3.2.2 | Priėmimo bandymai: naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo savarankiškai atlieka rezervaciją kliento vardu, išdavimą, grąžinimą ir techninės priežiūros planavimą |
-| Trumpas rezervacijos kelias | 1.3.2.3 | TA2 (4 žingsnis): nuo motociklo pasirinkimo iki patvirtinimo – 3 ekranai |
-| Aiški atsisakymo priežastis | 1.3.2.4 | TA1–TA4 |
-| Atsako laikas | 1.3.3.1 | Našumo ir apkrovos testavimas: imituojant 300 vienu metu dirbančių vartotojų, paieškos rezultatai ir rezervacijos patvirtinimas parodomi ne vėliau kaip per 2 s, kiti puslapiai – per 3 s |
-| Pasiekiamumas | 1.3.3.2 | Patikimumo testavimas sintetiniais testais: testavimo etape kiekvieną naktį 6 valandas kas minutę automatiškai vykdomi paieškos ir rezervacijos scenarijai, kartu imituojant 300 vienu metu prisijungusių vartotojų apkrovą; per kiekvieną naktį sėkmingų vykdymų turi būti ne mažiau kaip 99 % (iš 360 – ne daugiau kaip 3 nesėkmingi). Naktį testuojama tam, kad apkrova netrukdytų dienos testams. Metinis pasiekiamumas matuojamas tais pačiais testais sistemos veikimo ir priežiūros etape (sintetinė stebėsena) |
-| Vienalaikės rezervacijos | 1.3.3.3 | TA4 |
-| Duomenų dubliavimas ir atsarginės kopijos | 1.3.4.1 | Atkūrimo bandymas: pagrindinėje duomenų bazėje įrašyta rezervacija iš karto yra ir atsarginėje; sistema atkuriama iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val.; saugomos ne mažiau kaip 30 dienų kopijos |
-| Istoriniai duomenys | 1.3.4.2 | Bandoma ištrinti užbaigtą nuomą kiekvieno vaidmens paskyra – sistema neleidžia |
-| Prieiga pagal vaidmenis | 1.3.5.1 | TA1 (1 žingsnis): klientas mato tik savo rezervacijas |
-| Duomenų apsauga | 1.3.5.2 | Kreipiantis HTTP adresu naršyklė nukreipiama į HTTPS; duomenų bazėje saugoma tik slaptažodžio maiša, o ne pats slaptažodis |
+| Motociklų paieška | FR 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
+| Rezervacija ir jos valdymas | FR 1.2.2 | TA1, TA2, TA4 |
+| Išdavimas ir grąžinimas | FR 1.2.3 | TA3 |
+| Techninė priežiūra | FR 1.2.4 | TA1 (7–8 žingsniai) |
+| Parko administravimas ir ataskaitos | FR 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
+| Prisitaikanti sąsaja | NFR 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
+| Vieningas stilius | NFR 1.3.1.2 | Visų puslapių palyginimas su 2.3.2 skyriuje apibrėžta spalvų palete, šriftu ir mygtukų išdėstymu |
+| Motociklo kortelė | NFR 1.3.1.3 | Paieškos rezultatų peržiūra: kiekvienam tinkamam modeliui – viena kortelė su nuotrauka, pavadinimu, tipu, variklio tūriu, galia, kategorija ir paros kaina |
+| Kalbos | NFR 1.3.2.1 | Kiekviename puslapyje kalba perjungiama LT ↔ EN; įvesti formos duomenys išlieka |
+| Darbuotojo mokymas | NFR 1.3.2.2 | Priėmimo bandymai: naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo savarankiškai atlieka rezervaciją kliento vardu, išdavimą, grąžinimą ir techninės priežiūros planavimą |
+| Trumpas rezervacijos kelias | NFR 1.3.2.3 | TA2 (4 žingsnis): nuo motociklo pasirinkimo iki patvirtinimo – 3 ekranai |
+| Aiški atsisakymo priežastis | NFR 1.3.2.4 | TA1–TA4 |
+| Atsako laikas | NFR 1.3.3.1 | Našumo ir apkrovos testavimas: imituojant 300 vienu metu dirbančių vartotojų, paieškos rezultatai ir rezervacijos patvirtinimas parodomi ne vėliau kaip per 2 s, kiti puslapiai – per 3 s |
+| Pasiekiamumas | NFR 1.3.3.2 | Patikimumo testavimas sintetiniais testais: testavimo etape kiekvieną naktį 6 valandas kas minutę automatiškai vykdomi paieškos ir rezervacijos scenarijai, kartu imituojant 300 vienu metu prisijungusių vartotojų apkrovą; per kiekvieną naktį sėkmingų vykdymų turi būti ne mažiau kaip 99 % (iš 360 – ne daugiau kaip 3 nesėkmingi). Naktį testuojama tam, kad apkrova netrukdytų dienos testams. Metinis pasiekiamumas matuojamas tais pačiais testais sistemos veikimo ir priežiūros etape (sintetinė stebėsena) |
+| Vienalaikės rezervacijos | NFR 1.3.3.3 | TA4 |
+| Duomenų dubliavimas ir atsarginės kopijos | NFR 1.3.4.1 | Atkūrimo bandymas: pagrindinėje duomenų bazėje įrašyta rezervacija iš karto yra ir atsarginėje; sistema atkuriama iš paskutinės atsarginės kopijos ne ilgiau kaip per 4 val.; saugomos ne mažiau kaip 30 dienų kopijos |
+| Istoriniai duomenys | NFR 1.3.4.2 | Bandoma ištrinti užbaigtą nuomą kiekvieno vaidmens paskyra – sistema neleidžia |
+| Prieiga pagal vaidmenis | NFR 1.3.5.1 | TA1 (1 žingsnis): klientas mato tik savo rezervacijas |
+| Duomenų apsauga | NFR 1.3.5.2 | Kreipiantis HTTP adresu naršyklė nukreipiama į HTTPS; duomenų bazėje saugoma tik slaptažodžio maiša, o ne pats slaptažodis |
 
-**Netestuojamas reikalavimas – 1.3.4.3 „Klaidų taisymas ir atnaujinimai“.** Reikalavimas nustato ne programos savybę, o priežiūros darbų tvarką: per kiek laiko ištaisomos kritinės klaidos ir kada diegiami atnaujinimai. Todėl programos testavimu jo patikrinti negalima. Jo laikymasis vertinamas sistemos veikimo ir priežiūros etape.
+**Netestuojamas reikalavimas – NFR 1.3.4.3 „Klaidų taisymas ir atnaujinimai“.** Reikalavimas nustato ne programos savybę, o priežiūros darbų tvarką: per kiek laiko ištaisomos kritinės klaidos ir kada diegiami atnaujinimai. Todėl programos testavimu jo patikrinti negalima. Jo laikymasis vertinamas sistemos veikimo ir priežiūros etape.
 
-**Pasiekiamumas ir planiniai atnaujinimai.** 1.3.3.2 neišskiria planinių atnaujinimų, kurie sezono metu diegiami 0–6 val. (1.3.4.3), todėl sintetinė stebėsena veikimo etape jų metu sistemą laiko nepasiekiama ir šios prastovos turi tilpti į leistiną 1 %. Testavimo etape atnaujinimai nediegiami, todėl naktiniams testams tai įtakos neturi.
+**Pasiekiamumas ir planiniai atnaujinimai.** NFR 1.3.3.2 neišskiria planinių atnaujinimų, kurie sezono metu diegiami 0–6 val. (NFR 1.3.4.3), todėl sintetinė stebėsena veikimo etape jų metu sistemą laiko nepasiekiama ir šios prastovos turi tilpti į leistiną 1 %. Testavimo etape atnaujinimai nediegiami, todėl naktiniams testams tai įtakos neturi.
 
 ## 3.2. Testavimo atvejai
 
-Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis:
+Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis:
 
 Lentelė: Testavimo atvejų ryšys su funkcijomis ir reikalavimais
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|
-| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA3, PA4, PA6, PA11 | 1.2.2, 1.2.4, 1.3.2.4, 1.3.5.1 |
-| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | 1.2.1, 1.2.2, 1.3.2.3, 1.3.2.4 |
-| 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | 1.2.3, 1.3.2.4 |
-| 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | 1.2.1, 1.2.2, 1.3.2.4, 1.3.3.3 |
+| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA3, PA4, PA6, PA11 | FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1 |
+| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 |
+| 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | FR 1.2.3, NFR 1.3.2.4 |
+| 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3 |
 
 ::: ta 1 | Rezervacijos keitimas ir techninės priežiūros planavimas: motociklo užimtumas ir buvimo vieta
-Aprašymas: tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai 1.2.2, 1.2.4, 1.3.2.4, 1.3.5.1.
+Aprašymas: tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1.
 Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. Klientas 8 prisijungęs prie savo paskyros; jo pažymėjimo kategorijos A1, A2, A galioja iki 2033-10-13. Kliento 8 rezervacija Nr. 655: Honda CB500 Hornet, valst. nr. 52 UVE (motociklas dabar Vilniuje), 2027-05-12 10:00 – 2027-05-15 10:00, išdavimas Vilniuje, grąžinimas Klaipėdoje, tarifas 64,00 €/para, užstatas 400,00 €. Kita šio motociklo nuoma – Kliento 12 rezervacija Nr. 661: 2027-05-24 10:00 – 2027-05-26 10:00, išdavimas ir grąžinimas Klaipėdoje. Kitų šio motociklo užimtumo laikotarpių po 2027-05-12 nėra. 7–8 žingsniuose dirba Klaipėdos filialo darbuotojas (Darbuotojas 6).
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -1368,7 +1406,7 @@ Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. Klient
 **Sąlygos po:** rezervacijos Nr. 655 laikotarpis – 2027-05-12 10:00 – 2027-05-24 10:00, filialai ir tarifas nepakeisti, naujų nuomos įrašų nėra; atmesti pakeitimai neišsaugoti. Motociklui 52 UVE įrašyta techninė priežiūra 2027-05-27 08:00 – 17:00 ir šiuo laikotarpiu jis paieškoje nerodomas.
 
 ::: ta 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant
-Aprašymas: tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai 1.2.1, 1.2.2, 1.3.2.3, 1.3.2.4.
+Aprašymas: tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4.
 Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 26 HUN – vienintelis šio modelio motociklas Vilniuje, laisvas 2027-05-09 10:00 – 2027-05-12 10:00. Modeliui reikia A kategorijos; tarifas 100,00 €/para, užstatas 700,00 €, baudų pakopos: nuo 1 val. – 20,00 €, nuo 3 val. – 50,00 €, nuo 24 val. – 100,00 €. Klientas 26 (turi paskyrą): A1, A2 ir A galioja iki 2027-05-10; jo rezervacija Nr. 642 – BMW F 900 R, valst. nr. 84 VZL, 2027-04-14 11:00 – 2027-04-18 11:00, išdavimas ir grąžinimas Kaune. Klientas 33 (turi paskyrą): tik A1, galioja iki 2030-01-21. Klientas 35: paskyros neturi, pažymėjime motociklų kategorijų nėra. 2 žingsnyje dirba Vilniaus filialo darbuotojas (Darbuotojas 1).
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -1382,7 +1420,7 @@ Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. BMW F 
 **Sąlygos po:** įrašyta tik viena nauja nuoma – Kliento 26, BMW F 900 R 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, būsena „rezervuota“, tarifas 100,00 €/para. Rezervacija Nr. 642 nepakeista.
 
 ::: ta 3 | Pavėluotas grąžinimas ir galutinė kaina
-Aprašymas: tikrinama, kaip sistema elgiasi, kai motociklas grąžinamas pavėluotai, o po šios nuomos jau rezervuota kita. Tvarkaraštyje (PA8) vėlavimas pažymimas; motociklo neleidžiama išduoti, kol ankstesnė nuoma negrąžinta (PA9); neleidžiama įrašyti mažesnės ridos nei išduodant (PA12); grąžinant apskaičiuojama galutinė kaina ir bauda (PA13, PA14, funkcija `skaiciuotiKaina`). Ribinė reikšmė: vėlavimas lygiai 3 val. – baudos pakopos „nuo 3 val.“ pradžia. Laukusiam klientui pakeičiama nuomos pradžia (PA4). Testuojami reikalavimai 1.2.3, 1.3.2.4.
+Aprašymas: tikrinama, kaip sistema elgiasi, kai motociklas grąžinamas pavėluotai, o po šios nuomos jau rezervuota kita. Tvarkaraštyje (PA8) vėlavimas pažymimas; motociklo neleidžiama išduoti, kol ankstesnė nuoma negrąžinta (PA9); neleidžiama įrašyti mažesnės ridos nei išduodant (PA12); grąžinant apskaičiuojama galutinė kaina ir bauda (PA13, PA14, funkcija `skaiciuotiKaina`). Ribinė reikšmė: vėlavimas lygiai 3 val. – baudos pakopos „nuo 3 val.“ pradžia. Laukusiam klientui pakeičiama nuomos pradžia (PA4). Testuojami reikalavimai FR 1.2.3, NFR 1.3.2.4.
 Pradiniai duomenys (sąlygos prieš): Vilniaus filialas, dabartinis laikas 2026-11-12 11:00, prisijungęs Darbuotojas 3. Duomenys – bandomųjų duomenų būsena šiuo momentu: rinkinyje (būsena 2026-11-19 12:00) nuomos Nr. 631 ir 632 jau užbaigtos taip, kaip nurodyta „Sąlygose po“. Motociklas BMW G 310 R, valst. nr. 82 HNU. Nuoma Nr. 631 (Klientas 19): 2026-11-10 10:00 – 2026-11-12 10:00, išdavimas ir grąžinimas Vilniuje, išduota 2026-11-10 10:26 su 23 642 km rida, dar negrąžinta (būsena „aktyvi“). Nuoma Nr. 632 (Klientas 22) tam pačiam motociklui: 2026-11-12 11:00 – 2026-11-13 13:00, išdavimas ir grąžinimas Vilniuje, būsena „rezervuota“. Abiejų nuomų tarifas: 60,00 €/para, užstatas 400,00 €, baudų pakopos: nuo 1 val. – 10,00 €, nuo 3 val. – 25,00 €, nuo 24 val. – 60,00 €.
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -1398,7 +1436,7 @@ Pradiniai duomenys (sąlygos prieš): Vilniaus filialas, dabartinis laikas 2026-
 **Sąlygos po:** nuomos Nr. 631 ir 632 užbaigtos. Grąžinimai: Nr. 631 – 2026-11-12 13:00, 24 042 km, 145,00 €, bauda 25,00 €; Nr. 632 – 2026-11-13 12:40, 24 157 km, 60,00 €, bauda 0,00 €. Nuomos Nr. 632 pradžia ir išdavimas – 2026-11-12 13:20. Motociklo 82 HNU rida 24 157 km, filialas Vilnius.
 
 ::: ta 4 | Vienalaikės rezervacijos
-Aprašymas: tikrinama, ar sistema, gavusi dvi tuo pačiu metu pateiktas to paties motociklo rezervacijas sutampančiam laikotarpiui, patvirtina tik vieną, o kitam klientui praneša, kad motociklas užimtas, ir ar užimtas motociklas nebėra paieškos rezultatuose. Testas vykdomas automatizuotai: abi rezervacijos pateikiamos dviem lygiagrečiomis užklausomis, nes rankiniu būdu to paties momento pasiekti negalima. Testuojami reikalavimai 1.2.1, 1.2.2, 1.3.2.4, 1.3.3.3.
+Aprašymas: tikrinama, ar sistema, gavusi dvi tuo pačiu metu pateiktas to paties motociklo rezervacijas sutampančiam laikotarpiui, patvirtina tik vieną, o kitam klientui praneša, kad motociklas užimtas, ir ar užimtas motociklas nebėra paieškos rezultatuose. Testas vykdomas automatizuotai: abi rezervacijos pateikiamos dviem lygiagrečiomis užklausomis, nes rankiniu būdu to paties momento pasiekti negalima. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3.
 Pradiniai duomenys (sąlygos prieš): dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 84 VZL – vienintelis šio modelio motociklas Kaune, laisvas 2027-05-05 11:00 – 2027-05-08 11:00. Klientai 2 ir 3 prisijungę skirtingose naršyklėse; abiejų A kategorija galioja (iki 2034-11-26 ir 2034-02-26). Abu ieškojo motociklų Kaune šiam laikotarpiui, pasirinko BMW F 900 R ir yra rezervacijos duomenų ekrane.
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -1435,16 +1473,16 @@ Saugyklose: R – skaito, W – rašo; „per P1“ – duomenis procesas gauna 
 Lentelė: Funkcinių reikalavimų ir panaudos atvejų atsekamumo matrica {#lent:matrica-a maza}
 | PA | Panaudos atvejis | Procesas | Saugyklos | ER esybės | Schemos funkcija | Testavimas |
 |---|---|---|---|---|---|---|
-| | **1.2.1 Motociklų paieška** | | | | | |
+| | **FR 1.2.1 Motociklų paieška** | | | | | |
 | PA1 | Ieškoti laisvų motociklų | P1 | DS1, DS2, DS3 R; DS5–DS7 R (PA6) | Filialas, Motociklas, Motociklo modelis, Motociklo tipas, Kategorija, Tarifas | 2 → PA6 | TA2 (1), TA4 (2) |
-| | **1.2.2 Rezervacija ir jos valdymas** | | | | | |
+| | **FR 1.2.2 Rezervacija ir jos valdymas** | | | | | |
 | PA2 | Rezervuoti motociklą | P2 | DS4 R/W, DS5 W; DS3 per P1 | Klientas, Kategorija („turi teisę“), Nuoma, Tarifas, Baudos pakopa, Filialas, Darbuotojas | 2 → PA6, PA7 | TA2 (4), TA4 (1) |
 | PA3 | Peržiūrėti savo rezervacijas | P2 | DS5 R | Nuoma | 2 | TA1 (1) |
 | PA4 | Keisti rezervaciją | P2 | DS4 R, DS5 R/W | Nuoma, Klientas, Kategorija („turi teisę“) | 2 → PA6, PA7 | TA1 (2–6), TA2 (5), TA3 (5) |
 | PA5 | Atšaukti rezervaciją | P2 | DS5 W | Nuoma | 2 | pagal PA |
 | PA6 | Tikrinti motociklo užimtumą | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, *tikrintiUzimtuma* | TA1 (2–8), TA4 (1) |
 | PA7 | Tikrinti vairuotojo pažymėjimą | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, *tikrintiKlientoTeise* | TA2 (1–5) |
-| | **1.2.3 Išdavimas ir grąžinimas** | | | | | |
+| | **FR 1.2.3 Išdavimas ir grąžinimas** | | | | | |
 | PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | P3 | DS2, DS4, DS5 R | Nuoma, Motociklas, Klientas | 2 | TA3 (1) |
 | PA9 | Įforminti išdavimą | P3 | DS5 R/W | Išdavimas, Nuoma, Darbuotojas | 2 → PA12 | TA3 (2, 6) |
 | PA10 | Įforminti grąžinimą | P3 | DS3 R, DS5 W, DS2 W | Grąžinimas, Nuoma, Darbuotojas | 2 → PA12, PA13, PA14 [grąžinta pavėluotai], PA15 [kitas filialas] | TA3 (3, 4, 7) |
@@ -1452,9 +1490,9 @@ Lentelė: Funkcinių reikalavimų ir panaudos atvejų atsekamumo matrica {#lent:
 | PA13 | Apskaičiuoti galutinę nuomos kainą | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, *skaiciuotiKaina* | TA3 (4, 7) |
 | PA14 | Apskaičiuoti baudą už pavėluotą grąžinimą | P3 | DS3 R, DS5 W | Baudos pakopa, Grąžinimas (Bauda) | 3 [grąžinta pavėluotai] | TA3 (4) |
 | PA15 | Grąžinti į kitą filialą | P3 | DS2 W | Motociklas, Filialas (ryšys „yra“) | 3 [kitas filialas] | pagal PA |
-| | **1.2.4 Techninė priežiūra** | | | | | |
+| | **FR 1.2.4 Techninė priežiūra** | | | | | |
 | PA11 | Planuoti techninę priežiūrą | P4 | DS6 W | Techninė priežiūra, Motociklas, Darbuotojas | 2 → PA6 | TA1 (7–8) |
-| | **1.2.5 Parko administravimas ir ataskaitos** | | | | | |
+| | **FR 1.2.5 Parko administravimas ir ataskaitos** | | | | | |
 | PA16 | Tvarkyti filialus | P5 | DS1 W | Filialas | 2 | pagal PA |
 | PA17 | Tvarkyti motociklų modelius ir motociklus | P5 | DS2 W | Motociklo modelis, Motociklas, Gamintojas, Motociklo tipas | 2 | pagal PA |
 | PA18 | Tvarkyti tarifus | P5 | DS3 W | Tarifas, Baudos pakopa | 2 | pagal PA |
@@ -1463,25 +1501,25 @@ Lentelė: Funkcinių reikalavimų ir panaudos atvejų atsekamumo matrica {#lent:
 | PA21 | Formuoti statistines ataskaitas | P7 | per P1 (DS5) | Nuoma, Grąžinimas | 2 | pagal PA |
 | PA22 | Planuoti motociklų perkėlimą | P6 | DS7 W, DS2 W | Perkėlimas (ryšys „perkeliamas“), Motociklas, Filialas, Darbuotojas | 2 → PA6 | pagal PA |
 
-Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas prašo 3 testavimo atvejų, todėl jie parinkti svarbiausioms taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius).
+Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas prašo 3 testavimo atvejų, todėl jie parinkti svarbiausioms taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius).
 
 :::
 
 Lentelė: Nefunkcinių reikalavimų atsekamumo matrica {#lent:matrica-b}
 | Reikalavimas | Kur atsispindi projekte | Kaip tikrinama (3.1.2) |
 |---|---|---|
-| 1.3.1.1 Prisitaikanti sąsaja | 2.3.2 „Tinklelis ir išdėstymas“; E1 360 ir 1280 px | Peržiūra 360 ir 1280 px pločio ekranuose |
-| 1.3.1.2 Vieningas stilius | 2.3.2: paletė, šriftas, mygtukai; vienas stiliaus failas | Puslapių palyginimas su 2.3.2 |
-| 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka, charakteristikos), Motociklo tipas, Kategorija, Tarifas (Paros kaina); E1 | Paieškos rezultatų peržiūra |
-| 1.3.2.1 Kalbos | Perjungiklis LT \| EN visuose ekranuose | Kalbos perjungimas kiekviename puslapyje |
-| 1.3.2.2 Darbuotojo mokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; E4; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
-| 1.3.2.3 Trumpas rezervacijos kelias | E1 → E2 → E3 | TA2 (4) |
-| 1.3.2.4 Aiški atsisakymo priežastis | *tikrintiUzimtuma* ir *tikrintiKlientoTeise* grąžina priežastį; E2 (atmetimas), E4 (įspėjimas) | TA1–TA4 |
-| 1.3.3.1 Atsako laikas | Užraktas laikomas tik transakcijos metu (2.2.1 skyrius) | Našumo ir apkrovos testavimas |
-| 1.3.3.2 Pasiekiamumas | Sintetinė stebėsena veikimo etape (Ganto diagrama, 6.3) | Naktiniai sintetiniai testai |
-| 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš *tikrintiUzimtuma* | TA4 |
-| 1.3.4.1 Duomenų dubliavimas ir atsarginės kopijos | Gamybinė infrastruktūra ir atkūrimo patikra (Ganto diagrama, 5.1, 6.4) | Atkūrimo bandymas |
-| 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas netrinami; nuomos būsena „užbaigta“ (1.5.2 ir 2.2.2 skyriai) | Bandymas ištrinti užbaigtą nuomą |
-| 1.3.4.3 Klaidų taisymas ir atnaujinimai | Garantinė priežiūra (Ganto diagrama, 6.1) | Netestuojamas – priežiūros darbų tvarka, ne programos savybė |
-| 1.3.5.1 Prieiga pagal vaidmenis | Paskyra (Vaidmuo) | TA1 (1) |
-| 1.3.5.2 Duomenų apsauga | Paskyra (Slaptažodžio maiša); HTTPS (Ganto diagrama, 3.6, 5.1) | HTTPS nukreipimo ir maišos patikra |
+| NFR 1.3.1.1 Prisitaikanti sąsaja | 2.3.2 „Tinklelis ir išdėstymas“; EKRANAS01 360 ir 1280 px | Peržiūra 360 ir 1280 px pločio ekranuose |
+| NFR 1.3.1.2 Vieningas stilius | 2.3.2: paletė, šriftas, mygtukai; vienas stiliaus failas | Puslapių palyginimas su 2.3.2 |
+| NFR 1.3.1.3 Motociklo kortelė | Motociklo modelis (Nuotrauka, charakteristikos), Motociklo tipas, Kategorija, Tarifas (Paros kaina); EKRANAS01 | Paieškos rezultatų peržiūra |
+| NFR 1.3.2.1 Kalbos | Perjungiklis LT \| EN visuose ekranuose | Kalbos perjungimas kiekviename puslapyje |
+| NFR 1.3.2.2 Darbuotojo mokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; EKRANAS04; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
+| NFR 1.3.2.3 Trumpas rezervacijos kelias | EKRANAS01 → EKRANAS02 → EKRANAS03 | TA2 (4) |
+| NFR 1.3.2.4 Aiški atsisakymo priežastis | *tikrintiUzimtuma* ir *tikrintiKlientoTeise* grąžina priežastį; EKRANAS02 (atmetimas), EKRANAS04 (įspėjimas) | TA1–TA4 |
+| NFR 1.3.3.1 Atsako laikas | Užraktas laikomas tik transakcijos metu (2.2.1 skyrius) | Našumo ir apkrovos testavimas |
+| NFR 1.3.3.2 Pasiekiamumas | Sintetinė stebėsena veikimo etape (Ganto diagrama, 6.3) | Naktiniai sintetiniai testai |
+| NFR 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš *tikrintiUzimtuma* | TA4 |
+| NFR 1.3.4.1 Duomenų dubliavimas ir atsarginės kopijos | Gamybinė infrastruktūra ir atkūrimo patikra (Ganto diagrama, 5.1, 6.4) | Atkūrimo bandymas |
+| NFR 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas netrinami; nuomos būsena „užbaigta“ (1.5.2 ir 2.2.2 skyriai) | Bandymas ištrinti užbaigtą nuomą |
+| NFR 1.3.4.3 Klaidų taisymas ir atnaujinimai | Garantinė priežiūra (Ganto diagrama, 6.1) | Netestuojamas – priežiūros darbų tvarka, ne programos savybė |
+| NFR 1.3.5.1 Prieiga pagal vaidmenis | Paskyra (Vaidmuo) | TA1 (1) |
+| NFR 1.3.5.2 Duomenų apsauga | Paskyra (Slaptažodžio maiša); HTTPS (Ganto diagrama, 3.6, 5.1) | HTTPS nukreipimo ir maišos patikra |

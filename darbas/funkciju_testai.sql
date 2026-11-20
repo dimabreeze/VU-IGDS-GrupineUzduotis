@@ -1,6 +1,6 @@
 -- Motociklų nuomos IS: 2.2.1 skyriaus funkcijų (darbas/funkcijos.sql) pavyzdžiai su bandomaisiais duomenimis.
 -- Kiekvienoje eilutėje stulpelis „Sutampa“ turi būti true. Vykdoma įkėlus schema.sql, duomenys.sql ir funkcijos.sql.
--- Dviejų vienu metu vykdomų rezervacijų (1.3.3.3) pavyzdys – darbas/lygiagreti_rezervacija.sh.
+-- Dviejų vienu metu vykdomų rezervacijų (NFR 1.3.3.3) pavyzdys – darbas/lygiagreti_rezervacija.sh.
 
 SET motonuoma.dabar = '2026-11-19 12:00';
 

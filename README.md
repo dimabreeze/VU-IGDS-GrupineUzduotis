@@ -42,7 +42,7 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `patikra.sql` | Taisyklių, kurių neužtikrina duomenų bazės apribojimai, patikra (15 patikrų); visose eilutėse turi būti 0 pažeidimų |
 | `funkcijos.sql` | 2.2.1 skyriaus funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise`, `skaiciuotiKaina` ir operacijos pavyzdys `rezervuoti` (PL/pgSQL, `artefaktai/12-funkcijos.md`) |
 | `funkciju_testai.sql` | Funkcijų pavyzdžiai su tikėtinu ir gautu rezultatu; stulpelyje „Sutampa“ visur turi būti `t` |
-| `lygiagreti_rezervacija.sh` | Dviejų vienu metu pateiktų rezervacijų pavyzdys (1.3.3.3): su užraktu įrašoma tik viena |
+| `lygiagreti_rezervacija.sh` | Dviejų vienu metu pateiktų rezervacijų pavyzdys (NFR 1.3.3.3): su užraktu įrašoma tik viena |
 | `docker-compose.yml` | Duomenų bazės paleidimas Docker konteineryje |
 
 **Greitas paleidimas su make** (iš šakninio aplanko):
