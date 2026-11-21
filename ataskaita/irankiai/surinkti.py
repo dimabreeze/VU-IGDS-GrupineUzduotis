@@ -32,7 +32,7 @@ ataskaita.md sintaksė (Markdown poaibis):
 Formatavimas – tik stiliais (STYLES): Normal (Times New Roman 12 pt, viengubas intervalas, pirmos eilutės
 įtrauka 1,4 cm, abipusė lygiuotė), Heading 1–5, Antraštė 1/2 be numerio, List Paragraph, Šaltinių sąrašas,
 Caption, Paveikslas, Paveikslo šaltiniai, Lentelės tekstas / antraštė, Reikalavimo tekstas, Turinio antraštė,
-toc 1–3, Kodas, Vidinė nuoroda. Titulinio lapo stiliai (Titulinis …) Normal nepaveldi – lapas nepakinta.
+toc 1–3, Kodas (Consolas, fonas #E8EDF4), Kodas lentelėje (be fono), Vidinė nuoroda. Titulinio lapo stiliai (Titulinis …) Normal nepaveldi – lapas nepakinta.
   Vidinės nuorodos sudaromos automatiškai (žymės – skyrių antraštėse, reikalavimų ir TA lentelėse, paveiksluose,
   lentelėse, šaltinių sąraše ir pirmame lentelės stulpelyje, kur ID pasirodo pirmą kartą):
   skyriaus numeris (1.1.4; „3 skyrius“), FR 1.2.1, NFR 1.3.1.1, PR 1.6.1, PA1, TA1, P1, DS1, E1, EKRANAS01, [1],
@@ -154,16 +154,16 @@ def ilink(name, runs):
     return '<w:hyperlink w:anchor="%s" w:history="1">%s</w:hyperlink>' % (name, runs)
 
 
-def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=None):
+def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=None, upright=False):
     rpr = ''
     if style or code:
         rpr += '<w:rStyle w:val="%s"/>' % (style or 'Kodas')
-    if code and style:
-        rpr += '<w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/>'
     if b:
         rpr += '<w:b/><w:bCs/>'
     if i:
         rpr += '<w:i/><w:iCs/>'
+    elif upright:   # kodas kursyvinėje antraštėje ar pavadinime – tiesus (simbolio stilius kursyvo neatšaukia)
+        rpr += '<w:i w:val="0"/><w:iCs w:val="0"/>'
     if color:
         rpr += '<w:color w:val="%s"/>' % color
     if sz:
@@ -172,6 +172,19 @@ def run(text, b=False, i=False, code=False, u=None, sz=None, color=None, style=N
         rpr += '<w:u w:val="%s"/>' % u
     rpr += LANG
     return '<w:r><w:rPr>%s</w:rPr><w:t xml:space="preserve">%s</w:t></w:r>' % (rpr, escape(text))
+
+
+def code_runs(text, b=False, i=False, sz=None):
+    """`kodas`: tekste – stilius Kodas (fonas, iš šonų siauri neskaidomi tarpai, kad fonas neliestų raidžių);
+    lentelėje (sz nurodytas) – Kodas lentelėje be fono, 1 pt mažesnis už lentelės tekstą.
+    Trumpo kodo tarpai neskaidomi, kad, pvz., „1:N“, „NOT NULL“ nebūtų perkelti į kitą eilutę; ilgesnės sąlygos
+    (pvz., „L.pradžia < pabaiga“) keliamos per tarpus, kitaip abipusė lygiuotė ištempia eilutę."""
+    if len(text) <= 13:
+        text = text.replace(' ', '\u00a0')
+    if sz:
+        return run(text, b=b, i=i, sz=sz - 2, style='KodasLenteleje', upright=True)
+    pad = run('\u00a0', sz=6, style='Kodas', upright=True)
+    return pad + run(text, b=b, i=i, code=True, upright=True) + pad
 
 
 def inline(doc, text, b=False, i=False, sz=None):
@@ -184,7 +197,7 @@ def inline(doc, text, b=False, i=False, sz=None):
         if g['b'] is not None:
             out.append(inline(doc, g['b'], b=True, i=i, sz=sz))
         elif g['c'] is not None:
-            out.append(run(g['c'], b=b, i=i, code=True, sz=(sz - 1 if sz else None)))
+            out.append(code_runs(g['c'], b=b, i=i, sz=sz))
         elif g['i'] is not None or g['i2'] is not None:
             out.append(inline(doc, g['i'] if g['i'] is not None else g['i2'], b=b, i=True, sz=sz))
         elif g['u'] is not None:
@@ -964,7 +977,7 @@ STYLES = ''.join([
     _style('Saltiniusarasas', 'Šaltinių sąrašas', '<w:jc w:val="left"/>', based='ListParagraph'),
     # paveikslai, lentelės, pavadinimai
     _style('Caption', 'caption', '<w:keepLines/>' + _sp(60, 240) + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>',
-           custom=False, extra=NEXT),
+           '<w:i/><w:iCs/>' + _sz(22), custom=False, extra=NEXT),
     _style('Paveikslas', 'Paveikslas', '<w:keepNext/>' + _sp(120, 60) + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>'),
     _style('Paveikslosaltiniai', 'Paveikslo šaltiniai', _sp() + '<w:ind w:firstLine="0"/><w:jc w:val="center"/>', _sz(18)),
     _style('Lentelestekstas', 'Lentelės tekstas', _sp(20, 20) + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>', _sz(20)),
@@ -983,8 +996,11 @@ STYLES = ''.join([
     _style('Footer', 'footer', '<w:tabs><w:tab w:val="center" w:pos="4153"/><w:tab w:val="right" w:pos="8306"/></w:tabs>'
            + _sp() + '<w:ind w:firstLine="0"/><w:jc w:val="left"/>', custom=False),
     # simbolių stiliai
-    _style('Kodas', 'Kodas', rpr='<w:rFonts w:ascii="Courier New" w:hAnsi="Courier New" w:cs="Courier New"/>' + _sz(21),
+    _style('Kodas', 'Kodas', rpr='<w:rFonts w:ascii="Consolas" w:hAnsi="Consolas" w:cs="Consolas"/><w:i w:val="0"/>'
+           '<w:iCs w:val="0"/>' + _sz(21) + '<w:shd w:val="clear" w:color="auto" w:fill="E8EDF4"/>',
            based='DefaultParagraphFont', typ='character'),
+    _style('KodasLenteleje', 'Kodas lentelėje', rpr='<w:rFonts w:ascii="Consolas" w:hAnsi="Consolas" w:cs="Consolas"/>'
+           '<w:i w:val="0"/><w:iCs w:val="0"/>', based='DefaultParagraphFont', typ='character'),
     _style('Vidinenuoroda', 'Vidinė nuoroda', rpr='<w:color w:val="1F4E79"/>', based='DefaultParagraphFont', typ='character'),
     # titulinis lapas: be Normal paveldėjimo (šablono numatytasis formatavimas), lygiuotė – stiliuje
     _style('Titulinislapas', 'Titulinis lapas', based=None),

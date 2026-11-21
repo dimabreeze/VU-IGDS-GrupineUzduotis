@@ -19,14 +19,14 @@ Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius. Sau
 | PA3 | Peržiūrėti savo rezervacijas | K | P2 | DS5 R | Nuoma | 2 | – | TA1 (1) |
 | PA4 | Keisti rezervaciją | K, D | P2 | DS4 R, DS5 R/W | Nuoma, Klientas, Kategorija („turi teisę“) | 2 → PA6, PA7 | – | TA1 (2–6), TA2 (5), TA3 (5) |
 | PA5 | Atšaukti rezervaciją | K, D | P2 | DS5 W | Nuoma | 2 | – | pagal PA |
-| PA6 | Tikrinti motociklo užimtumą | – | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, *tikrintiUzimtuma* | EKRANAS02 (atmetimas) | TA1 (2–8), TA4 (1) |
-| PA7 | Tikrinti vairuotojo pažymėjimą | – | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, *tikrintiKlientoTeise* | EKRANAS02 (atmetimas) | TA2 (1–5) |
+| PA6 | Tikrinti motociklo užimtumą | – | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, `tikrintiUzimtuma` | EKRANAS02 (atmetimas) | TA1 (2–8), TA4 (1) |
+| PA7 | Tikrinti vairuotojo pažymėjimą | – | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, `tikrintiKlientoTeise` | EKRANAS02 (atmetimas) | TA2 (1–5) |
 | | **FR 1.2.3 Išdavimas ir grąžinimas** | | | | | | | |
 | PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | D | P3 | DS2, DS4, DS5 R | Nuoma, Motociklas, Klientas | 2 | EKRANAS04 | TA3 (1) |
 | PA9 | Įforminti išdavimą | D | P3 | DS5 R/W | Išdavimas, Nuoma, Darbuotojas | 2 → PA12 | EKRANAS04 | TA3 (2, 6) |
 | PA10 | Įforminti grąžinimą | D | P3 | DS3 R, DS5 W, DS2 W | Grąžinimas, Nuoma, Darbuotojas | 2 → PA12, PA13, PA14 [grąžinta pavėluotai], PA15 [kitas filialas] | EKRANAS04 | TA3 (3, 4, 7) |
 | PA12 | Užfiksuoti ridą ir būklę | – | P3 | DS5 W, DS2 W | Išdavimas, Grąžinimas, Motociklas (Rida) | 3 | EKRANAS04 | TA3 (3, 4, 6, 7) |
-| PA13 | Apskaičiuoti galutinę nuomos kainą | – | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, *skaiciuotiKaina* | EKRANAS04 | TA3 (4, 7) |
+| PA13 | Apskaičiuoti galutinę nuomos kainą | – | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, `skaiciuotiKaina` | EKRANAS04 | TA3 (4, 7) |
 | PA14 | Apskaičiuoti baudą už pavėluotą grąžinimą | – | P3 | DS3 R, DS5 W | Baudos pakopa, Grąžinimas (Bauda) | 3 [grąžinta pavėluotai] | EKRANAS04 | TA3 (4) |
 | PA15 | Grąžinti į kitą filialą | – | P3 | DS2 W | Motociklas, Filialas (ryšys „yra“) | 3 [kitas filialas] | – | pagal PA |
 | | **FR 1.2.4 Techninė priežiūra** | | | | | | | |
@@ -52,10 +52,10 @@ Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas p
 | NFR 1.3.2.1 Kalbos | Perjungiklis LT \| EN visuose ekranuose | Kalbos perjungimas kiekviename puslapyje |
 | NFR 1.3.2.2 Darbuotojo mokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; EKRANAS04; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
 | NFR 1.3.2.3 Trumpas rezervacijos kelias | EKRANAS01 → EKRANAS02 → EKRANAS03 | TA2 (4) |
-| NFR 1.3.2.4 Aiški atsisakymo priežastis | *tikrintiUzimtuma* ir *tikrintiKlientoTeise* grąžina priežastį; EKRANAS02 (atmetimas), EKRANAS04 (įspėjimas) | TA1–TA4 |
+| NFR 1.3.2.4 Aiški atsisakymo priežastis | `tikrintiUzimtuma` ir `tikrintiKlientoTeise` grąžina priežastį; EKRANAS02 (atmetimas), EKRANAS04 (įspėjimas) | TA1–TA4 |
 | NFR 1.3.3.1 Atsako laikas | Užraktas laikomas tik transakcijos metu (`12-funkcijos.md`) | Našumo ir apkrovos testavimas |
 | NFR 1.3.3.2 Pasiekiamumas | Sintetinė stebėsena veikimo etape (Ganto diagrama, 6.3) | Naktiniai sintetiniai testai |
-| NFR 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš *tikrintiUzimtuma* | TA4 |
+| NFR 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš `tikrintiUzimtuma` | TA4 |
 | NFR 1.3.4.1 Duomenų dubliavimas ir atsarginės kopijos | Gamybinė infrastruktūra ir atkūrimo patikra (Ganto diagrama, 5.1, 6.4) | Atkūrimo bandymas |
 | NFR 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas netrinami; nuomos būsena „užbaigta“ (`08`, `10`) | Bandymas ištrinti užbaigtą nuomą |
 | NFR 1.3.4.3 Klaidų taisymas ir atnaujinimai | Garantinė priežiūra (Ganto diagrama, 6.1) | Netestuojamas – priežiūros darbų tvarka, ne programos savybė |
@@ -73,7 +73,7 @@ Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas p
 | Kiekvienas procesas P1–P7 turi panaudos atvejį ir šaką struktūrinėje schemoje | Taip |
 | Kiekviena saugykla DS1–DS8 turi rašantį ir skaitantį procesą | Taip; Kategoriją (DS2) joks procesas nerašo, nes tai klasifikatorius, įvedamas diegiant sistemą |
 | Kiekviena esybė (16) ir lentelė (18) priklauso saugyklai ir reikalavimui | Taip (`08` aprėpties lentelė, `10` „Ryšys su loginiu modeliu…“) |
-| Kiekviena 2.2.1 skyriaus funkcija turi panaudos atvejį ir testavimo atvejį | Taip: *tikrintiUzimtuma* – PA6, TA1, TA4; *tikrintiKlientoTeise* – PA7, TA2; *skaiciuotiKaina* – PA13, PA14, TA3 |
+| Kiekviena 2.2.1 skyriaus funkcija turi panaudos atvejį ir testavimo atvejį | Taip: `tikrintiUzimtuma` – PA6, TA1, TA4; `tikrintiKlientoTeise` – PA7, TA2; `skaiciuotiKaina` – PA13, PA14, TA3 |
 | Kiekvienas testavimo atvejis susietas su panaudos atvejais ir reikalavimais | Taip (TA1–TA4) |
 | Kiekvienas maketas EKRANAS01–EKRANAS05 susietas su panaudos atvejais ir reikalavimais | Taip |
 | Perspektyviniai reikalavimai PR 1.6.1–PR 1.6.4 neįtraukti į diagramas, duomenų modelį ir testus | Taip; minimi tik 1.6 skyriuje ir Ganto diagramoje (6.5) |

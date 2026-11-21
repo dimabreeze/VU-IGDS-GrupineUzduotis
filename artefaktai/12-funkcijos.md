@@ -30,7 +30,7 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 **Dabartinis laikas** – sistemos laikrodžio reikšmė. Funkcijos jo negauna kaip įėjimo.
 
-## 1. tikrintiUzimtuma – Tikrinti motociklo užimtumą
+## 1. `tikrintiUzimtuma` – Tikrinti motociklo užimtumą
 
 **Paskirtis.** Patikrina, ar motociklas norimu laikotarpiu užimtas: ar laikotarpis sutampa su kitu to motociklo užimtumo laikotarpiu ir ar pažeidžiama motociklo buvimo vietos taisyklė. Funkcija duomenų nekeičia. Ją kviečia:
 
@@ -43,29 +43,32 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| motociklasId | INTEGER | Tikrinamas motociklas |
-| pradzia | TIMESTAMP | Naujo laikotarpio pradžia |
-| pabaiga | TIMESTAMP | Naujo laikotarpio pabaiga |
-| pradziosFilialasId | INTEGER, gali būti tuščias | Nuomos išdavimo filialas arba perkėlimo filialas „iš“; techninei priežiūrai tuščias |
-| pabaigosFilialasId | INTEGER, gali būti tuščias | Nuomos grąžinimo filialas arba perkėlimo filialas „į“; techninei priežiūrai tuščias |
-| keiciamaNuomaId | INTEGER, gali būti tuščias | Keičiama rezervacija (PA4); jos senasis laikotarpis netikrinamas |
+| `motociklasId` | `INTEGER` | Tikrinamas motociklas |
+| `pradzia` | `TIMESTAMP` | Naujo laikotarpio pradžia |
+| `pabaiga` | `TIMESTAMP` | Naujo laikotarpio pabaiga |
+| `pradziosFilialasId` | `INTEGER`, gali būti tuščias | Nuomos išdavimo filialas arba perkėlimo filialas „iš“; techninei priežiūrai tuščias |
+| `pabaigosFilialasId` | `INTEGER`, gali būti tuščias | Nuomos grąžinimo filialas arba perkėlimo filialas „į“; techninei priežiūrai tuščias |
+| `keiciamaNuomaId` | `INTEGER`, gali būti tuščias | Keičiama rezervacija (PA4); jos senasis laikotarpis netikrinamas |
 
 **Algoritmas.**
 
-1. Nuskaityti motociklą. Jei jis nebenaudojamas, grąžinti (true, „Motociklas nebenaudojamas“).
+1. Nuskaityti motociklą. Jei jis nebenaudojamas, grąžinti (`true`, „Motociklas nebenaudojamas“).
 2. Surinkti dar nesibaigusius motociklo užimtumo laikotarpius:
    - rezervuotas ir vykstančias nuomas, išskyrus `keiciamaNuomaId`;
    - techninę priežiūrą ir perkėlimus, kurių pabaiga vėlesnė už dabartinį laiką.
 
    Pasibaigusių laikotarpių nereikia: grąžinant ir baigiantis perkėlimui sistema įrašo naują motociklo filialą, todėl jų rezultatas jau yra motociklo duomenyse.
-3. Jei kuris nors laikotarpis L sutampa su naujuoju (L.pradžia < pabaiga ir pradzia < L.pabaiga), grąžinti (true, „Motociklas užimtas {L.pradžia} – {L.pabaiga} ({nuoma / techninė priežiūra / perkėlimas})“).
-4. Jei `pradziosFilialasId` tuščias (techninė priežiūra), grąžinti (false, –): priežiūra motociklo vietos nekeičia.
-5. Rasti ankstesnį laikotarpį – paskutinę 2 žingsnio nuomą ar perkėlimą, kurio pabaiga ≤ pradzia. Motociklo filialas laikotarpio pradžioje yra ankstesnio laikotarpio pabaigos filialas, o jei tokio laikotarpio nėra – dabartinis motociklo filialas.
-6. Jei šis filialas ≠ `pradziosFilialasId`, grąžinti (true, „Laikotarpio pradžioje motociklas bus filiale {filialas}“).
-7. Rasti kitą laikotarpį – pirmą 2 žingsnio nuomą ar perkėlimą, kurio pradžia ≥ pabaiga. Jei toks yra ir jo pradžios filialas ≠ `pabaigosFilialasId`, grąžinti (true, „Motociklą reikia grąžinti į filialą {filialas}, nes {data} ten prasideda kita jo nuoma“; jei kitas laikotarpis – perkėlimas, pabaiga „… kitas jo perkėlimas“).
-8. Grąžinti (false, –).
+3. Jei kuris nors laikotarpis L sutampa su naujuoju (`L.pradžia < pabaiga` ir `pradzia < L.pabaiga`), grąžinti (`true`, „Motociklas užimtas {L.pradžia} – {L.pabaiga} ({nuoma / techninė priežiūra / perkėlimas})“).
+4. Jei `pradziosFilialasId` tuščias (techninė priežiūra), grąžinti (`false`, –): priežiūra motociklo vietos nekeičia.
+5. Rasti ankstesnį laikotarpį – paskutinę 2 žingsnio nuomą ar perkėlimą, kurio `pabaiga ≤ pradzia`. Motociklo filialas laikotarpio pradžioje yra ankstesnio laikotarpio pabaigos filialas, o jei tokio laikotarpio nėra – dabartinis motociklo filialas.
+6. Jei šis filialas ≠ `pradziosFilialasId`, grąžinti (`true`, „Laikotarpio pradžioje motociklas bus filiale {filialas}“).
+7. Rasti kitą laikotarpį – pirmą 2 žingsnio nuomą ar perkėlimą, kurio `pradžia ≥ pabaiga`. Jei toks yra ir jo pradžios filialas ≠ `pabaigosFilialasId`, grąžinti (`true`, „Motociklą reikia grąžinti į filialą {filialas}, nes {data} ten prasideda kita jo nuoma“; jei kitas laikotarpis – perkėlimas, pabaiga „… kitas jo perkėlimas“).
+8. Grąžinti (`false`, –).
 
-**Išėjimas.** `uzimtas` BOOLEAN – true, jei laikotarpio įrašyti negalima; `priezastis` VARCHAR(255) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `uzimtas` (`BOOLEAN`) – `true`, jei laikotarpio įrašyti negalima;
+- `priezastis` (`VARCHAR(255)`) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
 
 **Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (paveikslai `12-sutapimas.png` ir `08-buvimo-vietos-taisykle.png`):
 
@@ -108,7 +111,7 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 ![Pavėluotas grąžinimas ir kitos rezervacijos pradžios pakeitimas](12-pavelavimas.png)
 
-## 2. tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
+## 2. `tikrintiKlientoTeise` – Tikrinti vairuotojo pažymėjimą
 
 **Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
 
@@ -116,24 +119,27 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| klientasId | INTEGER | Klientas, kuriam rezervuojama |
-| motociklasId | INTEGER | Rezervuojamas motociklas |
-| pabaiga | TIMESTAMP | Planuojama nuomos pabaiga |
+| `klientasId` | `INTEGER` | Klientas, kuriam rezervuojama |
+| `motociklasId` | `INTEGER` | Rezervuojamas motociklas |
+| `pabaiga` | `TIMESTAMP` | Planuojama nuomos pabaiga |
 
 **Algoritmas.**
 
 1. Reikiama kategorija – motociklo modelio „Kategorijos kodas“.
-2. Rasti kliento kategoriją su šiuo kodu. Jei jos nėra, grąžinti (false, „Vairuotojo pažymėjime nėra {kodas} kategorijos“).
-3. Jei kategorijos „Galioja iki“ data ankstesnė už nuomos pabaigos datą, grąžinti (false, „{kodas} kategorija galioja iki {data}, o nuoma baigiasi {data}“). Kategorija, kuri baigia galioti nuomos pabaigos dieną, dar tinka.
-4. Grąžinti (true, –).
+2. Rasti kliento kategoriją su šiuo kodu. Jei jos nėra, grąžinti (`false`, „Vairuotojo pažymėjime nėra {kodas} kategorijos“).
+3. Jei kategorijos „Galioja iki“ data ankstesnė už nuomos pabaigos datą, grąžinti (`false`, „{kodas} kategorija galioja iki {data}, o nuoma baigiasi {data}“). Kategorija, kuri baigia galioti nuomos pabaigos dieną, dar tinka.
+4. Grąžinti (`true`, –).
 
-**Išėjimas.** `turiTeise` BOOLEAN – true, jei klientas turi teisę vairuoti motociklą visą nuomos laikotarpį; `priezastis` VARCHAR(255) – kodėl neturi (tuščia, kai turi).
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `turiTeise` (`BOOLEAN`) – `true`, jei klientas turi teisę vairuoti motociklą visą nuomos laikotarpį;
+- `priezastis` (`VARCHAR(255)`) – kodėl neturi (tuščia, kai turi).
 
 Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl jei ji galioja nuomos pabaigoje, galioja ir pradžioje. Tikrinamas tik tikslus kategorijos kodas: kuri kategorija apima kurią, sistema nesaugo, o registruojant pažymėjimą pažymimos visos kategorijos, kurias jis suteikia (pvz., turint A – ir A1, A2; `08-loginis-er.md`).
 
 **Pavyzdžiai.** Klientas, kurio A kategorija galioja iki 2027-05-10, gali išsinuomoti F 900 R 2027-04-14 – 2027-04-18, bet ne iki 2027-05-12 („A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“). Klientui, turinčiam tik A1, Panigale V2 neleidžiama („Vairuotojo pažymėjime nėra A kategorijos“).
 
-## 3. skaiciuotiKaina – Apskaičiuoti galutinę nuomos kainą
+## 3. `skaiciuotiKaina` – Apskaičiuoti galutinę nuomos kainą
 
 **Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (FR 1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (FR 1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (`10-lenteles.md`, „Normalizacija“).
 
@@ -141,19 +147,22 @@ Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl j
 
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| nuomaId | INTEGER | Grąžinama nuoma |
-| grazinimoLaikas | TIMESTAMP | Faktinis grąžinimo laikas |
+| `nuomaId` | `INTEGER` | Grąžinama nuoma |
+| `grazinimoLaikas` | `TIMESTAMP` | Faktinis grąžinimo laikas |
 
 **Algoritmas.**
 
 1. Nuskaityti nuomos planuojamą pradžią ir pabaigą bei nuomos tarifo paros kainą.
-2. paros = ⌈(planuojama pabaiga − planuojama pradžia) / 24 val.⌉ – parų skaičius, suapvalintas į viršų. Pabaiga visada vėlesnė už pradžią (CHECK apribojimas lentelėje Nuoma), todėl paros ≥ 1. Jei taip nėra, funkcija grąžina klaidą ir kainos neskaičiuoja.
-3. nuomosKaina = paros × paros kaina.
-4. velavimas = (grazinimoLaikas − planuojama pabaiga) valandomis.
-5. Jei velavimas ≤ 0, bauda = 0: grąžinus anksčiau kaina nemažinama. Kitaip (PA14) imama tarifo baudos pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, neviršijančia vėlavimo; bauda = jos suma. Jei tokios pakopos nėra (vėluojama mažiau nei pirmoji pakopa arba tarifas pakopų neturi), bauda = 0.
-6. galutineKaina = nuomosKaina + bauda.
+2. `paros` = ⌈(planuojama pabaiga − planuojama pradžia) / 24 val.⌉ – parų skaičius, suapvalintas į viršų. Pabaiga visada vėlesnė už pradžią (`CHECK` apribojimas lentelėje Nuoma), todėl `paros ≥ 1`. Jei taip nėra, funkcija grąžina klaidą ir kainos neskaičiuoja.
+3. `nuomosKaina` = `paros` × paros kaina.
+4. `velavimas` = (`grazinimoLaikas` − planuojama pabaiga) valandomis.
+5. Jei `velavimas ≤ 0`, `bauda = 0`: grąžinus anksčiau kaina nemažinama. Kitaip (PA14) imama tarifo baudos pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, neviršijančia vėlavimo; `bauda` = jos suma. Jei tokios pakopos nėra (vėluojama mažiau nei pirmoji pakopa arba tarifas pakopų neturi), `bauda = 0`.
+6. `galutineKaina = nuomosKaina + bauda`.
 
-**Išėjimas.** `galutineKaina` DECIMAL(10,2) – visa suma eurais su bauda; `bauda` DECIMAL(10,2) – bauda už pavėluotą grąžinimą eurais.
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `galutineKaina` (`DECIMAL(10,2)`) – visa suma eurais su bauda;
+- `bauda` (`DECIMAL(10,2)`) – bauda už pavėluotą grąžinimą eurais.
 
 Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (FR 1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
 

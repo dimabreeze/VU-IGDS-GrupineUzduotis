@@ -502,28 +502,28 @@ Kiekvieno ryšio kardinalumo pagrindimas ir privalomumas (ar ryšio pusėje gali
 Lentelė: Loginės ER diagramos ryšiai {#lent:ryšiai-log}
 | Ryšys | Esybės ir kardinalumas | Paaiškinimas |
 |---|---|---|
-| reikalauja | Kategorija 1 : N Motociklo modelis | Modeliui vairuoti reikalinga kategorija |
-| gamina | Gamintojas 1 : N Motociklo modelis | Modelio gamintojas |
-| priklauso | Motociklo tipas 1 : N Motociklo modelis | Modelio tipas |
-| turi teisę | Klientas M : N Kategorija; ryšio atributas „Galioja iki“ | Kategorijos kliento pažymėjime; kiekvienos kategorijos galiojimo data saugoma atskirai |
-| apibūdina | Motociklo modelis 1 : N Motociklas | Kiekvienas motociklas priklauso vienam modeliui |
-| taikomas | Motociklo modelis 1 : N Tarifas | Modelio tarifai skirtingais laikotarpiais |
-| apima (silpnas) | Tarifas 1 : N Baudos pakopa | Baudų tarifų lentelė priklauso tarifui |
-| įkainojama | Tarifas 1 : N Nuoma | Tarifas, galiojęs rezervavimo dieną; pagal jį apskaičiuojama nuomos kaina, užstatas ir bauda |
-| yra | Filialas 1 : N Motociklas | Filialas, kuriame motociklas yra dabar |
-| nuomojamas | Motociklas 1 : N Nuoma | Kuris motociklas nuomojamas |
-| užsako | Klientas 1 : N Nuoma | Kieno rezervacija |
-| išduodama, grąžinama | Filialas 1 : N Nuoma (du ryšiai) | Išdavimo ir grąžinimo filialai, pasirenkami rezervuojant |
-| užregistravo | Darbuotojas 1 : N Nuoma | Darbuotojas, užregistravęs rezervaciją kliento vardu (jei rezervavo pats klientas, ryšio nėra) |
-| pradedama, baigiama (silpni) | Nuoma 1 : 1 Išdavimas, Nuoma 1 : 1 Grąžinimas | Išdavimas ir grąžinimas egzistuoja tik kartu su nuoma |
-| išdavė, priėmė | Darbuotojas 1 : N Išdavimas, Darbuotojas 1 : N Grąžinimas | Kas išdavė ir kas priėmė motociklą |
-| prižiūrimas | Motociklas 1 : N Techninė priežiūra | Motociklo priežiūros laikotarpiai |
-| planuoja | Darbuotojas 1 : N Techninė priežiūra | Kas suplanavo priežiūrą |
-| perkeliamas | Motociklas M : N Perkėlimas | Vienu perkėlimu vežamas vienas ar keli motociklai |
-| perkeliama iš, perkeliama į | Filialas 1 : N Perkėlimas (du ryšiai) | Iš kurio ir į kurį filialą perkeliama |
-| organizuoja | Darbuotojas 1 : N Perkėlimas | Administratorius, suplanavęs perkėlimą |
-| dirba | Filialas 1 : N Darbuotojas | Darbuotojo filialas (administratorius gali būti nepriskirtas filialui) |
-| naudoja | Klientas 1 : 1 Paskyra, Darbuotojas 1 : 1 Paskyra | Prisijungimo paskyra |
+| reikalauja | Kategorija `1:N` Motociklo modelis | Modeliui vairuoti reikalinga kategorija |
+| gamina | Gamintojas `1:N` Motociklo modelis | Modelio gamintojas |
+| priklauso | Motociklo tipas `1:N` Motociklo modelis | Modelio tipas |
+| turi teisę | Klientas `M:N` Kategorija; ryšio atributas „Galioja iki“ | Kategorijos kliento pažymėjime; kiekvienos kategorijos galiojimo data saugoma atskirai |
+| apibūdina | Motociklo modelis `1:N` Motociklas | Kiekvienas motociklas priklauso vienam modeliui |
+| taikomas | Motociklo modelis `1:N` Tarifas | Modelio tarifai skirtingais laikotarpiais |
+| apima (silpnas) | Tarifas `1:N` Baudos pakopa | Baudų tarifų lentelė priklauso tarifui |
+| įkainojama | Tarifas `1:N` Nuoma | Tarifas, galiojęs rezervavimo dieną; pagal jį apskaičiuojama nuomos kaina, užstatas ir bauda |
+| yra | Filialas `1:N` Motociklas | Filialas, kuriame motociklas yra dabar |
+| nuomojamas | Motociklas `1:N` Nuoma | Kuris motociklas nuomojamas |
+| užsako | Klientas `1:N` Nuoma | Kieno rezervacija |
+| išduodama, grąžinama | Filialas `1:N` Nuoma (du ryšiai) | Išdavimo ir grąžinimo filialai, pasirenkami rezervuojant |
+| užregistravo | Darbuotojas `1:N` Nuoma | Darbuotojas, užregistravęs rezervaciją kliento vardu (jei rezervavo pats klientas, ryšio nėra) |
+| pradedama, baigiama (silpni) | Nuoma `1:1` Išdavimas, Nuoma `1:1` Grąžinimas | Išdavimas ir grąžinimas egzistuoja tik kartu su nuoma |
+| išdavė, priėmė | Darbuotojas `1:N` Išdavimas, Darbuotojas `1:N` Grąžinimas | Kas išdavė ir kas priėmė motociklą |
+| prižiūrimas | Motociklas `1:N` Techninė priežiūra | Motociklo priežiūros laikotarpiai |
+| planuoja | Darbuotojas `1:N` Techninė priežiūra | Kas suplanavo priežiūrą |
+| perkeliamas | Motociklas `M:N` Perkėlimas | Vienu perkėlimu vežamas vienas ar keli motociklai |
+| perkeliama iš, perkeliama į | Filialas `1:N` Perkėlimas (du ryšiai) | Iš kurio ir į kurį filialą perkeliama |
+| organizuoja | Darbuotojas `1:N` Perkėlimas | Administratorius, suplanavęs perkėlimą |
+| dirba | Filialas `1:N` Darbuotojas | Darbuotojo filialas (administratorius gali būti nepriskirtas filialui) |
+| naudoja | Klientas `1:1` Paskyra, Darbuotojas `1:1` Paskyra | Prisijungimo paskyra |
 
 #### Modelio sprendimai
 
@@ -652,7 +652,7 @@ Lentelėje kiekviena funkcija nurodyta vieną kartą; „Tikrinti motociklo uži
 
 ### 2.1.2. Duomenų modelis
 
-Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekviena esybė tapo lentele, M : N ryšiai – atskiromis lentelėmis, o 1 : N ir 1 : 1 ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – 2.2.2 skyriaus poskyris „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (NOT NULL, UNIQUE, CHECK, numatytosios reikšmės) aprašyti lentelių aprašyme.
+Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekviena esybė tapo lentele, `M:N` ryšiai – atskiromis lentelėmis, o `1:N` ir `1:1` ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – 2.2.2 skyriaus poskyris „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (`NOT NULL`, `UNIQUE`, `CHECK`, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
 
 ::: gulscias
@@ -690,7 +690,7 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 **Dabartinis laikas** – sistemos laikrodžio reikšmė. Funkcijos jo negauna kaip įėjimo.
 
-#### tikrintiUzimtuma – Tikrinti motociklo užimtumą
+#### `tikrintiUzimtuma` – Tikrinti motociklo užimtumą
 
 **Paskirtis.** Patikrina, ar motociklas norimu laikotarpiu užimtas: ar laikotarpis sutampa su kitu to motociklo užimtumo laikotarpiu ir ar pažeidžiama motociklo buvimo vietos taisyklė. Funkcija duomenų nekeičia. Ją kviečia:
 
@@ -704,27 +704,30 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 Lentelė: Funkcijos `tikrintiUzimtuma` įėjimai
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| motociklasId | INTEGER | Tikrinamas motociklas |
-| pradzia | TIMESTAMP | Naujo laikotarpio pradžia |
-| pabaiga | TIMESTAMP | Naujo laikotarpio pabaiga |
-| pradziosFilialasId | INTEGER, gali būti tuščias | Nuomos išdavimo filialas arba perkėlimo filialas „iš“; techninei priežiūrai tuščias |
-| pabaigosFilialasId | INTEGER, gali būti tuščias | Nuomos grąžinimo filialas arba perkėlimo filialas „į“; techninei priežiūrai tuščias |
-| keiciamaNuomaId | INTEGER, gali būti tuščias | Keičiama rezervacija (PA4); jos senasis laikotarpis netikrinamas |
+| `motociklasId` | `INTEGER` | Tikrinamas motociklas |
+| `pradzia` | `TIMESTAMP` | Naujo laikotarpio pradžia |
+| `pabaiga` | `TIMESTAMP` | Naujo laikotarpio pabaiga |
+| `pradziosFilialasId` | `INTEGER`, gali būti tuščias | Nuomos išdavimo filialas arba perkėlimo filialas „iš“; techninei priežiūrai tuščias |
+| `pabaigosFilialasId` | `INTEGER`, gali būti tuščias | Nuomos grąžinimo filialas arba perkėlimo filialas „į“; techninei priežiūrai tuščias |
+| `keiciamaNuomaId` | `INTEGER`, gali būti tuščias | Keičiama rezervacija (PA4); jos senasis laikotarpis netikrinamas |
 
 **Algoritmas.**
 
-1. Nuskaityti motociklą. Jei jis nebenaudojamas, grąžinti (true, „Motociklas nebenaudojamas“).
+1. Nuskaityti motociklą. Jei jis nebenaudojamas, grąžinti (`true`, „Motociklas nebenaudojamas“).
 2. Surinkti dar nesibaigusius motociklo užimtumo laikotarpius (pasibaigusių nereikia: grąžinant ir baigiantis perkėlimui sistema įrašo naują motociklo filialą, todėl jų rezultatas jau yra motociklo duomenyse):
    - rezervuotas ir vykstančias nuomas, išskyrus `keiciamaNuomaId`;
    - techninę priežiūrą ir perkėlimus, kurių pabaiga vėlesnė už dabartinį laiką.
-3. Jei kuris nors laikotarpis L sutampa su naujuoju (L.pradžia < pabaiga ir pradzia < L.pabaiga), grąžinti (true, „Motociklas užimtas {L.pradžia} – {L.pabaiga} ({nuoma / techninė priežiūra / perkėlimas})“).
-4. Jei `pradziosFilialasId` tuščias (techninė priežiūra), grąžinti (false, –): priežiūra motociklo vietos nekeičia.
-5. Rasti ankstesnį laikotarpį – paskutinę 2 žingsnio nuomą ar perkėlimą, kurio pabaiga ≤ pradzia. Motociklo filialas laikotarpio pradžioje yra ankstesnio laikotarpio pabaigos filialas, o jei tokio laikotarpio nėra – dabartinis motociklo filialas.
-6. Jei šis filialas ≠ `pradziosFilialasId`, grąžinti (true, „Laikotarpio pradžioje motociklas bus filiale {filialas}“).
-7. Rasti kitą laikotarpį – pirmą 2 žingsnio nuomą ar perkėlimą, kurio pradžia ≥ pabaiga. Jei toks yra ir jo pradžios filialas ≠ `pabaigosFilialasId`, grąžinti (true, „Motociklą reikia grąžinti į filialą {filialas}, nes {data} ten prasideda kita jo nuoma“; jei kitas laikotarpis – perkėlimas, pabaiga „… kitas jo perkėlimas“).
-8. Grąžinti (false, –).
+3. Jei kuris nors laikotarpis L sutampa su naujuoju (`L.pradžia < pabaiga` ir `pradzia < L.pabaiga`), grąžinti (`true`, „Motociklas užimtas {L.pradžia} – {L.pabaiga} ({nuoma / techninė priežiūra / perkėlimas})“).
+4. Jei `pradziosFilialasId` tuščias (techninė priežiūra), grąžinti (`false`, –): priežiūra motociklo vietos nekeičia.
+5. Rasti ankstesnį laikotarpį – paskutinę 2 žingsnio nuomą ar perkėlimą, kurio `pabaiga ≤ pradzia`. Motociklo filialas laikotarpio pradžioje yra ankstesnio laikotarpio pabaigos filialas, o jei tokio laikotarpio nėra – dabartinis motociklo filialas.
+6. Jei šis filialas ≠ `pradziosFilialasId`, grąžinti (`true`, „Laikotarpio pradžioje motociklas bus filiale {filialas}“).
+7. Rasti kitą laikotarpį – pirmą 2 žingsnio nuomą ar perkėlimą, kurio `pradžia ≥ pabaiga`. Jei toks yra ir jo pradžios filialas ≠ `pabaigosFilialasId`, grąžinti (`true`, „Motociklą reikia grąžinti į filialą {filialas}, nes {data} ten prasideda kita jo nuoma“; jei kitas laikotarpis – perkėlimas, pabaiga „… kitas jo perkėlimas“).
+8. Grąžinti (`false`, –).
 
-**Išėjimas.** `uzimtas` BOOLEAN – true, jei laikotarpio įrašyti negalima; `priezastis` VARCHAR(255) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `uzimtas` (`BOOLEAN`) – `true`, jei laikotarpio įrašyti negalima;
+- `priezastis` (`VARCHAR(255)`) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
 
 **Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (@pav:sutapimas ir @pav:buvimo-vieta pav.):
 
@@ -763,7 +766,7 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 ![Pavėluotas grąžinimas ir kitos rezervacijos pradžios pakeitimas {#pav:pavelavimas}](../artefaktai/12-pavelavimas.png){failai=../artefaktai/12-pavelavimas.drawio,../artefaktai/12-pavelavimas.png}
 
-#### tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
+#### `tikrintiKlientoTeise` – Tikrinti vairuotojo pažymėjimą
 
 **Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
 
@@ -772,24 +775,27 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 Lentelė: Funkcijos `tikrintiKlientoTeise` įėjimai
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| klientasId | INTEGER | Klientas, kuriam rezervuojama |
-| motociklasId | INTEGER | Rezervuojamas motociklas |
-| pabaiga | TIMESTAMP | Planuojama nuomos pabaiga |
+| `klientasId` | `INTEGER` | Klientas, kuriam rezervuojama |
+| `motociklasId` | `INTEGER` | Rezervuojamas motociklas |
+| `pabaiga` | `TIMESTAMP` | Planuojama nuomos pabaiga |
 
 **Algoritmas.**
 
 1. Reikiama kategorija – motociklo modelio „Kategorijos kodas“.
-2. Rasti kliento kategoriją su šiuo kodu. Jei jos nėra, grąžinti (false, „Vairuotojo pažymėjime nėra {kodas} kategorijos“).
-3. Jei kategorijos „Galioja iki“ data ankstesnė už nuomos pabaigos datą, grąžinti (false, „{kodas} kategorija galioja iki {data}, o nuoma baigiasi {data}“). Kategorija, kuri baigia galioti nuomos pabaigos dieną, dar tinka.
-4. Grąžinti (true, –).
+2. Rasti kliento kategoriją su šiuo kodu. Jei jos nėra, grąžinti (`false`, „Vairuotojo pažymėjime nėra {kodas} kategorijos“).
+3. Jei kategorijos „Galioja iki“ data ankstesnė už nuomos pabaigos datą, grąžinti (`false`, „{kodas} kategorija galioja iki {data}, o nuoma baigiasi {data}“). Kategorija, kuri baigia galioti nuomos pabaigos dieną, dar tinka.
+4. Grąžinti (`true`, –).
 
-**Išėjimas.** `turiTeise` BOOLEAN – true, jei klientas turi teisę vairuoti motociklą visą nuomos laikotarpį; `priezastis` VARCHAR(255) – kodėl neturi (tuščia, kai turi).
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `turiTeise` (`BOOLEAN`) – `true`, jei klientas turi teisę vairuoti motociklą visą nuomos laikotarpį;
+- `priezastis` (`VARCHAR(255)`) – kodėl neturi (tuščia, kai turi).
 
 Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl jei ji galioja nuomos pabaigoje, galioja ir pradžioje. Tikrinamas tik tikslus kategorijos kodas: kuri kategorija apima kurią, sistema nesaugo, o registruojant pažymėjimą pažymimos visos kategorijos, kurias jis suteikia (pvz., turint A – ir A1, A2; žr. 1.5.2.3 skyrių).
 
 **Pavyzdžiai.** Klientas, kurio A kategorija galioja iki 2027-05-10, gali išsinuomoti F 900 R 2027-04-14 – 2027-04-18, bet ne iki 2027-05-12 („A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“). Klientui, turinčiam tik A1, Panigale V2 neleidžiama („Vairuotojo pažymėjime nėra A kategorijos“).
 
-#### skaiciuotiKaina – Apskaičiuoti galutinę nuomos kainą
+#### `skaiciuotiKaina` – Apskaičiuoti galutinę nuomos kainą
 
 **Paskirtis.** Grąžinant apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą pagal nuomai priskirtą tarifą ir jo baudų pakopas (FR 1.2.3). Tai tas pats tarifas, kurį klientas matė rezervacijos patvirtinime (FR 1.2.2). Funkciją kviečia grąžinimo įforminimas (PA10). Galutinę kainą ir baudą ši operacija įrašo į Grąžinimą, kur jos saugomos kaip užfiksuotas atsiskaitymo rezultatas (2.2.2 skyrius, „Normalizacija“).
 
@@ -798,19 +804,22 @@ Nuomos pradžios funkcijai nereikia: kategorija neturi pradžios datos, todėl j
 Lentelė: Funkcijos `skaiciuotiKaina` įėjimai
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| nuomaId | INTEGER | Grąžinama nuoma |
-| grazinimoLaikas | TIMESTAMP | Faktinis grąžinimo laikas |
+| `nuomaId` | `INTEGER` | Grąžinama nuoma |
+| `grazinimoLaikas` | `TIMESTAMP` | Faktinis grąžinimo laikas |
 
 **Algoritmas.**
 
 1. Nuskaityti nuomos planuojamą pradžią ir pabaigą bei nuomos tarifo paros kainą.
-2. paros = ⌈(planuojama pabaiga − planuojama pradžia) / 24 val.⌉ – parų skaičius, suapvalintas į viršų. Pabaiga visada vėlesnė už pradžią (CHECK apribojimas lentelėje Nuoma), todėl paros ≥ 1. Jei taip nėra, funkcija grąžina klaidą ir kainos neskaičiuoja.
-3. nuomosKaina = paros × paros kaina.
-4. velavimas = (grazinimoLaikas − planuojama pabaiga) valandomis.
-5. Jei velavimas ≤ 0, bauda = 0: grąžinus anksčiau kaina nemažinama. Kitaip (PA14) imama tarifo baudos pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, neviršijančia vėlavimo; bauda = jos suma. Jei tokios pakopos nėra (vėluojama mažiau nei pirmoji pakopa arba tarifas pakopų neturi), bauda = 0.
-6. galutineKaina = nuomosKaina + bauda.
+2. `paros` = ⌈(planuojama pabaiga − planuojama pradžia) / 24 val.⌉ – parų skaičius, suapvalintas į viršų. Pabaiga visada vėlesnė už pradžią (`CHECK` apribojimas lentelėje Nuoma), todėl `paros ≥ 1`. Jei taip nėra, funkcija grąžina klaidą ir kainos neskaičiuoja.
+3. `nuomosKaina` = `paros` × paros kaina.
+4. `velavimas` = (`grazinimoLaikas` − planuojama pabaiga) valandomis.
+5. Jei `velavimas ≤ 0`, `bauda = 0`: grąžinus anksčiau kaina nemažinama. Kitaip (PA14) imama tarifo baudos pakopa su didžiausia „Vėlavimas nuo (val.)“ reikšme, neviršijančia vėlavimo; `bauda` = jos suma. Jei tokios pakopos nėra (vėluojama mažiau nei pirmoji pakopa arba tarifas pakopų neturi), `bauda = 0`.
+6. `galutineKaina = nuomosKaina + bauda`.
 
-**Išėjimas.** `galutineKaina` DECIMAL(10,2) – visa suma eurais su bauda; `bauda` DECIMAL(10,2) – bauda už pavėluotą grąžinimą eurais.
+**Išėjimas.** Funkcija grąžina du kintamuosius:
+
+- `galutineKaina` (`DECIMAL(10,2)`) – visa suma eurais su bauda;
+- `bauda` (`DECIMAL(10,2)`) – bauda už pavėluotą grąžinimą eurais.
 
 Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale atskirai. Bauda nesumuojama: vėluojant 30 val. taikoma tik pakopa „nuo 24 val.“. Paskutinė pakopa viršutinės ribos neturi, todėl įmonė ją nustato pakankamai didelę, o klientas visą baudų lentelę mato rezervacijos patvirtinime (FR 1.2.2). Kai rezervacijos laikotarpis pakeičiamas (PA4), funkcija skaičiuoja pagal naują laikotarpį.
 
@@ -832,21 +841,21 @@ Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale at
 ### 2.2.2. Duomenų modelio aprašymas
 #### Bendri sprendimai
 
-- **Duomenų bazių valdymo sistema nepasirinkta.** Naudojami tik SQL standarto duomenų tipai: INTEGER, SMALLINT, DECIMAL, VARCHAR, CHAR, DATE, TIMESTAMP, BOOLEAN. Pavadinimai tokie pat kaip loginėje diagramoje, o išorinio rakto pavadinime nurodoma lentelė, į kurią jis rodo (pvz., „Filialo ID“).
+- **Duomenų bazių valdymo sistema nepasirinkta.** Naudojami tik SQL standarto duomenų tipai: `INTEGER`, `SMALLINT`, `DECIMAL`, `VARCHAR`, `CHAR`, `DATE`, `TIMESTAMP`, `BOOLEAN`. Pavadinimai tokie pat kaip loginėje diagramoje, o išorinio rakto pavadinime nurodoma lentelė, į kurią jis rodo (pvz., „Filialo ID“).
 - **Pirminiai raktai.** Loginio modelio „Kodas“ tampa sveikojo skaičiaus pirminiu raktu „ID“, kurį sistema sugeneruoja automatiškai. Toks raktas nesikeičia ir yra trumpas išoriniuose raktuose. Išimtis – Kategorija: jos raktas yra pati kategorijos žymė „Kodas“ (AM, A1, A2, A), nes ji trumpa, nekinta ir suprantama be papildomos užklausos. Paskyros raktas taip pat „ID“, o loginio modelio raktas „Prisijungimo vardas“ tapo unikaliu atributu, kad jį būtų galima pakeisti nekeičiant susijusių įrašų.
-- **Laikas ir datos.** Visi motociklo užimtumo laikotarpiai – nuomos planuojama pradžia ir pabaiga, išdavimo ir grąžinimo laikas, techninės priežiūros ir perkėlimo pradžia ir pabaiga – saugomi kaip TIMESTAMP, nes prieinamumą reikia rodyti tiksliai, o vėlavimas skaičiuojamas valandomis. DATE naudojama tik kalendorinėms datoms, nesusijusioms su užimtumu: tarifo galiojimui (tarifas parenkamas pagal rezervavimo dieną), kategorijos galiojimui ir gimimo datai.
-- **Pinigų sumos** saugomos kaip DECIMAL eurais (ne slankiojo kablelio skaičiai), kad nebūtų apvalinimo klaidų.
+- **Laikas ir datos.** Visi motociklo užimtumo laikotarpiai – nuomos planuojama pradžia ir pabaiga, išdavimo ir grąžinimo laikas, techninės priežiūros ir perkėlimo pradžia ir pabaiga – saugomi kaip `TIMESTAMP`, nes prieinamumą reikia rodyti tiksliai, o vėlavimas skaičiuojamas valandomis. `DATE` naudojama tik kalendorinėms datoms, nesusijusioms su užimtumu: tarifo galiojimui (tarifas parenkamas pagal rezervavimo dieną), kategorijos galiojimui ir gimimo datai.
+- **Pinigų sumos** saugomos kaip `DECIMAL` eurais (ne slankiojo kablelio skaičiai), kad nebūtų apvalinimo klaidų.
 - **Silpnos esybės.** Išdavimo ir Grąžinimo pirminis raktas kartu yra išorinis raktas į Nuomą („Nuomos ID“), todėl kiekviena nuoma turi ne daugiau kaip vieną išdavimą ir vieną grąžinimą. Baudos pakopos pirminis raktas sudėtinis: tarifas ir dalinis raktas „Vėlavimas nuo (val.)“.
-- **M : N ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
-- **Ryšiai 1 : 1 su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
+- **`M:N` ryšiai** tapo lentelėmis su sudėtiniu pirminiu raktu: Kliento kategorija (ryšys „turi teisę“ su atributu „Galioja iki“) ir Perkeliamas motociklas (ryšys „perkeliamas“). Kiekvieno ryšio kardinalumas ir privalomumas paaiškintas skyriuje „Ryšiai“.
+- **Ryšiai `1:1` su Paskyra.** Išorinis raktas „Paskyros ID“ yra Kliento ir Darbuotojo lentelėse ir yra unikalus. Klientui jis neprivalomas (klientą be paskyros gali užregistruoti darbuotojas), darbuotojui privalomas.
 - **Įrašų trynimas.** Kartu su pagrindiniu įrašu ištrinami tik nuo jo priklausantys įrašai: tarifo baudų pakopos, kliento kategorijos ir perkėlimo motociklai. Kitų įrašų, į kuriuos yra nuorodų, ištrinti negalima: užbaigtos nuomos ir jų istorija saugomos ne trumpiau kaip 5 metus (NFR 1.3.4.2), o nebenaudojamo motociklo požymis „Naudojamas“ išjungiamas (motociklas netrinamas).
 - **Normalizacija.** Lentelės atitinka trečiąją normalinę formą: reikšmės atominės, o neraktiniai atributai priklauso tik nuo viso pirminio rakto. Sąmoningas nukrypimas – Grąžinimo „Galutinė kaina“ ir „Bauda“. Tai išvestiniai atributai, kuriuos galima apskaičiuoti iš tarifo, nuomos laikų ir baudų pakopų, bet jie saugomi kaip užfiksuotas atsiskaitymo su klientu rezultatas: skaičiavimo taisyklės gali keistis, o perskaičiuotos senų nuomų sumos nebesutaptų su sumokėtomis.
-- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (FR 1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, NFR 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos CHECK sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
+- **Klasifikatoriai.** Gamintojas, Motociklo tipas ir Kategorija – atskiros lentelės, nes jų reikšmės kartojasi daugelyje modelių, pagal jas ieškoma ir grupuojamos ataskaitos, o įvedant tekstą ta pati reikšmė galėtų būti užrašyta skirtingai. Gamintojus ir tipus tvarko administratorius kartu su modeliais (FR 1.2.5), kategorijos įvedamos diegiant sistemą. Nuomos „Būsena“ ir Paskyros „Vaidmuo“ į atskiras lenteles neiškeliami: jų reikšmių sąrašą nustato ne įmonė, o pati sistema (nuo būsenos priklauso nuomos eiga, nuo vaidmens – leidžiami veiksmai, NFR 1.3.5.1), todėl nauja reikšmė be programos pakeitimų nebūtų naudinga. Šių atributų leistinos reikšmės apribotos `CHECK` sąlyga. Filialo „Miestas“ nesikartoja (kiekvienas filialas kitame mieste), o techninės priežiūros „Priežastis“ – laisvas aprašymas.
 - **Išplečiamumas.** Kadangi kategorijų apimties taisyklės nesaugomos, naujas pažymėjimo kategorijas (pvz., B, C, D) ir naujus motociklų tipus galima pridėti kaip įrašus, nekeičiant schemos. Kitų transporto priemonių nuomai reikėtų tik apibendrinti lentelę „Motociklo modelis“.
 
 ##### Taisyklės, kurias tikrina sistemos funkcijos
 
-Kai kurių taisyklių duomenų bazės apribojimais (PK, FK, UNIQUE, NOT NULL, CHECK) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos ir operacijos (2.2.1 skyrius) prieš įrašydamos duomenis:
+Kai kurių taisyklių duomenų bazės apribojimais (`PK`, `FK`, `UNIQUE`, `NOT NULL`, `CHECK`) išreikšti negalima, nes jos apima kelias lenteles ar kelis įrašus. Jas tikrina sistemos funkcijos ir operacijos (2.2.1 skyrius) prieš įrašydamos duomenis:
 
 - motociklo užimtumo laikotarpiai (nuomos, techninė priežiūra, perkėlimai) nepersidengia ir atitinka motociklo buvimo vietos taisyklę (1.5.2 skyrius) – funkcija `tikrintiUzimtuma`. Ją kviečianti operacija pirmiausia užrakina motociklo įrašą, tada iškviečia funkciją ir įrašo laikotarpį toje pačioje transakcijoje; įrašas atrakinamas tik transakcijos pabaigoje, todėl iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena (NFR 1.3.3.3);
 - vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“); rezervacija tarifo įrašą užrakina bendru užraktu, todėl tarifo keitimas laukia, kol ji bus įrašyta;
@@ -879,69 +888,69 @@ Kiekviena lentelė priklauso vienai saugyklai, todėl duomenų srautų diagramos
 
 #### Ryšiai
 
-Diagramoje yra 29 ryšiai. Kiekvienas jungia tėvinės lentelės pirminį raktą su vaikinės lentelės išoriniu raktu. Ryšių pavadinimai tokie pat kaip loginėje ER diagramoje (1.5.2 skyrius); M : N ryšiai „turi teisę“ ir „perkeliamas“ fizinėje diagramoje išskaidyti į du 1 : N ryšius per tarpinę lentelę.
+Diagramoje yra 29 ryšiai. Kiekvienas jungia tėvinės lentelės pirminį raktą su vaikinės lentelės išoriniu raktu. Ryšių pavadinimai tokie pat kaip loginėje ER diagramoje (1.5.2 skyrius); `M:N` ryšiai „turi teisę“ ir „perkeliamas“ fizinėje diagramoje išskaidyti į du `1:N` ryšius per tarpinę lentelę.
 
 Kaip skaityti linijos galus:
 
-- **Ženklas prie tėvinės lentelės** rodo, su kiek tėvinės lentelės įrašų susijęs vienas vaikinės lentelės įrašas. „Tik vienas“ reiškia, kad išorinis raktas privalomas (NOT NULL). „Nulis arba vienas“ reiškia, kad išorinis raktas gali būti tuščias.
-- **Ženklas prie vaikinės lentelės** rodo, kiek vaikinės lentelės įrašų gali turėti vienas tėvinės lentelės įrašas. „Nulis arba daug“ reiškia, kad tėvinis įrašas gali egzistuoti be vaikinių; „vienas arba daug“ – kad be bent vieno vaikinio įrašo jis neturi prasmės. 1 : 1 ryšiuose prie vaikinės lentelės yra „nulis arba vienas“: išorinis raktas yra unikalus arba kartu yra pirminis raktas, todėl antro įrašo būti negali.
+- **Ženklas prie tėvinės lentelės** rodo, su kiek tėvinės lentelės įrašų susijęs vienas vaikinės lentelės įrašas. „Tik vienas“ reiškia, kad išorinis raktas privalomas (`NOT NULL`). „Nulis arba vienas“ reiškia, kad išorinis raktas gali būti tuščias.
+- **Ženklas prie vaikinės lentelės** rodo, kiek vaikinės lentelės įrašų gali turėti vienas tėvinės lentelės įrašas. „Nulis arba daug“ reiškia, kad tėvinis įrašas gali egzistuoti be vaikinių; „vienas arba daug“ – kad be bent vieno vaikinio įrašo jis neturi prasmės. `1:1` ryšiuose prie vaikinės lentelės yra „nulis arba vienas“: išorinis raktas yra unikalus arba kartu yra pirminis raktas, todėl antro įrašo būti negali.
 
 Pavyzdys: ryšys „apibūdina“ (Motociklo modelis – Motociklas) pažymėtas „tik vienas“ prie Motociklo modelio ir „nulis arba daug“ prie Motociklo. Tai reiškia: kiekvienas motociklas turi lygiai vieną modelį, o modelis gali turėti daug motociklų arba nė vieno.
 
-Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė → vaikinė (FK)** – tėvinė ir vaikinė lentelė, skliaustuose – vaikinės lentelės išorinis raktas; **kardinalumas**; **ženklai** – prie tėvinės / prie vaikinės lentelės.
+Lentelėse: **ryšys** – loginės diagramos ryšio pavadinimas; **tėvinė → vaikinė (`FK`)** – tėvinė ir vaikinė lentelė, skliaustuose – vaikinės lentelės išorinis raktas; **kardinalumas**; **ženklai** – prie tėvinės / prie vaikinės lentelės.
 
 ##### Parkas, klasifikatoriai ir tarifai
 
-Lentelė: Fizinės ER diagramos ryšiai. Parkas, klasifikatoriai ir tarifai
-| Ryšys | Tėvinė → vaikinė (FK) | Kard. | Ženklai | Kodėl taip |
+Lentelė: Fizinės ER diagramos ryšiai. Parkas, klasifikatoriai ir tarifai {plotis=9.9,13.4,5.5,9.9,34.8}
+| Ryšys | Tėvinė → vaikinė (`FK`) | Kard. | Ženklai | Kodėl taip |
 |---|---|---|---|---|
-| reikalauja | Kategorija → Motociklo modelis (Kategorijos kodas) | 1 : N | tik vienas / nulis arba daug | Modeliui vairuoti reikia vienos konkrečios kategorijos, be jos negalima patikrinti kliento teisės (FR 1.2.2), todėl raktas privalomas. Ta pati kategorija tinka daugeliui modelių, o kategorija gali būti įvesta, nors parke dar nėra jai priskirto modelio. |
-| gamina | Gamintojas → Motociklo modelis (Gamintojo ID) | 1 : N | tik vienas / nulis arba daug | Modelį gamina vienas gamintojas, o gamintojas – daug modelių. Gamintojas įvedamas anksčiau nei jo modeliai. |
-| priklauso | Motociklo tipas → Motociklo modelis (Tipo ID) | 1 : N | tik vienas / nulis arba daug | Modelis priskiriamas vienam tipui, kad paieškoje jį būtų galima atrinkti pagal tipą (FR 1.2.1); tipui gali priklausyti daug modelių arba dar nė vieno. |
-| apibūdina | Motociklo modelis → Motociklas (Modelio ID) | 1 : N | tik vienas / nulis arba daug | Charakteristikos, nuotrauka ir reikiama kategorija saugomos modelyje, todėl motociklas be modelio neturėtų šių duomenų. Parke yra keli to paties modelio motociklai; modelis įvedamas anksčiau nei motociklai. |
-| taikomas | Motociklo modelis → Tarifas (Modelio ID) | 1 : N | tik vienas / nulis arba daug | Tarifas visada nustatomas konkrečiam modeliui. Modelis turi kelis tarifus skirtingiems laikotarpiams (pasikeitus kainai, senas tarifas uždaromas ir sukuriamas naujas); ką tik įvestas modelis tarifo dar neturi. |
-| apima | Tarifas → Baudos pakopa (Tarifo ID) | 1 : N | tik vienas / nulis arba daug | Baudos pakopa be tarifo neegzistuoja (silpna esybė). Tarifas gali turėti kelias pakopas arba nė vienos – tada bauda už vėlavimą neskaičiuojama. |
-| yra | Filialas → Motociklas (Filialo ID) | 1 : N | tik vienas / nulis arba daug | Motociklas visada yra lygiai viename filiale – tame, iš kurio išduodamas ar kuriame laukia kitos nuomos. Saugomas tik dabartinis filialas (ankstesnės vietos matyti iš nuomų ir perkėlimų), todėl ryšys 1 : N, o ne M : N. Filiale gali nebūti nė vieno motociklo. |
-| prižiūrimas | Motociklas → Techninė priežiūra (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Priežiūros laikotarpis visada skirtas vienam motociklui; motociklas prižiūrimas daug kartų arba dar nė karto. |
-| perkeliamas (1) | Motociklas → Perkeliamas motociklas (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Loginio M : N ryšio dalis: motociklas per savo naudojimo laiką gali būti perkeltas daug kartų arba nė karto. |
-| perkeliamas (2) | Perkėlimas → Perkeliamas motociklas (Perkėlimo ID) | 1 : N | tik vienas / vienas arba daug | Vienu perkėlimu (vienu reisu) vežamas vienas ar keli motociklai, todėl ryšys loginiame modelyje M : N. Perkėlimas be motociklų neturi prasmės, todėl „vienas arba daug“; šią sąlygą tikrina perkėlimo planavimo funkcija, nes duomenų bazės apribojimu jos išreikšti negalima. |
-| perkeliama iš | Filialas → Perkėlimas (Iš filialo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną pradžios filialą. Du ryšiai su ta pačia lentele reikalingi, nes filialas perkėlime atlieka du skirtingus vaidmenis. |
-| perkeliama į | Filialas → Perkėlimas (Į filialo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną tikslo filialą, kuris skiriasi nuo pradžios filialo (CHECK). |
+| reikalauja | Kategorija → Motociklo modelis (Kategorijos kodas) | `1:N` | tik vienas / nulis arba daug | Modeliui vairuoti reikia vienos konkrečios kategorijos, be jos negalima patikrinti kliento teisės (FR 1.2.2), todėl raktas privalomas. Ta pati kategorija tinka daugeliui modelių, o kategorija gali būti įvesta, nors parke dar nėra jai priskirto modelio. |
+| gamina | Gamintojas → Motociklo modelis (Gamintojo ID) | `1:N` | tik vienas / nulis arba daug | Modelį gamina vienas gamintojas, o gamintojas – daug modelių. Gamintojas įvedamas anksčiau nei jo modeliai. |
+| priklauso | Motociklo tipas → Motociklo modelis (Tipo ID) | `1:N` | tik vienas / nulis arba daug | Modelis priskiriamas vienam tipui, kad paieškoje jį būtų galima atrinkti pagal tipą (FR 1.2.1); tipui gali priklausyti daug modelių arba dar nė vieno. |
+| apibūdina | Motociklo modelis → Motociklas (Modelio ID) | `1:N` | tik vienas / nulis arba daug | Charakteristikos, nuotrauka ir reikiama kategorija saugomos modelyje, todėl motociklas be modelio neturėtų šių duomenų. Parke yra keli to paties modelio motociklai; modelis įvedamas anksčiau nei motociklai. |
+| taikomas | Motociklo modelis → Tarifas (Modelio ID) | `1:N` | tik vienas / nulis arba daug | Tarifas visada nustatomas konkrečiam modeliui. Modelis turi kelis tarifus skirtingiems laikotarpiams (pasikeitus kainai, senas tarifas uždaromas ir sukuriamas naujas); ką tik įvestas modelis tarifo dar neturi. |
+| apima | Tarifas → Baudos pakopa (Tarifo ID) | `1:N` | tik vienas / nulis arba daug | Baudos pakopa be tarifo neegzistuoja (silpna esybė). Tarifas gali turėti kelias pakopas arba nė vienos – tada bauda už vėlavimą neskaičiuojama. |
+| yra | Filialas → Motociklas (Filialo ID) | `1:N` | tik vienas / nulis arba daug | Motociklas visada yra lygiai viename filiale – tame, iš kurio išduodamas ar kuriame laukia kitos nuomos. Saugomas tik dabartinis filialas (ankstesnės vietos matyti iš nuomų ir perkėlimų), todėl ryšys `1:N`, o ne `M:N`. Filiale gali nebūti nė vieno motociklo. |
+| prižiūrimas | Motociklas → Techninė priežiūra (Motociklo ID) | `1:N` | tik vienas / nulis arba daug | Priežiūros laikotarpis visada skirtas vienam motociklui; motociklas prižiūrimas daug kartų arba dar nė karto. |
+| perkeliamas (1) | Motociklas → Perkeliamas motociklas (Motociklo ID) | `1:N` | tik vienas / nulis arba daug | Loginio `M:N` ryšio dalis: motociklas per savo naudojimo laiką gali būti perkeltas daug kartų arba nė karto. |
+| perkeliamas (2) | Perkėlimas → Perkeliamas motociklas (Perkėlimo ID) | `1:N` | tik vienas / vienas arba daug | Vienu perkėlimu (vienu reisu) vežamas vienas ar keli motociklai, todėl ryšys loginiame modelyje `M:N`. Perkėlimas be motociklų neturi prasmės, todėl „vienas arba daug“; šią sąlygą tikrina perkėlimo planavimo funkcija, nes duomenų bazės apribojimu jos išreikšti negalima. |
+| perkeliama iš | Filialas → Perkėlimas (Iš filialo ID) | `1:N` | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną pradžios filialą. Du ryšiai su ta pačia lentele reikalingi, nes filialas perkėlime atlieka du skirtingus vaidmenis. |
+| perkeliama į | Filialas → Perkėlimas (Į filialo ID) | `1:N` | tik vienas / nulis arba daug | Kiekvienas perkėlimas turi lygiai vieną tikslo filialą, kuris skiriasi nuo pradžios filialo (`CHECK`). |
 
 ##### Klientai ir nuomos
 
-Lentelė: Fizinės ER diagramos ryšiai. Klientai ir nuomos
-| Ryšys | Tėvinė → vaikinė (FK) | Kard. | Ženklai | Kodėl taip |
+Lentelė: Fizinės ER diagramos ryšiai. Klientai ir nuomos {plotis=9,11.8,5.5,9.9,34.6}
+| Ryšys | Tėvinė → vaikinė (`FK`) | Kard. | Ženklai | Kodėl taip |
 |---|---|---|---|---|
-| turi teisę (1) | Klientas → Kliento kategorija (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Loginio M : N ryšio dalis: kliento pažymėjime gali būti kelios kategorijos, ir kiekvienos galiojimo data skirtinga, todėl „Galioja iki“ priklauso porai klientas–kategorija ir saugoma tarpinėje lentelėje. Klientas gali neturėti nė vienos sistemoje esančios kategorijos (pvz., turi tik B kategorijos pažymėjimą) – tada motociklo rezervacija atmetama (NFR 1.3.2.4). |
-| turi teisę (2) | Kategorija → Kliento kategorija (Kategorijos kodas) | 1 : N | tik vienas / nulis arba daug | Ta pati kategorija yra daugelio klientų pažymėjimuose arba dar nė viename. |
-| užsako | Klientas → Nuoma (Kliento ID) | 1 : N | tik vienas / nulis arba daug | Kiekviena rezervacija yra lygiai vieno kliento – net jei ją registravo darbuotojas, ji priskiriama klientui. Klientas gali turėti daug nuomų (užbaigtos saugomos, NFR 1.3.4.2) arba dar nė vienos. |
-| įkainojama | Tarifas → Nuoma (Tarifo ID) | 1 : N | tik vienas / nulis arba daug | Nuomai taikomas lygiai vienas tarifas – galiojęs rezervavimo dieną; pagal jį skaičiuojama kaina, užstatas ir bauda. Pagal vieną tarifą sudaroma daug nuomų, o naujas tarifas gali būti dar nepanaudotas. |
-| nuomojamas | Motociklas → Nuoma (Motociklo ID) | 1 : N | tik vienas / nulis arba daug | Rezervuojamas konkretus motociklas, o ne modelis, nes užimtumas tikrinamas kiekvienam motociklui. Motociklas nuomojamas daug kartų (laikotarpiai nepersidengia) arba dar nė karto. |
-| išduodama | Filialas → Nuoma (Išdavimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Išdavimo filialas pasirenkamas rezervuojant ir yra privalomas (FR 1.2.2). |
-| grąžinama | Filialas → Nuoma (Grąžinimo filialo ID) | 1 : N | tik vienas / nulis arba daug | Grąžinimo filialas taip pat pasirenkamas rezervuojant; jis gali skirtis nuo išdavimo filialo (grąžinimas į kitą filialą), todėl tai atskiras ryšys. |
-| pradedama | Nuoma → Išdavimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Motociklas pagal nuomą išduodamas ne daugiau kaip vieną kartą: Išdavimo pirminis raktas yra nuomos raktas. Kol rezervacija neįvykdyta ar jei ji atšaukta, išdavimo nėra, todėl „nulis arba vienas“. Išdavimas be nuomos neegzistuoja (silpna esybė). |
-| baigiama | Nuoma → Grąžinimas (Nuomos ID) | 1 : 1 | tik vienas / nulis arba vienas | Kaip ir išdavimo atveju: grąžinimas įforminamas vieną kartą ir tik išduotai nuomai, o iki tol jo nėra. |
+| turi teisę (1) | Klientas → Kliento kategorija (Kliento ID) | `1:N` | tik vienas / nulis arba daug | Loginio `M:N` ryšio dalis: kliento pažymėjime gali būti kelios kategorijos, ir kiekvienos galiojimo data skirtinga, todėl „Galioja iki“ priklauso porai klientas–kategorija ir saugoma tarpinėje lentelėje. Klientas gali neturėti nė vienos sistemoje esančios kategorijos (pvz., turi tik B kategorijos pažymėjimą) – tada motociklo rezervacija atmetama (NFR 1.3.2.4). |
+| turi teisę (2) | Kategorija → Kliento kategorija (Kategorijos kodas) | `1:N` | tik vienas / nulis arba daug | Ta pati kategorija yra daugelio klientų pažymėjimuose arba dar nė viename. |
+| užsako | Klientas → Nuoma (Kliento ID) | `1:N` | tik vienas / nulis arba daug | Kiekviena rezervacija yra lygiai vieno kliento – net jei ją registravo darbuotojas, ji priskiriama klientui. Klientas gali turėti daug nuomų (užbaigtos saugomos, NFR 1.3.4.2) arba dar nė vienos. |
+| įkainojama | Tarifas → Nuoma (Tarifo ID) | `1:N` | tik vienas / nulis arba daug | Nuomai taikomas lygiai vienas tarifas – galiojęs rezervavimo dieną; pagal jį skaičiuojama kaina, užstatas ir bauda. Pagal vieną tarifą sudaroma daug nuomų, o naujas tarifas gali būti dar nepanaudotas. |
+| nuomojamas | Motociklas → Nuoma (Motociklo ID) | `1:N` | tik vienas / nulis arba daug | Rezervuojamas konkretus motociklas, o ne modelis, nes užimtumas tikrinamas kiekvienam motociklui. Motociklas nuomojamas daug kartų (laikotarpiai nepersidengia) arba dar nė karto. |
+| išduodama | Filialas → Nuoma (Išdavimo filialo ID) | `1:N` | tik vienas / nulis arba daug | Išdavimo filialas pasirenkamas rezervuojant ir yra privalomas (FR 1.2.2). |
+| grąžinama | Filialas → Nuoma (Grąžinimo filialo ID) | `1:N` | tik vienas / nulis arba daug | Grąžinimo filialas taip pat pasirenkamas rezervuojant; jis gali skirtis nuo išdavimo filialo (grąžinimas į kitą filialą), todėl tai atskiras ryšys. |
+| pradedama | Nuoma → Išdavimas (Nuomos ID) | `1:1` | tik vienas / nulis arba vienas | Motociklas pagal nuomą išduodamas ne daugiau kaip vieną kartą: Išdavimo pirminis raktas yra nuomos raktas. Kol rezervacija neįvykdyta ar jei ji atšaukta, išdavimo nėra, todėl „nulis arba vienas“. Išdavimas be nuomos neegzistuoja (silpna esybė). |
+| baigiama | Nuoma → Grąžinimas (Nuomos ID) | `1:1` | tik vienas / nulis arba vienas | Kaip ir išdavimo atveju: grąžinimas įforminamas vieną kartą ir tik išduotai nuomai, o iki tol jo nėra. |
 
 ##### Personalas ir paskyros
 
-Lentelė: Fizinės ER diagramos ryšiai. Personalas ir paskyros
-| Ryšys | Tėvinė → vaikinė (FK) | Kard. | Ženklai | Kodėl taip |
+Lentelė: Fizinės ER diagramos ryšiai. Personalas ir paskyros {plotis=11.7,14.4,5.5,10.4,27.9}
+| Ryšys | Tėvinė → vaikinė (`FK`) | Kard. | Ženklai | Kodėl taip |
 |---|---|---|---|---|
-| dirba | Filialas → Darbuotojas (Filialo ID) | 1 : N | nulis arba vienas / nulis arba daug | Filialo darbuotojas dirba viename filiale, o administratorius gali būti nepriskirtas jokiam filialui (jis tvarko visą parką), todėl išorinis raktas neprivalomas. Filiale dirba keli darbuotojai. |
-| užregistravo | Darbuotojas → Nuoma (Užregistravusio darbuotojo ID) | 1 : N | nulis arba vienas / nulis arba daug | Jei rezervaciją sudarė pats klientas svetainėje, darbuotojo nėra, todėl raktas neprivalomas; jei skambinusiam klientui rezervavo darbuotojas – nurodomas jis. |
-| išdavė | Darbuotojas → Išdavimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Motociklą visada išduoda konkretus darbuotojas (atsakomybė už ridą ir būklę). Administratorius išdavimų gali neturėti. |
-| priėmė | Darbuotojas → Grąžinimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Grąžintą motociklą visada priima konkretus darbuotojas. |
-| planuoja | Darbuotojas → Techninė priežiūra (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Kiekvieną priežiūrą suplanuoja vienas darbuotojas (FR 1.2.4). |
-| organizuoja | Darbuotojas → Perkėlimas (Darbuotojo ID) | 1 : N | tik vienas / nulis arba daug | Perkėlimą suplanuoja vienas administratorius (FR 1.2.5). |
-| naudoja (klientas) | Paskyra → Klientas (Paskyros ID) | 1 : 1 | nulis arba vienas / nulis arba vienas | Klientas gali turėti ne daugiau kaip vieną paskyrą, bet gali neturėti ir jokios (jį telefonu užregistravo darbuotojas). Paskyra priklauso daugiausia vienam klientui (raktas unikalus) arba nė vienam, jei tai darbuotojo paskyra. |
-| naudoja (darbuotojas) | Paskyra → Darbuotojas (Paskyros ID) | 1 : 1 | tik vienas / nulis arba vienas | Darbuotojas visada turi lygiai vieną paskyrą, nes be jos negalėtų dirbti sistemoje. Paskyra priklauso daugiausia vienam darbuotojui arba nė vienam, jei tai kliento paskyra. |
+| dirba | Filialas → Darbuotojas (Filialo ID) | `1:N` | nulis arba vienas / nulis arba daug | Filialo darbuotojas dirba viename filiale, o administratorius gali būti nepriskirtas jokiam filialui (jis tvarko visą parką), todėl išorinis raktas neprivalomas. Filiale dirba keli darbuotojai. |
+| užregistravo | Darbuotojas → Nuoma (Užregistravusio darbuotojo ID) | `1:N` | nulis arba vienas / nulis arba daug | Jei rezervaciją sudarė pats klientas svetainėje, darbuotojo nėra, todėl raktas neprivalomas; jei skambinusiam klientui rezervavo darbuotojas – nurodomas jis. |
+| išdavė | Darbuotojas → Išdavimas (Darbuotojo ID) | `1:N` | tik vienas / nulis arba daug | Motociklą visada išduoda konkretus darbuotojas (atsakomybė už ridą ir būklę). Administratorius išdavimų gali neturėti. |
+| priėmė | Darbuotojas → Grąžinimas (Darbuotojo ID) | `1:N` | tik vienas / nulis arba daug | Grąžintą motociklą visada priima konkretus darbuotojas. |
+| planuoja | Darbuotojas → Techninė priežiūra (Darbuotojo ID) | `1:N` | tik vienas / nulis arba daug | Kiekvieną priežiūrą suplanuoja vienas darbuotojas (FR 1.2.4). |
+| organizuoja | Darbuotojas → Perkėlimas (Darbuotojo ID) | `1:N` | tik vienas / nulis arba daug | Perkėlimą suplanuoja vienas administratorius (FR 1.2.5). |
+| naudoja (klientas) | Paskyra → Klientas (Paskyros ID) | `1:1` | nulis arba vienas / nulis arba vienas | Klientas gali turėti ne daugiau kaip vieną paskyrą, bet gali neturėti ir jokios (jį telefonu užregistravo darbuotojas). Paskyra priklauso daugiausia vienam klientui (raktas unikalus) arba nė vienam, jei tai darbuotojo paskyra. |
+| naudoja (darbuotojas) | Paskyra → Darbuotojas (Paskyros ID) | `1:1` | tik vienas / nulis arba vienas | Darbuotojas visada turi lygiai vieną paskyrą, nes be jos negalėtų dirbti sistemoje. Paskyra priklauso daugiausia vienam darbuotojui arba nė vienam, jei tai kliento paskyra. |
 
-Ryšiai 1 : 1 su Paskyra nesujungti į vieną lentelę, nes paskyra klientui neprivaloma, o prisijungimo duomenys vienodi klientams ir darbuotojams. Išdavimas ir Grąžinimas nesujungti su Nuoma, kad nuomoje nebūtų tuščių laukų, kol motociklas neišduotas (1.5.2 skyrius).
+Ryšiai `1:1` su Paskyra nesujungti į vieną lentelę, nes paskyra klientui neprivaloma, o prisijungimo duomenys vienodi klientams ir darbuotojams. Išdavimas ir Grąžinimas nesujungti su Nuoma, kad nuomoje nebūtų tuščių laukų, kol motociklas neišduotas (1.5.2 skyrius).
 
 #### Lentelių aprašymas
 
-Žymėjimas: PK – pirminis raktas, FK – išorinis raktas (nurodoma lentelė, į kurią jis rodo), NOT NULL – privaloma reikšmė, UNIQUE – reikšmė nesikartoja, CHECK – reikšmės sąlyga, DEFAULT – numatytoji reikšmė. Atributai be NOT NULL gali neturėti reikšmės.
+Žymėjimas: `PK` – pirminis raktas, `FK` – išorinis raktas (nurodoma lentelė, į kurią jis rodo), `NOT NULL` – privaloma reikšmė, `UNIQUE` – reikšmė nesikartoja, `CHECK` – reikšmės sąlyga, `DEFAULT` – numatytoji reikšmė. Atributai be `NOT NULL` gali neturėti reikšmės.
 
 ##### Filialas
 
@@ -950,10 +959,10 @@ Ryšiai 1 : 1 su Paskyra nesujungti į vieną lentelę, nes paskyra klientui nep
 Lentelė: Lentelės „Filialas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Miestas | VARCHAR(50) | NOT NULL |
-| Adresas | VARCHAR(128) | NOT NULL |
-| Telefonas | VARCHAR(20) | NOT NULL |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Miestas | `VARCHAR(50)` | `NOT NULL` |
+| Adresas | `VARCHAR(128)` | `NOT NULL` |
+| Telefonas | `VARCHAR(20)` | `NOT NULL` |
 
 ##### Kategorija
 
@@ -962,8 +971,8 @@ Vairuotojo pažymėjimo kategorijų klasifikatorius. Įrašai (AM, A1, A2, A) į
 Lentelė: Lentelės „Kategorija“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Kodas | VARCHAR(3) | PK |
-| Aprašymas | VARCHAR(255) | NOT NULL; paaiškinimas klientui, pvz., „A2 – vidutinės galios motociklai“ |
+| Kodas | `VARCHAR(3)` | `PK` |
+| Aprašymas | `VARCHAR(255)` | `NOT NULL`; paaiškinimas klientui, pvz., „A2 – vidutinės galios motociklai“ |
 
 ##### Gamintojas
 
@@ -972,8 +981,8 @@ Motociklų gamintojų klasifikatorius (pvz., Honda, BMW). Tvarko administratoriu
 Lentelė: Lentelės „Gamintojas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Pavadinimas | VARCHAR(64) | NOT NULL, UNIQUE |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Pavadinimas | `VARCHAR(64)` | `NOT NULL`, `UNIQUE` |
 
 ##### Motociklo tipas
 
@@ -982,8 +991,8 @@ Motociklų tipų klasifikatorius paieškai ir kortelei (pvz., turistinis, enduro
 Lentelė: Lentelės „Motociklo tipas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Pavadinimas | VARCHAR(50) | NOT NULL, UNIQUE |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Pavadinimas | `VARCHAR(50)` | `NOT NULL`, `UNIQUE` |
 
 ##### Motociklo modelis
 
@@ -992,15 +1001,15 @@ Modelio charakteristikos, rodomos paieškoje ir motociklo kortelėje (FR 1.2.1, 
 Lentelė: Lentelės „Motociklo modelis“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Pavadinimas | VARCHAR(64) | NOT NULL; UNIQUE kartu su „Gamintojo ID“ |
-| Variklio tūris | SMALLINT | NOT NULL, CHECK (> 0); cm³ |
-| Galia | DECIMAL(5,1) | NOT NULL, CHECK (> 0); kW |
-| Degalų sąnaudos | DECIMAL(3,1) | NOT NULL, CHECK (> 0); l/100 km |
-| Nuotrauka | VARCHAR(255) | NOT NULL; nuotraukos failo kelias (pats failas saugomas ne duomenų bazėje) |
-| Gamintojo ID | INTEGER | FK → Gamintojas, NOT NULL |
-| Tipo ID | INTEGER | FK → Motociklo tipas, NOT NULL |
-| Kategorijos kodas | VARCHAR(3) | FK → Kategorija, NOT NULL; kategorija, reikalinga modeliui vairuoti |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Pavadinimas | `VARCHAR(64)` | `NOT NULL`; `UNIQUE` kartu su „Gamintojo ID“ |
+| Variklio tūris | `SMALLINT` | `NOT NULL`, `CHECK (> 0)`; cm³ |
+| Galia | `DECIMAL(5,1)` | `NOT NULL`, `CHECK (> 0)`; kW |
+| Degalų sąnaudos | `DECIMAL(3,1)` | `NOT NULL`, `CHECK (> 0)`; l/100 km |
+| Nuotrauka | `VARCHAR(255)` | `NOT NULL`; nuotraukos failo kelias (pats failas saugomas ne duomenų bazėje) |
+| Gamintojo ID | `INTEGER` | `FK` → Gamintojas, `NOT NULL` |
+| Tipo ID | `INTEGER` | `FK` → Motociklo tipas, `NOT NULL` |
+| Kategorijos kodas | `VARCHAR(3)` | `FK` → Kategorija, `NOT NULL`; kategorija, reikalinga modeliui vairuoti |
 
 ##### Motociklas
 
@@ -1009,15 +1018,15 @@ Konkretus parko motociklas.
 Lentelė: Lentelės „Motociklas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Valstybinis numeris | VARCHAR(10) | NOT NULL, UNIQUE |
-| VIN | CHAR(17) | NOT NULL, UNIQUE; transporto priemonės identifikavimo numeris visada turi 17 simbolių |
-| Pagaminimo metai | SMALLINT | NOT NULL, CHECK (≥ 1900) |
-| Rida | INTEGER | NOT NULL, CHECK (≥ 0); km, atnaujinama grąžinant |
-| Leidžiama išvažiuoti į užsienį | BOOLEAN | NOT NULL, DEFAULT FALSE |
-| Naudojamas | BOOLEAN | NOT NULL, DEFAULT TRUE; nurašytas motociklas netrinamas, tik nerodomas paieškoje |
-| Modelio ID | INTEGER | FK → Motociklo modelis, NOT NULL |
-| Filialo ID | INTEGER | FK → Filialas, NOT NULL; filialas, kuriame motociklas yra dabar (keičiamas grąžinant ir pasibaigus perkėlimui) |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Valstybinis numeris | `VARCHAR(10)` | `NOT NULL`, `UNIQUE` |
+| VIN | `CHAR(17)` | `NOT NULL`, `UNIQUE`; transporto priemonės identifikavimo numeris visada turi 17 simbolių |
+| Pagaminimo metai | `SMALLINT` | `NOT NULL`, `CHECK (≥ 1900)` |
+| Rida | `INTEGER` | `NOT NULL`, `CHECK (≥ 0)`; km, atnaujinama grąžinant |
+| Leidžiama išvažiuoti į užsienį | `BOOLEAN` | `NOT NULL`, `DEFAULT FALSE` |
+| Naudojamas | `BOOLEAN` | `NOT NULL`, `DEFAULT TRUE`; nurašytas motociklas netrinamas, tik nerodomas paieškoje |
+| Modelio ID | `INTEGER` | `FK` → Motociklo modelis, `NOT NULL` |
+| Filialo ID | `INTEGER` | `FK` → Filialas, `NOT NULL`; filialas, kuriame motociklas yra dabar (keičiamas grąžinant ir pasibaigus perkėlimui) |
 
 ##### Tarifas
 
@@ -1026,12 +1035,12 @@ Modelio paros kaina ir užstatas, galiojantys rezervacijoms, sudarytoms nurodytu
 Lentelė: Lentelės „Tarifas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Paros kaina | DECIMAL(8,2) | NOT NULL, CHECK (> 0) |
-| Užstatas | DECIMAL(8,2) | NOT NULL, CHECK (≥ 0) |
-| Galioja nuo | DATE | NOT NULL |
-| Galioja iki | DATE | CHECK (≥ „Galioja nuo“); tuščia – galioja neribotai |
-| Modelio ID | INTEGER | FK → Motociklo modelis, NOT NULL |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Paros kaina | `DECIMAL(8,2)` | `NOT NULL`, `CHECK (> 0)` |
+| Užstatas | `DECIMAL(8,2)` | `NOT NULL`, `CHECK (≥ 0)` |
+| Galioja nuo | `DATE` | `NOT NULL` |
+| Galioja iki | `DATE` | `CHECK` (≥ „Galioja nuo“); tuščia – galioja neribotai |
+| Modelio ID | `INTEGER` | `FK` → Motociklo modelis, `NOT NULL` |
 
 ##### Baudos pakopa
 
@@ -1040,9 +1049,9 @@ Baudų už pavėluotą grąžinimą lentelės eilutė. Pakopa galioja nuo savo �
 Lentelė: Lentelės „Baudos pakopa“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Tarifo ID | INTEGER | PK (kartu su „Vėlavimas nuo (val.)“), FK → Tarifas; ištrinamas kartu su tarifu |
-| Vėlavimas nuo (val.) | INTEGER | PK (kartu su „Tarifo ID“), CHECK (≥ 0) |
-| Bauda | DECIMAL(8,2) | NOT NULL, CHECK (> 0) |
+| Tarifo ID | `INTEGER` | `PK` (kartu su „Vėlavimas nuo (val.)“), `FK` → Tarifas; ištrinamas kartu su tarifu |
+| Vėlavimas nuo (val.) | `INTEGER` | `PK` (kartu su „Tarifo ID“), `CHECK (≥ 0)` |
+| Bauda | `DECIMAL(8,2)` | `NOT NULL`, `CHECK (> 0)` |
 
 ##### Klientas
 
@@ -1051,14 +1060,14 @@ Nuomininkas ir jo vairuotojo pažymėjimo duomenys.
 Lentelė: Lentelės „Klientas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Vardas | VARCHAR(50) | NOT NULL |
-| Pavardė | VARCHAR(50) | NOT NULL |
-| Gimimo data | DATE | NOT NULL |
-| El. paštas | VARCHAR(254) | UNIQUE; gali būti tuščias, jei klientą telefonu užregistravo darbuotojas; pagal jį paskyra susiejama su klientu |
-| Telefonas | VARCHAR(20) | NOT NULL |
-| Pažymėjimo numeris | VARCHAR(20) | NOT NULL, UNIQUE |
-| Paskyros ID | INTEGER | FK → Paskyra, UNIQUE; tuščias, jei klientas neturi paskyros |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Vardas | `VARCHAR(50)` | `NOT NULL` |
+| Pavardė | `VARCHAR(50)` | `NOT NULL` |
+| Gimimo data | `DATE` | `NOT NULL` |
+| El. paštas | `VARCHAR(254)` | `UNIQUE`; gali būti tuščias, jei klientą telefonu užregistravo darbuotojas; pagal jį paskyra susiejama su klientu |
+| Telefonas | `VARCHAR(20)` | `NOT NULL` |
+| Pažymėjimo numeris | `VARCHAR(20)` | `NOT NULL`, `UNIQUE` |
+| Paskyros ID | `INTEGER` | `FK` → Paskyra, `UNIQUE`; tuščias, jei klientas neturi paskyros |
 
 ##### Kliento kategorija
 
@@ -1067,9 +1076,9 @@ Kliento pažymėjimo kategorijos su kiekvienos galiojimo data (loginio modelio r
 Lentelė: Lentelės „Kliento kategorija“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Kliento ID | INTEGER | PK (kartu su „Kategorijos kodas“), FK → Klientas; ištrinamas kartu su klientu |
-| Kategorijos kodas | VARCHAR(3) | PK (kartu su „Kliento ID“), FK → Kategorija |
-| Galioja iki | DATE | NOT NULL |
+| Kliento ID | `INTEGER` | `PK` (kartu su „Kategorijos kodas“), `FK` → Klientas; ištrinamas kartu su klientu |
+| Kategorijos kodas | `VARCHAR(3)` | `PK` (kartu su „Kliento ID“), `FK` → Kategorija |
+| Galioja iki | `DATE` | `NOT NULL` |
 
 ##### Nuoma
 
@@ -1078,17 +1087,17 @@ Rezervacija, kuri išdavus motociklą tampa nuoma.
 Lentelė: Lentelės „Nuoma“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Sukūrimo laikas | TIMESTAMP | NOT NULL, DEFAULT dabartinis laikas |
-| Planuojama pradžia | TIMESTAMP | NOT NULL |
-| Planuojama pabaiga | TIMESTAMP | NOT NULL, CHECK (> „Planuojama pradžia“) |
-| Būsena | VARCHAR(12) | NOT NULL, DEFAULT 'rezervuota', CHECK (reikšmė iš sąrašo: rezervuota, aktyvi, užbaigta, atšaukta) |
-| Kliento ID | INTEGER | FK → Klientas, NOT NULL |
-| Tarifo ID | INTEGER | FK → Tarifas, NOT NULL; rezervavimo dieną galiojęs motociklo modelio tarifas |
-| Motociklo ID | INTEGER | FK → Motociklas, NOT NULL |
-| Išdavimo filialo ID | INTEGER | FK → Filialas, NOT NULL |
-| Grąžinimo filialo ID | INTEGER | FK → Filialas, NOT NULL; gali skirtis nuo išdavimo filialo |
-| Užregistravusio darbuotojo ID | INTEGER | FK → Darbuotojas; tuščias, jei rezervavo pats klientas |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Sukūrimo laikas | `TIMESTAMP` | `NOT NULL`, `DEFAULT` dabartinis laikas |
+| Planuojama pradžia | `TIMESTAMP` | `NOT NULL` |
+| Planuojama pabaiga | `TIMESTAMP` | `NOT NULL`, `CHECK` (> „Planuojama pradžia“) |
+| Būsena | `VARCHAR(12)` | `NOT NULL`, `DEFAULT 'rezervuota'`, `CHECK` (reikšmė iš sąrašo: rezervuota, aktyvi, užbaigta, atšaukta) |
+| Kliento ID | `INTEGER` | `FK` → Klientas, `NOT NULL` |
+| Tarifo ID | `INTEGER` | `FK` → Tarifas, `NOT NULL`; rezervavimo dieną galiojęs motociklo modelio tarifas |
+| Motociklo ID | `INTEGER` | `FK` → Motociklas, `NOT NULL` |
+| Išdavimo filialo ID | `INTEGER` | `FK` → Filialas, `NOT NULL` |
+| Grąžinimo filialo ID | `INTEGER` | `FK` → Filialas, `NOT NULL`; gali skirtis nuo išdavimo filialo |
+| Užregistravusio darbuotojo ID | `INTEGER` | `FK` → Darbuotojas; tuščias, jei rezervavo pats klientas |
 
 ##### Išdavimas
 
@@ -1097,11 +1106,11 @@ Motociklo išdavimo klientui faktas.
 Lentelė: Lentelės „Išdavimas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Nuomos ID | INTEGER | PK, FK → Nuoma |
-| Laikas | TIMESTAMP | NOT NULL |
-| Rida | INTEGER | NOT NULL, CHECK (≥ 0) |
-| Būklė | VARCHAR(500) | NOT NULL; trumpas motociklo būklės aprašymas |
-| Darbuotojo ID | INTEGER | FK → Darbuotojas, NOT NULL; kas išdavė |
+| Nuomos ID | `INTEGER` | `PK`, `FK` → Nuoma |
+| Laikas | `TIMESTAMP` | `NOT NULL` |
+| Rida | `INTEGER` | `NOT NULL`, `CHECK (≥ 0)` |
+| Būklė | `VARCHAR(500)` | `NOT NULL`; trumpas motociklo būklės aprašymas |
+| Darbuotojo ID | `INTEGER` | `FK` → Darbuotojas, `NOT NULL`; kas išdavė |
 
 ##### Grąžinimas
 
@@ -1110,13 +1119,13 @@ Motociklo grąžinimo faktas ir galutinis atsiskaitymas.
 Lentelė: Lentelės „Grąžinimas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Nuomos ID | INTEGER | PK, FK → Nuoma |
-| Laikas | TIMESTAMP | NOT NULL |
-| Rida | INTEGER | NOT NULL, CHECK (≥ 0) |
-| Būklė | VARCHAR(500) | NOT NULL |
-| Galutinė kaina | DECIMAL(10,2) | NOT NULL, CHECK (≥ 0); išvestinis atributas, saugomas sąmoningai (žr. „Normalizacija“) |
-| Bauda | DECIMAL(10,2) | NOT NULL, DEFAULT 0, CHECK (≥ 0); išvestinis atributas, saugomas sąmoningai |
-| Darbuotojo ID | INTEGER | FK → Darbuotojas, NOT NULL; kas priėmė |
+| Nuomos ID | `INTEGER` | `PK`, `FK` → Nuoma |
+| Laikas | `TIMESTAMP` | `NOT NULL` |
+| Rida | `INTEGER` | `NOT NULL`, `CHECK (≥ 0)` |
+| Būklė | `VARCHAR(500)` | `NOT NULL` |
+| Galutinė kaina | `DECIMAL(10,2)` | `NOT NULL`, `CHECK (≥ 0)`; išvestinis atributas, saugomas sąmoningai (žr. „Normalizacija“) |
+| Bauda | `DECIMAL(10,2)` | `NOT NULL`, `DEFAULT 0`, `CHECK (≥ 0)`; išvestinis atributas, saugomas sąmoningai |
+| Darbuotojo ID | `INTEGER` | `FK` → Darbuotojas, `NOT NULL`; kas priėmė |
 
 ##### Techninė priežiūra
 
@@ -1125,12 +1134,12 @@ Laikotarpis, kai motociklas prižiūrimas ir negali būti rezervuotas.
 Lentelė: Lentelės „Techninė priežiūra“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Pradžia | TIMESTAMP | NOT NULL |
-| Pabaiga | TIMESTAMP | NOT NULL, CHECK (> „Pradžia“) |
-| Priežastis | VARCHAR(255) | NOT NULL |
-| Motociklo ID | INTEGER | FK → Motociklas, NOT NULL |
-| Darbuotojo ID | INTEGER | FK → Darbuotojas, NOT NULL; kas suplanavo |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Pradžia | `TIMESTAMP` | `NOT NULL` |
+| Pabaiga | `TIMESTAMP` | `NOT NULL`, `CHECK` (> „Pradžia“) |
+| Priežastis | `VARCHAR(255)` | `NOT NULL` |
+| Motociklo ID | `INTEGER` | `FK` → Motociklas, `NOT NULL` |
+| Darbuotojo ID | `INTEGER` | `FK` → Darbuotojas, `NOT NULL`; kas suplanavo |
 
 ##### Perkėlimas
 
@@ -1139,12 +1148,12 @@ Vieno ar kelių motociklų pervežimas į kitą filialą.
 Lentelė: Lentelės „Perkėlimas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Pradžia | TIMESTAMP | NOT NULL |
-| Pabaiga | TIMESTAMP | NOT NULL, CHECK (> „Pradžia“) |
-| Iš filialo ID | INTEGER | FK → Filialas, NOT NULL |
-| Į filialo ID | INTEGER | FK → Filialas, NOT NULL, CHECK (≠ „Iš filialo ID“) |
-| Darbuotojo ID | INTEGER | FK → Darbuotojas, NOT NULL; administratorius, suplanavęs perkėlimą |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Pradžia | `TIMESTAMP` | `NOT NULL` |
+| Pabaiga | `TIMESTAMP` | `NOT NULL`, `CHECK` (> „Pradžia“) |
+| Iš filialo ID | `INTEGER` | `FK` → Filialas, `NOT NULL` |
+| Į filialo ID | `INTEGER` | `FK` → Filialas, `NOT NULL`, `CHECK` (≠ „Iš filialo ID“) |
+| Darbuotojo ID | `INTEGER` | `FK` → Darbuotojas, `NOT NULL`; administratorius, suplanavęs perkėlimą |
 
 ##### Perkeliamas motociklas
 
@@ -1153,8 +1162,8 @@ Motociklai, vežami perkėlimu (loginio modelio ryšys „perkeliamas“). Perk�
 Lentelė: Lentelės „Perkeliamas motociklas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| Perkėlimo ID | INTEGER | PK (kartu su „Motociklo ID“), FK → Perkėlimas; ištrinamas kartu su perkėlimu |
-| Motociklo ID | INTEGER | PK (kartu su „Perkėlimo ID“), FK → Motociklas |
+| Perkėlimo ID | `INTEGER` | `PK` (kartu su „Motociklo ID“), `FK` → Perkėlimas; ištrinamas kartu su perkėlimu |
+| Motociklo ID | `INTEGER` | `PK` (kartu su „Perkėlimo ID“), `FK` → Motociklas |
 
 ##### Darbuotojas
 
@@ -1163,13 +1172,13 @@ Filialo darbuotojas arba administratorius.
 Lentelė: Lentelės „Darbuotojas“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Vardas | VARCHAR(50) | NOT NULL |
-| Pavardė | VARCHAR(50) | NOT NULL |
-| El. paštas | VARCHAR(254) | NOT NULL, UNIQUE |
-| Telefonas | VARCHAR(20) | NOT NULL |
-| Filialo ID | INTEGER | FK → Filialas; tuščias administratoriui, nepriskirtam filialui |
-| Paskyros ID | INTEGER | FK → Paskyra, NOT NULL, UNIQUE |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Vardas | `VARCHAR(50)` | `NOT NULL` |
+| Pavardė | `VARCHAR(50)` | `NOT NULL` |
+| El. paštas | `VARCHAR(254)` | `NOT NULL`, `UNIQUE` |
+| Telefonas | `VARCHAR(20)` | `NOT NULL` |
+| Filialo ID | `INTEGER` | `FK` → Filialas; tuščias administratoriui, nepriskirtam filialui |
+| Paskyros ID | `INTEGER` | `FK` → Paskyra, `NOT NULL`, `UNIQUE` |
 
 ##### Paskyra
 
@@ -1178,10 +1187,10 @@ Prisijungimo duomenys ir vaidmuo, pagal kurį ribojami leidžiami veiksmai (NFR 
 Lentelė: Lentelės „Paskyra“ atributai
 | Atributas | Duomenų tipas | Apribojimai |
 |---|---|---|
-| ID | INTEGER | PK, generuojamas automatiškai |
-| Prisijungimo vardas | VARCHAR(50) | NOT NULL, UNIQUE |
-| Slaptažodžio maiša | VARCHAR(255) | NOT NULL; saugoma tik slaptažodžio maiša, ne pats slaptažodis (NFR 1.3.5.2) |
-| Vaidmuo | VARCHAR(16) | NOT NULL, CHECK (reikšmė iš sąrašo: klientas, darbuotojas, administratorius) |
+| ID | `INTEGER` | `PK`, generuojamas automatiškai |
+| Prisijungimo vardas | `VARCHAR(50)` | `NOT NULL`, `UNIQUE` |
+| Slaptažodžio maiša | `VARCHAR(255)` | `NOT NULL`; saugoma tik slaptažodžio maiša, ne pats slaptažodis (NFR 1.3.5.2) |
+| Vaidmuo | `VARCHAR(16)` | `NOT NULL`, `CHECK` (reikšmė iš sąrašo: klientas, darbuotojas, administratorius) |
 
 ## 2.3. Sistemos dizainas
 
@@ -1493,14 +1502,14 @@ Lentelė: Funkcinių reikalavimų ir panaudos atvejų atsekamumo matrica {#lent:
 | PA3 | Peržiūrėti savo rezervacijas | P2 | DS5 R | Nuoma | 2 | TA1 (1) |
 | PA4 | Keisti rezervaciją | P2 | DS4 R, DS5 R/W | Nuoma, Klientas, Kategorija („turi teisę“) | 2 → PA6, PA7 | TA1 (2–6), TA2 (5), TA3 (5) |
 | PA5 | Atšaukti rezervaciją | P2 | DS5 W | Nuoma | 2 | pagal PA |
-| PA6 | Tikrinti motociklo užimtumą | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, *tikrintiUzimtuma* | TA1 (2–8), TA4 (1) |
-| PA7 | Tikrinti vairuotojo pažymėjimą | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, *tikrintiKlientoTeise* | TA2 (1–5) |
+| PA6 | Tikrinti motociklo užimtumą | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, `tikrintiUzimtuma` | TA1 (2–8), TA4 (1) |
+| PA7 | Tikrinti vairuotojo pažymėjimą | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, `tikrintiKlientoTeise` | TA2 (1–5) |
 | | **FR 1.2.3 Išdavimas ir grąžinimas** | | | | | |
 | PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | P3 | DS2, DS4, DS5 R | Nuoma, Motociklas, Klientas | 2 | TA3 (1) |
 | PA9 | Įforminti išdavimą | P3 | DS5 R/W | Išdavimas, Nuoma, Darbuotojas | 2 → PA12 | TA3 (2, 6) |
 | PA10 | Įforminti grąžinimą | P3 | DS3 R, DS5 W, DS2 W | Grąžinimas, Nuoma, Darbuotojas | 2 → PA12, PA13, PA14 [grąžinta pavėluotai], PA15 [kitas filialas] | TA3 (3, 4, 7) |
 | PA12 | Užfiksuoti ridą ir būklę | P3 | DS5 W, DS2 W | Išdavimas, Grąžinimas, Motociklas (Rida) | 3 | TA3 (3, 4, 6, 7) |
-| PA13 | Apskaičiuoti galutinę nuomos kainą | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, *skaiciuotiKaina* | TA3 (4, 7) |
+| PA13 | Apskaičiuoti galutinę nuomos kainą | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, `skaiciuotiKaina` | TA3 (4, 7) |
 | PA14 | Apskaičiuoti baudą už pavėluotą grąžinimą | P3 | DS3 R, DS5 W | Baudos pakopa, Grąžinimas (Bauda) | 3 [grąžinta pavėluotai] | TA3 (4) |
 | PA15 | Grąžinti į kitą filialą | P3 | DS2 W | Motociklas, Filialas (ryšys „yra“) | 3 [kitas filialas] | pagal PA |
 | | **FR 1.2.4 Techninė priežiūra** | | | | | |
@@ -1527,10 +1536,10 @@ Lentelė: Nefunkcinių reikalavimų atsekamumo matrica {#lent:matrica-b}
 | NFR 1.3.2.1 Kalbos | Perjungiklis LT \| EN visuose ekranuose | Kalbos perjungimas kiekviename puslapyje |
 | NFR 1.3.2.2 Darbuotojo mokymas | Darbuotojo operacijos PA2, PA9, PA10, PA11; EKRANAS04; mokymai (Ganto diagrama, 5.4) | Priėmimo bandymai |
 | NFR 1.3.2.3 Trumpas rezervacijos kelias | EKRANAS01 → EKRANAS02 → EKRANAS03 | TA2 (4) |
-| NFR 1.3.2.4 Aiški atsisakymo priežastis | *tikrintiUzimtuma* ir *tikrintiKlientoTeise* grąžina priežastį; EKRANAS02 (atmetimas), EKRANAS04 (įspėjimas) | TA1–TA4 |
+| NFR 1.3.2.4 Aiški atsisakymo priežastis | `tikrintiUzimtuma` ir `tikrintiKlientoTeise` grąžina priežastį; EKRANAS02 (atmetimas), EKRANAS04 (įspėjimas) | TA1–TA4 |
 | NFR 1.3.3.1 Atsako laikas | Užraktas laikomas tik transakcijos metu (2.2.1 skyrius) | Našumo ir apkrovos testavimas |
 | NFR 1.3.3.2 Pasiekiamumas | Sintetinė stebėsena veikimo etape (Ganto diagrama, 6.3) | Naktiniai sintetiniai testai |
-| NFR 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš *tikrintiUzimtuma* | TA4 |
+| NFR 1.3.3.3 Vienalaikės rezervacijos | Operacijos PA2, PA4, PA11, PA22 užrakina motociklą prieš `tikrintiUzimtuma` | TA4 |
 | NFR 1.3.4.1 Duomenų dubliavimas ir atsarginės kopijos | Gamybinė infrastruktūra ir atkūrimo patikra (Ganto diagrama, 5.1, 6.4) | Atkūrimo bandymas |
 | NFR 1.3.4.2 Istoriniai duomenys | Nuoma, Išdavimas, Grąžinimas netrinami; nuomos būsena „užbaigta“ (1.5.2 ir 2.2.2 skyriai) | Bandymas ištrinti užbaigtą nuomą |
 | NFR 1.3.4.3 Klaidų taisymas ir atnaujinimai | Garantinė priežiūra (Ganto diagrama, 6.1) | Netestuojamas – priežiūros darbų tvarka, ne programos savybė |

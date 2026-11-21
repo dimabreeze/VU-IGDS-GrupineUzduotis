@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.5.2 „ER loginio lygmens diagrama“.
 
-**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis). Po 1 kontrolinio taško (2026-11-19): pridėtas ryšys „įkainojama“ (Tarifas 1 : N Nuoma), o Nuomos atributai „Paros kaina“ ir „Užstatas“ pašalinti; Kategorija aprašyta kaip klasifikatorius; papildyta aprėpties lentelė. Aptarus diagramą (2026-11-19): Galutinė kaina ir Bauda pažymėtos kaip išvestiniai atributai, iš Baudos pakopos pašalintas atributas „Vėlavimas iki (val.)“. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19): Motociklo modelio atributai „Gamintojas“ ir „Tipas“ pakeisti klasifikatoriais – esybėmis Gamintojas ir Motociklo tipas (esybių – 16); Techninės priežiūros ir Perkėlimo atributai „Pradžios data“, „Pabaigos data“ pervadinti „Pradžia“, „Pabaiga“, nes laikotarpiai saugomi minutės tikslumu. Aprašant funkcijas (12 žingsnis, 2026-11-19): pridėta nuoroda į užimtumo laikotarpio apibrėžimą.
+**Būsena:** baigta 2026-11-18. Patikslinta 2026-11-18 rengiant duomenų srautų diagramą (9 žingsnis): pašalinta esybė Prisijungimo bandymas ir paskyros blokavimo atributai, nes prisijungimas į darbą neįtraukiamas. Esybės Kategorija atributas „Lygis“ pakeistas atributu „Aprašymas“ (kategorijų apimtis – verslo proceso dalis). Po 1 kontrolinio taško (2026-11-19): pridėtas ryšys „įkainojama“ (Tarifas `1:N` Nuoma), o Nuomos atributai „Paros kaina“ ir „Užstatas“ pašalinti; Kategorija aprašyta kaip klasifikatorius; papildyta aprėpties lentelė. Aptarus diagramą (2026-11-19): Galutinė kaina ir Bauda pažymėtos kaip išvestiniai atributai, iš Baudos pakopos pašalintas atributas „Vėlavimas iki (val.)“. Rengiant fizinę ER diagramą (10 žingsnis, 2026-11-19): Motociklo modelio atributai „Gamintojas“ ir „Tipas“ pakeisti klasifikatoriais – esybėmis Gamintojas ir Motociklo tipas (esybių – 16); Techninės priežiūros ir Perkėlimo atributai „Pradžios data“, „Pabaigos data“ pervadinti „Pradžia“, „Pabaiga“, nes laikotarpiai saugomi minutės tikslumu. Aprašant funkcijas (12 žingsnis, 2026-11-19): pridėta nuoroda į užimtumo laikotarpio apibrėžimą.
 
 Duomenų modelis sudarytas pagal funkcinius reikalavimus FR 1.2.1–FR 1.2.5 ir su duomenimis susijusius nefunkcinius reikalavimus (NFR 1.3.1.3, NFR 1.3.4.2, NFR 1.3.5.1, NFR 1.3.5.2). Laboratorinio darbo ER diagrama naudota tik kaip idėjų šaltinis. Diagrama nubraižyta Cheno žymėjimu: esybė – stačiakampis, atributas – elipsė, ryšys – rombas, silpna esybė – dvigubas stačiakampis, silpnas ryšys – dvigubas rombas. Papildomai naudojamas išvestinio atributo ženklas – punktyrinė elipsė (žymėjimas pagal [GeeksforGeeks, „Introduction of ER Model“](https://www.geeksforgeeks.org/dbms/introduction-of-er-model/)). Ryšio kardinalumas žymimas 1, N ir M. Esybės nuspalvintos pagal sritį: parkas ir filialai, klientai ir nuomos, personalas ir paskyros.
 
@@ -41,28 +41,28 @@ Kiekvieno ryšio kardinalumo pagrindimas ir privalomumas (ar ryšio pusėje gali
 
 | Ryšys | Esybės ir kardinalumas | Paaiškinimas |
 |---|---|---|
-| reikalauja | Kategorija 1 : N Motociklo modelis | Modeliui vairuoti reikalinga kategorija |
-| gamina | Gamintojas 1 : N Motociklo modelis | Modelio gamintojas |
-| priklauso | Motociklo tipas 1 : N Motociklo modelis | Modelio tipas |
-| turi teisę | Klientas M : N Kategorija; ryšio atributas „Galioja iki“ | Kategorijos kliento pažymėjime; kiekvienos kategorijos galiojimo data saugoma atskirai |
-| apibūdina | Motociklo modelis 1 : N Motociklas | Kiekvienas motociklas priklauso vienam modeliui |
-| taikomas | Motociklo modelis 1 : N Tarifas | Modelio tarifai skirtingais laikotarpiais |
-| apima (silpnas) | Tarifas 1 : N Baudos pakopa | Baudų tarifų lentelė priklauso tarifui |
-| įkainojama | Tarifas 1 : N Nuoma | Tarifas, galiojęs rezervavimo dieną; pagal jį apskaičiuojama nuomos kaina, užstatas ir bauda |
-| yra | Filialas 1 : N Motociklas | Filialas, kuriame motociklas yra dabar |
-| nuomojamas | Motociklas 1 : N Nuoma | Kuris motociklas nuomojamas |
-| užsako | Klientas 1 : N Nuoma | Kieno rezervacija |
-| išduodama, grąžinama | Filialas 1 : N Nuoma (du ryšiai) | Išdavimo ir grąžinimo filialai, pasirenkami rezervuojant |
-| užregistravo | Darbuotojas 1 : N Nuoma | Darbuotojas, užregistravęs rezervaciją kliento vardu (jei rezervavo pats klientas, ryšio nėra) |
-| pradedama, baigiama (silpni) | Nuoma 1 : 1 Išdavimas, Nuoma 1 : 1 Grąžinimas | Išdavimas ir grąžinimas egzistuoja tik kartu su nuoma |
-| išdavė, priėmė | Darbuotojas 1 : N Išdavimas, Darbuotojas 1 : N Grąžinimas | Kas išdavė ir kas priėmė motociklą |
-| prižiūrimas | Motociklas 1 : N Techninė priežiūra | Motociklo priežiūros laikotarpiai |
-| planuoja | Darbuotojas 1 : N Techninė priežiūra | Kas suplanavo priežiūrą |
-| perkeliamas | Motociklas M : N Perkėlimas | Vienu perkėlimu vežamas vienas ar keli motociklai |
-| perkeliama iš, perkeliama į | Filialas 1 : N Perkėlimas (du ryšiai) | Iš kurio ir į kurį filialą perkeliama |
-| organizuoja | Darbuotojas 1 : N Perkėlimas | Administratorius, suplanavęs perkėlimą |
-| dirba | Filialas 1 : N Darbuotojas | Darbuotojo filialas (administratorius gali būti nepriskirtas filialui) |
-| naudoja | Klientas 1 : 1 Paskyra, Darbuotojas 1 : 1 Paskyra | Prisijungimo paskyra |
+| reikalauja | Kategorija `1:N` Motociklo modelis | Modeliui vairuoti reikalinga kategorija |
+| gamina | Gamintojas `1:N` Motociklo modelis | Modelio gamintojas |
+| priklauso | Motociklo tipas `1:N` Motociklo modelis | Modelio tipas |
+| turi teisę | Klientas `M:N` Kategorija; ryšio atributas „Galioja iki“ | Kategorijos kliento pažymėjime; kiekvienos kategorijos galiojimo data saugoma atskirai |
+| apibūdina | Motociklo modelis `1:N` Motociklas | Kiekvienas motociklas priklauso vienam modeliui |
+| taikomas | Motociklo modelis `1:N` Tarifas | Modelio tarifai skirtingais laikotarpiais |
+| apima (silpnas) | Tarifas `1:N` Baudos pakopa | Baudų tarifų lentelė priklauso tarifui |
+| įkainojama | Tarifas `1:N` Nuoma | Tarifas, galiojęs rezervavimo dieną; pagal jį apskaičiuojama nuomos kaina, užstatas ir bauda |
+| yra | Filialas `1:N` Motociklas | Filialas, kuriame motociklas yra dabar |
+| nuomojamas | Motociklas `1:N` Nuoma | Kuris motociklas nuomojamas |
+| užsako | Klientas `1:N` Nuoma | Kieno rezervacija |
+| išduodama, grąžinama | Filialas `1:N` Nuoma (du ryšiai) | Išdavimo ir grąžinimo filialai, pasirenkami rezervuojant |
+| užregistravo | Darbuotojas `1:N` Nuoma | Darbuotojas, užregistravęs rezervaciją kliento vardu (jei rezervavo pats klientas, ryšio nėra) |
+| pradedama, baigiama (silpni) | Nuoma `1:1` Išdavimas, Nuoma `1:1` Grąžinimas | Išdavimas ir grąžinimas egzistuoja tik kartu su nuoma |
+| išdavė, priėmė | Darbuotojas `1:N` Išdavimas, Darbuotojas `1:N` Grąžinimas | Kas išdavė ir kas priėmė motociklą |
+| prižiūrimas | Motociklas `1:N` Techninė priežiūra | Motociklo priežiūros laikotarpiai |
+| planuoja | Darbuotojas `1:N` Techninė priežiūra | Kas suplanavo priežiūrą |
+| perkeliamas | Motociklas `M:N` Perkėlimas | Vienu perkėlimu vežamas vienas ar keli motociklai |
+| perkeliama iš, perkeliama į | Filialas `1:N` Perkėlimas (du ryšiai) | Iš kurio ir į kurį filialą perkeliama |
+| organizuoja | Darbuotojas `1:N` Perkėlimas | Administratorius, suplanavęs perkėlimą |
+| dirba | Filialas `1:N` Darbuotojas | Darbuotojo filialas (administratorius gali būti nepriskirtas filialui) |
+| naudoja | Klientas `1:1` Paskyra, Darbuotojas `1:1` Paskyra | Prisijungimo paskyra |
 
 ## Modelio sprendimai
 
@@ -101,7 +101,7 @@ Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (`12-funkc
 Laboratorinio darbo diagramoje buvo 5 esybės (Filialas, Motociklo modelis, Motociklas, Nuoma, Klientas). Šioje diagramoje jų 16:
 
 - pridėtos esybės Kategorija, Gamintojas, Motociklo tipas, Tarifas, Baudos pakopa, Techninė priežiūra, Perkėlimas, Išdavimas, Grąžinimas, Darbuotojas ir Paskyra;
-- naudojamos silpnos esybės, silpni ryšiai, M : N ryšiai ir ryšio atributas;
+- naudojamos silpnos esybės, silpni ryšiai, `M:N` ryšiai ir ryšio atributas;
 - paros kaina perkelta iš modelio į Tarifą, o nuoma susieta su rezervavimo dieną galiojusiu tarifu;
 - motociklo atributas „Būsena“ pakeistas laikotarpiais (Techninė priežiūra, Perkėlimas, Nuomos būsena) ir požymiu „Naudojamas“;
 - vietoj „Pilna nuomos kaina“ / „Galutinė kaina“ visur vartojamas vienas terminas „Galutinė kaina“ (kaip FR 1.2.3).

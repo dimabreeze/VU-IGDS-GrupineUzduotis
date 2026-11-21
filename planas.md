@@ -105,7 +105,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Iš nefunkcinių reikalavimų: motociklo nuotrauka (NFR 1.3.1.3). Nesėkmingų prisijungimų žurnalas (NFR 1.3.5.2) iš pradžių buvo modelyje, 9 žingsnyje pašalintas: prisijungimo prie sistemos į darbą neįtraukiame.
 - Žymėjimą suderinti su 5 paskaita (laboratoriniame darbe – Cheno); laboratorinio darbo pavadinimų neatitikimų neperkelti.
 - Artefaktas: naujas `.drawio` + PNG aplanke `artefaktai/`.
-- Atlikta 2026-11-18: `artefaktai/08-loginis-er.drawio` + PNG (Cheno žymėjimas, 15 esybių, silpnos esybės ir ryšiai, M : N; 9 žingsnyje pašalinta Prisijungimo bandymas – liko 14; 10 žingsnyje pridėti žinynai Gamintojas ir Motociklo tipas – 16), aprašymas faile `artefaktai/08-loginis-er.md`. Kartu patikslinti FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4: motociklų perkėlimas, motociklo buvimo vietos taisyklė, kiekvienos pažymėjimo kategorijos galiojimo terminas.
+- Atlikta 2026-11-18: `artefaktai/08-loginis-er.drawio` + PNG (Cheno žymėjimas, 15 esybių, silpnos esybės ir ryšiai, M:N; 9 žingsnyje pašalinta Prisijungimo bandymas – liko 14; 10 žingsnyje pridėti žinynai Gamintojas ir Motociklo tipas – 16), aprašymas faile `artefaktai/08-loginis-er.md`. Kartu patikslinti FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4: motociklų perkėlimas, motociklo buvimo vietos taisyklė, kiekvienos pažymėjimo kategorijos galiojimo terminas.
 
 **9 žingsnis. Duomenų srautų diagrama (DSD)** → 1.5.1
 - Žymėjimas ir lygis (nuspręsta 2026-11-18): viena „0 lygio“ diagrama su procesais, kaip dėstytojo priimtame pavyzdyje `saltiniai/lab-DSD-diagrama.png`; žymenys – pagal 2 paskaitos 22 skaidrę (stačiakampis, suapvalintas stačiakampis, cilindras), E/P/DS numeracija ir legenda – kaip pavyzdyje.
@@ -114,7 +114,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Atlikta 2026-11-19: `artefaktai/09-dsd.drawio` + PNG (3 išorinės esybės, 7 procesai, 8 duomenų saugyklos, 47 srautai; po 1 kontrolinio taško – 49), aprašymas faile `artefaktai/09-dsd.md`. Užimtumą tikrina tik P1, kiti procesai kreipiasi į jį.
 
 **1 kontrolinis taškas.** Suderinti reikalavimus ↔ panaudos atvejus ↔ DSD ↔ ER (šablonas tiesiogiai prašo patikrinti, ar nepraleista reikalavimų). Jei reikia, grįžti prie 4–9 žingsnių.
-- Atlikta 2026-11-19: ryšys Tarifas 1 : N Nuoma „įkainojama“ (tarifas pagal rezervacijos datą, panaudotas tarifas nekeičiamas; iš Nuoma pašalinti „Paros kaina“ ir „Užstatas“); išdavimo ir grąžinimo filialai pasirenkami rezervuojant (FR 1.2.2); motociklo buvimo vietos taisyklė perkėlimui (FR 1.2.5); srautai DS2 → P3 ir DS4 → P3 DSD diagramoje; Kategorija – žinynas; užimtumo tikrinimo funkcija – `tikrintiUzimtuma`. Išsamiai – `sprendimai.md`, 2026-11-19 įrašas.
+- Atlikta 2026-11-19: ryšys Tarifas 1:N Nuoma „įkainojama“ (tarifas pagal rezervacijos datą, panaudotas tarifas nekeičiamas; iš Nuoma pašalinti „Paros kaina“ ir „Užstatas“); išdavimo ir grąžinimo filialai pasirenkami rezervuojant (FR 1.2.2); motociklo buvimo vietos taisyklė perkėlimui (FR 1.2.5); srautai DS2 → P3 ir DS4 → P3 DSD diagramoje; Kategorija – žinynas; užimtumo tikrinimo funkcija – `tikrintiUzimtuma`. Išsamiai – `sprendimai.md`, 2026-11-19 įrašas.
 
 ### D etapas. Projektavimas
 
