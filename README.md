@@ -56,7 +56,8 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `make db-psql` | Interaktyvus `psql` Docker duomenų bazėje |
 | `make local-tikrinti` | Visos patikros be Docker: laikina PostgreSQL 18 duomenų bazė sukuriama ir po patikrų ištrinama |
 | `make duomenys` | Iš naujo sugeneruoja `duomenys.sql` |
-| `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, kitos – 2) |
+| `make iliustracijos` | Iš naujo sugeneruoja funkcijų taisyklių iliustracijas (`artefaktai/08-buvimo-vietos-taisykle.drawio`, `12-sutapimas`, `12-lygiagreti-rezervacija`, `12-pavelavimas`) skriptu `ataskaita/irankiai/iliustracijos.py` |
+| `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, iliustracijos – 3, kitos – 2) |
 | `make dizainas` | Eksportuoja sąsajos maketus (`artefaktai/13-dizainas/*.html`) į PNG per Google Chrome (reikia Node.js ≥ 22 ir interneto šriftui Inter) |
 | `make ataskaita` | Surenka ataskaitą: `.docx` ir PDF per Microsoft Word (žr. „Ataskaitos surinkimas“) |
 

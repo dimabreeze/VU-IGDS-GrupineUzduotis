@@ -22,7 +22,7 @@ TIKRINTI_TESTUS  := awk -F'|' '{print} $$5 != "t" {klaida = 1} END {if (klaida) 
 
 .DEFAULT_GOAL := help
 .PHONY: help db-up db-down db-reset db-psql db-patikra db-testai db-lygiagreti db-tikrinti \
-        local-tikrinti duomenys diagramos dizainas ataskaita visi
+        local-tikrinti duomenys iliustracijos diagramos dizainas ataskaita visi
 
 help: ## Šis sąrašas
 	@echo "Naudojimas: make <tikslas>"
@@ -86,6 +86,9 @@ local-tikrinti: ## Visos patikros laikinoje PostgreSQL 18 duomenų bazėje be Do
 duomenys: ## Iš naujo sugeneruoti darbas/duomenys.sql (generuoti_duomenis.py)
 	@python3 darbas/generuoti_duomenis.py
 
+iliustracijos: ## Iš naujo sugeneruoti funkcijų taisyklių iliustracijas (.drawio) iš iliustracijos.py
+	@python3 ataskaita/irankiai/iliustracijos.py
+
 diagramos: ## Eksportuoti visas diagramas į PNG (draw.io)
 	@command -v drawio >/dev/null || { echo "Nerastas drawio (brew install --cask drawio)"; exit 1; }
 	drawio -x -f png -s 2   -b 20 -o artefaktai/07-panaudos-atvejai.png   artefaktai/07-panaudos-atvejai.drawio
@@ -93,6 +96,10 @@ diagramos: ## Eksportuoti visas diagramas į PNG (draw.io)
 	drawio -x -f png -s 2   -b 20 -o artefaktai/09-dsd.png                artefaktai/09-dsd.drawio
 	drawio -x -f png -s 1.5 -b 20 -o artefaktai/10-fizinis-er.png         artefaktai/10-fizinis-er.drawio
 	drawio -x -f png -s 2   -b 20 -o artefaktai/11-strukturine-schema.png artefaktai/11-strukturine-schema.drawio
+	drawio -x -f png -s 3   -b 10 -o artefaktai/08-buvimo-vietos-taisykle.png artefaktai/08-buvimo-vietos-taisykle.drawio
+	drawio -x -f png -s 3   -b 10 -o artefaktai/12-sutapimas.png          artefaktai/12-sutapimas.drawio
+	drawio -x -f png -s 3   -b 10 -o artefaktai/12-lygiagreti-rezervacija.png artefaktai/12-lygiagreti-rezervacija.drawio
+	drawio -x -f png -s 3   -b 10 -o artefaktai/12-pavelavimas.png        artefaktai/12-pavelavimas.drawio
 	@echo "Atidarykite PNG ir patikrinkite, ar jie pilni (ER diagramoms mastelis 1.5 – esant 2 drawio nupiešia ne viską)."
 
 dizainas: ## Eksportuoti dizaino maketus į PNG (Google Chrome, Node.js ≥ 22, internetas šriftui)

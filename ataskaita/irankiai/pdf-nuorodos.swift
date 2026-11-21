@@ -9,7 +9,8 @@
 //   „Ganto diagrama, 5.4“                           -> Ganto diagramos paveikslo pavadinimas;
 //   „TA2“                                           -> „Testavimo atvejo Nr. 2“ (TA lentelės pirmas langelis);
 //   „PA1“, „P1“, „DS1“, „E1“                         -> eilutė „PA1 …“ (lentelės eilutė);
-//   „[12]“, „3“ (skyrius), „1 priedas“              -> eilutė „12. “ / „3. “ / „1 priedas. “.
+//   „[12]“, „3“ (skyrius), „1 priedas“              -> eilutė „12. “ / „3. “ / „1 priedas. “;
+//   „5“ (@pav:, @lent: nuoroda)                     -> pavadinimas „5 pav. “ / „5 lentelė. “.
 // Antraštės, reikalavimai, TA ir ekranai dokumente yra vienoje vietoje – nuoroda nukreipiama ten, kur jie iš
 // tikrųjų yra (Word kartais nurodo puslapį, esantį 1–2 puslapiais toliau). Lentelių eilutės (PA, P, DS, E) ir
 // šaltiniai – artimiausias puslapis nuo Word nurodytojo (±2), kuriame yra tas tekstas. Neradus – klaida.
@@ -48,7 +49,9 @@ func rule(_ raw: String) -> (test: Test, global: Bool)? {
     if source { return ({ $0.hasPrefix(t + ". ") || $0.contains(" \(t). ") || $0.hasSuffix(" \(t).") }, false) }   // „1. 2. 3. … 9. Bikerent…“
     if match(#"^\d+ pried"#) { return ({ $0.hasPrefix(t + ". ") || $0 == t }, true) }
     if match(#"^\d+(\.\d+)+$"#) || match(#"^EKRANAS\d+$"#) { return ({ $0.hasPrefix(t + ". ") }, true) }
-    if match(#"^\d+$"#) { return ({ $0.hasPrefix(t + ". ") }, false) }             // „3 skyrius“
+    if match(#"^\d+$"#) {   // „3 skyrius“ arba paveikslo ar lentelės numeris („5 pav.“, „5 lentelė.“)
+        return ({ $0.hasPrefix(t + ". ") || $0.hasPrefix(t + " pav. ") || $0.hasPrefix(t + " lentelė. ") }, false)
+    }
     if match(#"^(N?FR|PR) \d+(\.\d+)+$"#) { return ({ $0.contains("Nr. " + t) }, true) }
     if match(#"^TA\d+$"#) {
         let n = String(t.dropFirst(2))

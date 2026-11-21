@@ -549,6 +549,10 @@ Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, 
 
 Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (NFR 1.3.2.4).
 
+Kaip taisyklė taikoma motociklui, kuris yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą, parodyta @pav:buvimo-vieta pav. (šis pavyzdys aprašytas ir 2.2.1 skyriuje).
+
+![Motociklo buvimo vietos taisyklės pavyzdys {#pav:buvimo-vieta}](../artefaktai/08-buvimo-vietos-taisykle.png){failai=../artefaktai/08-buvimo-vietos-taisykle.drawio,../artefaktai/08-buvimo-vietos-taisykle.png}
+
 Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (2.2.1 skyrius), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
 
 ## 1.6. Perspektyviniai reikalavimai
@@ -680,7 +684,9 @@ Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (2.1.1 
 - **Techninė priežiūra** trunka nuo „Pradžia“ iki „Pabaiga“. Ji vyksta ten, kur motociklas yra, ir jo vietos nekeičia.
 - **Perkėlimas** trunka nuo „Pradžia“ iki „Pabaiga“, prasideda filiale „iš“ ir baigiasi filiale „į“.
 
-Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atvirkščiai. Kai vienas baigiasi tą pačią minutę, kai prasideda kitas, jie nesutampa. Motociklo buvimo vietos taisyklė aprašyta 1.5.2.4 skyriuje.
+Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atvirkščiai. Kai vienas baigiasi tą pačią minutę, kai prasideda kitas, jie nesutampa (@pav:sutapimas pav.). Motociklo buvimo vietos taisyklė aprašyta 1.5.2.4 skyriuje.
+
+![Užimtumo laikotarpių sutapimas {#pav:sutapimas}](../artefaktai/12-sutapimas.png){failai=../artefaktai/12-sutapimas.drawio,../artefaktai/12-sutapimas.png}
 
 **Dabartinis laikas** – sistemos laikrodžio reikšmė. Funkcijos jo negauna kaip įėjimo.
 
@@ -720,7 +726,7 @@ Lentelė: Funkcijos `tikrintiUzimtuma` įėjimai
 
 **Išėjimas.** `uzimtas` BOOLEAN – true, jei laikotarpio įrašyti negalima; `priezastis` VARCHAR(255) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
 
-**Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą:
+**Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (@pav:sutapimas ir @pav:buvimo-vieta pav.):
 
 - nuoma 2027-05-13 – 2027-05-14 → „Motociklas užimtas 2027-05-12 10:00 – 2027-05-15 10:00 (nuoma)“;
 - nuoma 2027-05-20 – 2027-05-22 Vilniuje → „Laikotarpio pradžioje motociklas bus filiale Klaipėda“;
@@ -736,7 +742,9 @@ Funkcija tik tikrina ir užraktų nevaldo, todėl pati negali užtikrinti, kad t
 4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (NFR 1.3.2.4), kitaip įrašo laikotarpį;
 5. patvirtina transakciją – tik tada užraktai nuimami.
 
-Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3, @pav:lygiagreti pav.). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+
+![Dviejų vienu metu pateiktų rezervacijų įrašymas {#pav:lygiagreti}](../artefaktai/12-lygiagreti-rezervacija.png){plotis=14 failai=../artefaktai/12-lygiagreti-rezervacija.drawio,../artefaktai/12-lygiagreti-rezervacija.png}
 
 Užraktas nėra duomenų srautas, todėl duomenų srautų diagramoje (1.5.1 skyrius) nevaizduojamas: ten P2, P4 ir P6 siunčia P1 motociklą ir laikotarpį, gauna atsakymą ir patys įrašo duomenis į saugyklą.
 
@@ -751,7 +759,9 @@ Funkcija neleidžia suplanuoti laikotarpio, kuris sutampa su jau suplanuotu, bet
 
 Jei po vėluojančios nuomos suplanuota techninė priežiūra ar perkėlimas, juos perplanuoja darbuotojas arba administratorius.
 
-Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 2026-11-12 10:00 grąžinta 13:00, t. y. 3 val. pavėluotai. Kito kliento rezervacija buvo suplanuota nuo 11:00 iki 2026-11-13 13:00 (26 val., 2 paros). Klientas palaukė, todėl jo rezervacijos pradžia pakeista į išdavimo laiką 13:20 (23 val. 40 min., 1 para).
+Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 2026-11-12 10:00 grąžinta 13:00, t. y. 3 val. pavėluotai. Kito kliento rezervacija buvo suplanuota nuo 11:00 iki 2026-11-13 13:00 (26 val., 2 paros). Klientas palaukė, todėl jo rezervacijos pradžia pakeista į išdavimo laiką 13:20 (23 val. 40 min., 1 para; @pav:pavelavimas pav.).
+
+![Pavėluotas grąžinimas ir kitos rezervacijos pradžios pakeitimas {#pav:pavelavimas}](../artefaktai/12-pavelavimas.png){failai=../artefaktai/12-pavelavimas.drawio,../artefaktai/12-pavelavimas.png}
 
 #### tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
 

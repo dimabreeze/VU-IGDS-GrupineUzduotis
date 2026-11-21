@@ -88,6 +88,12 @@ Kadangi galimas grąžinimas į kitą filialą, motociklas ne visada lieka ten, 
 
 Pavyzdys: motociklas rezervuotas dienai T Vilniuje. Klientas nori jį išsinuomoti dienai T−1 Vilniuje ir grąžinti Klaipėdoje. Pažeidžiama 3 taisyklė, todėl sistema leidžia tik grąžinimą į tą patį filialą ir nurodo priežastį (NFR 1.3.2.4).
 
+Kaip taisyklė taikoma motociklui, kuris yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą, parodyta paveiksle `08-buvimo-vietos-taisykle.png` (šis pavyzdys aprašytas ir `12-funkcijos.md`).
+
+Šaltinis: `artefaktai/08-buvimo-vietos-taisykle.drawio`, paveikslas: `artefaktai/08-buvimo-vietos-taisykle.png`.
+
+![Motociklo buvimo vietos taisyklės pavyzdys](08-buvimo-vietos-taisykle.png)
+
 Taisyklę įgyvendina užimtumo tikrinimo funkcija `tikrintiUzimtuma` (`12-funkcijos.md`), ji atitinka panaudos atvejį „Tikrinti motociklo užimtumą“. Modelyje tam pakanka esamų duomenų: nuomos išdavimo ir grąžinimo filialų, perkėlimo filialų ir dabartinio motociklo filialo. Kai perkėlimas baigiasi ar įforminamas grąžinimas, sistema pakeičia motociklo filialą (ryšys „yra“).
 
 ## Palyginimas su laboratoriniu darbu

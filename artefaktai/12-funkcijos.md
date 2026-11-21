@@ -22,7 +22,11 @@ Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-st
 - **Techninė priežiūra** trunka nuo „Pradžia“ iki „Pabaiga“. Ji vyksta ten, kur motociklas yra, ir jo vietos nekeičia.
 - **Perkėlimas** trunka nuo „Pradžia“ iki „Pabaiga“, prasideda filiale „iš“ ir baigiasi filiale „į“.
 
-Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atvirkščiai. Kai vienas baigiasi tą pačią minutę, kai prasideda kitas, jie nesutampa. Motociklo buvimo vietos taisyklė aprašyta `08-loginis-er.md`.
+Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atvirkščiai. Kai vienas baigiasi tą pačią minutę, kai prasideda kitas, jie nesutampa (paveikslas `12-sutapimas.png`). Motociklo buvimo vietos taisyklė aprašyta `08-loginis-er.md`.
+
+Šaltinis: `artefaktai/12-sutapimas.drawio`, paveikslas: `artefaktai/12-sutapimas.png`.
+
+![Užimtumo laikotarpių sutapimas](12-sutapimas.png)
 
 **Dabartinis laikas** – sistemos laikrodžio reikšmė. Funkcijos jo negauna kaip įėjimo.
 
@@ -63,7 +67,7 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 
 **Išėjimas.** `uzimtas` BOOLEAN – true, jei laikotarpio įrašyti negalima; `priezastis` VARCHAR(255) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
 
-**Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą:
+**Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (paveikslai `12-sutapimas.png` ir `08-buvimo-vietos-taisykle.png`):
 
 - nuoma 2027-05-13 – 2027-05-14 → „Motociklas užimtas 2027-05-12 10:00 – 2027-05-15 10:00 (nuoma)“;
 - nuoma 2027-05-20 – 2027-05-22 Vilniuje → „Laikotarpio pradžioje motociklas bus filiale Klaipėda“;
@@ -79,7 +83,11 @@ Funkcija tik tikrina ir užraktų nevaldo, todėl pati negali užtikrinti, kad t
 4. jei motociklas užimtas, atšaukia transakciją ir parodo priežastį (NFR 1.3.2.4), kitaip įrašo laikotarpį;
 5. patvirtina transakciją – tik tada užraktai nuimami.
 
-Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+Antroji operacija su tuo pačiu motociklu laukia 2 žingsnyje. Gavusi užraktą, ji tikrina jau matydama pirmosios įrašytą rezervaciją ir gauna „Motociklas užimtas“. Taip iš dviejų vienu metu pateiktų rezervacijų įrašoma tik viena, o antrajam vartotojui pranešama, kad motociklas užimtas (NFR 1.3.3.3, paveikslas `12-lygiagreti-rezervacija.png`). Užraktas laikomas tik vienos transakcijos metu, todėl atsako laikui (NFR 1.3.3.1) įtakos neturi. Paieška (PA1) motociklų neužrakina: jos rezultatas gali pasenti, bet galutinai užimtumas patikrinamas rezervuojant.
+
+Šaltinis: `artefaktai/12-lygiagreti-rezervacija.drawio`, paveikslas: `artefaktai/12-lygiagreti-rezervacija.png`.
+
+![Dviejų vienu metu pateiktų rezervacijų įrašymas](12-lygiagreti-rezervacija.png)
 
 Užraktas nėra duomenų srautas, todėl duomenų srautų diagramoje (`09-dsd.md`) nevaizduojamas: ten P2, P4 ir P6 siunčia P1 motociklą ir laikotarpį, gauna atsakymą ir patys įrašo duomenis į saugyklą.
 
@@ -94,7 +102,11 @@ Funkcija neleidžia suplanuoti laikotarpio, kuris sutampa su jau suplanuotu, bet
 
 Jei po vėluojančios nuomos suplanuota techninė priežiūra ar perkėlimas, juos perplanuoja darbuotojas arba administratorius.
 
-Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 2026-11-12 10:00 grąžinta 13:00, t. y. 3 val. pavėluotai. Kito kliento rezervacija buvo suplanuota nuo 11:00 iki 2026-11-13 13:00 (26 val., 2 paros). Klientas palaukė, todėl jo rezervacijos pradžia pakeista į išdavimo laiką 13:20 (23 val. 40 min., 1 para).
+Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 2026-11-12 10:00 grąžinta 13:00, t. y. 3 val. pavėluotai. Kito kliento rezervacija buvo suplanuota nuo 11:00 iki 2026-11-13 13:00 (26 val., 2 paros). Klientas palaukė, todėl jo rezervacijos pradžia pakeista į išdavimo laiką 13:20 (23 val. 40 min., 1 para; paveikslas `12-pavelavimas.png`).
+
+Šaltinis: `artefaktai/12-pavelavimas.drawio`, paveikslas: `artefaktai/12-pavelavimas.png`.
+
+![Pavėluotas grąžinimas ir kitos rezervacijos pradžios pakeitimas](12-pavelavimas.png)
 
 ## 2. tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą
 
