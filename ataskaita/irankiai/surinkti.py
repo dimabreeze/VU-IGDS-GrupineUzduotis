@@ -22,9 +22,10 @@ ataskaita.md sintaksė (Markdown poaibis):
                                     failai= – šaltinio failai; po paveikslu rodomos jų piktogramos su
                                     nuorodomis į failus viešoje GitHub saugykloje (main šaka)
   ::: reikalavimas FR 1.2.1 funkcinis | Pavadinimas    ... :::
-  ::: ta 1 | Pavadinimas  (Aprašymas:, Pradiniai duomenys (sąlygos prieš):, žingsnių lentelė)  :::
-                                    po „Pradiniai duomenys (sąlygos prieš):“ iki lentelės gali eiti
-                                    punktai „- “ (iki 3 lygių pagal įtrauką) ir pastraipos
+  ::: ta 1 | Pavadinimas  (Aprašymas:, Pradiniai duomenys (sąlygos prieš):, žingsnių lentelė, Sąlygos po:)  :::
+                                    po „Pradiniai duomenys (sąlygos prieš):“ (iki lentelės) ir po „Sąlygos po:“
+                                    (iki bloko pabaigos) gali eiti punktai „- “ (iki 3 lygių pagal įtrauką)
+                                    ir pastraipos; „Sąlygos po“ – paskutinė lentelės eilutė
   ::: gulscias ... :::              gulsčias puslapis (atskiras skyrius)
   \\pagebreak                        naujas puslapis
   @pav:id, @lent:id                 nuoroda į paveikslo ar lentelės numerį
@@ -683,22 +684,29 @@ def cell_list(doc, lines, where, sz):
 def test_case(doc, nr, name, block):
     cap, _, bm = caption(doc, 'lent', 'Testavimo atvejis Nr. %s „%s“' % (nr, name))
     doc.defined.add('TA' + nr)
-    desc = pre = ''
-    pre_lines = []  # eilutės po „Pradiniai duomenys (sąlygos prieš):“ iki žingsnių lentelės (sąrašas)
+    desc = pre = post = None
+    pre_lines = []   # eilutės po „Pradiniai duomenys (sąlygos prieš):“ iki žingsnių lentelės (sąrašas)
+    post_lines = []  # eilutės po „Sąlygos po:“ iki bloko pabaigos (sąrašas)
     tlines = []
-    in_pre = False
+    cur = None
     for l in block:
         if l.startswith('Aprašymas:'):
             desc = l[len('Aprašymas:'):].strip()
-            in_pre = False
+            cur = None
         elif l.startswith('Pradiniai duomenys (sąlygos prieš):'):
             pre = l[len('Pradiniai duomenys (sąlygos prieš):'):].strip()
-            in_pre = True
-        elif l.strip().startswith('|'):
+            cur = pre_lines
+        elif l.startswith('Sąlygos po:'):
+            post = l[len('Sąlygos po:'):].strip()
+            cur = post_lines
+        elif l.strip().startswith('|') and cur is not post_lines:
             tlines.append(l)
-            in_pre = False
-        elif in_pre:
-            pre_lines.append(l)
+            cur = None
+        elif cur is not None:
+            cur.append(l)
+    for what, val in (('Aprašymas:', desc), ('Pradiniai duomenys (sąlygos prieš):', pre), ('Sąlygos po:', post)):
+        if val is None:
+            die('TA %s: nėra eilutės „%s“' % (nr, what))
     steps = [split_row(l) for l in tlines if not re.match(r'^\s*\|?\s*:?-{3,}', l)][1:]
     # stulpeliai kaip šablone: Nr., žingsnis, laukiamas rezultatas (2 tinklelio stulpeliai), Pavyko?, Pastabos
     g = [543, 3344, 947, 2532, 1191, 1070]
@@ -728,6 +736,8 @@ def test_case(doc, nr, name, block):
             die('TA %s žingsnyje per mažai langelių: %s' % (nr, s))
         rows.append(tr(c(s[0], g[0]) + c(s[1], g[1]) + c(s[2], g[2] + g[3], 2)
                        + c(s[3] if len(s) > 3 else '', g[4]) + c(s[4] if len(s) > 4 else '', g[5])))
+    rows.append(tr(c(post, sum(g), 6, label='Sąlygos po: ',
+                     extra=cell_list(doc, post_lines, 'TA %s sąlygos po' % nr, sz))))
     rows[-1] = keep_next(rows[-1])  # pavadinimas po lentele – su paskutine eilute
     tbl = ('<w:tbl><w:tblPr><w:tblStyle w:val="TableGrid"/><w:tblW w:w="%d" w:type="dxa"/>'
            '<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="85" w:type="dxa"/><w:right w:w="85" w:type="dxa"/></w:tblCellMar>'

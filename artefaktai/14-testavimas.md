@@ -2,9 +2,9 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių; sąlygos po pateiktos sąrašais ir ataskaitoje perkeltos į TA lentelės paskutinę eilutę.
 
-Testavimas planuojamas sistemos lygiu. Testavimo atvejai (TA) sudaryti pagal panaudos atvejus: kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio. Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
+Testavimas planuojamas sistemos lygiu. Testavimo atvejai (TA) sudaryti pagal panaudos atvejus: kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio. Paskutinėje kiekvieno testavimo atvejo lentelės eilutėje nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
 
 Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena prieš vykdant TA: dabartinis laikas, kas ir kokiu vaidmeniu atlieka žingsnius, motociklai, darbuotojai, klientai ir jų nuomos. Testuotojas prieš kiekvieną TA paruošia duomenų bazę šioje būsenoje, todėl TA galima pakartoti tomis pačiomis sąlygomis.
 
@@ -93,7 +93,11 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | 7. | Darbuotojas 6 planuoja motociklo 52 UVE techninę priežiūrą 2027-05-14 08:00 – 17:00. | Atmesta: „Motociklas užimtas 2027-05-12 10:00 – 2027-05-24 10:00 (nuoma)“. | | |
 | 8. | Darbuotojas 6 planuoja priežiūrą 2027-05-27 08:00 – 17:00. | Priežiūra įrašyta. | | |
 
-**Sąlygos po:** rezervacijos Nr. 655 laikotarpis – 2027-05-12 10:00 – 2027-05-24 10:00, filialai ir tarifas nepakeisti, naujų nuomos įrašų nėra; atmesti pakeitimai neišsaugoti. Motociklui 52 UVE įrašyta techninė priežiūra 2027-05-27 08:00 – 17:00 ir šiuo laikotarpiu jis paieškoje nerodomas.
+**Sąlygos po:**
+
+- Rezervacijos Nr. 655 laikotarpis – 2027-05-12 10:00 – 2027-05-24 10:00, filialai ir tarifas nepakeisti.
+- Atmesti pakeitimai neišsaugoti, naujų nuomos įrašų nėra.
+- Motociklui 52 UVE įrašyta techninė priežiūra 2027-05-27 08:00 – 17:00; šiuo laikotarpiu jis paieškoje nerodomas.
 
 ### Testavimo atvejo Nr. 2
 
@@ -130,7 +134,10 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | 4. | Klientas 26 spaudžia „Atgal“, paieškoje nurodo grąžinimą 2027-05-10 10:00 ir rezervuoja BMW F 900 R. | Rodomas patvirtinimas: 100,00 €, užstatas 700,00 €, baudų lentelė su pakopa „iki 1 val. – 0,00 €“. Nuo motociklo pasirinkimo – 3 ekranai. | | |
 | 5. | Klientas 26 puslapyje „Mano rezervacijos“ keičia rezervacijos Nr. 642 pabaigą į 2027-05-12 11:00. | Atmesta: „A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“. | | |
 
-**Sąlygos po:** įrašyta tik viena nauja nuoma – Kliento 26, BMW F 900 R 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, būsena „rezervuota“, tarifas 100,00 €/para. Rezervacija Nr. 642 nepakeista.
+**Sąlygos po:**
+
+- Įrašyta tik viena nauja nuoma – Kliento 26, BMW F 900 R 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, būsena „rezervuota“, tarifas 100,00 €/para.
+- Rezervacija Nr. 642 nepakeista.
 
 ### Testavimo atvejo Nr. 3
 
@@ -169,7 +176,11 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | 6. | 13:20 įformina nuomos Nr. 632 išdavimą: rida 24 042 km, būklė „Be pastabų“. | Motociklas išduotas, nuomos būsena „aktyvi“. | | |
 | 7. | 2026-11-13 12:40 įformina nuomos Nr. 632 grąžinimą: rida 24 157 km, būklė „Be pastabų“. | Galutinė kaina 60,00 €, bauda 0,00 € (grąžinta anksčiau – kaina nemažinama). | | |
 
-**Sąlygos po:** nuomos Nr. 631 ir 632 užbaigtos. Grąžinimai: Nr. 631 – 2026-11-12 13:00, 24 042 km, 145,00 €, bauda 25,00 €; Nr. 632 – 2026-11-13 12:40, 24 157 km, 60,00 €, bauda 0,00 €. Nuomos Nr. 632 pradžia ir išdavimas – 2026-11-12 13:20. Motociklo 82 HNU rida 24 157 km, filialas Vilnius.
+**Sąlygos po:**
+
+- Nuoma Nr. 631 užbaigta: grąžinta 2026-11-12 13:00, rida 24 042 km, galutinė kaina 145,00 €, bauda 25,00 €.
+- Nuoma Nr. 632 užbaigta: pradžia ir išdavimas 2026-11-12 13:20, grąžinta 2026-11-13 12:40, rida 24 157 km, galutinė kaina 60,00 €, bauda 0,00 €.
+- Motociklo 82 HNU rida 24 157 km, filialas Vilnius.
 
 ### Testavimo atvejo Nr. 4
 
@@ -191,7 +202,10 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | 1. | Abiejų klientų rezervacijos patvirtinamos tuo pačiu metu (dvi lygiagrečios užklausos „Patvirtinti rezervaciją“). | Vienam klientui rodomas patvirtinimas, kitam – „Motociklas užimtas 2027-05-05 11:00 – 2027-05-08 11:00 (nuoma)“. | | |
 | 2. | Klientas, kurio rezervacija atmesta, pakartoja paiešką Kaune tam pačiam laikotarpiui. | BMW F 900 R kortelė nerodoma. | | |
 
-**Sąlygos po:** motociklui 84 VZL laikotarpiui 2027-05-05 11:00 – 2027-05-08 11:00 įrašyta lygiai viena nuoma – to kliento, kuris gavo patvirtinimą.
+**Sąlygos po:**
+
+- Motociklui 84 VZL laikotarpiui 2027-05-05 11:00 – 2027-05-08 11:00 įrašyta lygiai viena nuoma – to kliento, kuris gavo patvirtinimą.
+- Atmestos rezervacijos įrašo nėra.
 
 ## Savikontrolė (ataskaitoje nepateikiama)
 
