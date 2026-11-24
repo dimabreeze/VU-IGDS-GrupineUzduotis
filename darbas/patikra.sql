@@ -3,10 +3,9 @@
 -- (artefaktai/10-lenteles.md, skyrius „Taisyklės, kurias tikrina sistemos funkcijos“).
 -- Kiekvienoje eilutėje „Pažeidimų“ turi būti 0. Vykdoma įkėlus darbas/schema.sql ir darbas/duomenys.sql.
 -- Laiko skirtumai skaičiuojami PostgreSQL funkcija EXTRACT(EPOCH FROM ...).
-
-WITH
-dabar AS (SELECT TIMESTAMP '2026-11-19 12:00:00' AS laikas),  -- duomenų būsenos laikas (duomenys.sql)
-
+with
+-- duomenų būsenos laikas (duomenys.sql)
+dabar AS (SELECT TIMESTAMP '2026-11-19 12:00:00' AS laikas),  
 -- Motociklo užimtumo laikotarpiai: nuomos (be atšauktų), techninė priežiūra ir perkėlimai
 -- (apibrėžimas – artefaktai/12-funkcijos.md). Nuoma prasideda planuojama pradžia, o baigiasi grąžinimo laiku,
 -- jei motociklas grąžintas (anksčiau ar vėliau nei planuota); vykstanti nuoma – vėlesniu iš planuojamos pabaigos
@@ -18,7 +17,8 @@ uzimtumas AS (
                 ELSE n."Planuojama pabaiga" END AS pabaiga,
            n."Išdavimo filialo ID" AS fil_pradzioje, n."Grąžinimo filialo ID" AS fil_pabaigoje,
            n."Būsena" = 'užbaigta' AS baigtas
-    FROM "Nuoma" n LEFT JOIN "Grąžinimas" g ON g."Nuomos ID" = n."ID"
+    FROM "Nuoma" n 
+    LEFT JOIN "Grąžinimas" g ON g."Nuomos ID" = n."ID"
     WHERE n."Būsena" <> 'atšaukta'
     UNION ALL
     SELECT tp."Motociklo ID", 'priežiūra', tp."ID", tp."Pradžia", tp."Pabaiga", NULL, NULL,
@@ -52,77 +52,76 @@ apskaiciuota AS (
            gr.paros * gr.paros_kaina AS nuomos_kaina
     FROM grazinimas gr
 )
-
 SELECT * FROM (
-SELECT 1 AS "Nr.", 'Motociklo užimtumo laikotarpiai nepersidengia' AS "Patikra", COUNT(*) AS "Pažeidimų"
-FROM uzimtumas a JOIN uzimtumas b
-  ON a.moto = b.moto AND (a.rusis, a.id) < (b.rusis, b.id) AND a.pradzia < b.pabaiga AND b.pradzia < a.pabaiga
-UNION ALL
-SELECT 2, 'Laikotarpis prasideda filiale, kuriame baigėsi ankstesnis (buvimo vietos taisyklė)', COUNT(*)
-FROM vieta WHERE ankstesnis_fil IS NOT NULL AND fil_pradzioje <> ankstesnis_fil
-UNION ALL
-SELECT 3, 'Motociklo filialas – paskutinio baigto laikotarpio pabaigos filialas', COUNT(*)
-FROM vieta v JOIN "Motociklas" m ON m."ID" = v.moto
-WHERE v.baigtas AND v.nuo_galo = 1 AND m."Filialo ID" <> v.fil_pabaigoje
-UNION ALL
-SELECT 4, 'Vieno modelio tarifų galiojimo laikotarpiai nepersidengia', COUNT(*)
-FROM "Tarifas" a JOIN "Tarifas" b
-  ON a."Modelio ID" = b."Modelio ID" AND a."ID" < b."ID"
- AND a."Galioja nuo" <= COALESCE(b."Galioja iki", DATE '9999-12-31')
- AND b."Galioja nuo" <= COALESCE(a."Galioja iki", DATE '9999-12-31')
-UNION ALL
-SELECT 5, 'Nuomos tarifas – motociklo modelio, galiojęs rezervavimo dieną', COUNT(*)
-FROM "Nuoma" n JOIN "Tarifas" t ON t."ID" = n."Tarifo ID" JOIN "Motociklas" m ON m."ID" = n."Motociklo ID"
-WHERE t."Modelio ID" <> m."Modelio ID"
-   OR CAST(n."Sukūrimo laikas" AS DATE) < t."Galioja nuo"
-   OR CAST(n."Sukūrimo laikas" AS DATE) > COALESCE(t."Galioja iki", DATE '9999-12-31')
-UNION ALL
-SELECT 6, 'Klientas turi modelio kategoriją, galiojančią visą nuomos laikotarpį', COUNT(*)
-FROM "Nuoma" n JOIN "Motociklas" m ON m."ID" = n."Motociklo ID"
-JOIN "Motociklo modelis" mm ON mm."ID" = m."Modelio ID"
-WHERE n."Būsena" <> 'atšaukta' AND NOT EXISTS (
-    SELECT 1 FROM "Kliento kategorija" kk
-    WHERE kk."Kliento ID" = n."Kliento ID" AND kk."Kategorijos kodas" = mm."Kategorijos kodas"
-      AND kk."Galioja iki" >= CAST(n."Planuojama pabaiga" AS DATE))
-UNION ALL
-SELECT 7, 'Būsena atitinka išdavimą ir grąžinimą', COUNT(*)
-FROM "Nuoma" n LEFT JOIN "Išdavimas" i ON i."Nuomos ID" = n."ID" LEFT JOIN "Grąžinimas" g ON g."Nuomos ID" = n."ID"
-WHERE NOT ((n."Būsena" = 'užbaigta' AND i."Nuomos ID" IS NOT NULL AND g."Nuomos ID" IS NOT NULL)
-        OR (n."Būsena" = 'aktyvi' AND i."Nuomos ID" IS NOT NULL AND g."Nuomos ID" IS NULL)
-        OR (n."Būsena" IN ('rezervuota', 'atšaukta') AND i."Nuomos ID" IS NULL AND g."Nuomos ID" IS NULL))
-UNION ALL
-SELECT 8, 'Rida ir laikas grąžinant ne mažesni nei išduodant', COUNT(*)
-FROM "Išdavimas" i JOIN "Grąžinimas" g ON g."Nuomos ID" = i."Nuomos ID"
-WHERE g."Rida" < i."Rida" OR g."Laikas" <= i."Laikas"
-UNION ALL
-SELECT 9, 'Motociklo rida – paskutinio grąžinimo rida', COUNT(*)
-FROM "Motociklas" m JOIN (
-    SELECT n."Motociklo ID" AS moto, g."Rida",
-           ROW_NUMBER() OVER (PARTITION BY n."Motociklo ID" ORDER BY g."Laikas" DESC) AS nr
-    FROM "Grąžinimas" g JOIN "Nuoma" n ON n."ID" = g."Nuomos ID") p ON p.moto = m."ID" AND p.nr = 1
-WHERE m."Rida" <> p."Rida"
-UNION ALL
-SELECT 10, 'Galutinė kaina ir bauda atitinka tarifą ir baudų pakopas', COUNT(*)
-FROM apskaiciuota WHERE "Bauda" <> bauda OR "Galutinė kaina" <> nuomos_kaina + bauda
-UNION ALL
-SELECT 11, 'Perkėlimas turi bent vieną motociklą', COUNT(*)
-FROM "Perkėlimas" p WHERE NOT EXISTS (SELECT 1 FROM "Perkeliamas motociklas" pm WHERE pm."Perkėlimo ID" = p."ID")
-UNION ALL
-SELECT 12, 'Paskyros vaidmuo atitinka savininką', COUNT(*)
-FROM "Paskyra" p LEFT JOIN "Klientas" k ON k."Paskyros ID" = p."ID" LEFT JOIN "Darbuotojas" d ON d."Paskyros ID" = p."ID"
-WHERE NOT ((p."Vaidmuo" = 'klientas' AND k."ID" IS NOT NULL AND d."ID" IS NULL)
-        OR (p."Vaidmuo" IN ('darbuotojas', 'administratorius') AND d."ID" IS NOT NULL AND k."ID" IS NULL))
-UNION ALL
-SELECT 13, 'Rezervacija sukurta prieš nuomos pradžią', COUNT(*)
-FROM "Nuoma" WHERE "Sukūrimo laikas" >= "Planuojama pradžia"
-UNION ALL
-SELECT 14, 'Nenaudojamas motociklas neturi laikotarpių ateityje', COUNT(*)
-FROM uzimtumas u JOIN "Motociklas" m ON m."ID" = u.moto
-WHERE NOT m."Naudojamas" AND u.pabaiga > (SELECT laikas FROM dabar)
-UNION ALL
-SELECT 15, 'Motociklas išduotas ne kito laikotarpio metu (ankstesnė nuoma užbaigta)', COUNT(*)
-FROM "Išdavimas" i JOIN "Nuoma" n ON n."ID" = i."Nuomos ID"
-JOIN uzimtumas u ON u.moto = n."Motociklo ID" AND NOT (u.rusis = 'nuoma' AND u.id = n."ID")
-WHERE u.pradzia <= i."Laikas" AND i."Laikas" < u.pabaiga
+	SELECT 1 AS "Nr.", 'Motociklo užimtumo laikotarpiai nepersidengia' AS "Patikra", COUNT(*) AS "Pažeidimų"
+	FROM uzimtumas a JOIN uzimtumas b
+	  ON a.moto = b.moto AND (a.rusis, a.id) < (b.rusis, b.id) AND a.pradzia < b.pabaiga AND b.pradzia < a.pabaiga
+	UNION ALL
+	SELECT 2, 'Laikotarpis prasideda filiale, kuriame baigėsi ankstesnis (buvimo vietos taisyklė)', COUNT(*)
+	FROM vieta WHERE ankstesnis_fil IS NOT NULL AND fil_pradzioje <> ankstesnis_fil
+	UNION ALL
+	SELECT 3, 'Motociklo filialas – paskutinio baigto laikotarpio pabaigos filialas', COUNT(*)
+	FROM vieta v JOIN "Motociklas" m ON m."ID" = v.moto
+	WHERE v.baigtas AND v.nuo_galo = 1 AND m."Filialo ID" <> v.fil_pabaigoje
+	UNION ALL
+	SELECT 4, 'Vieno modelio tarifų galiojimo laikotarpiai nepersidengia', COUNT(*)
+	FROM "Tarifas" a JOIN "Tarifas" b
+	  ON a."Modelio ID" = b."Modelio ID" AND a."ID" < b."ID"
+	 AND a."Galioja nuo" <= COALESCE(b."Galioja iki", DATE '9999-12-31')
+	 AND b."Galioja nuo" <= COALESCE(a."Galioja iki", DATE '9999-12-31')
+	UNION ALL
+	SELECT 5, 'Nuomos tarifas – motociklo modelio, galiojęs rezervavimo dieną', COUNT(*)
+	FROM "Nuoma" n JOIN "Tarifas" t ON t."ID" = n."Tarifo ID" JOIN "Motociklas" m ON m."ID" = n."Motociklo ID"
+	WHERE t."Modelio ID" <> m."Modelio ID"
+	   OR CAST(n."Sukūrimo laikas" AS DATE) < t."Galioja nuo"
+	   OR CAST(n."Sukūrimo laikas" AS DATE) > COALESCE(t."Galioja iki", DATE '9999-12-31')
+	UNION ALL
+	SELECT 6, 'Klientas turi modelio kategoriją, galiojančią visą nuomos laikotarpį', COUNT(*)
+	FROM "Nuoma" n JOIN "Motociklas" m ON m."ID" = n."Motociklo ID"
+	JOIN "Motociklo modelis" mm ON mm."ID" = m."Modelio ID"
+	WHERE n."Būsena" <> 'atšaukta' AND NOT EXISTS (
+	    SELECT 1 FROM "Kliento kategorija" kk
+	    WHERE kk."Kliento ID" = n."Kliento ID" AND kk."Kategorijos kodas" = mm."Kategorijos kodas"
+	      AND kk."Galioja iki" >= CAST(n."Planuojama pabaiga" AS DATE))
+	UNION ALL
+	SELECT 7, 'Būsena atitinka išdavimą ir grąžinimą', COUNT(*)
+	FROM "Nuoma" n LEFT JOIN "Išdavimas" i ON i."Nuomos ID" = n."ID" LEFT JOIN "Grąžinimas" g ON g."Nuomos ID" = n."ID"
+	WHERE NOT ((n."Būsena" = 'užbaigta' AND i."Nuomos ID" IS NOT NULL AND g."Nuomos ID" IS NOT NULL)
+	        OR (n."Būsena" = 'aktyvi' AND i."Nuomos ID" IS NOT NULL AND g."Nuomos ID" IS NULL)
+	        OR (n."Būsena" IN ('rezervuota', 'atšaukta') AND i."Nuomos ID" IS NULL AND g."Nuomos ID" IS NULL))
+	UNION ALL
+	SELECT 8, 'Rida ir laikas grąžinant ne mažesni nei išduodant', COUNT(*)
+	FROM "Išdavimas" i JOIN "Grąžinimas" g ON g."Nuomos ID" = i."Nuomos ID"
+	WHERE g."Rida" < i."Rida" OR g."Laikas" <= i."Laikas"
+	UNION ALL
+	SELECT 9, 'Motociklo rida – paskutinio grąžinimo rida', COUNT(*)
+	FROM "Motociklas" m JOIN (
+	    SELECT n."Motociklo ID" AS moto, g."Rida",
+	           ROW_NUMBER() OVER (PARTITION BY n."Motociklo ID" ORDER BY g."Laikas" DESC) AS nr
+	    FROM "Grąžinimas" g JOIN "Nuoma" n ON n."ID" = g."Nuomos ID") p ON p.moto = m."ID" AND p.nr = 1
+	WHERE m."Rida" <> p."Rida"
+	UNION ALL
+	SELECT 10, 'Galutinė kaina ir bauda atitinka tarifą ir baudų pakopas', COUNT(*)
+	FROM apskaiciuota WHERE "Bauda" <> bauda OR "Galutinė kaina" <> nuomos_kaina + bauda
+	UNION ALL
+	SELECT 11, 'Perkėlimas turi bent vieną motociklą', COUNT(*)
+	FROM "Perkėlimas" p WHERE NOT EXISTS (SELECT 1 FROM "Perkeliamas motociklas" pm WHERE pm."Perkėlimo ID" = p."ID")
+	UNION ALL
+	SELECT 12, 'Paskyros vaidmuo atitinka savininką', COUNT(*)
+	FROM "Paskyra" p LEFT JOIN "Klientas" k ON k."Paskyros ID" = p."ID" LEFT JOIN "Darbuotojas" d ON d."Paskyros ID" = p."ID"
+	WHERE NOT ((p."Vaidmuo" = 'klientas' AND k."ID" IS NOT NULL AND d."ID" IS NULL)
+	        OR (p."Vaidmuo" IN ('darbuotojas', 'administratorius') AND d."ID" IS NOT NULL AND k."ID" IS NULL))
+	UNION ALL
+	SELECT 13, 'Rezervacija sukurta prieš nuomos pradžią', COUNT(*)
+	FROM "Nuoma" WHERE "Sukūrimo laikas" >= "Planuojama pradžia"
+	UNION ALL
+	SELECT 14, 'Nenaudojamas motociklas neturi laikotarpių ateityje', COUNT(*)
+	FROM uzimtumas u JOIN "Motociklas" m ON m."ID" = u.moto
+	WHERE NOT m."Naudojamas" AND u.pabaiga > (SELECT laikas FROM dabar)
+	UNION ALL
+	SELECT 15, 'Motociklas išduotas ne kito laikotarpio metu (ankstesnė nuoma užbaigta)', COUNT(*)
+	FROM "Išdavimas" i JOIN "Nuoma" n ON n."ID" = i."Nuomos ID"
+	JOIN uzimtumas u ON u.moto = n."Motociklo ID" AND NOT (u.rusis = 'nuoma' AND u.id = n."ID")
+	WHERE u.pradzia <= i."Laikas" AND i."Laikas" < u.pabaiga
 ) patikros
 ORDER BY "Nr.";

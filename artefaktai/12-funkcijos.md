@@ -70,7 +70,9 @@ Laikotarpiai sutampa, jei vienas prasideda anksčiau, nei baigiasi kitas, ir atv
 - `uzimtas` (`BOOLEAN`) – `true`, jei laikotarpio įrašyti negalima;
 - `priezastis` (`VARCHAR(255)`) – kodėl motociklas užimtas (tuščia, kai jis laisvas).
 
-**Pavyzdžiai** (bandomieji duomenys). Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (paveikslai `12-sutapimas.png` ir `08-buvimo-vietos-taisykle.png`):
+**Pavyzdžiai.** Šiame skyriuje, 2.3.2 skyriaus maketuose ir 3.2 skyriaus testavimo atvejuose naudojami bandomieji duomenys – išgalvoti filialai, motociklai, tarifai, klientai ir nuomos.
+
+Motociklas CB500 Hornet yra Vilniuje ir rezervuotas 2027-05-12 10:00 – 2027-05-15 10:00 su grąžinimu į Klaipėdą (paveikslai `12-sutapimas.png` ir `08-buvimo-vietos-taisykle.png`):
 
 - nuoma 2027-05-13 – 2027-05-14 → „Motociklas užimtas 2027-05-12 10:00 – 2027-05-15 10:00 (nuoma)“;
 - nuoma 2027-05-20 – 2027-05-22 Vilniuje → „Laikotarpio pradžioje motociklas bus filiale Klaipėda“;

@@ -23,6 +23,8 @@ ataskaita.md sintaksė (Markdown poaibis):
                                     nuorodomis į failus viešoje GitHub saugykloje (main šaka)
   ::: reikalavimas FR 1.2.1 funkcinis | Pavadinimas    ... :::
   ::: ta 1 | Pavadinimas  (Aprašymas:, Pradiniai duomenys (sąlygos prieš):, žingsnių lentelė)  :::
+                                    po „Pradiniai duomenys (sąlygos prieš):“ iki lentelės gali eiti
+                                    punktai „- “ (iki 3 lygių pagal įtrauką) ir pastraipos
   ::: gulscias ... :::              gulsčias puslapis (atskiras skyrius)
   \\pagebreak                        naujas puslapis
   @pav:id, @lent:id                 nuoroda į paveikslo ar lentelės numerį
@@ -638,24 +640,71 @@ def requirement(doc, nr, typ, name, text):
     return bookmark(doc, bookmark(doc, tbl, bm), anchor_name('r', nr)) + cap
 
 
+def cell_list(doc, lines, where, sz):
+    """Langelio tęsinys iš Markdown eilučių: punktai („- “ / „* “, iki 3 lygių pagal įtrauką) ir pastraipos.
+
+    Tuščia eilutė baigia punktą ar pastraipą; eilutė be žymės tuoj po punkto – jo tęsinys."""
+    blocks, indents, cur = [], [], None
+    for l in lines:
+        if not l.strip():
+            cur = None
+            continue
+        m = LIST_RE.match(l)
+        if m:
+            if m.group(2)[0].isdigit():
+                die('%s: numeruotas sąrašas nepalaikomas: %s' % (where, l.strip()))
+            ind = len(m.group(1))
+            while indents and indents[-1] > ind:
+                indents.pop()
+            if not indents or indents[-1] < ind:
+                indents.append(ind)
+            if len(indents) > 3:
+                die('%s: daugiau nei 3 sąrašo lygiai: %s' % (where, l.strip()))
+            cur = [len(indents) - 1, [l[m.end():]]]
+            blocks.append(cur)
+        elif cur is not None:
+            cur[1].append(l)
+        else:
+            indents = []
+            cur = [None, [l]]
+            blocks.append(cur)
+    out = []
+    nid = new_num(doc, ABS_BULLET) if any(b[0] is not None for b in blocks) else None
+    for lvl, parts in blocks:
+        text = join_lines(parts)
+        if lvl is None:
+            out.append('<w:p><w:pPr><w:pStyle w:val="Lentelestekstas"/><w:rPr>%s</w:rPr></w:pPr>%s</w:p>'
+                       % (LANG, inline(doc, text, sz=sz)))
+        else:
+            out.append(list_par(doc, text, nid, 2 + lvl, in_table=True, sz=sz))  # 2–4 lygiai – lentelėms
+    return ''.join(out)
+
+
 def test_case(doc, nr, name, block):
     cap, _, bm = caption(doc, 'lent', 'Testavimo atvejis Nr. %s „%s“' % (nr, name))
     doc.defined.add('TA' + nr)
     desc = pre = ''
+    pre_lines = []  # eilutės po „Pradiniai duomenys (sąlygos prieš):“ iki žingsnių lentelės (sąrašas)
     tlines = []
+    in_pre = False
     for l in block:
         if l.startswith('Aprašymas:'):
             desc = l[len('Aprašymas:'):].strip()
+            in_pre = False
         elif l.startswith('Pradiniai duomenys (sąlygos prieš):'):
             pre = l[len('Pradiniai duomenys (sąlygos prieš):'):].strip()
+            in_pre = True
         elif l.strip().startswith('|'):
             tlines.append(l)
+            in_pre = False
+        elif in_pre:
+            pre_lines.append(l)
     steps = [split_row(l) for l in tlines if not re.match(r'^\s*\|?\s*:?-{3,}', l)][1:]
     # stulpeliai kaip šablone: Nr., žingsnis, laukiamas rezultatas (2 tinklelio stulpeliai), Pavyko?, Pastabos
     g = [543, 3344, 947, 2532, 1191, 1070]
     sz = 20
 
-    def c(text, w, span=1, b=False, shade=None, label=None):
+    def c(text, w, span=1, b=False, shade=None, label=None, extra=''):
         tcpr = '<w:tcW w:w="%d" w:type="dxa"/>' % w
         if span > 1:
             tcpr += '<w:gridSpan w:val="%d"/>' % span
@@ -663,12 +712,13 @@ def test_case(doc, nr, name, block):
             tcpr += '<w:shd w:val="clear" w:color="auto" w:fill="%s"/>' % shade
         body = (run(label, b=True, sz=sz) if label else '') + inline(doc, text, b=b, sz=sz)
         return ('<w:tc><w:tcPr>%s</w:tcPr><w:p><w:pPr><w:pStyle w:val="%s"/><w:rPr>%s</w:rPr></w:pPr>'
-                '%s</w:p></w:tc>' % (tcpr, 'Lentelesantraste' if shade else 'Lentelestekstas', LANG, body))
+                '%s</w:p>%s</w:tc>' % (tcpr, 'Lentelesantraste' if shade else 'Lentelestekstas', LANG, body, extra))
     tr = lambda cells, hdr=False: '<w:tr><w:trPr><w:cantSplit/>%s</w:trPr>%s</w:tr>' % (
         '<w:tblHeader/>' if hdr else '', cells)
     rows = [tr(c('Testavimo atvejo Nr. %s' % nr, sum(g[:3]), 3, b=True) + c(name, sum(g[3:]), 3, b=True)),
             tr(c(desc, sum(g), 6, label='Aprašymas: ')),
-            tr(c(pre, sum(g), 6, label='Pradiniai duomenys (sąlygos prieš): ')),
+            tr(c(pre, sum(g), 6, label='Pradiniai duomenys (sąlygos prieš): ',
+                 extra=cell_list(doc, pre_lines, 'TA %s pradiniai duomenys' % nr, sz))),
             tr(c('Nr.', g[0], b=True, shade='D9D9D9') + c('Testavimo atvejo (scenarijaus) žingsnis', g[1], b=True, shade='D9D9D9')
                + c('Laukiamas rezultatas', g[2] + g[3], 2, b=True, shade='D9D9D9')
                + c('Pavyko gauti laukiamą rezultatą? (Taip/Ne)', g[4], b=True, shade='D9D9D9')
@@ -1025,7 +1075,9 @@ ABSTRACTS = (
               '<w:rPr><w:rFonts w:ascii="%s" w:hAnsi="%s" w:hint="default"/></w:rPr></w:lvl>'
               % (lv, sym, left, font, font)
               for lv, sym, left, font in [(0, '', 1077, 'Symbol'), (1, 'o', 1434, 'Courier New'),
-                                          (2, '', 357, 'Symbol')])
+                                          # 2–4 lygiai – punktai lentelės langelyje
+                                          (2, '', 357, 'Symbol'), (3, 'o', 714, 'Courier New'),
+                                          (4, '', 1071, 'Wingdings')])
     + '</w:abstractNum>'
     + '<w:abstractNum w:abstractNumId="%d"><w:multiLevelType w:val="hybridMultilevel"/>' % ABS_DECIMAL
     + ''.join('<w:lvl w:ilvl="%d"><w:start w:val="1"/><w:numFmt w:val="%s"/><w:lvlText w:val="%s"/>'

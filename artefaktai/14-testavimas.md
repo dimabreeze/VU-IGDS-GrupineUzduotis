@@ -2,13 +2,11 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių.
 
 Testavimas planuojamas sistemos lygiu. Testavimo atvejai (TA) sudaryti pagal panaudos atvejus: kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio. Po kiekvienos lentelės nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
 
-Pradiniai duomenys paimti iš bandomosios duomenų bazės (`darbas/duomenys.sql`, būsena 2026-11-19 12:00; TA3 – tos pačios duomenų bazės būsena 2026-11-12 11:00, žr. TA3), todėl TA galima pakartoti tomis pačiomis sąlygomis. Laukiami pranešimai – 2.2.1 skyriaus funkcijų grąžinamos priežastys (`12-funkcijos.md`), parodomos taip, kaip 2.3.2 skyriaus maketuose (`13-dizainas.md`).
-
-Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
+Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena prieš vykdant TA: dabartinis laikas, kas ir kokiu vaidmeniu atlieka žingsnius, motociklai, darbuotojai, klientai ir jų nuomos. Testuotojas prieš kiekvieną TA paruošia duomenų bazę šioje būsenoje, todėl TA galima pakartoti tomis pačiomis sąlygomis.
 
 ## 3.1. Testavimo apžvalga
 
@@ -50,7 +48,9 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 ## 3.2. Testavimo atvejai
 
-Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis:
+Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
+
+Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
 
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|
@@ -65,7 +65,22 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Aprašymas:** tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1.
 
-**Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. Klientas 8 prisijungęs prie savo paskyros; jo pažymėjimo kategorijos A1, A2, A galioja iki 2033-10-13. Kliento 8 rezervacija Nr. 655: Honda CB500 Hornet, valst. nr. 52 UVE (motociklas dabar Vilniuje), 2027-05-12 10:00 – 2027-05-15 10:00, išdavimas Vilniuje, grąžinimas Klaipėdoje, tarifas 64,00 €/para, užstatas 400,00 €. Kita šio motociklo nuoma – Kliento 12 rezervacija Nr. 661: 2027-05-24 10:00 – 2027-05-26 10:00, išdavimas ir grąžinimas Klaipėdoje. Kitų šio motociklo užimtumo laikotarpių po 2027-05-12 nėra. 7–8 žingsniuose dirba Klaipėdos filialo darbuotojas (Darbuotojas 6).
+**Pradiniai duomenys (sąlygos prieš):**
+
+- Dabartinis laikas: 2026-11-19 12:00.
+- Žingsnius atlieka:
+  - 1–6 – Klientas 8, prisijungęs prie savo paskyros;
+  - 7–8 – Klaipėdos filialo darbuotojas (Darbuotojas 6).
+- Klientas 8: kategorijos A1, A2 ir A galioja iki 2033-10-13.
+- Motociklas: Honda CB500 Hornet, valst. nr. 52 UVE, dabar Vilniuje.
+- Kliento 8 rezervacija Nr. 655:
+  - laikotarpis: 2027-05-12 10:00 – 2027-05-15 10:00 (3 paros);
+  - išdavimas Vilniuje, grąžinimas Klaipėdoje;
+  - tarifas: 64,00 €/para, užstatas 400,00 €.
+- Kita šio motociklo nuoma – Kliento 12 rezervacija Nr. 661:
+  - laikotarpis: 2027-05-24 10:00 – 2027-05-26 10:00 (2 paros);
+  - išdavimas ir grąžinimas Klaipėdoje.
+- Kitų šio motociklo užimtumo laikotarpių po 2027-05-12 nėra.
 
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -86,7 +101,26 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Aprašymas:** tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4.
 
-**Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 26 HUN – vienintelis šio modelio motociklas Vilniuje, laisvas 2027-05-09 10:00 – 2027-05-12 10:00. Modeliui reikia A kategorijos; tarifas 100,00 €/para, užstatas 700,00 €, baudų pakopos: nuo 1 val. – 20,00 €, nuo 3 val. – 50,00 €, nuo 24 val. – 100,00 €. Klientas 26 (turi paskyrą): A1, A2 ir A galioja iki 2027-05-10; jo rezervacija Nr. 642 – BMW F 900 R, valst. nr. 84 VZL, 2027-04-14 11:00 – 2027-04-18 11:00, išdavimas ir grąžinimas Kaune. Klientas 33 (turi paskyrą): tik A1, galioja iki 2030-01-21. Klientas 35: paskyros neturi, pažymėjime motociklų kategorijų nėra. 2 žingsnyje dirba Vilniaus filialo darbuotojas (Darbuotojas 1).
+**Pradiniai duomenys (sąlygos prieš):**
+
+- Dabartinis laikas: 2026-11-19 12:00.
+- Žingsnius atlieka:
+  - 1 – Klientas 33, prisijungęs prie savo paskyros;
+  - 2 – Vilniaus filialo darbuotojas (Darbuotojas 1);
+  - 3–5 – Klientas 26, prisijungęs prie savo paskyros.
+- Motociklas: BMW F 900 R, valst. nr. 26 HUN – vienintelis šio modelio motociklas Vilniuje, laisvas 2027-05-09 10:00 – 2027-05-12 10:00.
+- Modelis BMW F 900 R:
+  - reikalinga kategorija: A;
+  - tarifas: 100,00 €/para, užstatas 700,00 €;
+  - baudų pakopos:
+    - nuo 1 val. – 20,00 €;
+    - nuo 3 val. – 50,00 €;
+    - nuo 24 val. – 100,00 €.
+- Klientas 26 (turi paskyrą):
+  - kategorijos A1, A2 ir A galioja iki 2027-05-10;
+  - rezervacija Nr. 642: kitas BMW F 900 R (valst. nr. 84 VZL), 2027-04-14 11:00 – 2027-04-18 11:00, išdavimas ir grąžinimas Kaune.
+- Klientas 33 (turi paskyrą): tik A1 kategorija, galioja iki 2030-01-21.
+- Klientas 35 (paskyros neturi): pažymėjime motociklų kategorijų nėra.
 
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -104,7 +138,26 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Aprašymas:** tikrinama, kaip sistema elgiasi, kai motociklas grąžinamas pavėluotai, o po šios nuomos jau rezervuota kita. Tvarkaraštyje (PA8) vėlavimas pažymimas; motociklo neleidžiama išduoti, kol ankstesnė nuoma negrąžinta (PA9); neleidžiama įrašyti mažesnės ridos nei išduodant (PA12); grąžinant apskaičiuojama galutinė kaina ir bauda (PA13, PA14, funkcija `skaiciuotiKaina`). Ribinė reikšmė: vėlavimas lygiai 3 val. – baudos pakopos „nuo 3 val.“ pradžia. Laukusiam klientui pakeičiama nuomos pradžia (PA4). Testuojami reikalavimai FR 1.2.3, NFR 1.3.2.4.
 
-**Pradiniai duomenys (sąlygos prieš):** Vilniaus filialas, dabartinis laikas 2026-11-12 11:00, prisijungęs Darbuotojas 3. Duomenys – bandomųjų duomenų būsena šiuo momentu: rinkinyje (būsena 2026-11-19 12:00) nuomos Nr. 631 ir 632 jau užbaigtos taip, kaip nurodyta „Sąlygose po“. Motociklas BMW G 310 R, valst. nr. 82 HNU. Nuoma Nr. 631 (Klientas 19): 2026-11-10 10:00 – 2026-11-12 10:00, išdavimas ir grąžinimas Vilniuje, išduota 2026-11-10 10:26 su 23 642 km rida, dar negrąžinta (būsena „aktyvi“). Nuoma Nr. 632 (Klientas 22) tam pačiam motociklui: 2026-11-12 11:00 – 2026-11-13 13:00, išdavimas ir grąžinimas Vilniuje, būsena „rezervuota“. Abiejų nuomų tarifas: 60,00 €/para, užstatas 400,00 €, baudų pakopos: nuo 1 val. – 10,00 €, nuo 3 val. – 25,00 €, nuo 24 val. – 60,00 €.
+**Pradiniai duomenys (sąlygos prieš):**
+
+- Dabartinis laikas: 2026-11-12 11:00.
+- Žingsnius atlieka: Vilniaus filialo darbuotojas (Darbuotojas 3).
+- Motociklas: BMW G 310 R, valst. nr. 82 HNU.
+- Kliento 19 nuoma Nr. 631:
+  - laikotarpis: 2026-11-10 10:00 – 2026-11-12 10:00 (2 paros);
+  - išdavimas ir grąžinimas Vilniuje;
+  - išduota 2026-11-10 10:26, rida 23 642 km;
+  - būsena „aktyvi“ (motociklas dar negrąžintas).
+- Kliento 22 rezervacija Nr. 632 tam pačiam motociklui:
+  - laikotarpis: 2026-11-12 11:00 – 2026-11-13 13:00;
+  - išdavimas ir grąžinimas Vilniuje;
+  - būsena „rezervuota“.
+- Abiejų nuomų tarifas:
+  - 60,00 €/para, užstatas 400,00 €;
+  - baudų pakopos:
+    - nuo 1 val. – 10,00 €;
+    - nuo 3 val. – 25,00 €;
+    - nuo 24 val. – 60,00 €.
 
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -124,7 +177,14 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 **Aprašymas:** tikrinama, ar sistema, gavusi dvi tuo pačiu metu pateiktas to paties motociklo rezervacijas sutampančiam laikotarpiui, patvirtina tik vieną, o kitam klientui praneša, kad motociklas užimtas, ir ar užimtas motociklas nebėra paieškos rezultatuose. Testas vykdomas automatizuotai: abi rezervacijos pateikiamos dviem lygiagrečiomis užklausomis, nes rankiniu būdu to paties momento pasiekti negalima. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3.
 
-**Pradiniai duomenys (sąlygos prieš):** dabartinis laikas 2026-11-19 12:00. BMW F 900 R, valst. nr. 84 VZL – vienintelis šio modelio motociklas Kaune, laisvas 2027-05-05 11:00 – 2027-05-08 11:00. Klientai 2 ir 3 prisijungę skirtingose naršyklėse; abiejų A kategorija galioja (iki 2034-11-26 ir 2034-02-26). Abu ieškojo motociklų Kaune šiam laikotarpiui, pasirinko BMW F 900 R ir yra rezervacijos duomenų ekrane.
+**Pradiniai duomenys (sąlygos prieš):**
+
+- Dabartinis laikas: 2026-11-19 12:00.
+- Žingsnius atlieka: Klientai 2 ir 3, prisijungę skirtingose naršyklėse (rezervacijas pateikia automatizuotas testas).
+- Motociklas: BMW F 900 R, valst. nr. 84 VZL – vienintelis šio modelio motociklas Kaune, laisvas 2027-05-05 11:00 – 2027-05-08 11:00.
+- Klientai 2 ir 3:
+  - A kategorija galioja: Kliento 2 – iki 2034-11-26, Kliento 3 – iki 2034-02-26;
+  - abu ieškojo motociklų Kaune šiam laikotarpiui, pasirinko BMW F 900 R ir yra rezervacijos duomenų ekrane.
 
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -135,4 +195,4 @@ Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl st
 
 ## Savikontrolė (ataskaitoje nepateikiama)
 
-Visi pradiniai duomenys ir laukiami pranešimai 2026-11-19 sutikrinti su bandomąja duomenų baze: funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` (`darbas/funkcijos.sql`) su TA įėjimais grąžina būtent tuos atsakymus ir priežastis, kurie nurodyti lentelėse. TA1 7 žingsnis patikrintas po 6 žingsnio pakeitimo (rezervacija Nr. 655 iki 2027-05-24 10:00). Tais pačiais įėjimais `darbas/funkciju_testai.sql` jau yra K2 (TA2 5 žingsnis), S1 ir S2 (TA3 4 ir 7 žingsniai); kiti žingsniai tikrina tas pačias taisykles kaip U1–U3, U5, U6, K4 ir K5, bet su kitais įėjimais. TA4 atitinka `darbas/lygiagreti_rezervacija.sh` (ten – kitas motociklas ir laikotarpis). Sąsajos elgesys (tvarkaraščio žymos, ekranų skaičius, ridos patikra) bus tikrinamas tik sukūrus sistemą.
+Laukiami pranešimai 2026-11-19 sutikrinti bandomojoje duomenų bazėje: funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` (`darbas/funkcijos.sql`) su TA įėjimais grąžina būtent tuos atsakymus ir priežastis, kurie nurodyti lentelėse. TA1 7 žingsnis patikrintas po 6 žingsnio pakeitimo (rezervacija Nr. 655 iki 2027-05-24 10:00). Tais pačiais įėjimais `darbas/funkciju_testai.sql` jau yra K2 (TA2 5 žingsnis), S1 ir S2 (TA3 4 ir 7 žingsniai); kiti žingsniai tikrina tas pačias taisykles kaip U1–U3, U5, U6, K4 ir K5, bet su kitais įėjimais. TA4 atitinka `darbas/lygiagreti_rezervacija.sh` (ten – kitas motociklas ir laikotarpis). Sąsajos elgesys (tvarkaraščio žymos, ekranų skaičius, ridos patikra) bus tikrinamas tik sukūrus sistemą.
