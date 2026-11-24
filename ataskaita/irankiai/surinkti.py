@@ -55,8 +55,8 @@ from xml.sax.saxutils import escape
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 SRC_MD = os.path.join(ROOT, 'ataskaita', 'ataskaita.md')
 TEMPLATE = os.path.join(ROOT, 'ataskaita', 'sablono-kopija.docx')
-OUT = os.path.join(ROOT, 'ataskaita', 'MotoNuoma_IS_ataskaita.docx')
-SISTEMA = 'MotoNuoma'
+OUT = os.path.join(ROOT, 'ataskaita', 'Brrrum_IS_ataskaita.docx')
+SISTEMA = 'Brrrūm'
 ICON_TOOL_SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ikona.swift')
 TMP = os.environ.get('TMPDIR', '/tmp')
 

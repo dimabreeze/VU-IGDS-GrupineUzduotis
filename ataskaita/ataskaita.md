@@ -8,7 +8,7 @@
 
 #### Užsakovas
 
-UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniuje, Kaune ir Klaipėdoje. Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
+UAB „Brrrūm“ yra motociklų nuomos įmonė, turinti tris filialus: Vilniuje, Kaune ir Klaipėdoje. Įmonės parką sudaro apie 40 motociklų, priklausančių 15 modelių: nuo lengvų A2 kategorijos motociklų iki didelių turistinių. 
 Pagrindinis nuomos sezonas trunka nuo balandžio iki spalio.
 
 #### Dabartinė veikla
@@ -153,7 +153,7 @@ Nagrinėjami keturi analogai: trys Lietuvos motociklų nuomos įmonių svetainė
 #### RentSyst (rentsyst.com) – SaaS sistema
 
 - **Gamintojas:** RentSyst Ltd.; debesų CRM ir rezervavimo sistema transporto nuomos įmonėms. Pirmiausia skirta automobilių nuomai, tačiau turi atskirą motociklų nuomos sprendimą.
-- **Kaina (be PVM, mokant kas mėnesį):** „Beginner“ – 55 € per mėnesį iki 15 transporto priemonių; „Basic“ – 3 € už transporto priemonę per mėnesį (16–50 TP); „Standard“ – 2,7 €; „Professional“ – 2,5 €; „Expert“ – 2 €; filialų ir vadybininkų skaičius neribotas. UAB „MotoNuoma“ parkui (apie 40 motociklų) tiktų „Basic“ planas – apie 120 € per mėnesį be PVM.
+- **Kaina (be PVM, mokant kas mėnesį):** „Beginner“ – 55 € per mėnesį iki 15 transporto priemonių; „Basic“ – 3 € už transporto priemonę per mėnesį (16–50 TP); „Standard“ – 2,7 €; „Professional“ – 2,5 €; „Expert“ – 2 €; filialų ir vadybininkų skaičius neribotas. UAB „Brrrūm“ parkui (apie 40 motociklų) tiktų „Basic“ planas – apie 120 € per mėnesį be PVM.
 - **Funkcijos:** internetinė rezervacija (booking engine), parko valdymas, techninės priežiūros modulis, ataskaitos ir statistika, mokėjimai internetu, kliento paskyra („Driver's cabinet“), kelios kalbos, skaitmeninės sutartys, naudotojų vaidmenys, API, apskaita ir e. sąskaitos; GPS integracija už papildomą 2,5 € mokestį.
 - **Privalumai:** platus funkcijų rinkinys, neribotas filialų skaičius, techninės priežiūros modulis, ataskaitos, nemokamas bandomasis laikotarpis.
 - **Trūkumai:** universali, pirmiausia automobilių nuomai skirta sistema; nuolatinis mėnesinis mokestis, didėjantis kartu su parku; viešai nėra informacijos, ar sistema tikrina vairuotojo pažymėjimo kategoriją (A2, A) pagal motociklo klasę; išplėstinė analitika pažymėta kaip „netrukus“.

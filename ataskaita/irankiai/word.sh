@@ -1,7 +1,7 @@
 #!/bin/sh
 # Uždaro jau atidarytą ataskaitą (nesaugodamas), atnaujina .docx laukus ir turinį (TURINYS) Word programoje, išsaugo dokumentą ir PDF.
 set -e
-F="${1:-ataskaita/MotoNuoma_IS_ataskaita.docx}"
+F="${1:-ataskaita/Brrrum_IS_ataskaita.docx}"
 DOCX=$(cd "$(dirname "$F")" && pwd)/$(basename "$F")
 PDF="${DOCX%.docx}.pdf"
 osascript <<OSA

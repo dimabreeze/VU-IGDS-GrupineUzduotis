@@ -4,7 +4,7 @@ Medžiaga ataskaitos skyriams 1.1.1 „Vartotojo poreikis ir sistemos pagrindima
 
 ## Užsakovas
 
-UAB „MotoNuoma“ yra motociklų nuomos įmonė, turinti tris filialus:  
+UAB „Brrrūm“ yra motociklų nuomos įmonė, turinti tris filialus:  
     - Vilniuje, 
     - Kaune,
     - Klaipėdoje.  

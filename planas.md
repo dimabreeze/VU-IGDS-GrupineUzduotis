@@ -173,7 +173,7 @@ Jei vėluojame, pirmiausia supaprastiname dizaino maketus (13 žingsnis), o DSD 
 - Perskaityti ir pataisyti lietuvišką tekstą, patikrinti reikalavimų ir paveikslų numeraciją.
 - Priedas „Atsekamumo matrica“: A ir B lentelės iš `artefaktai/16-atsekamumo-matrica.md`.
 - Artefaktas: galutinis `.docx`.
-- Atlikta 2026-11-20: ataskaita `ataskaita/MotoNuoma_IS_ataskaita.docx` ir `.pdf` (84 psl., 22 paveikslai, 72 lentelės), surenkama iš `ataskaita/ataskaita.md` (žr. `README.md`). Perskaitytas ir pataisytas lietuviškas tekstas; pataisos, liečiančios artefaktus, padarytos visuose dokumentuose. Liko: galutinė peržiūra ir pateikimas 2026-11-23.
+- Atlikta 2026-11-20: ataskaita `ataskaita/Brrrum_IS_ataskaita.docx` ir `.pdf` (84 psl., 22 paveikslai, 72 lentelės), surenkama iš `ataskaita/ataskaita.md` (žr. `README.md`). Perskaitytas ir pataisytas lietuviškas tekstas; pataisos, liečiančios artefaktus, padarytos visuose dokumentuose. Liko: galutinė peržiūra ir pateikimas 2026-11-23.
 
 ## Priminimai
 

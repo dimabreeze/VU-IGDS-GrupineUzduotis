@@ -12,7 +12,7 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 | `artefaktai/` | Tekstinės dalys pagal plano žingsnius, prie jų – diagramų šaltiniai (`.drawio`, Ganto diagramos – `.xlsx`) ir paveikslai (`.png`) tuo pačiu numeriu; `13-dizainas/` – sąsajos maketai (HTML, CSS ir jų paveikslai) |
 | `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos bei Ganto diagrama (`lab-GANTT-diagrama.xlsx`), paskaitų skaidrės |
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos, bandomoji duomenų bazė (žr. žemiau) ir kt. |
-| `ataskaita/` | Galutinė ataskaita (`MotoNuoma_IS_ataskaita.docx` ir `.pdf`), jos tekstas `ataskaita.md`, šablono kopija ir surinkimo įrankiai (`irankiai/`) |
+| `ataskaita/` | Galutinė ataskaita (`Brrrum_IS_ataskaita.docx` ir `.pdf`), jos tekstas `ataskaita.md`, šablono kopija ir surinkimo įrankiai (`irankiai/`) |
 
 Dažniausi veiksmai (duomenų bazės paleidimas, patikros, diagramų eksportas) surinkti `Makefile`; sąrašas – komanda `make` šakniniame aplanke (žr. „Greitas paleidimas su make“ žemiau).
 
@@ -28,7 +28,7 @@ python3 ataskaita/irankiai/surinkti.py
 sh ataskaita/irankiai/word.sh
 ```
 
-Pirmoji sukuria `ataskaita/MotoNuoma_IS_ataskaita.docx`, antroji Microsoft Word programoje atnaujina laukus ir turinį ir išsaugo `ataskaita/MotoNuoma_IS_ataskaita.pdf` (jei ataskaita jau atidaryta Word programoje, ji uždaroma neišsaugojus). Reikia macOS, Microsoft Word ir Swift (šaltinio failų piktogramoms). Tekstas taisomas tik `ataskaita.md`: rankiniai `.docx` pakeitimai perrenkant dingsta. `ataskaita.md` sintaksė (reikalavimų ir testavimo atvejų blokai, paveikslų ir lentelių pavadinimai, nuorodos) aprašyta `surinkti.py` pradžioje. Po paveikslais pateikiamos nuorodos į jų šaltinio failus šioje GitHub saugykloje (`main` šaka), todėl tie failai turi būti išsiųsti į GitHub ir negali būti pervadinti.
+Pirmoji sukuria `ataskaita/Brrrum_IS_ataskaita.docx`, antroji Microsoft Word programoje atnaujina laukus ir turinį ir išsaugo `ataskaita/Brrrum_IS_ataskaita.pdf` (jei ataskaita jau atidaryta Word programoje, ji uždaroma neišsaugojus). Reikia macOS, Microsoft Word ir Swift (šaltinio failų piktogramoms). Tekstas taisomas tik `ataskaita.md`: rankiniai `.docx` pakeitimai perrenkant dingsta. `ataskaita.md` sintaksė (reikalavimų ir testavimo atvejų blokai, paveikslų ir lentelių pavadinimai, nuorodos) aprašyta `surinkti.py` pradžioje. Po paveikslais pateikiamos nuorodos į jų šaltinio failus šioje GitHub saugykloje (`main` šaka), todėl tie failai turi būti išsiųsti į GitHub ir negali būti pervadinti.
 
 ## Bandomoji duomenų bazė
 
