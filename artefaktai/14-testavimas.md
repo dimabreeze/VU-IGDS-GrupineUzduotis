@@ -18,7 +18,7 @@ Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena 
 
 ### 3.1.2. Testuojamų sistemos funkcinių ir nefunkcinių reikalavimų sąrašas
 
-Šablono lentelė papildyta stulpeliu „Kaip tikrinama“: jame nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis.
+Stulpelyje „Kaip tikrinama“ nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis, todėl kiekvienas reikalavimas susietas su jo patikrinimu.
 
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
 |---|---|---|
@@ -50,7 +50,7 @@ Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena 
 
 Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
 
-Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
+Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kurių duomenų bazės apribojimai neužtikrina (2.2.1 skyriaus funkcijos, TA1–TA3), ir vienalaikėms rezervacijoms (NFR 1.3.3.3, TA4), kurių rankiniu būdu patikrinti negalima. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
 
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|

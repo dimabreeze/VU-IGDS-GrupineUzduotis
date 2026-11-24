@@ -224,7 +224,7 @@ Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoj
 
 ## 1.2. Funkciniai reikalavimai
 
-Reikalavimo numerį sudaro tipo žymė ir skyriaus numeris pagal šabloną: 
+Reikalavimo numerį sudaro tipo žymė ir skyriaus, kuriame reikalavimas aprašytas, numeris: 
 * FR – funkcinis reikalavimas (FR 1.2.1–FR 1.2.5), 
 * NFR – nefunkcinis reikalavimas (NFR 1.3.1.1–NFR 1.3.5.2), 
 * PR – perspektyvinis reikalavimas (PR 1.6.1–PR 1.6.4, 1.6 skyrius). 
@@ -665,7 +665,7 @@ Fizinė ER diagrama sudaryta iš loginės ER diagramos (1.5.2 skyrius). Kiekvien
 
 ### 2.2.1. Sistemos struktūros aprašymas
 
-Šablonas prašo išsamiai aprašyti 2–3 sistemos funkcijas. Aprašomos trys funkcijos, kurios tikrina ir skaičiuoja tai, ko duomenų bazės apribojimais išreikšti negalima (2.2.2 skyrius, „Taisyklės, kurias tikrina sistemos funkcijos“):
+Išsamiai aprašomos trys funkcijos, kuriose sukoncentruotos sudėtingiausios sistemos taisyklės – tai, ko duomenų bazės apribojimais išreikšti negalima (2.2.2 skyrius, „Taisyklės, kurias tikrina sistemos funkcijos“). Jų klaida tiesiogiai lemtų dvigubą rezervaciją, nuomą be teisės vairuoti ar neteisingą kainą. Kitos struktūrinės schemos (2.1.1 skyrius) funkcijos daugiausia įveda, rodo ir keičia duomenis; jų algoritmai bus detalizuojami realizacijos etape.
 
 Lentelė: Išsamiai aprašomos funkcijos
 | Funkcija programoje | Pavadinimas (panaudos atvejis) | Procesas | Struktūrinės schemos lygis | Reikalavimai |
@@ -674,7 +674,7 @@ Lentelė: Išsamiai aprašomos funkcijos
 | `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | FR 1.2.2, NFR 1.3.2.4 |
 | `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | FR 1.2.3 |
 
-Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (2.1.1 skyrius), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (2.2.2 skyrius). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
+Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (2.1.1 skyrius), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (2.2.2 skyrius). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais: kiekvieną atsisakymo priežastį galima susieti su konkrečiu žingsniu, o žingsnius – su testavimo atvejais (3.2 skyrius).
 
 #### Bendros sąvokos
 
@@ -1370,7 +1370,7 @@ Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena 
 
 ### 3.1.2. Testuojamų sistemos funkcinių ir nefunkcinių reikalavimų sąrašas
 
-Šablono lentelė papildyta stulpeliu „Kaip tikrinama“: jame nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis.
+Stulpelyje „Kaip tikrinama“ nurodytas testavimo atvejis (3.2 skyrius) arba testavimo rūšis, todėl kiekvienas reikalavimas susietas su jo patikrinimu.
 
 Lentelė: Testuojami funkciniai ir nefunkciniai reikalavimai {#lent:testuojami}
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
@@ -1403,7 +1403,7 @@ Lentelė: Testuojami funkciniai ir nefunkciniai reikalavimai {#lent:testuojami}
 
 Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
 
-Šablonas prašo 3 testavimo atvejų; pateikiami 4, nes vienalaikės rezervacijos (NFR 1.3.3.3) tikrinamos atskiru atveju. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
+Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kurių duomenų bazės apribojimai neužtikrina (2.2.1 skyriaus funkcijos, TA1–TA3), ir vienalaikėms rezervacijoms (NFR 1.3.3.3, TA4), kurių rankiniu būdu patikrinti negalima. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
 
 Lentelė: Testavimo atvejų ryšys su funkcijomis ir reikalavimais
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
@@ -1581,7 +1581,7 @@ Lentelė: Funkcinių reikalavimų ir panaudos atvejų atsekamumo matrica {#lent:
 | PA21 | Formuoti statistines ataskaitas | P7 | per P1 (DS5) | Nuoma, Grąžinimas | 2 | pagal PA |
 | PA22 | Planuoti motociklų perkėlimą | P6 | DS7 W, DS2 W | Perkėlimas (ryšys „perkeliamas“), Motociklas, Filialas, Darbuotojas | 2 → PA6 | pagal PA |
 
-Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas prašo 3 testavimo atvejų, todėl jie parinkti svarbiausioms taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius).
+Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis. Išsamūs testavimo atvejai sudaryti didžiausios rizikos taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius); jų testavimo atvejai bus sudaryti testavimo etape.
 
 :::
 

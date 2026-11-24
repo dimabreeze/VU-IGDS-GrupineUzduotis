@@ -4,7 +4,7 @@ Medžiaga ataskaitos skyriui 2.2.1 „Sistemos struktūros aprašymas“.
 
 **Būsena:** baigta 2026-11-19.
 
-Šablonas prašo išsamiai aprašyti 2–3 sistemos funkcijas. Aprašomos trys funkcijos, kurios tikrina ir skaičiuoja tai, ko duomenų bazės apribojimais išreikšti negalima (`10-lenteles.md`, „Taisyklės, kurias tikrina sistemos funkcijos“):
+Išsamiai aprašomos trys funkcijos, kuriose sukoncentruotos sudėtingiausios sistemos taisyklės – tai, ko duomenų bazės apribojimais išreikšti negalima (`10-lenteles.md`, „Taisyklės, kurias tikrina sistemos funkcijos“). Jų klaida tiesiogiai lemtų dvigubą rezervaciją, nuomą be teisės vairuoti ar neteisingą kainą. Kitos struktūrinės schemos (`11-strukturine-schema.md`) funkcijos daugiausia įveda, rodo ir keičia duomenis; jų algoritmai bus detalizuojami realizacijos etape.
 
 | Funkcija programoje | Pavadinimas (panaudos atvejis) | Procesas | Struktūrinės schemos lygis | Reikalavimai |
 |---|---|---|---|---|
@@ -12,7 +12,7 @@ Medžiaga ataskaitos skyriui 2.2.1 „Sistemos struktūros aprašymas“.
 | `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | FR 1.2.2, NFR 1.3.2.4 |
 | `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | FR 1.2.3 |
 
-Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-strukturine-schema.md`), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (`10-lenteles.md`). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais (šablonas leidžia laisvą formą).
+Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-strukturine-schema.md`), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (`10-lenteles.md`). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais: kiekvieną atsisakymo priežastį galima susieti su konkrečiu žingsniu, o žingsnius – su testavimo atvejais (3.2 skyrius).
 
 ## Bendros sąvokos
 

@@ -1,6 +1,6 @@
 # 16. Atsekamumo matrica (2 kontrolinis taškas)
 
-Medžiaga ataskaitos priedui „Atsekamumo matrica“ (šablone tokio skyriaus nėra; sutrumpinta lentelė pridedama surenkant ataskaitą, žr. skyrių „Kas perkeliama į ataskaitą“).
+Medžiaga ataskaitos priedui „Atsekamumo matrica“ (papildomas priedas; sutrumpinta lentelė pridedama surenkant ataskaitą, žr. skyrių „Kas perkeliama į ataskaitą“).
 
 **Būsena:** baigta 2026-11-20.
 
@@ -40,7 +40,7 @@ Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius. Sau
 | PA21 | Formuoti statistines ataskaitas | A | P7 | per P1 (DS5) | Nuoma, Grąžinimas | 2 | – (turinys nenustatytas) | pagal PA |
 | PA22 | Planuoti motociklų perkėlimą | A | P6 | DS7 W, DS2 W | Perkėlimas (ryšys „perkeliamas“), Motociklas, Filialas, Darbuotojas | 2 → PA6 | – | pagal PA |
 
-Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis: šablonas prašo 3 testavimo atvejų, todėl jie parinkti svarbiausioms taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius).
+Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis. Išsamūs testavimo atvejai sudaryti didžiausios rizikos taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius); jų testavimo atvejai bus sudaryti testavimo etape.
 
 ## B. Nefunkciniai reikalavimai
 
