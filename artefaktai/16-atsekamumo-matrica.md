@@ -13,7 +13,7 @@ Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius. Sau
 | PA | Panaudos atvejis | Akt. | Procesas | Saugyklos | ER esybės | Schemos funkcija | Maketas | Testavimas |
 |---|---|---|---|---|---|---|---|---|
 | | **FR 1.2.1 Motociklų paieška** | | | | | | | |
-| PA1 | Ieškoti laisvų motociklų | K, D | P1 | DS1, DS2, DS3 R; DS5–DS7 R (PA6) | Filialas, Motociklas, Motociklo modelis, Motociklo tipas, Kategorija, Tarifas | 2 → PA6 | EKRANAS01 | TA2 (1), TA4 (2) |
+| PA1 | Ieškoti laisvų motociklų | K, D | P1 | DS1, DS2, DS3 R; DS5–DS7 R (PA6) | Filialas, Motociklas, Motociklo modelis, Motociklo tipas, Kategorija, Tarifas | 2 → PA6 | EKRANAS01 | TA1 (9), TA2 (1), TA4 (2) |
 | | **FR 1.2.2 Rezervacija ir jos valdymas** | | | | | | | |
 | PA2 | Rezervuoti motociklą | K, D | P2 | DS4 R/W, DS5 W; DS3 per P1 | Klientas, Kategorija („turi teisę“), Nuoma, Tarifas, Baudos pakopa, Filialas, Darbuotojas | 2 → PA6, PA7 | EKRANAS02, EKRANAS03 | TA2 (4), TA4 (1) |
 | PA3 | Peržiūrėti savo rezervacijas | K | P2 | DS5 R | Nuoma | 2 | – | TA1 (1) |

@@ -2,11 +2,9 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių; sąlygos po pateiktos sąrašais ir ataskaitoje perkeltos į TA lentelės paskutinę eilutę.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių; sąlygos po pateiktos sąrašais ir ataskaitoje perkeltos į TA lentelės paskutinę eilutę. 2026-11-25 sąlygose po nurodytos lentelės ir stulpeliai, kuriuos tikrina testuotojas (pilkoji dėžė); TA1 papildytas 9 žingsniu (paieška techninės priežiūros metu), TA sandara (aprašymas, pradiniai duomenys, žingsniai, sąlygos po) aprašyta 3.2 skyriuje sąrašu, įžangoje liko tik testavimo būdas.
 
-Testavimas planuojamas sistemos lygiu. Testavimo atvejai (TA) sudaryti pagal panaudos atvejus: kiekvienas žingsnis – vartotojo veiksmas sąsajoje, o laukiamas rezultatas trumpai aprašomas po kiekvieno žingsnio. Paskutinėje kiekvieno testavimo atvejo lentelės eilutėje nurodomos sąlygos po testavimo atvejo vykdymo – kas turi būti įrašyta duomenų bazėje. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
-
-Kiekvieno TA pradiniuose duomenyse aprašyta, kokia turi būti sistemos būsena prieš vykdant TA: dabartinis laikas, kas ir kokiu vaidmeniu atlieka žingsnius, motociklai, darbuotojai, klientai ir jų nuomos. Testuotojas prieš kiekvieną TA paruošia duomenų bazę šioje būsenoje, todėl TA galima pakartoti tomis pačiomis sąlygomis.
+Testavimas planuojamas sistemos lygiu, testavimo atvejai (TA) sudaryti pagal panaudos atvejus. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta, – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais, ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
 
 ## 3.1. Testavimo apžvalga
 
@@ -22,10 +20,10 @@ Stulpelyje „Kaip tikrinama“ nurodytas testavimo atvejis (3.2 skyrius) arba t
 
 | Reikalavimo pavadinimas | Reikalavimo Nr. | Kaip tikrinama |
 |---|---|---|
-| Motociklų paieška | FR 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
+| Motociklų paieška | FR 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA1 (9 žingsnis), TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
 | Rezervacija ir jos valdymas | FR 1.2.2 | TA1, TA2, TA4 |
 | Išdavimas ir grąžinimas | FR 1.2.3 | TA3 |
-| Techninė priežiūra | FR 1.2.4 | TA1 (7–8 žingsniai) |
+| Techninė priežiūra | FR 1.2.4 | TA1 (7–9 žingsniai) |
 | Parko administravimas ir ataskaitos | FR 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
 | Prisitaikanti sąsaja | NFR 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
 | Vieningas stilius | NFR 1.3.1.2 | Visų puslapių palyginimas su 2.3.2 skyriuje apibrėžta spalvų palete, šriftu ir mygtukų išdėstymu |
@@ -48,29 +46,34 @@ Stulpelyje „Kaip tikrinama“ nurodytas testavimo atvejis (3.2 skyrius) arba t
 
 ## 3.2. Testavimo atvejai
 
-Sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ paliekami tušti – jie pildomi testavimo etape.
-
-Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kurių duomenų bazės apribojimai neužtikrina (2.2.1 skyriaus funkcijos, TA1–TA3), ir vienalaikėms rezervacijoms (NFR 1.3.3.3, TA4), kurių rankiniu būdu patikrinti negalima. Atvejai susieti su 2.2.1 skyriaus funkcijomis; laukiami pranešimai – šių funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose:
+Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kurių duomenų bazės apribojimai neužtikrina (2.2.1 skyriaus funkcijos, TA1–TA3), ir vienalaikėms rezervacijoms (NFR 1.3.3.3, TA4), kurių rankiniu būdu patikrinti negalima. Kiekvienas TA susietas su 2.2.1 skyriaus funkcija, panaudos atvejais ir reikalavimais:
 
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|
-| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA3, PA4, PA6, PA11 | FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1 |
+| 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA1, PA3, PA4, PA6, PA11 | FR 1.2.1, FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1 |
 | 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 |
 | 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | FR 1.2.3, NFR 1.3.2.4 |
 | 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3 |
+
+Kiekvienas TA pateikiamas viena lentele, kurią sudaro šios dalys:
+
+- **„Aprašymas“** – kas tikrinama, kurios 2.2.1 skyriaus funkcijos ir reikalavimai, kokios ekvivalenčių klasės ir ribinės reikšmės.
+- **„Pradiniai duomenys (sąlygos prieš)“** – kokia turi būti sistemos būsena prieš vykdant TA: dabartinis laikas, kas ir kokiu vaidmeniu atlieka žingsnius, motociklai, darbuotojai, klientai ir jų nuomos. Nurodyti tik TA svarbūs duomenys; kiti privalomi 2.2.2 skyriaus lentelių stulpeliai (pvz., VIN, telefonas, pažymėjimo numeris) užpildomi bet kokiomis tinkamomis reikšmėmis. Testuotojas prieš kiekvieną TA paruošia duomenų bazę šioje būsenoje, todėl TA galima pakartoti tomis pačiomis sąlygomis.
+- **Žingsniai** – kiekvienas žingsnis yra vartotojo veiksmas sąsajoje, o po jo trumpai aprašomas laukiamas rezultatas. Laukiami pranešimai – 2.2.1 skyriaus funkcijų grąžinamos priežastys, parodomos taip, kaip 2.3.2 skyriaus maketuose. Stulpeliai „Pavyko gauti laukiamą rezultatą?“ ir „Klaidos, pastabos“ pildomi vykdant TA; sistema dar nesukurta (darbe atliekama tik analizė ir projektavimas), todėl jie palikti tušti.
+- **„Sąlygos po“** (paskutinė lentelės eilutė) – kurių lentelių (2.2.2 skyrius) eilutės po TA vykdymo turi būti įrašytos ar pakeistos ir kurių neturi būti. Motociklai, klientai, darbuotojai, tarifai ir filialai nurodomi taip pat kaip pradiniuose duomenyse: motociklai – valstybiniu numeriu, klientai ir darbuotojai – numeriu, tarifai – modeliu ir paros kaina, filialai – miestu. Duomenų bazėje jie tikrinami per išorinius raktus; lentelės, į kurias šie raktai nurodo, pateikiamos skliaustuose po lentelės pavadinimo, pvz., „Nuoma“ (susijusios lentelės: „Klientas“, „Motociklas“, „Tarifas“).
 
 ### Testavimo atvejo Nr. 1
 
 **Rezervacijos keitimas ir techninės priežiūros planavimas: motociklo užimtumas ir buvimo vieta**
 
-**Aprašymas:** tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas. Testuojami reikalavimai FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1.
+**Aprašymas:** tikrinama, ar keičiant rezervaciją (PA4) ir planuojant techninę priežiūrą (PA11) sistema neleidžia laikotarpio, kuris sutampa su kitu motociklo užimtumo laikotarpiu arba pažeidžia motociklo buvimo vietos taisyklę, ir nurodo priežastį (funkcija `tikrintiUzimtuma`, PA6). Ribinės reikšmės: laikotarpis, kuris baigiasi tą pačią minutę, kai prasideda kitas, leidžiamas, o 1 min. ilgesnis – ne. Taip pat tikrinama, ar klientas mato tik savo rezervacijas ir ar techninės priežiūros metu motociklas nerodomas paieškoje (PA1). Testuojami reikalavimai FR 1.2.1, FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1.
 
 **Pradiniai duomenys (sąlygos prieš):**
 
 - Dabartinis laikas: 2026-11-19 12:00.
 - Žingsnius atlieka:
   - 1–6 – Klientas 8, prisijungęs prie savo paskyros;
-  - 7–8 – Klaipėdos filialo darbuotojas (Darbuotojas 6).
+  - 7–9 – Klaipėdos filialo darbuotojas (Darbuotojas 6).
 - Klientas 8: kategorijos A1, A2 ir A galioja iki 2033-10-13.
 - Motociklas: Honda CB500 Hornet, valst. nr. 52 UVE, dabar Vilniuje.
 - Kliento 8 rezervacija Nr. 655:
@@ -81,6 +84,7 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
   - laikotarpis: 2027-05-24 10:00 – 2027-05-26 10:00 (2 paros);
   - išdavimas ir grąžinimas Klaipėdoje.
 - Kitų šio motociklo užimtumo laikotarpių po 2027-05-12 nėra.
+- Kitų Honda CB500 Hornet motociklų Klaipėdoje nėra.
 
 | Nr. | Testavimo atvejo (scenarijaus) žingsnis | Laukiamas rezultatas | Pavyko gauti laukiamą rezultatą? (Taip/Ne) | Klaidos, pastabos |
 |---|---|---|---|---|
@@ -92,12 +96,14 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | 6. | Pabaigą pakeičia į 2027-05-24 10:00 ir išsaugo. | Išsaugota; nauja kaina 12 parų × 64,00 € = 768,00 €. | | |
 | 7. | Darbuotojas 6 planuoja motociklo 52 UVE techninę priežiūrą 2027-05-14 08:00 – 17:00. | Atmesta: „Motociklas užimtas 2027-05-12 10:00 – 2027-05-24 10:00 (nuoma)“. | | |
 | 8. | Darbuotojas 6 planuoja priežiūrą 2027-05-27 08:00 – 17:00. | Priežiūra įrašyta. | | |
+| 9. | Darbuotojas 6 ieško motociklų Klaipėdoje 2027-05-27 10:00 – 2027-05-28 10:00. | Honda CB500 Hornet kortelė nerodoma. | | |
 
 **Sąlygos po:**
 
-- Rezervacijos Nr. 655 laikotarpis – 2027-05-12 10:00 – 2027-05-24 10:00, filialai ir tarifas nepakeisti.
-- Atmesti pakeitimai neišsaugoti, naujų nuomos įrašų nėra.
-- Motociklui 52 UVE įrašyta techninė priežiūra 2027-05-27 08:00 – 17:00; šiuo laikotarpiu jis paieškoje nerodomas.
+- „Nuoma“:
+  - Nr. 655: „Planuojama pabaiga“ – 2027-05-24 10:00; „Planuojama pradžia“, išdavimo ir grąžinimo filialai ir tarifas nepakeisti;
+  - naujų eilučių nėra.
+- „Techninė priežiūra“ (susijusios lentelės: „Motociklas“, „Darbuotojas“): tik viena nauja eilutė – motociklas 52 UVE, 2027-05-27 08:00 – 17:00, suplanavo Darbuotojas 6.
 
 ### Testavimo atvejo Nr. 2
 
@@ -136,8 +142,10 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 
 **Sąlygos po:**
 
-- Įrašyta tik viena nauja nuoma – Kliento 26, BMW F 900 R 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, būsena „rezervuota“, tarifas 100,00 €/para.
-- Rezervacija Nr. 642 nepakeista.
+- „Nuoma“ (susijusios lentelės: „Klientas“, „Motociklas“, „Tarifas“):
+  - tik viena nauja eilutė – Klientas 26, motociklas 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, „Būsena“ – „rezervuota“, tarifas – BMW F 900 R (100,00 €/para), užregistravusio darbuotojo nėra;
+  - Klientų 33 ir 35 eilučių nėra;
+  - Nr. 642 nepakeista („Planuojama pabaiga“ – 2027-04-18 11:00).
 
 ### Testavimo atvejo Nr. 3
 
@@ -178,9 +186,15 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 
 **Sąlygos po:**
 
-- Nuoma Nr. 631 užbaigta: grąžinta 2026-11-12 13:00, rida 24 042 km, galutinė kaina 145,00 €, bauda 25,00 €.
-- Nuoma Nr. 632 užbaigta: pradžia ir išdavimas 2026-11-12 13:20, grąžinta 2026-11-13 12:40, rida 24 157 km, galutinė kaina 60,00 €, bauda 0,00 €.
-- Motociklo 82 HNU rida 24 157 km, filialas Vilnius.
+- „Nuoma“:
+  - Nr. 631: „Būsena“ – „užbaigta“;
+  - Nr. 632: „Planuojama pradžia“ – 2026-11-12 13:20, „Būsena“ – „užbaigta“.
+- „Išdavimas“: nauja eilutė nuomai Nr. 632 – 2026-11-12 13:20, rida 24 042 km.
+- „Grąžinimas“:
+  - Nr. 631: 2026-11-12 13:00, rida 24 042 km, „Galutinė kaina“ – 145,00 €, „Bauda“ – 25,00 €;
+  - Nr. 632: 2026-11-13 12:40, rida 24 157 km, „Galutinė kaina“ – 60,00 €, „Bauda“ – 0,00 €;
+  - eilutės su rida 23 600 km nėra.
+- „Motociklas“ 82 HNU (susijusi lentelė: „Filialas“): „Rida“ – 24 157 km, filialas – Vilnius.
 
 ### Testavimo atvejo Nr. 4
 
@@ -204,9 +218,10 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 
 **Sąlygos po:**
 
-- Motociklui 84 VZL laikotarpiui 2027-05-05 11:00 – 2027-05-08 11:00 įrašyta lygiai viena nuoma – to kliento, kuris gavo patvirtinimą.
-- Atmestos rezervacijos įrašo nėra.
+- „Nuoma“ (susijusios lentelės: „Motociklas“, „Klientas“):
+  - motociklui 84 VZL laikotarpiui 2027-05-05 11:00 – 2027-05-08 11:00 – lygiai viena nauja eilutė, to kliento, kuris gavo patvirtinimą, „Būsena“ – „rezervuota“;
+  - atmestos rezervacijos eilutės nėra.
 
 ## Savikontrolė (ataskaitoje nepateikiama)
 
-Laukiami pranešimai 2026-11-19 sutikrinti bandomojoje duomenų bazėje: funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` (`darbas/funkcijos.sql`) su TA įėjimais grąžina būtent tuos atsakymus ir priežastis, kurie nurodyti lentelėse. TA1 7 žingsnis patikrintas po 6 žingsnio pakeitimo (rezervacija Nr. 655 iki 2027-05-24 10:00). Tais pačiais įėjimais `darbas/funkciju_testai.sql` jau yra K2 (TA2 5 žingsnis), S1 ir S2 (TA3 4 ir 7 žingsniai); kiti žingsniai tikrina tas pačias taisykles kaip U1–U3, U5, U6, K4 ir K5, bet su kitais įėjimais. TA4 atitinka `darbas/lygiagreti_rezervacija.sh` (ten – kitas motociklas ir laikotarpis). Sąsajos elgesys (tvarkaraščio žymos, ekranų skaičius, ridos patikra) bus tikrinamas tik sukūrus sistemą.
+Laukiami pranešimai 2026-11-19 sutikrinti bandomojoje duomenų bazėje: funkcijos `tikrintiUzimtuma`, `tikrintiKlientoTeise` ir `skaiciuotiKaina` (`darbas/funkcijos.sql`) su TA įėjimais grąžina būtent tuos atsakymus ir priežastis, kurie nurodyti lentelėse. TA1 7 žingsnis patikrintas po 6 žingsnio pakeitimo (rezervacija Nr. 655 iki 2027-05-24 10:00). TA1 9 žingsnis: be priežiūros motociklas 22 Klaipėdoje 2027-05-27 10:00 – 2027-05-28 10:00 laisvas, įrašius 8 žingsnio priežiūrą – „Motociklas užimtas 2027-05-27 08:00 – 2027-05-27 17:00 (techninė priežiūra)“. Bandomojoje duomenų bazėje tą dieną Klaipėdoje yra ir kiti CB500 Hornet (71 UZR, 51 SKK), todėl TA1 pradiniuose duomenyse nurodyta, kad kitų šio modelio motociklų Klaipėdoje nėra. Tais pačiais įėjimais `darbas/funkciju_testai.sql` jau yra K2 (TA2 5 žingsnis), S1 ir S2 (TA3 4 ir 7 žingsniai); kiti žingsniai tikrina tas pačias taisykles kaip U1–U3, U5, U6, K4 ir K5, bet su kitais įėjimais. TA4 atitinka `darbas/lygiagreti_rezervacija.sh` (ten – kitas motociklas ir laikotarpis). Sąsajos elgesys (tvarkaraščio žymos, ekranų skaičius, ridos patikra) bus tikrinamas tik sukūrus sistemą.
