@@ -9,8 +9,8 @@ DC      := docker compose -f darbas/docker-compose.yml
 DB_EXEC := $(DC) exec -T db psql -X -q -v ON_ERROR_STOP=1 -U motonuoma -d motonuoma
 DB_ENV  := PGHOST=localhost PGPORT=5433 PGUSER=motonuoma PGPASSWORD=motonuoma PGDATABASE=motonuoma
 
-# --- PostgreSQL 18 iš Homebrew (psql kompiuteryje ir laikinas serveris be Docker)
-PGBIN    := /opt/homebrew/opt/postgresql@18/bin
+# --- PostgreSQL 19 iš Homebrew (psql kompiuteryje ir laikinas serveris be Docker)
+PGBIN    := /opt/homebrew/opt/postgresql@19/bin
 export PATH := $(PGBIN):$(PATH)
 LOCAL_DIR  := $(or $(TMPDIR),/tmp)/motonuoma-pg
 LOCAL_PORT := 55432
@@ -65,8 +65,8 @@ db-tikrinti: db-up db-patikra db-testai db-lygiagreti ## Paleisti Docker duomen�
 
 # ---------------------------------------------------------------- be Docker
 
-local-tikrinti: ## Visos patikros laikinoje PostgreSQL 18 duomenų bazėje be Docker (sukuriama ir ištrinama)
-	@command -v initdb >/dev/null || { echo "Nerastas PostgreSQL 18 ($(PGBIN)): brew install postgresql@18"; exit 1; }
+local-tikrinti: ## Visos patikros laikinoje PostgreSQL 19 duomenų bazėje be Docker (sukuriama ir ištrinama)
+	@command -v initdb >/dev/null || { echo "Nerastas PostgreSQL 19 ($(PGBIN)): brew install postgresql@19"; exit 1; }
 	@rm -rf "$(LOCAL_DIR)"; \
 	$(LOCAL_ENV) initdb -U postgres -D "$(LOCAL_DIR)" >/dev/null || exit 1; \
 	$(LOCAL_ENV) pg_ctl -D "$(LOCAL_DIR)" -l "$(LOCAL_DIR).log" -w \

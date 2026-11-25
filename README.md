@@ -54,14 +54,14 @@ Savikontrolei sukurta PostgreSQL duomenų bazė su išgalvotais duomenimis (atas
 | `make db-reset` | Sukuria Docker duomenų bazę iš naujo (pakeitus `schema.sql`, `duomenys.sql` ar `funkcijos.sql`) |
 | `make db-patikra`, `make db-testai`, `make db-lygiagreti` | Atskiros patikros Docker duomenų bazėje |
 | `make db-psql` | Interaktyvus `psql` Docker duomenų bazėje |
-| `make local-tikrinti` | Visos patikros be Docker: laikina PostgreSQL 18 duomenų bazė sukuriama ir po patikrų ištrinama |
+| `make local-tikrinti` | Visos patikros be Docker: laikina PostgreSQL 19 duomenų bazė sukuriama ir po patikrų ištrinama |
 | `make duomenys` | Iš naujo sugeneruoja `duomenys.sql` |
 | `make iliustracijos` | Iš naujo sugeneruoja funkcijų taisyklių iliustracijas (`artefaktai/08-buvimo-vietos-taisykle.drawio`, `12-sutapimas`, `12-lygiagreti-rezervacija`, `12-pavelavimas`) skriptu `ataskaita/irankiai/iliustracijos.py` |
 | `make diagramos` | Eksportuoja visas `.drawio` diagramas į PNG (ER diagramos – mastelis 1.5, iliustracijos – 3, kitos – 2) |
 | `make dizainas` | Eksportuoja sąsajos maketus (`artefaktai/13-dizainas/*.html`) į PNG per Google Chrome (reikia Node.js ≥ 22 ir interneto šriftui Inter) |
 | `make ataskaita` | Surenka ataskaitą: `.docx` ir PDF per Microsoft Word (žr. „Ataskaitos surinkimas“) |
 
-Patikros baigiasi eilute „Gerai: …“, o radus pažeidimą – „KLAIDA: …“ ir klaidos kodu. `db-lygiagreti` ir `local-tikrinti` reikia PostgreSQL 18 iš Homebrew (`brew install postgresql@18`), `diagramos` – draw.io.
+Patikros baigiasi eilute „Gerai: …“, o radus pažeidimą – „KLAIDA: …“ ir klaidos kodu. `db-lygiagreti` ir `local-tikrinti` reikia PostgreSQL 19 iš Homebrew (`brew install postgresql@19`), `diagramos` – draw.io.
 
 **Su Docker** (reikia Docker Desktop arba OrbStack):
 
@@ -106,7 +106,7 @@ Jei kompiuteryje įdiegtas `psql`, galima jungtis ir tiesiogiai:
 PGPASSWORD=motonuoma psql -h localhost -p 5433 -U motonuoma -d motonuoma -c 'SELECT COUNT(*) FROM "Nuoma";'
 ```
 
-**Be Docker** (įdiegtas PostgreSQL 18):
+**Be Docker** (įdiegtas PostgreSQL 19):
 
 ```bash
 createdb motonuoma

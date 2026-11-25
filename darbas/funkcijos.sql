@@ -1,5 +1,5 @@
 -- Motociklų nuomos IS: 2.2.1 skyriuje aprašytų funkcijų įgyvendinimas savikontrolei
--- (artefaktai/12-funkcijos.md; ataskaitoje nepateikiamas). PostgreSQL 18, PL/pgSQL.
+-- (artefaktai/12-funkcijos.md; ataskaitoje nepateikiamas). PostgreSQL 19, PL/pgSQL.
 -- Įkeliama po darbas/schema.sql ir darbas/duomenys.sql; pavyzdžiai – darbas/funkciju_testai.sql.
 --
 -- Funkcijos tik tikrina ir skaičiuoja, duomenų nekeičia. Transakciją ir užraktus valdo jas kviečianti

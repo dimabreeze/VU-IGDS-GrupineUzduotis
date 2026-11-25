@@ -1,4 +1,4 @@
-# Motociklų nuomos IS bandomoji duomenų bazė (PostgreSQL 18).
+# Motociklų nuomos IS bandomoji duomenų bazė (PostgreSQL 19).
 # Paleidimas (iš aplanko darbas/):  docker compose up -d
 # Pirmą kartą paleidus, sukuriama schema (schema.sql), įkeliami bandomieji duomenys (duomenys.sql)
 # ir 2.2.1 skyriaus funkcijos (funkcijos.sql).
@@ -6,7 +6,7 @@
 # Duomenis sukurti iš naujo (pvz., pakeitus schema.sql ar duomenys.sql):  docker compose down -v && docker compose up -d
 services:
   db:
-    image: postgres:18
+    image: postgres:19
     container_name: motonuoma-db
     environment:
       POSTGRES_DB: motonuoma

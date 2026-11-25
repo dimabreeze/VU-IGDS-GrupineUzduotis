@@ -2,7 +2,7 @@
 -- (Ataskaitoje nepateikiama, skirta savikontrolei)
 --
 -- Lentelių ir atributų vardai sutampa su diagramos artefaktai/10-fizinis-er.drawio vardais (todėl rašomi dvigubose kabutėse).
--- Patikrinta PostgreSQL 18 (2026-11-19).
+-- Patikrinta PostgreSQL 18 (2026-11-19) ir PostgreSQL 19 (2026-11-25).
 
 -- Personalas ir paskyros
 

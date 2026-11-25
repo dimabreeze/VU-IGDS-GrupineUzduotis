@@ -34,8 +34,8 @@ A university group assignment (VU MIF, course "Informacinės ir grupinio darbo s
 
 ## Commands (run from repo root; `make` lists all)
 
-- `make local-tikrinti` — full check without Docker: temporary PostgreSQL 18 (Homebrew, port 55432) → schema, data, functions → `patikra.sql` (15 rule checks, all must be 0) → `funkciju_testai.sql` (24 cases, column „Sutampa“ must be `t`) → concurrent-booking demo. Prints „Gerai: …“ or „KLAIDA: …“ with non-zero exit.
-- `make db-tikrinti` — same checks in Docker (`darbas/docker-compose.yml`, postgres:18 on `localhost:5433`, user/password/db `motonuoma`; Docker = OrbStack, start with `open -a OrbStack`). `make db-reset` after changing `schema.sql`, `duomenys.sql` or `funkcijos.sql`. Individual checks: `make db-patikra`, `db-testai`, `db-lygiagreti`; shell: `make db-psql`.
+- `make local-tikrinti` — full check without Docker: temporary PostgreSQL 19 (Homebrew, port 55432) → schema, data, functions → `patikra.sql` (15 rule checks, all must be 0) → `funkciju_testai.sql` (24 cases, column „Sutampa“ must be `t`) → concurrent-booking demo. Prints „Gerai: …“ or „KLAIDA: …“ with non-zero exit.
+- `make db-tikrinti` — same checks in Docker (`darbas/docker-compose.yml`, postgres:19 on `localhost:5433`, user/password/db `motonuoma`; Docker = OrbStack, start with `open -a OrbStack`). `make db-reset` after changing `schema.sql`, `duomenys.sql` or `funkcijos.sql`. Individual checks: `make db-patikra`, `db-testai`, `db-lygiagreti`; shell: `make db-psql`.
 - `make duomenys` — regenerate `darbas/duomenys.sql`.
 - `make diagramos` — export all `.drawio` to PNG (ER diagrams at scale 1.5, rule illustrations at 3, others at 2; at scale 2 drawio truncates ER diagrams — open the PNGs to check).
 - `make iliustracijos` — regenerate the four rule illustrations (`artefaktai/08-buvimo-vietos-taisykle`, `12-sutapimas`, `12-lygiagreti-rezervacija`, `12-pavelavimas` `.drawio`) from `ataskaita/irankiai/iliustracijos.py`; their dates and times copy the examples in `12-funkcijos.md`, so change the script, not the `.drawio`, when an example changes, then `make diagramos`.
