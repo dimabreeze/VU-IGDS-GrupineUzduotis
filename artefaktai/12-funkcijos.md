@@ -2,14 +2,14 @@
 
 Medžiaga ataskaitos skyriui 2.2.1 „Sistemos struktūros aprašymas“.
 
-**Būsena:** baigta 2026-11-19.
+**Būsena:** baigta 2026-11-19. Papildyta 2026-11-28: `tikrintiKlientoTeise` kviečiama ir išduodant (PA9).
 
 Išsamiai aprašomos trys funkcijos, kuriose sukoncentruotos sudėtingiausios sistemos taisyklės – tai, ko duomenų bazės apribojimais išreikšti negalima (`10-lenteles.md`, „Taisyklės, kurias tikrina sistemos funkcijos“). Jų klaida tiesiogiai lemtų dvigubą rezervaciją, nuomą be teisės vairuoti ar neteisingą kainą. Kitos struktūrinės schemos (`11-strukturine-schema.md`) funkcijos daugiausia įveda, rodo ir keičia duomenis; jų algoritmai bus detalizuojami realizacijos etape.
 
 | Funkcija programoje | Pavadinimas (panaudos atvejis) | Procesas | Struktūrinės schemos lygis | Reikalavimai |
 |---|---|---|---|---|
 | `tikrintiUzimtuma` | Tikrinti motociklo užimtumą (PA6) | P1 | 3, kviečia PA1, PA2, PA4, PA11, PA22 | FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5, NFR 1.3.2.4, NFR 1.3.3.3 |
-| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2 | 3, kviečia PA2, PA4 | FR 1.2.2, NFR 1.3.2.4 |
+| `tikrintiKlientoTeise` | Tikrinti vairuotojo pažymėjimą (PA7) | P2, P3 | 3, kviečia PA2, PA4, PA9 | FR 1.2.2, FR 1.2.3, NFR 1.3.2.4 |
 | `skaiciuotiKaina` | „Apskaičiuoti galutinę nuomos kainą“ (PA13) ir „Apskaičiuoti baudą už pavėluotą grąžinimą“ (PA14) | P3 | 3, kviečia PA10 | FR 1.2.3 |
 
 Funkcijų pavadinimai programoje tokie pat kaip struktūrinėje schemoje (`11-strukturine-schema.md`), todėl 2.1.1 ir 2.2.1 skyrius galima susieti. Kintamųjų tipai – tie patys SQL standarto tipai kaip duomenų bazės lentelėse (`10-lenteles.md`). Abi tikrinimo funkcijos grąžina ne tik atsakymą, bet ir atsisakymo priežastį, kurią sistema parodo vartotojui (NFR 1.3.2.4). Algoritmai aprašyti sunumeruotais žingsniais: kiekvieną atsisakymo priežastį galima susieti su konkrečiu žingsniu, o žingsnius – su testavimo atvejais (3.2 skyrius).
@@ -115,14 +115,14 @@ Pavyzdys (bandomieji duomenys, G 310 R Vilniuje): nuoma 2026-11-10 10:00 – 202
 
 ## 2. `tikrintiKlientoTeise` – Tikrinti vairuotojo pažymėjimą
 
-**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`.
+**Paskirtis.** Patikrina, ar klientas turi motociklo modeliui reikiamą vairuotojo pažymėjimo kategoriją, galiojančią visą nuomos laikotarpį (FR 1.2.2, FR 1.2.3). Kviečiama rezervuojant ir keičiant rezervaciją (PA2, PA4) toje pačioje transakcijoje kaip `tikrintiUzimtuma`, taip pat išduodant motociklą (PA9), kai darbuotojas sutikrina kliento pateiktą pažymėjimą ir, jei reikia, pataiso jo duomenis.
 
 **Įėjimai.**
 
 | Kintamasis | Tipas | Reikšmė |
 |---|---|---|
-| `klientasId` | `INTEGER` | Klientas, kuriam rezervuojama |
-| `motociklasId` | `INTEGER` | Rezervuojamas motociklas |
+| `klientasId` | `INTEGER` | Klientas, kuriam rezervuojama ar išduodama |
+| `motociklasId` | `INTEGER` | Rezervuojamas ar išduodamas motociklas |
 | `pabaiga` | `TIMESTAMP` | Planuojama nuomos pabaiga |
 
 **Algoritmas.**
@@ -180,7 +180,7 @@ Užstatas į galutinę kainą neįeina: jis sumokamas ir grąžinamas filiale at
 
 - **Tarifo keitimas (PA18).** Tarifas, pagal kurį jau yra rezervacijų, nekeičiamas. Rezervuojant tarifo įrašas užrakinamas bendru užraktu: kelios rezervacijos viena kitai netrukdo, o tarifo keitimas laukia, kol jos baigsis, ir tik gavęs užraktą tikrina, ar yra rezervacijų.
 - **Motociklo nurašymas (PA17).** Nebenaudojamas motociklas neturi būsimų užimtumo laikotarpių. Nurašymas užrakina motociklo įrašą ir tik tada patikrina, ar būsimų laikotarpių nėra; `tikrintiUzimtuma` 1 žingsnis tą patį užtikrina iš rezervacijos pusės.
-- **Išdavimas (PA9).** Motociklas yra išdavimo filiale, o pagal ankstesnę nuomą jis jau grąžintas (žr. „Pavėluotas grąžinimas“).
+- **Išdavimas (PA9).** Motociklas yra išdavimo filiale, o pagal ankstesnę nuomą jis jau grąžintas (žr. „Pavėluotas grąžinimas“). Be to, darbuotojas sutikrina kliento pateiktą vairuotojo pažymėjimą su užregistruotais duomenimis, prireikus juos pataiso, ir operacija dar kartą kviečia `tikrintiKlientoTeise`: motociklas neišduodamas, jei kategorija negalioja visą nuomos laikotarpį.
 - **Ridos fiksavimas (PA12).** Grąžinant rida ne mažesnė nei išduodant.
 
 ## Savikontrolė (ataskaitoje nepateikiama)

@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 1.2, 1.3 ir 1.6.
 
-**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5 ir NFR 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas. Rengiant duomenų srautų diagramą (9 žingsnis, 2026-11-18) iš NFR 1.3.5.2 išbraukti nesėkmingų prisijungimų žurnalas ir paskyros blokavimas, nes prisijungimas į darbą neįtraukiamas. Po 1 kontrolinio taško (2026-11-19) patikslinti FR 1.2.2 (išdavimo ir grąžinimo filialai pasirenkami rezervuojant), FR 1.2.4 (priežiūra negali sutapti ir su vykstančia nuoma) ir FR 1.2.5 (perkėlimui taikoma motociklo buvimo vietos taisyklė). Aprašant funkcijas (12 žingsnis, 2026-11-19) pridėtas perspektyvinis reikalavimas PR 1.6.4 (nuolaidos ir kompensacijos).
+**Būsena:** 1.2 skyrius (funkciniai reikalavimai) ir 1.3 skyrius (nefunkciniai reikalavimai) baigti 2026-11-18. 1.6 skyrius (perspektyviniai reikalavimai) baigtas 2026-11-18. Rengiant loginę ER diagramą (8 žingsnis, 2026-11-18) patikslinti FR 1.2.1, FR 1.2.2, FR 1.2.4, FR 1.2.5 ir NFR 1.3.2.4: įtrauktas motociklų perkėlimas tarp filialų, motociklo buvimo vietos taisyklė ir kiekvienos pažymėjimo kategorijos galiojimas. Rengiant duomenų srautų diagramą (9 žingsnis, 2026-11-18) iš NFR 1.3.5.2 išbraukti nesėkmingų prisijungimų žurnalas ir paskyros blokavimas, nes prisijungimas į darbą neįtraukiamas. Po 1 kontrolinio taško (2026-11-19) patikslinti FR 1.2.2 (išdavimo ir grąžinimo filialai pasirenkami rezervuojant), FR 1.2.4 (priežiūra negali sutapti ir su vykstančia nuoma) ir FR 1.2.5 (perkėlimui taikoma motociklo buvimo vietos taisyklė). Aprašant funkcijas (12 žingsnis, 2026-11-19) pridėtas perspektyvinis reikalavimas PR 1.6.4 (nuolaidos ir kompensacijos). Papildyta 2026-11-28: į FR 1.2.3 įtrauktas pažymėjimo tikrinimas išduodant.
 
 ## 1.2. Funkciniai reikalavimai
 
@@ -29,7 +29,7 @@ Reikalavimų numeriai suteikiami vieną kartą ir toliau nekeičiami: pagal juos
 
 | ***Nr. FR 1.2.3*** | ***Reikalavimo tipas: funkcinis*** |
 |---|---|
-| ***Aprašymas:*** | Filialo darbuotojas turi galėti matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir įforminti motociklo išdavimą bei grąžinimą, įskaitant grąžinimą į kitą filialą. Išdavimo ir grąžinimo metu darbuotojas užfiksuoja motociklo ridą ir trumpai aprašo jo būklę. Grąžinant sistema pagal tarifus apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą. |
+| ***Aprašymas:*** | Filialo darbuotojas turi galėti matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir įforminti motociklo išdavimą bei grąžinimą, įskaitant grąžinimą į kitą filialą. Išdavimo ir grąžinimo metu darbuotojas užfiksuoja motociklo ridą ir trumpai aprašo jo būklę. Išduodant darbuotojas sutikrina kliento pateiktą vairuotojo pažymėjimą su sistemoje užregistruotais duomenimis ir, jei jie nesutampa, juos pataiso; sistema motociklo neišduoda, jei kliento pažymėjime nėra motociklui tinkamos kategorijos, galiojančios visą nuomos laikotarpį. Grąžinant sistema pagal tarifus apskaičiuoja galutinę nuomos kainą ir baudą už pavėluotą grąžinimą. |
 
 ### FR 1.2.4. Techninė priežiūra
 
@@ -51,7 +51,7 @@ Pagalbinė lentelė darbui (į ataskaitą neperkeliama); tikslų numeriai pagal 
 |---|---|---|
 | FR 1.2.1 Motociklų paieška | klientas, filialo darbuotojas | 1, 4 |
 | FR 1.2.2 Rezervacija ir jos valdymas | klientas, filialo darbuotojas | 1, 2, 3, 4, 5 |
-| FR 1.2.3 Išdavimas ir grąžinimas | filialo darbuotojas | 3, 4 |
+| FR 1.2.3 Išdavimas ir grąžinimas | filialo darbuotojas | 3, 4, 5 |
 | FR 1.2.4 Techninė priežiūra | filialo darbuotojas | 1 |
 | FR 1.2.5 Parko administravimas ir ataskaitos | administratorius | 4, 6 |
 

@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 2.1.2 „Duomenų modelis“ ir 2.2.2 „Duomenų modelio aprašymas“.
 
-**Būsena:** baigta 2026-11-19. Aprašant funkcijas (12 žingsnis, 2026-11-19) patikslintas skyrius „Taisyklės, kurias tikrina sistemos funkcijos“: užimtumo laikotarpio apibrėžimas, užraktai, išdavimo ir nurašymo taisyklės.
+**Būsena:** baigta 2026-11-19. Aprašant funkcijas (12 žingsnis, 2026-11-19) patikslintas skyrius „Taisyklės, kurias tikrina sistemos funkcijos“: užimtumo laikotarpio apibrėžimas, užraktai, išdavimo ir nurašymo taisyklės. Papildyta 2026-11-28: patikslinta, kada kviečiama `tikrintiKlientoTeise`.
 
 Fizinė ER diagrama sudaryta iš loginės ER diagramos (`08-loginis-er.md`). Kiekviena esybė tapo lentele, `M:N` ryšiai – atskiromis lentelėmis, o `1:N` ir `1:1` ryšiai – išoriniais raktais. Diagrama nubraižyta varnos pėdos žymėjimu: lentelė vaizduojama trimis stulpeliais (raktas, atributas, duomenų tipas), ryšys jungia pirminio rakto eilutę su išorinio rakto eilute, o linijos galai rodo, kiek įrašų gali būti kiekvienoje ryšio pusėje (kodėl kiekvienas ryšys toks – skyrius „Ryšiai“). Lentelės nuspalvintos pagal tas pačias sritis kaip loginėje diagramoje. Diagramoje rodomi tik pirminiai ir išoriniai raktai, atributų pavadinimai ir duomenų tipai; kiti apribojimai (`NOT NULL`, `UNIQUE`, `CHECK`, numatytosios reikšmės) aprašyti lentelių aprašyme.
 
@@ -36,7 +36,7 @@ Kai kurių taisyklių duomenų bazės apribojimais (`PK`, `FK`, `UNIQUE`, `NOT N
 - vieno modelio tarifų galiojimo laikotarpiai nepersidengia, o tarifas, pagal kurį jau yra rezervacijų, nekeičiamas (uždaromas data „Galioja iki“); rezervacija tarifo įrašą užrakina bendru užraktu, todėl tarifo keitimas laukia, kol ji bus įrašyta;
 - nuomos tarifas priklauso nuomojamo motociklo modeliui ir galiojo rezervavimo dieną;
 - perkėlimas turi bent vieną motociklą (diagramoje – „vienas arba daug“);
-- klientas turi modeliui reikiamą kategoriją, galiojančią visą nuomos laikotarpį – funkcija `tikrintiKlientoTeise`;
+- klientas turi modeliui reikiamą kategoriją, galiojančią visą nuomos laikotarpį – funkcija `tikrintiKlientoTeise` (rezervuojant, keičiant rezervaciją ir išduodant);
 - motociklas išduodamas tik tada, kai jis yra išdavimo filiale, o pagal ankstesnę nuomą jis jau grąžintas;
 - rida grąžinant ne mažesnė nei išduodant – tikrinama fiksuojant ridą ir būklę;
 - „Galutinė kaina“ ir „Bauda“ apskaičiuojamos pagal nuomos tarifą ir baudų pakopas – funkcija `skaiciuotiKaina`;

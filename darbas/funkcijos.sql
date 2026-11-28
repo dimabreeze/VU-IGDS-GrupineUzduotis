@@ -89,7 +89,7 @@ BEGIN
     RETURN QUERY SELECT false, NULL::VARCHAR;
 END $$;
 
--- 2. tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą (PA7, P2)
+-- 2. tikrintiKlientoTeise – Tikrinti vairuotojo pažymėjimą (PA7, P2 ir P3)
 CREATE OR REPLACE FUNCTION "tikrintiKlientoTeise"("klientasId" INTEGER, "motociklasId" INTEGER, pabaiga TIMESTAMP)
 RETURNS TABLE ("turiTeise" BOOLEAN, priezastis VARCHAR) LANGUAGE plpgsql STABLE AS $$
 DECLARE

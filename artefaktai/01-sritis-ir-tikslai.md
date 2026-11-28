@@ -35,7 +35,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 - klientui internetu rasti laisvą motociklą pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo kategoriją ir galimybę išvažiuoti į užsienį;
 - klientui (arba darbuotojui kliento vardu) rezervuoti motociklą, pasirinkus išdavimo ir grąžinimo filialus, su momentiniu patvirtinimu, iš karto matant nuomos kainą ir papildomus mokėjimus (užstatą ir baudų už pavėluotą grąžinimą tarifus);
 - automatiškai neleisti rezervuoti motociklo, jei pasirinktos datos sutampa su kita nuoma, suplanuota technine priežiūra ar perkėlimu į kitą filialą arba jei motociklas tuo metu bus kitame filiale;
-- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis ir patikrinti, ar jame yra motociklui tinkama kategorija ir ar ji galios visą nuomos laikotarpį;
+- rezervacijos metu užregistruoti kliento vairuotojo pažymėjimo duomenis ir patikrinti, ar jame yra motociklui tinkama kategorija ir ar ji galios visą nuomos laikotarpį, o išduodant motociklą – sutikrinti pateiktą pažymėjimą ir patikrinti dar kartą;
 - klientui asmeninėje paskyroje peržiūrėti, keisti ir atšaukti savo rezervacijas;
 - filialo darbuotojui įforminti motociklo išdavimą ir grąžinimą (įskaitant grąžinimą į kitą filialą), užfiksuojant motociklo ridą ir būklę, matyti savo filialo išdavimų ir grąžinimų tvarkaraštį ir planuoti motociklų techninės priežiūros laikotarpius;
 - automatiškai apskaičiuoti nuomos kainą ir baudą už pavėluotą grąžinimą;
@@ -48,7 +48,7 @@ Tokia praktika būdinga ir Lietuvos rinkai. Peržiūrėjus aštuonių Lietuvos m
 3. **Užtikrinti skaidrią ir teisingą kainą.** Kaina, užstatas ir baudos skaičiuojami automatiškai pagal tarifus, o klientas prieš rezervuodamas mato kainą, užstatą ir aiškius baudų už pavėluotą grąžinimą tarifus.
 4. **Padidinti paslaugos prieinamumą.** Rezervuoti galima visą parą iš bet kurio įrenginio, matant visų filialų pasiūlymą; be to, galimas grąžinimas į kitą filialą.
 5. **Sumažinti riziką įmonei.** Motociklas neišduodamas klientui, kurio pažymėjime nėra tinkamos kategorijos arba ji negalioja visą nuomos laikotarpį.
-6. **Suteikti vadovui duomenų sprendimams priimti.** Sistema rodo esamus ir istorinius parko užimtumo duomenis.
+6. **Suteikti vadovui duomenų sprendimams priimti.** Sistema rodo esamus ir istorinius parko užimtumo duomenis ir formuoja statistines ataskaitas apie pajamas, rezervacijų kanalus, pavėluotus ir į kitą filialą grąžintus motociklus bei motociklų naudojimą.
 
 ## Sistemos ribos
 

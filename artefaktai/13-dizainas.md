@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 2.3.1 „Panašių sistemų apžvalga ir pasirinkti dizaino sprendimai“ ir 2.3.2 „Kuriamos sistemos dizainas“.
 
-**Būsena:** baigta 2026-11-19. EKRANAS04 ekrano panaudos atvejų sąrašas papildytas PA9 per 2 kontrolinį tašką (2026-11-20).
+**Būsena:** baigta 2026-11-19. EKRANAS04 ekrano panaudos atvejų sąrašas papildytas PA9 per 2 kontrolinį tašką (2026-11-20). Papildyta 2026-11-28: EKRANAS04 aprašyme – išdavimo formos pažymėjimo duomenų blokas; išbrauktas sakinys apie PA21.
 
 Maketai sukurti kaip prototipai, skirti vartotojo sąsajai kurti ir trūkstamiems reikalavimams rasti. Jie padaryti statiniais HTML ir CSS puslapiais su vienu bendru stiliaus failu ir užfiksuoti ekrano nuotraukomis naršyklėje 360 px (siauras ekranas) ir 1280 px (platus ekranas) pločiu. Šaltiniai ir paveikslai – `artefaktai/13-dizainas/`, eksportas – `make dizainas`.
 
@@ -126,7 +126,7 @@ Viena šriftų šeima **Inter** (Google Fonts, nemokama, palaiko lietuviškas ra
 | EKRANAS01 | Motociklų paieška | Klientas | PA1 | FR 1.2.1, NFR 1.3.1.1, NFR 1.3.1.3 | 360 ir 1280 px |
 | EKRANAS02 | Rezervacijos duomenys | Klientas | PA2, PA7 | FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 | 360 px |
 | EKRANAS03 | Rezervacija patvirtinta | Klientas | PA2 | FR 1.2.2, NFR 1.3.2.3 | 360 px |
-| EKRANAS04 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA8–PA10, PA12–PA14 | FR 1.2.3 | 1280 px |
+| EKRANAS04 | Išdavimų ir grąžinimų tvarkaraštis | Filialo darbuotojas | PA7–PA10, PA12–PA14 | FR 1.2.3 | 1280 px |
 | EKRANAS05 | Parko užimtumas | Administratorius | PA20 | FR 1.2.5 | 1280 px |
 
 Rezervacijos kelias: klientas pasirenka motociklą paieškos rezultatuose (EKRANAS01), įveda pažymėjimo duomenis ir mato kainą (EKRANAS02), gauna patvirtinimą (EKRANAS03) – 3 ekranai (NFR 1.3.2.3). Visi maketuose rodomi duomenys paimti iš bandomosios duomenų bazės (`darbas/duomenys.sql`); nuotraukos vietoje rodomas schematinis motociklas.
@@ -169,7 +169,7 @@ Rezervacija patvirtinama iš karto (Nr. 684 – kitas laisvas numeris bandomojoj
 
 *EKRANAS04 Išdavimų ir grąžinimų tvarkaraštis su grąžinimo forma (1280 px)*
 
-Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandomųjų duomenų (nuomos 631 ir 632, BMW G 310 R). Nuoma 631 turėjo būti grąžinta 10:00 – ji pažymėta „Vėluoja 3 val.“, šalia parodytas kitas motociklo laikotarpis (nuoma 632 nuo 11:00). Nuomos 632 išduoti negalima, kol 631 negrąžinta; įspėjime – trys galimi darbuotojo veiksmai (12 žingsnis, „Pavėluotas grąžinimas“). Grąžinimo formoje darbuotojas įveda ridą ir būklę, o sistema apskaičiuoja kainą: 2 paros × 60,00 € + bauda 25,00 € (pakopa „nuo 3 val.“) = 145,00 €, kaip įrašyta bandomuosiuose duomenyse.
+Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandomųjų duomenų (nuomos 631 ir 632, BMW G 310 R). Nuoma 631 turėjo būti grąžinta 10:00 – ji pažymėta „Vėluoja 3 val.“, šalia parodytas kitas motociklo laikotarpis (nuoma 632 nuo 11:00). Nuomos 632 išduoti negalima, kol 631 negrąžinta; įspėjime – trys galimi darbuotojo veiksmai (12 žingsnis, „Pavėluotas grąžinimas“). Grąžinimo formoje darbuotojas įveda ridą ir būklę, o sistema apskaičiuoja kainą: 2 paros × 60,00 € + bauda 25,00 € (pakopa „nuo 3 val.“) = 145,00 €, kaip įrašyta bandomuosiuose duomenyse. Išdavimo forma sudaryta taip pat kaip grąžinimo forma (rida ir būklė), tik joje papildomai rodomi sistemoje užregistruoti kliento vairuotojo pažymėjimo duomenys – numeris, kategorijos ir jų galiojimas – su mygtuku „Pataisyti“. Darbuotojas juos palygina su kliento pateiktu pažymėjimu; jei pataisyta kategorija negalioja visą nuomos laikotarpį, rodoma atsisakymo priežastis ir motociklas neišduodamas (PA7, PA9).
 
 #### EKRANAS05. Parko užimtumas
 
@@ -177,7 +177,7 @@ Vilniaus filialas 2026-11-12 13:00 – pavėluoto grąžinimo atvejis iš bandom
 
 *EKRANAS05 Parko užimtumas (1280 px)*
 
-Laiko juosta 2026-07-20 – 2026-08-30 (sezono vidurys) visiems 39 naudojamiems motociklams, sugrupuotiems pagal filialą laikotarpio pradžioje. Mėlyna – nuomos, gintarinė – techninė priežiūra, violetinė – perkėlimas (2026-08-17 Kaunas → Vilnius); „→ Kaunas“ – nuoma grąžinta į kitą filialą. Dešiniajame stulpelyje – nuomų trukmės dalis laikotarpyje, grupės eilutėje – filialo vidurkis. Statistinės ataskaitos (PA21) nemaketuojamos, nes jų turinys dar nenustatytas.
+Laiko juosta 2026-07-20 – 2026-08-30 (sezono vidurys) visiems 39 naudojamiems motociklams, sugrupuotiems pagal filialą laikotarpio pradžioje. Mėlyna – nuomos, gintarinė – techninė priežiūra, violetinė – perkėlimas (2026-08-17 Kaunas → Vilnius); „→ Kaunas“ – nuoma grąžinta į kitą filialą. Dešiniajame stulpelyje – nuomų trukmės dalis laikotarpyje, grupės eilutėje – filialo vidurkis.
 
 ### Atitiktis nefunkciniams reikalavimams
 

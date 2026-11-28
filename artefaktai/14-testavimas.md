@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriams 3.1 „Testavimo apžvalga“ ir 3.2 „Testavimo atvejai“.
 
-**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių; sąlygos po pateiktos sąrašais ir ataskaitoje perkeltos į TA lentelės paskutinę eilutę. 2026-11-25 sąlygose po nurodytos lentelės ir stulpeliai, kuriuos tikrina testuotojas (pilkoji dėžė); TA1 papildytas 9 žingsniu (paieška techninės priežiūros metu), TA sandara (aprašymas, pradiniai duomenys, žingsniai, sąlygos po) aprašyta 3.2 skyriuje sąrašu, įžangoje liko tik testavimo būdas.
+**Būsena:** baigta 2026-11-19. Per 2 kontrolinį tašką (2026-11-20) 3.1.2 skyriaus lentelėje prie FR 1.2.1 pridėtas TA2 1 žingsnis. 2026-11-24 pradiniai duomenys pateikti sąrašais, nurodyta, kas atlieka žingsnius; pradiniai duomenys nebesiejami su bandomosios duomenų bazės būsena; bandomieji duomenys apibrėžti 2.2.1 skyriuje, pastaba apie tuščius stulpelius perkelta į 3.2 skyrių; sąlygos po pateiktos sąrašais ir ataskaitoje perkeltos į TA lentelės paskutinę eilutę. 2026-11-25 sąlygose po nurodytos lentelės ir stulpeliai, kuriuos tikrina testuotojas (pilkoji dėžė); TA1 papildytas 9 žingsniu (paieška techninės priežiūros metu), TA sandara (aprašymas, pradiniai duomenys, žingsniai, sąlygos po) aprašyta 3.2 skyriuje sąrašu, įžangoje liko tik testavimo būdas. Papildyta 2026-11-28: TA2 papildytas 6 žingsniu (pažymėjimo tikrinimas išduodant).
 
 Testavimas planuojamas sistemos lygiu, testavimo atvejai (TA) sudaryti pagal panaudos atvejus. Sistema tikrinama juodosios dėžės principu per sąsają, o duomenų bazėje papildomai patikrinama, kas įrašyta, – tai pilkosios dėžės testavimas. Duomenys parinkti ekvivalenčių klasių ir ribinių reikšmių metodais, ir kiekvienas TA apima ne tik tinkamus, bet ir netinkamus duomenis.
 
@@ -22,7 +22,7 @@ Stulpelyje „Kaip tikrinama“ nurodytas testavimo atvejis (3.2 skyrius) arba t
 |---|---|---|
 | Motociklų paieška | FR 1.2.1 | Testavimas pagal panaudos atvejį PA1; paieškos rezultatai tikrinami TA1 (9 žingsnis), TA2 (1 žingsnis) ir TA4 (2 žingsnis) |
 | Rezervacija ir jos valdymas | FR 1.2.2 | TA1, TA2, TA4 |
-| Išdavimas ir grąžinimas | FR 1.2.3 | TA3 |
+| Išdavimas ir grąžinimas | FR 1.2.3 | TA2 (6 žingsnis), TA3 |
 | Techninė priežiūra | FR 1.2.4 | TA1 (7–9 žingsniai) |
 | Parko administravimas ir ataskaitos | FR 1.2.5 | Testavimas pagal panaudos atvejus PA16–PA22 |
 | Prisitaikanti sąsaja | NFR 1.3.1.1 | Sąsajos peržiūra 360 ir 1280 px pločio ekranuose: siaurame ekrane elementai nepersidengia ir nėra horizontalios slinkties juostos, plačiame turinys neišsitempia per visą plotį |
@@ -51,7 +51,7 @@ Testavimo atvejai sudaryti ten, kur klaidos rizika didžiausia: taisyklėms, kur
 | TA | Pavadinimas | Funkcija | Panaudos atvejai | Reikalavimai |
 |---|---|---|---|---|
 | 1 | Rezervacijos keitimas ir techninės priežiūros planavimas | `tikrintiUzimtuma` | PA1, PA3, PA4, PA6, PA11 | FR 1.2.1, FR 1.2.2, FR 1.2.4, NFR 1.3.2.4, NFR 1.3.5.1 |
-| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4 |
+| 2 | Vairuotojo pažymėjimo tikrinimas rezervuojant ir išduodant | `tikrintiKlientoTeise` | PA1, PA2, PA4, PA7, PA9 | FR 1.2.1, FR 1.2.2, FR 1.2.3, NFR 1.3.2.3, NFR 1.3.2.4 |
 | 3 | Pavėluotas grąžinimas ir galutinė kaina | `skaiciuotiKaina` | PA4, PA8, PA9, PA10, PA12, PA13, PA14 | FR 1.2.3, NFR 1.3.2.4 |
 | 4 | Vienalaikės rezervacijos | `tikrintiUzimtuma` | PA1, PA2, PA6 | FR 1.2.1, FR 1.2.2, NFR 1.3.2.4, NFR 1.3.3.3 |
 
@@ -107,17 +107,18 @@ Kiekvienas TA pateikiamas viena lentele, kurią sudaro šios dalys:
 
 ### Testavimo atvejo Nr. 2
 
-**Vairuotojo pažymėjimo tikrinimas rezervuojant**
+**Vairuotojo pažymėjimo tikrinimas rezervuojant ir išduodant**
 
-**Aprašymas:** tikrinama, ar sistema leidžia rezervuoti (PA2) ir keisti rezervaciją (PA4) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, NFR 1.3.2.3, NFR 1.3.2.4.
+**Aprašymas:** tikrinama, ar sistema leidžia rezervuoti (PA2), keisti rezervaciją (PA4) ir išduoti motociklą (PA9) tik tada, kai kliento pažymėjime yra motociklo modeliui reikalinga kategorija, galiojanti visą nuomos laikotarpį (funkcija `tikrintiKlientoTeise`, PA7), ir nurodo atsisakymo priežastį. Duomenys parinkti ekvivalenčių klasių metodu: reikiamos kategorijos nėra (turima tik žemesnė kategorija arba nėra jokios motociklų kategorijos); kategorija baigia galioti nuomos metu; kategorija galioja iki nuomos pabaigos dienos (ribinė reikšmė). Išduodant darbuotojas pataiso pažymėjimo duomenis, kurie nesutampa su kliento pateiktu pažymėjimu. Taip pat skaičiuojami ekranai nuo motociklo pasirinkimo iki patvirtinimo. Testuojami reikalavimai FR 1.2.1, FR 1.2.2, FR 1.2.3, NFR 1.3.2.3, NFR 1.3.2.4.
 
 **Pradiniai duomenys (sąlygos prieš):**
 
-- Dabartinis laikas: 2026-11-19 12:00.
+- Dabartinis laikas: 2026-11-19 12:00 (6 žingsnio – 2027-05-09 10:00).
 - Žingsnius atlieka:
   - 1 – Klientas 33, prisijungęs prie savo paskyros;
   - 2 – Vilniaus filialo darbuotojas (Darbuotojas 1);
-  - 3–5 – Klientas 26, prisijungęs prie savo paskyros.
+  - 3–5 – Klientas 26, prisijungęs prie savo paskyros;
+  - 6 – Vilniaus filialo darbuotojas (Darbuotojas 1).
 - Motociklas: BMW F 900 R, valst. nr. 26 HUN – vienintelis šio modelio motociklas Vilniuje, laisvas 2027-05-09 10:00 – 2027-05-12 10:00.
 - Modelis BMW F 900 R:
   - reikalinga kategorija: A;
@@ -139,6 +140,7 @@ Kiekvienas TA pateikiamas viena lentele, kurią sudaro šios dalys:
 | 3. | Klientas 26 atlieka tą pačią paiešką, pasirenka BMW F 900 R ir spaudžia „Patvirtinti rezervaciją“. | Atmesta: „A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“. | | |
 | 4. | Klientas 26 spaudžia „Atgal“, paieškoje nurodo grąžinimą 2027-05-10 10:00 ir rezervuoja BMW F 900 R. | Rodomas patvirtinimas: 100,00 €, užstatas 700,00 €, baudų lentelė su pakopa „iki 1 val. – 0,00 €“. Nuo motociklo pasirinkimo – 3 ekranai. | | |
 | 5. | Klientas 26 puslapyje „Mano rezervacijos“ keičia rezervacijos Nr. 642 pabaigą į 2027-05-12 11:00. | Atmesta: „A kategorija galioja iki 2027-05-10, o nuoma baigiasi 2027-05-12“. | | |
+| 6. | Darbuotojas 1 įformina 4 žingsnyje sukurtos rezervacijos išdavimą. Kliento 26 pateiktame pažymėjime A kategorija galioja iki 2027-05-09, todėl darbuotojas pataiso jos galiojimo datą ir spaudžia „Įforminti išdavimą“. | Atmesta: „A kategorija galioja iki 2027-05-09, o nuoma baigiasi 2027-05-10“; motociklas neišduotas. | | |
 
 **Sąlygos po:**
 
@@ -146,6 +148,8 @@ Kiekvienas TA pateikiamas viena lentele, kurią sudaro šios dalys:
   - tik viena nauja eilutė – Klientas 26, motociklas 26 HUN, 2027-05-09 10:00 – 2027-05-10 10:00, „Būsena“ – „rezervuota“, tarifas – BMW F 900 R (100,00 €/para), užregistravusio darbuotojo nėra;
   - Klientų 33 ir 35 eilučių nėra;
   - Nr. 642 nepakeista („Planuojama pabaiga“ – 2027-04-18 11:00).
+- „Kliento kategorija“ (susijusi lentelė: „Klientas“): Kliento 26 A kategorijos „Galioja iki“ – 2027-05-09; A1 ir A2 nepakeistos.
+- „Išdavimas“: 4 žingsnyje sukurtai nuomai eilutės nėra.
 
 ### Testavimo atvejo Nr. 3
 
@@ -163,6 +167,7 @@ Kiekvienas TA pateikiamas viena lentele, kurią sudaro šios dalys:
   - išdavimas ir grąžinimas Vilniuje;
   - išduota 2026-11-10 10:26, rida 23 642 km;
   - būsena „aktyvi“ (motociklas dar negrąžintas).
+- Klientas 22: A2 kategorija galioja iki 2038-05-22 (BMW G 310 R reikia A2).
 - Kliento 22 rezervacija Nr. 632 tam pačiam motociklui:
   - laikotarpis: 2026-11-12 11:00 – 2026-11-13 13:00;
   - išdavimas ir grąžinimas Vilniuje;

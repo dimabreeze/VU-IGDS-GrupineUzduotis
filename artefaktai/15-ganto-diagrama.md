@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos skyriui 1.1.5 „Sistemos kūrimo terminai“.
 
-**Būsena:** baigta 2026-11-20.
+**Būsena:** baigta 2026-11-20. Papildyta 2026-11-28: duomenų perkėlimas išbandomas iš anksto, 5.2 perkeltas tiesiai prieš paleidimą, pridėta perėjimo strategija.
 
 Šaltinis: `artefaktai/15-ganto-diagrama.xlsx`, paveikslas: `artefaktai/15-ganto-diagrama.png`.
 
@@ -22,9 +22,10 @@ Sistema sukuriama per 9 savaites (iki 2027-01-31).
   - eksploatacinis priėmimo testavimas (OAT); 
      
 * Programuotojai taiso klaidas nuo pirmos testavimo dienos iki OAT pabaigos. 
-* Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant, todėl diegiant sistema įdiegiama ir duomenys iš senos sistemos (bendros filialų „Excel“ lentelės) perkeliami per vieną savaitę. 
-* Po to darbuotojai mokomi, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. 
-* Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po mokymų. 
+* Žinynų ir duomenų perkėlimo scenarijai parengiami programuojant ir išbandomi su senos sistemos (bendros filialų „Excel“ lentelės) kopija. Scenarijus atmeta eilutes, kuriose trūksta privalomų kliento duomenų, ir rezervacijas, kurios sutampa su jau perkeltomis (tikrinama funkcija `tikrintiUzimtuma`); atmestas eilutes filialų darbuotojai sutvarko lentelėje. Priėmimo bandymai (UAT) ir mokymai vyksta su perkeltais duomenimis. 
+* Po OAT paruošiama gamybinė infrastruktūra ir mokomi darbuotojai, o naudotojo dokumentacija rengiama nuo savaitės prieš mokymus iki jų pabaigos. 
+* Paskutinę savaitę prieš paleidimą sistema įdiegiama gamybinėje aplinkoje ir perkeliami duomenys, įskaitant mokymų metu į lentelę įrašytas rezervacijas; po perkėlimo lentelė nebepildoma. 
+* Sistema paleidžiama 2027-05-31 – 2027-06-06, iš karto po duomenų perkėlimo. Pasirinktas staigus perėjimas: nuo paleidimo dienos rezervacijos priimamos tik sistemoje. Lygiagretus perėjimas atmestas, nes pildant dvi rezervacijų vietas vėl atsirastų dvigubos rezervacijos – pagrindinė problema, kurią sistema sprendžia. Riziką mažina išbandytas duomenų perkėlimas, priėmimo bandymai su perkeltais duomenimis ir garantinė priežiūra, per kurią sezono metu kritinės klaidos ištaisomos per 1 darbo dieną (NFR 1.3.4.3). 
 * Po paleidimo 52 savaites vyksta garantinė priežiūra; ji apima visus metus, taigi ir visus nuomos sezono mėnesius (2027 m. birželį–spalį ir 2028 m. balandį–gegužę), todėl per ją patikrinamas metinis pasiekiamumas (NFR 1.3.3.2) ir klaidų taisymo bei atnaujinimų terminai (NFR 1.3.4.3).
 
 Kiekvienas etapas baigiamas kontroliniu tašku (◆), kuris pažymėtas pirmojoje savaitėje po etapo pabaigos: užsakovas patvirtina reikalavimų specifikaciją, techninį projektą, priimtą sistemą ir projekto užbaigimą, o projekto vadovas – programavimo pabaigą ir sistemos paleidimą.
@@ -53,10 +54,10 @@ Ne iš eilės vienas po kito einantys ryšiai:
 | 4.6 | Po naktinių testų (4.4, 4.5) | Priėmimo bandymai – su sistema, kuri praėjo sistemos ir naktinius testus |
 | 4.7 | Po 4.6 | Eksploatacinis priėmimas – kai naudotojai sistemą priėmė |
 | 4.2, 4.8 | Baigiasi kartu su 4.7 | Integracinis testavimas ir klaidų taisymas tęsiasi, kol keičiama sistema – iki OAT pabaigos |
-| 5.2 | Po 5.1 | Sistema įdiegiama į paruoštą gamybinę infrastruktūrą, kartu perkeliami duomenys iš senos sistemos |
-| 5.4 | Po 5.2 | Darbuotojai mokomi su įdiegta sistema ir perkeltais duomenimis |
+| 5.4 | Po 5.1 | Darbuotojai mokomi bandomojoje aplinkoje su išbandytu scenarijumi perkeltais duomenimis |
 | 5.3 | Savaite anksčiau už 5.4, baigiasi kartu su ja | Dokumentacija pradedama prieš mokymus ir papildoma mokymuose išryškėjusiomis sudėtingomis vietomis |
-| 5.5 | Po 5.3 ir 5.4 | Paleidžiama, kai darbuotojai apmokyti ir dokumentacija baigta |
+| 5.2 | Po 5.4, iš karto prieš 5.5 | Sistema įdiegiama ir duomenys perkeliami paskutinę savaitę prieš paleidimą, todėl perkeliamos ir mokymų metu į „Excel“ lentelę įrašytos rezervacijos; po perkėlimo lentelė nebepildoma |
+| 5.5 | Po 5.2 ir 5.3 | Paleidžiama iš karto po duomenų perkėlimo, kai darbuotojai apmokyti ir dokumentacija baigta |
 
 ## Kodėl tokie terminai
 
@@ -98,20 +99,20 @@ Analizės ir projektavimo darbai atitinka šios ataskaitos skyrius; vėlesnių e
 | 2.3 Vartotojo sąsajos dizainas ir maketai | 2.3.1, 2.3.2 |
 | 2.4 Testavimo plano ir testavimo atvejų parengimas | 3.1, 3.2 |
 | 2.5 Techninio projekto suderinimas su užsakovu | Visa ataskaita |
-| 3.2 Duomenų bazės ir bendrųjų tikrinimo funkcijų kūrimas | 2.2.2 lentelės; 2.2.1 funkcijos `tikrintiUzimtuma` (kviečia PA1, PA2, PA4, PA11, PA22), `tikrintiKlientoTeise` (PA2, PA4), `skaiciuotiKaina` (PA10); NFR 1.3.3.3 |
+| 3.2 Duomenų bazės ir bendrųjų tikrinimo funkcijų kūrimas | 2.2.2 lentelės; 2.2.1 funkcijos `tikrintiUzimtuma` (kviečia PA1, PA2, PA4, PA11, PA22), `tikrintiKlientoTeise` (PA2, PA4, PA9), `skaiciuotiKaina` (PA10); NFR 1.3.3.3 |
 | 3.3 Serverio dalies (procesų P1–P7 operacijų) kūrimas | 2.1.1: 16 operacijų, kurias inicijuoja aktorius, ir kitos jų kviečiamos funkcijos; ataskaitos (P7) |
-| 3.4 Pastovių žinynų ir duomenų perkėlimo scenarijų parengimas | Vairuotojo pažymėjimo kategorijos, gamintojai, motociklų tipai; perkėlimas iš bendros filialų „Excel“ lentelės (1.1.1) |
+| 3.4 Pastovių žinynų ir duomenų perkėlimo scenarijų parengimas | Vairuotojo pažymėjimo kategorijos, gamintojai, motociklų tipai; perkėlimas iš bendros filialų „Excel“ lentelės (1.1.1), išbandomas su jos kopija: atmetamos eilutės be privalomų kliento duomenų ir sutampančios rezervacijos (`tikrintiUzimtuma`) |
 | 3.5 Vartotojo sąsajos kūrimas pagal maketus (LT ir EN kalbos) | 2.3.2 (maketai EKRANAS01–EKRANAS05); NFR 1.3.1.1–NFR 1.3.1.3, NFR 1.3.2.1, NFR 1.3.2.3 |
 | 3.6 Prieigos pagal vaidmenis ir duomenų apsaugos realizavimas | NFR 1.3.5.1, NFR 1.3.5.2 |
 | 3.7 Aktualių žinynų (modelių, tarifų, baudų pakopų) parengimas | Motociklų modeliai ir jų charakteristikos, tarifai ir baudų pakopos |
 | 4.1 Testavimo plano ir atvejų patikslinimas pagal sukurtą sistemą | 3.1, 3.2: testavimo atvejų žingsniai aprašyti per sąsają, todėl patikslinami pagal sukurtą sistemą |
 | 4.3 Sistemos testavimas pagal panaudos atvejus ir testavimo atvejus | 3.1.2, TA1–TA4 |
 | 4.4, 4.5 Naktiniai testai | Žr. skyrių „Naktiniai testai“ |
-| 4.6 Priėmimo bandymai su filialų darbuotojais (UAT) | NFR 1.3.2.2 (naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo dirba savarankiškai) |
+| 4.6 Priėmimo bandymai su filialų darbuotojais (UAT) | NFR 1.3.2.2 (naujas darbuotojas po ne ilgesnio kaip 3 val. mokymo dirba savarankiškai); vykdoma su 3.4 scenarijumi perkeltais duomenimis |
 | 4.7 Eksploatacinis priėmimo testavimas (OAT) | Pasirengimas eksploatacijai: dubliuojanti duomenų bazė, atsarginės kopijos ir atkūrimas (NFR 1.3.4.1), sintetinė stebėsena (NFR 1.3.3.2), atnaujinimų diegimo tvarka (NFR 1.3.4.3) |
 | 4.8 Klaidų taisymas | 4.2–4.7 darbuose rastos klaidos |
 | 5.1 Gamybinės infrastruktūros paruošimas | HTTPS (NFR 1.3.5.2), dubliuojanti duomenų bazė ir atsarginės kopijos (NFR 1.3.4.1) |
-| 5.2 Įdiegimas ir duomenų perkėlimas (migracija) iš senos sistemos | Sistemos įdiegimas gamybinėje aplinkoje; 3.4 ir 3.7 scenarijais įkeliami žinynai, motociklai, tarifai, klientai ir būsimos rezervacijos iš bendros filialų „Excel“ lentelės (1.1.1) |
+| 5.2 Įdiegimas ir duomenų perkėlimas (migracija) iš senos sistemos | Paskutinė savaitė prieš paleidimą: sistemos įdiegimas gamybinėje aplinkoje; 3.4 ir 3.7 scenarijais įkeliami žinynai, motociklai, tarifai, klientai ir būsimos rezervacijos iš bendros filialų „Excel“ lentelės (1.1.1), įskaitant įrašytas mokymų metu; po perkėlimo lentelė nebepildoma |
 | 5.3 Naudotojo dokumentacijos rengimas | Papildoma vietomis, kurios mokymuose pasirodė sudėtingos |
 | 5.4 Darbuotojų mokymai | NFR 1.3.2.2 (ne ilgiau kaip 3 val. vienam darbuotojui) |
 | 6.1 Garantinė priežiūra: klaidų taisymas ir atnaujinimai | NFR 1.3.4.3 |
@@ -126,6 +127,6 @@ Analizės ir projektavimo darbai atitinka šios ataskaitos skyrius; vėlesnių e
 - Grafikas yra planas tikram užsakovo projektui. Su šiuo kursiniu darbu jis susietas tik techninio projekto suderinimu (2.5): ši savaitė sutampa su ataskaitos pateikimu (2026-11-23).
 - Lentelė sukurta scenarijumi iš pavyzdžio failo: perimti stiliai ir sąlyginio formatavimo taisyklės, perskaičiuotos jų sritys, metų ir mėnesių antraštės, pertraukos stulpelis. Toliau lentelė taisoma „Excel“ programoje.
 - Paveikslas eksportuotas iš „Excel“ į PDF ir paverstas PNG (4 kartus didesne raiška, apkarpytos paraštės). „macOS“ greitoji peržiūra (Quick Look) sąlyginio formatavimo nerodo, todėl juostos joje nematomos.
-- Datos PDF faile sutikrintos su apskaičiuotomis: pradžia 2026-09-21, 2.5 – 2026-11-23 – 11-29, UAT 2027-03-29 – 04-18, OAT 2027-04-19 – 05-02, įdiegimas ir migracija 2027-05-10 – 05-16, mokymai 2027-05-17 – 05-30, paleidimas 2027-05-31 – 06-06, pabaiga 2028-06-11, trukmė 90 savaičių.
+- Datos PDF faile sutikrintos su apskaičiuotomis: pradžia 2026-09-21, 2.5 – 2026-11-23 – 11-29, UAT 2027-03-29 – 04-18, OAT 2027-04-19 – 05-02, mokymai 2027-05-10 – 05-23, įdiegimas ir migracija 2027-05-24 – 05-30, paleidimas 2027-05-31 – 06-06, pabaiga 2028-06-11, trukmė 90 savaičių.
 - Kategorijų žinynas, kaip ir `10-lenteles.md`, įvedamas diegiant sistemą: scenarijus parengiamas programuojant (3.4), o įkeliamas diegiant (5.2).
 - 4.8 trukmė (13 savaičių) įvesta skaičiumi, kad juosta būtų mėlyna; pakeitus 4.6 ar 4.7 trukmę, ją reikia pataisyti ranka, kad 4.8 baigtųsi kartu su 4.7. Tas pats galioja 4.2.

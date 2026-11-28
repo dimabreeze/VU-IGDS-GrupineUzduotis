@@ -454,9 +454,13 @@ def figure(doc, cap_text, path, opts):
     o = dict(re.findall(r'(\w+)=([^\s}]+)', opts))
     wpx, hpx = png_size(path)
     max_w = TEXT_W_LAND if doc.landscape else TEXT_W
-    max_h = (PG_W - 2 * M_TOP - 3 * CM) if doc.landscape else (PG_H - 2 * M_TOP - 4 * CM)
-    if o.get('failai'):
-        max_h -= 3 * CM
+    if doc.landscape:
+        # gulsčiame puslapyje vieta paliekama tik pavadinimui ir šaltinio failų nuorodoms
+        max_h = PG_W - 2 * M_TOP - (int(4.5 * CM) if o.get('failai') else 3 * CM)
+    else:
+        max_h = PG_H - 2 * M_TOP - 4 * CM
+        if o.get('failai'):
+            max_h -= 3 * CM
     w = int(float(o['plotis']) * CM) if 'plotis' in o else max_w
     w = min(w, max_w)
     h = int(w * hpx / wpx)

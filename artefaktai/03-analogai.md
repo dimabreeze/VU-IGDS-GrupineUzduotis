@@ -81,11 +81,13 @@ Paieška pagal datas, filialą, charakteristikas, vairuotojo pažymėjimo katego
 3. **Grąžinimas į kitą filialą.**  
 Nė viena nagrinėta Lietuvos įmonė neturi kelių filialų su grąžinimu į kitą filialą: Bikerent grąžinimą kitoje vietoje tiesiogiai draudžia, o KuBa Motors grąžinimo vietą Vilniuje derina individualiai. 
 
-4. **Vairuotojo pažymėjimo tikrinimas rezervuojant.**  
-Sistema prieš patvirtindama rezervaciją tikrina, ar pažymėjime yra tinkama kategorija ir ar ji galios visą nuomos laikotarpį. 
+4. **Vairuotojo pažymėjimo tikrinimas rezervuojant ir išduodant.**  
+Sistema prieš patvirtindama rezervaciją tikrina, ar pažymėjime yra tinkama kategorija ir ar ji galios visą nuomos laikotarpį; išduodant motociklą darbuotojas sutikrina pateiktą pažymėjimą, o sistema patikrina dar kartą. 
 
 5. **Techninė priežiūra, susieta su paieška.**  
 Priežiūros laikotarpiai planuojami su datomis ir automatiškai pašalina motociklą iš paieškos tiems laikotarpiams. 
 
 6. **Pritaikyta motociklų nuomai.**  
 Skirtingai nei universali RentSyst sistema, mūsų IS orientuota į motociklų nuomos specifiką (kategorijos A2/A, kelionės į užsienį).
+
+**Kodėl ne paruošta SaaS sistema.** RentSyst „Basic“ planas UAB „Brrrūm“ kainuotų apie 120 € per mėnesį be PVM, tačiau viešai nėra informacijos, ar sistema tikrina vairuotojo pažymėjimo kategoriją ir ar leidžia grąžinimą į kitą filialą tikrindama, kuriame filiale motociklas turi būti kitos rezervacijos pradžioje. Būtent šios taisyklės sprendžia pagrindines įmonės problemas (dvigubas rezervacijas ir nenuoseklų teisių tikrinimą). Nuosavos sistemos sukūrimas kainuoja daugiau, tačiau nėra nuolatinio mokesčio, didėjančio kartu su parku, o duomenys lieka įmonės duomenų bazėje.

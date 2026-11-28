@@ -2,7 +2,7 @@
 
 Medžiaga ataskaitos priedui „Atsekamumo matrica“ (papildomas priedas; sutrumpinta lentelė pridedama surenkant ataskaitą, žr. skyrių „Kas perkeliama į ataskaitą“).
 
-**Būsena:** baigta 2026-11-20.
+**Būsena:** baigta 2026-11-20. Papildyta 2026-11-28: atnaujintos PA7, PA9 ir PA21 eilutės.
 
 Matrica rodo, kaip kiekvienas reikalavimas (`04-reikalavimai.md`) susijęs su panaudos atvejais (`07-panaudos-atvejai.md`), duomenų srautų diagramos procesais ir saugyklomis (`09-dsd.md`), ER esybėmis ir lentelėmis (`08-loginis-er.md`, `10-lenteles.md`), struktūrinės schemos funkcijomis (`11-strukturine-schema.md`, `12-funkcijos.md`), sąsajos maketais (`13-dizainas.md`) ir testavimu (`14-testavimas.md`). Ja patikrinta, ar kiekvienas elementas susietas su kitais ir ar pavadinimai visur vienodi.
 
@@ -20,10 +20,10 @@ Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius. Sau
 | PA4 | Keisti rezervaciją | K, D | P2 | DS4 R, DS5 R/W | Nuoma, Klientas, Kategorija („turi teisę“) | 2 → PA6, PA7 | – | TA1 (2–6), TA2 (5), TA3 (5) |
 | PA5 | Atšaukti rezervaciją | K, D | P2 | DS5 W | Nuoma | 2 | – | pagal PA |
 | PA6 | Tikrinti motociklo užimtumą | – | P1 | DS2, DS5, DS6, DS7 R | Motociklas, Filialas, Nuoma, Techninė priežiūra, Perkėlimas | 3, `tikrintiUzimtuma` | EKRANAS02 (atmetimas) | TA1 (2–8), TA4 (1) |
-| PA7 | Tikrinti vairuotojo pažymėjimą | – | P2 | DS4 R; reikiama kategorija per P1 | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, `tikrintiKlientoTeise` | EKRANAS02 (atmetimas) | TA2 (1–5) |
+| PA7 | Tikrinti vairuotojo pažymėjimą | – | P2, P3 | DS4 R; reikiama kategorija per P1 (P2) arba iš DS2 (P3) | Klientas, Kategorija („turi teisę“), Motociklo modelis | 3, `tikrintiKlientoTeise` | EKRANAS02 (atmetimas), EKRANAS04 (išdavimo forma) | TA2 (1–6) |
 | | **FR 1.2.3 Išdavimas ir grąžinimas** | | | | | | | |
 | PA8 | Peržiūrėti išdavimų ir grąžinimų tvarkaraštį | D | P3 | DS2, DS4, DS5 R | Nuoma, Motociklas, Klientas | 2 | EKRANAS04 | TA3 (1) |
-| PA9 | Įforminti išdavimą | D | P3 | DS5 R/W | Išdavimas, Nuoma, Darbuotojas | 2 → PA12 | EKRANAS04 | TA3 (2, 6) |
+| PA9 | Įforminti išdavimą | D | P3 | DS2 R, DS4 R/W, DS5 R/W | Išdavimas, Nuoma, Darbuotojas, Klientas, Kategorija („turi teisę“), Motociklas, Motociklo modelis | 2 → PA7, PA12 | EKRANAS04 | TA2 (6), TA3 (2, 6) |
 | PA10 | Įforminti grąžinimą | D | P3 | DS3 R, DS5 W, DS2 W | Grąžinimas, Nuoma, Darbuotojas | 2 → PA12, PA13, PA14 [grąžinta pavėluotai], PA15 [kitas filialas] | EKRANAS04 | TA3 (3, 4, 7) |
 | PA12 | Užfiksuoti ridą ir būklę | – | P3 | DS5 W, DS2 W | Išdavimas, Grąžinimas, Motociklas (Rida) | 3 | EKRANAS04 | TA3 (3, 4, 6, 7) |
 | PA13 | Apskaičiuoti galutinę nuomos kainą | – | P3 | DS3 R, DS5 W | Tarifas, Nuoma, Grąžinimas (Galutinė kaina) | 3, `skaiciuotiKaina` | EKRANAS04 | TA3 (4, 7) |
@@ -37,7 +37,7 @@ Aktoriai: K – klientas, D – filialo darbuotojas, A – administratorius. Sau
 | PA18 | Tvarkyti tarifus | A | P5 | DS3 W | Tarifas, Baudos pakopa | 2 | – | pagal PA |
 | PA19 | Tvarkyti darbuotojų paskyras | A | P5 | DS8 R/W | Darbuotojas, Paskyra | 2 | – | pagal PA |
 | PA20 | Peržiūrėti parko užimtumą | A | P7 | per P1 (DS5–DS7) | Nuoma, Techninė priežiūra, Perkėlimas, Motociklas | 2 | EKRANAS05 | pagal PA |
-| PA21 | Formuoti statistines ataskaitas | A | P7 | per P1 (DS5) | Nuoma, Grąžinimas | 2 | – (turinys nenustatytas) | pagal PA |
+| PA21 | Formuoti statistines ataskaitas | A | P7 | per P1 (DS1, DS2, DS5, DS6) | Nuoma, Išdavimas, Grąžinimas, Techninė priežiūra, Motociklas, Motociklo modelis, Filialas | 2 | – | pagal PA |
 | PA22 | Planuoti motociklų perkėlimą | A | P6 | DS7 W, DS2 W | Perkėlimas (ryšys „perkeliamas“), Motociklas, Filialas, Darbuotojas | 2 → PA6 | – | pagal PA |
 
 Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis. Išsamūs testavimo atvejai sudaryti didžiausios rizikos taisyklėms (2.2.1 skyriaus funkcijoms) ir vienam nefunkciniam reikalavimui (NFR 1.3.3.3). Kiti panaudos atvejai tikrinami testavimu pagal panaudos atvejus (3.1.2 skyrius); jų testavimo atvejai bus sudaryti testavimo etape.
@@ -69,7 +69,7 @@ Ne kiekvienam panaudos atvejui sudarytas atskiras testavimo atvejis. Išsamūs t
 | Kiekvienas funkcinis reikalavimas FR 1.2.1–FR 1.2.5 turi panaudos atvejį, procesą, esybę ir patikrą | Taip (A lentelė) |
 | Kiekvienas nefunkcinis reikalavimas turi patikrą | Taip, išskyrus NFR 1.3.4.3 (priežastis – `14-testavimas.md`) |
 | Kiekvienas panaudos atvejis PA1–PA22 turi reikalavimą, procesą ir struktūrinės schemos funkciją tuo pačiu pavadinimu | Taip (22 iš 22) |
-| Kiekvienas «include» ir «extend» ryšys atitinka iškvietimą struktūrinėje schemoje | Taip (PA6 – 5 kartus, PA7 – 2, PA12 – 2, PA13, PA14, PA15 – po 1) |
+| Kiekvienas «include» ir «extend» ryšys atitinka iškvietimą struktūrinėje schemoje | Taip (PA6 – 5 kartus, PA7 – 3, PA12 – 2, PA13, PA14, PA15 – po 1) |
 | Kiekvienas procesas P1–P7 turi panaudos atvejį ir šaką struktūrinėje schemoje | Taip |
 | Kiekviena saugykla DS1–DS8 turi rašantį ir skaitantį procesą | Taip; Kategoriją (DS2) joks procesas nerašo, nes tai klasifikatorius, įvedamas diegiant sistemą |
 | Kiekviena esybė (16) ir lentelė (18) priklauso saugyklai ir reikalavimui | Taip (`08` aprėpties lentelė, `10` „Ryšys su loginiu modeliu…“) |
@@ -83,7 +83,7 @@ Sąmoningi ryšių trūkumai, kurie jau paaiškinti artefaktuose: Darbuotojas į
 ## Pavadinimų ir skaičių patikra
 
 - Visų `.drawio` diagramų (07, 08, 09, 10, 11) užrašai sutampa su aprašymais: 22 panaudos atvejų, 7 procesų, 8 saugyklų, 3 išorinių esybių, 16 esybių, 18 lentelių ir 3 funkcijų programoje pavadinimai vienodi.
-- Skaičiai visuose artefaktuose vienodi: 22 panaudos atvejai (16 operacijų ir 6 iškviečiamos funkcijos), 7 procesai, 8 saugyklos, 49 srautai, 16 esybių, 18 lentelių, 29 ryšiai, 14 nefunkcinių reikalavimų, 4 testavimo atvejai, 15 duomenų taisyklių patikrų.
+- Skaičiai visuose artefaktuose vienodi: 22 panaudos atvejai (16 operacijų ir 6 iškviečiamos funkcijos), 7 procesai, 8 saugyklos, 50 srautų, 16 esybių, 18 lentelių, 29 ryšiai, 14 nefunkcinių reikalavimų, 4 testavimo atvejai, 15 duomenų taisyklių patikrų.
 - Senieji pavadinimai (`tikrintiPrieinamuma`, „Lygis“, „Prisijungimo bandymas“, „Pradžios data“, „vienos krypties nuoma“) likę tik pakeitimų istorijoje (būsenos eilutėse ir `sprendimai.md`).
 
 ## Rasti neatitikimai ir pataisymai
