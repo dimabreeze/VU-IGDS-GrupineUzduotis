@@ -13,6 +13,7 @@ Darbo planas: [`planas.md`](planas.md). Priimti sprendimai: [`sprendimai.md`](sp
 | `saltiniai/` | Ataskaitos šablonas, laboratorinio darbo ER diagrama, dėstytojo anksčiau priimtos panaudos atvejų (PAD) ir duomenų srautų (DSD) diagramos bei Ganto diagrama (`lab-GANTT-diagrama.xlsx`), paskaitų skaidrės |
 | `darbas/` | Darbinė medžiaga: rinkos apžvalga, konkurentų svetainių ekrano nuotraukos, bandomoji duomenų bazė (žr. žemiau) ir kt. |
 | `ataskaita/` | Galutinė ataskaita (`Brrrum_IS_ataskaita.docx` ir `.pdf`), jos tekstas `ataskaita.md`, šablono kopija ir surinkimo įrankiai (`irankiai/`) |
+| `.claude/agents/` | Claude Code pagalbinių agentų aprašai: `auditorius` (nuoseklumo patikra), `tikrintojas` (patikros ir surinkimas), `vykdytojas` (priimtų pakeitimų perkėlimas į visas kopijas), `recenzentas` (vertinimas dėstytojo akimis), `gynimo-ruosejas` (klausimai gynimui), `redaktorius` (lietuvių kalba) |
 
 Dažniausi veiksmai (duomenų bazės paleidimas, patikros, diagramų eksportas) surinkti `Makefile`; sąrašas – komanda `make` šakniniame aplanke (žr. „Greitas paleidimas su make“ žemiau).
 

@@ -7,3 +7,6 @@ Thumbs.db
 # draw.io backups
 *.bkp
 .$*
+
+# Claude Code subagentų worktree
+.claude/worktrees/
